@@ -1,0 +1,39 @@
+name: 推荐一个羊毛 / Suggest a free quota
+description: 不方便提 PR 的话，在这里报一个平台的免费额度
+title: "[收录] "
+labels: ["provider"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: 平台名称 / Provider
+    validations:
+      required: true
+  - type: textarea
+    id: quota
+    attributes:
+      label: 额度 / Quota
+      description: 单位、周期、重置时间、可用模型；用完后是否自动扣费
+    validations:
+      required: true
+  - type: input
+    id: evidence
+    attributes:
+      label: 官方证据链接 / Official evidence URL
+    validations:
+      required: true
+  - type: input
+    id: signup
+    attributes:
+      label: 注册链接 / Sign-up URL
+      description: 不收返利或邀请链接
+  - type: textarea
+    id: requirements
+    attributes:
+      label: 注册要求 / Requirements
+      description: 手机号、信用卡、实名、地区限制
+  - type: dropdown
+    id: official
+    attributes:
+      label: 你是平台官方吗？ / Are you from the provider?
+      options: ["否 / No", "是 / Yes"]

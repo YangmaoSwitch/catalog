@@ -1,0 +1,67 @@
+id: openrouter
+name: OpenRouter
+homepage: https://openrouter.ai
+region: global
+api_usable: true
+status: verified
+last_verified: 2026-11-19
+
+api:
+  protocol: [openai]
+  base_url: https://openrouter.ai/api/v1
+
+signup:
+  url: https://openrouter.ai
+  requires: [email]
+  regions_blocked: []
+  min_age: 18
+
+quotas:
+  - unit: requests
+    amount: 20
+    period: minute
+    reset: rolling
+    scope: account
+    models: ":free 模型"
+    evidence: https://openrouter.ai/docs/api-reference/limits
+  - unit: requests
+    amount: 50
+    period: day
+    reset: "00:00 UTC"
+    scope: account
+    models: ":free 模型"
+    condition: "累计充值不足 10 美元"
+    evidence: https://openrouter.ai/docs/api-reference/limits
+  - unit: requests
+    amount: 1000
+    period: day
+    reset: "00:00 UTC"
+    scope: account
+    models: ":free 模型"
+    condition: "累计充值满 10 美元"
+    evidence: https://openrouter.ai/docs/api-reference/limits
+overage: blocked
+expires: null
+
+onboarding:
+  level: L3
+  key_page: https://openrouter.ai/keys
+  key_pattern: "^sk-or-v1-"
+  quota_api: GET https://openrouter.ai/api/v1/key
+  oauth:
+    authorize_url: https://openrouter.ai/auth
+    token_url: https://openrouter.ai/api/v1/auth/keys
+    pkce: S256
+    loopback: true
+    docs: https://openrouter.ai/docs/use-cases/oauth-pkce
+
+terms:
+  - point: "禁止同一人开多个账号以绕过限制（7.3）"
+    url: https://openrouter.ai/terms
+  - point: "禁止转售 API 访问或提供竞争服务（7.4）"
+    url: https://openrouter.ai/terms
+  - point: "余额为负时免费模型也会返回 402"
+    url: https://openrouter.ai/docs/api-reference/limits
+partner:
+  contact: null
+sources: []
