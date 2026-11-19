@@ -93,6 +93,25 @@
           "type": "string",
           "format": "uri",
           "description": "Native Anthropic Messages endpoint base (without /v1/messages), if any"
+        },
+        "models": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Models callable on this platform within its free quota (besides free_models)"
+        },
+        "models_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Public model list endpoint that needs no key (OpenAI /models format)"
+        },
+        "models_access": {
+          "enum": [
+            "free",
+            "quota"
+          ],
+          "description": "How `models` / `models_url` models are billed: free = no charge, quota = counted against the free quota or credits"
         }
       }
     },

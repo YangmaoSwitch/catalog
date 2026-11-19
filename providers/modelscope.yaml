@@ -11,6 +11,8 @@ api:
   protocol:
   - openai
   base_url: https://api-inference.modelscope.cn/v1
+  models_url: https://api-inference.modelscope.cn/v1/models
+  models_access: quota
 signup:
   url: https://modelscope.cn
   requires:

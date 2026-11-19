@@ -10,6 +10,8 @@ api:
   protocol:
   - openai
   base_url: https://integrate.api.nvidia.com/v1
+  models_url: https://integrate.api.nvidia.com/v1/models
+  models_access: quota
 signup:
   url: https://build.nvidia.com
   requires:
