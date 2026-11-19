@@ -2,7 +2,9 @@
 
 各平台大模型**免费额度**的结构化目录。[羊毛switch 官网](https://github.com/YangmaoSwitch/website)和[桌面端](https://github.com/YangmaoSwitch/app)都只读这份数据。
 
-A structured, verifiable catalog of free LLM API quotas. The YangmaoSwitch website and desktop app are built from this data.
+我们会尽量让目录保持最新、完整。欢迎用户和平台方提交新的免费额度或更正（提 PR 或 [Issue](https://github.com/YangmaoSwitch/catalog/issues/new/choose)），我们核实后上架，推给大家。
+
+A structured catalog of free LLM API quotas, kept as current and complete as we can. The YangmaoSwitch website and desktop app are built from this data. Users and providers are welcome to submit new quotas or corrections; we verify them before listing.
 
 ## 收录什么
 
