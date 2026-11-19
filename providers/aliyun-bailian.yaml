@@ -1,0 +1,36 @@
+id: aliyun-bailian
+name: Alibaba Cloud Model Studio
+name_zh: 阿里云百炼
+homepage: https://bailian.console.aliyun.com
+region: cn
+api_usable: true
+status: verified
+last_verified: '2026-11-19'
+summary: 新人部分模型各送 100 万 Token，90 天有效；用完默认自动转付费。
+api:
+  protocol:
+  - openai
+  base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
+signup:
+  url: https://bailian.console.aliyun.com
+  requires:
+  - phone_cn
+  - real_name
+  notes: 仅华北 2（北京）地域
+quotas:
+- unit: tokens
+  amount: 1000000
+  period: one-time
+  scope: model
+  evidence: https://help.aliyun.com/zh/model-studio/new-free-quota
+  expires_days: 90
+  note: 每个模型单独一份
+overage: auto_paid
+onboarding:
+  level: L1
+  key_page: https://bailian.console.aliyun.com
+terms:
+- point: 需手动开启“免费额度用完即停”，默认关闭
+  url: https://help.aliyun.com/zh/model-studio/new-free-quota
+tags:
+- 新人

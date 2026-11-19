@@ -1,6 +1,6 @@
-# 条目字段（草案 v0）
+# 条目字段（v1）
 
-字段还在定稿中，可能调整。示例见 [providers/openrouter.yaml](../providers/openrouter.yaml)。
+机器校验以 [provider.schema.json](provider.schema.json) 为准，本页是说明。本地校验：`pip install pyyaml jsonschema && python scripts/build.py`。示例见 [providers/openrouter.yaml](../providers/openrouter.yaml)。
 
 ```yaml
 id: openrouter                 # 唯一 ID

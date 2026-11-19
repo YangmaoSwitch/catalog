@@ -1,0 +1,42 @@
+id: aihubmix
+name: AiHubMix
+homepage: https://aihubmix.com
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-19'
+summary: 聚合平台的免费模型，每日重置。
+api:
+  protocol:
+  - openai
+  base_url: https://aihubmix.com/v1
+signup:
+  url: https://aihubmix.com
+  requires:
+  - email
+quotas:
+- unit: requests
+  amount: 100
+  period: day
+  scope: account
+  evidence: https://aihubmix.com/call/free_quota_config
+  models: 免费模型
+- unit: tokens
+  amount: 1000000
+  period: day
+  scope: account
+  evidence: https://aihubmix.com/call/free_quota_config
+  models: 免费模型
+- unit: requests
+  amount: 10
+  period: minute
+  scope: account
+  evidence: https://aihubmix.com/call/free_quota_config
+  models: 免费模型
+overage: blocked
+onboarding:
+  level: L1
+  key_page: https://aihubmix.com/token
+tags:
+- 聚合
+- 永久免费

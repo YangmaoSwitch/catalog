@@ -1,0 +1,33 @@
+id: modelscope
+name: ModelScope API-Inference
+name_zh: 魔搭社区
+homepage: https://modelscope.cn
+region: cn
+api_usable: true
+status: verified
+last_verified: '2026-11-19'
+summary: 每天登录送魔粒，调用按模型档位扣减。
+api:
+  protocol:
+  - openai
+  base_url: https://api-inference.modelscope.cn/v1
+signup:
+  url: https://modelscope.cn
+  requires:
+  - phone
+  - cloud_account
+  - real_name
+  notes: 需绑定阿里云账号并实名
+quotas:
+- unit: points
+  amount: 200
+  period: day
+  scope: account
+  evidence: https://modelscope.cn/docs/model-service/API-Inference/limits
+  note: 绑定阿里云每天再送 50；当天有效不累积；每次调用扣 0.5/1/2
+overage: blocked
+onboarding:
+  level: L1
+  key_page: https://modelscope.cn/my/myaccesstoken
+tags:
+- 每日赠送

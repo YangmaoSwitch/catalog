@@ -1,0 +1,43 @@
+id: zhipu-bigmodel
+name: Zhipu BigModel
+name_zh: 智谱开放平台
+homepage: https://bigmodel.cn
+region: cn
+api_usable: true
+status: verified
+last_verified: '2026-11-19'
+summary: GLM Flash 系列模型永久免费。
+api:
+  protocol:
+  - openai
+  base_url: https://open.bigmodel.cn/api/paas/v4
+  free_models:
+  - GLM-4.7-Flash
+  - GLM-4-Flash-250414
+  - GLM-Z1-Flash
+  - GLM-4.6V-Flash
+  - GLM-4V-Flash
+  - CogView-3-Flash
+  - CogVideoX-Flash
+signup:
+  url: https://bigmodel.cn
+  requires:
+  - phone
+  notes: 支持海外手机号
+quotas:
+- unit: requests
+  amount: null
+  period: day
+  scope: account
+  evidence: https://docs.bigmodel.cn/cn/guide/start/pricing.md
+  models: Flash 免费模型
+  note: 免费模型不计费，按模型限速
+overage: blocked
+onboarding:
+  level: L1
+  key_page: https://open.bigmodel.cn/usercenter/apikeys
+terms:
+- point: 免费功能仅限非商业的个人研究学习
+  url: https://docs.bigmodel.cn/cn/terms/user-agreement.md
+tags:
+- 永久免费

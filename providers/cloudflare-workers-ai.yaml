@@ -1,0 +1,33 @@
+id: cloudflare-workers-ai
+name: Cloudflare Workers AI
+homepage: https://developers.cloudflare.com/workers-ai/
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-19'
+summary: 免费计划每天 1 万 Neurons，超额直接报错。
+api:
+  protocol:
+  - openai
+  base_url: https://api.cloudflare.com/client/v4/accounts/ACCOUNT_ID/ai/v1
+  free_model_rule: 部分模型仅付费计划可用
+signup:
+  url: https://dash.cloudflare.com/sign-up
+  requires:
+  - email
+quotas:
+- unit: neurons
+  amount: 10000
+  period: day
+  scope: account
+  evidence: https://developers.cloudflare.com/workers-ai/platform/pricing/
+  reset: 00:00 UTC
+overage: blocked
+onboarding:
+  level: L2
+  key_page: https://dash.cloudflare.com/profile/api-tokens
+terms:
+- point: 禁止用脚本或代理批量创建账号（2.2.1(e)）
+  url: https://www.cloudflare.com/terms/
+tags:
+- 永久免费

@@ -1,0 +1,48 @@
+id: siliconflow
+name: SiliconFlow
+name_zh: 硅基流动
+homepage: https://siliconflow.cn
+region: cn
+api_usable: true
+status: verified
+last_verified: '2026-11-19'
+summary: 部分模型长期免费（按模型限速）；实名送代金券。
+api:
+  protocol:
+  - openai
+  base_url: https://api.siliconflow.cn/v1
+  free_models:
+  - GLM-Z1-9B
+  - Hunyuan-MT-7B
+  - Xing4.0-29B
+  - BAAI/bge-m3
+  - Kolors
+signup:
+  url: https://cloud.siliconflow.cn
+  requires:
+  - phone_cn
+quotas:
+- unit: requests
+  amount: null
+  period: minute
+  scope: model
+  evidence: https://www.siliconflow.cn/pricing
+  models: 定价页标“免费”的模型
+  note: 按模型限速
+- unit: cny
+  amount: 16
+  period: one-time
+  scope: account
+  evidence: https://www.siliconflow.cn/news/od7wj9rr23p95uhihmhrombp
+  condition: 实名认证
+  note: 活动截至 2026-12-31
+overage: auto_paid
+onboarding:
+  level: L1
+  key_page: https://cloud.siliconflow.cn/account/ak
+terms:
+- point: 允许用户授权的第三方保存访问令牌和凭据（1.1.3）
+  url: https://api-docs.siliconflow.cn/cn/legals/terms-of-service
+tags:
+- 永久免费
+- 新人

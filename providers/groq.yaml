@@ -1,0 +1,33 @@
+id: groq
+name: Groq
+homepage: https://groq.com
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-19'
+summary: 免费档按组织限速，响应头返回剩余额度。
+api:
+  protocol:
+  - openai
+  base_url: https://api.groq.com/openai/v1
+signup:
+  url: https://console.groq.com
+  requires:
+  - email
+quotas:
+- unit: requests
+  amount: null
+  period: day
+  scope: org
+  evidence: https://console.groq.com/docs/rate-limits
+  note: 另有每分钟请求数、每分钟/每天 token 数；数值见控制台 Limits 页
+overage: blocked
+onboarding:
+  level: L2
+  key_page: https://console.groq.com/keys
+  key_pattern: ^gsk_
+  quota_headers:
+  - x-ratelimit-remaining-requests
+  - x-ratelimit-remaining-tokens
+tags:
+- 永久免费

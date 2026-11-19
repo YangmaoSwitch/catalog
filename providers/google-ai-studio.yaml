@@ -1,0 +1,42 @@
+id: google-ai-studio
+name: Google AI Studio (Gemini API)
+homepage: https://aistudio.google.com
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-19'
+summary: Gemini API 免费档，按项目限速；具体数值在 AI Studio 页面显示。
+api:
+  protocol:
+  - openai
+  - gemini
+  base_url: https://generativelanguage.googleapis.com/v1beta/openai/
+signup:
+  url: https://aistudio.google.com/app/apikey
+  requires:
+  - google
+  regions_blocked:
+  - CN
+  - HK
+  min_age: 18
+  notes: 面向欧洲经济区、英国、瑞士用户只能用付费服务
+quotas:
+- unit: requests
+  amount: null
+  period: day
+  scope: project
+  evidence: https://aistudio.google.com/docs/rate-limits
+  reset: 00:00 America/Los_Angeles
+  note: 另有每分钟请求数、每分钟 token 数限制；具体数值按模型在 AI Studio 显示
+overage: blocked
+onboarding:
+  level: L2
+  key_page: https://aistudio.google.com/app/apikey
+  key_pattern: ^AIza
+terms:
+- point: 免费档的输入输出会被用于改进产品
+  url: https://aistudio.google.com/docs/rate-limits
+- point: 不得规避限额
+  url: https://developers.google.com/terms
+tags:
+- 永久免费

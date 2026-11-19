@@ -1,0 +1,34 @@
+id: cohere
+name: Cohere
+homepage: https://cohere.com
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-19'
+summary: 试用 Key 免费，用于测试和概念验证。
+api:
+  protocol:
+  - openai
+  base_url: https://api.cohere.ai/compatibility/v1
+signup:
+  url: https://dashboard.cohere.com
+  requires:
+  - email
+quotas:
+- unit: requests
+  amount: 1000
+  period: month
+  scope: key
+  evidence: https://docs.cohere.com/docs/rate-limits
+- unit: requests
+  amount: 20
+  period: minute
+  scope: key
+  evidence: https://docs.cohere.com/docs/rate-limits
+  models: 对话接口
+overage: blocked
+onboarding:
+  level: L1
+  key_page: https://dashboard.cohere.com/api-keys
+tags:
+- 试用

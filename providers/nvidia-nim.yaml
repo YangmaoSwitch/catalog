@@ -1,0 +1,29 @@
+id: nvidia-nim
+name: NVIDIA NIM (build.nvidia.com)
+homepage: https://build.nvidia.com
+region: global
+api_usable: true
+status: unconfirmed
+last_verified: '2026-11-19'
+summary: 开发者计划成员可免费调用，仅限原型开发和测试；额度数值待核实。
+api:
+  protocol:
+  - openai
+  base_url: https://integrate.api.nvidia.com/v1
+signup:
+  url: https://build.nvidia.com
+  requires:
+  - email
+quotas:
+- unit: credits
+  amount: null
+  period: one-time
+  scope: account
+  evidence: https://docs.api.nvidia.com/nim/docs/faq
+overage: blocked
+onboarding:
+  level: L1
+  key_page: https://build.nvidia.com
+  key_pattern: ^nvapi-
+tags:
+- 试用

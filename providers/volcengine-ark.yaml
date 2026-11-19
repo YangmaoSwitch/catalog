@@ -1,0 +1,30 @@
+id: volcengine-ark
+name: Volcengine Ark
+name_zh: 火山方舟
+homepage: https://www.volcengine.com/product/ark
+region: cn
+api_usable: true
+status: verified
+last_verified: '2026-11-19'
+summary: 新用户豆包模型各送 50 万 Token；开启“安心体验模式”可避免产生费用。
+api:
+  protocol:
+  - openai
+  base_url: https://ark.cn-beijing.volces.com/api/v3
+signup:
+  url: https://console.volcengine.com/ark
+  requires:
+  - phone_cn
+quotas:
+- unit: tokens
+  amount: 500000
+  period: one-time
+  scope: model
+  evidence: https://docs.volcengine.com/docs/ark/free-inference-quota
+  models: Doubao-Seed-2.1-pro、Doubao-Seed-2.1-turbo 等 4 款
+overage: manual
+onboarding:
+  level: L1
+  key_page: https://console.volcengine.com/ark
+tags:
+- 新人
