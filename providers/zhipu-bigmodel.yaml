@@ -12,6 +12,8 @@ api:
   - openai
   - anthropic
   base_url: https://open.bigmodel.cn/api/paas/v4
+  modelsdev: zhipuai
+  models_access: paid
   anthropic_base_url: https://open.bigmodel.cn/api/anthropic
   free_models:
   - GLM-4.7-Flash

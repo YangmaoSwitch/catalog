@@ -10,6 +10,8 @@ api:
   protocol:
   - openai
   base_url: https://api.cohere.ai/compatibility/v1
+  modelsdev: cohere
+  models_access: quota
 signup:
   url: https://dashboard.cohere.com
   requires:

@@ -1,20 +1,26 @@
 #!/usr/bin/env python3
-"""Build dist/models.json: free models and every catalog platform that serves them.
+"""Build dist/models.json (v2): the model list of every platform in the catalog.
 
-Sources
-* OpenRouter public model list (https://openrouter.ai/api/v1/models). Models whose
-  prompt and completion price are both 0 are free; paid ones are only attached as
-  extra offers to models that are free somewhere else.
-* `api.free_models` of the providers in this catalog (access "free").
-* `api.models` and the public `api.models_url` list of a provider (access per
-  `api.models_access`, default "quota").
+For each platform it records which models it serves, whether each one is free,
+counted against the platform's free quota/credits, or paid, and the list price.
+The same model on different platforms is merged into one entry for the app's
+model square.
 
-Models are merged across platforms by a normalized name, so one entry lists all
-platforms that serve it. Each offer: {provider, model, access}, access being
-free | quota | paid.
+Sources, per platform (see `api` in providers/*.yaml)
+* OpenRouter: its public model list (pricing included).
+* `api.modelsdev`: the platform's list in models.dev (https://models.dev, MIT),
+  with prices and capabilities.
+* `api.models_url`: a public model list endpoint that needs no key.
+* `api.models`: models entered by hand.
+Access of a model on a platform
+* free:  listed in `api.free_models`, or its price is 0;
+* quota: listed in `api.quota_models`, or the platform default `api.models_access`
+         is "quota" (calls are covered by the free quota or credits);
+* paid:  otherwise.
 """
 import datetime as dt
 import json
+import os
 import pathlib
 import re
 import sys
@@ -24,138 +30,187 @@ import yaml
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OPENROUTER = "https://openrouter.ai/api/v1/models"
+MODELSDEV = "https://models.dev/api.json"
 RANK = {"free": 0, "quota": 1, "paid": 2}
-# Public lists also contain embedding, safety and image models; the square only lists chat models.
-NON_CHAT = re.compile(r"embed|rerank|clip|retriever|detector|guard|safety|riva-|image|bge-|starcoder", re.I)
+# Public lists also contain embedding, safety, speech and image models; only chat models are kept.
+NON_CHAT = re.compile(r"embed|rerank|clip|retriever|detector|guard|safety|riva-|image|bge-|starcoder|tts|lyria|live|ocr|translate|whisper|asr", re.I)
 
 
 def model_key(model_id: str) -> str:
     """Normalized model name used to match the same model across platforms."""
-    s = model_id.split(":")[0] if ":" in model_id.split("/")[-1] else model_id
-    s = s.split("/")[-1].lower()
-    return re.sub(r"[\s_.]+", "-", s)
+    s = model_id.split("/")[-1].split(":")[0].lower()
+    s = re.sub(r"[\s_.]+", "-", s)
+    s = re.sub(r"-(free|ga)$", "", s)
+    s = re.sub(r"-(free|ga)(?=-\d{6}$)", "", s)
+    s = re.sub(r"-\d{6}$", "", s)  # date stamp such as doubao-seed-2-1-pro-260628
+    return s
 
 
 def fetch_json(url: str) -> dict:
     req = urllib.request.Request(url, headers={"User-Agent": "YangmaoSwitch-catalog"})
-    with urllib.request.urlopen(req, timeout=60) as r:
+    with urllib.request.urlopen(req, timeout=90) as r:
         return json.loads(r.read().decode("utf-8"))
 
 
-def bare(model_id: str, name: str | None = None) -> dict:
-    return {
-        "id": model_id,
-        "name": name or model_id.split("/")[-1],
-        "vendor": None,
-        "description": "",
-        "context_length": None,
-        "input_modalities": ["text"],
-        "tools": None,
-        "reasoning": None,
-        "created": None,
-        "hugging_face_id": None,
-        "description_source": None,
-        "offers": [],
-    }
+def price(inp, out) -> dict | None:
+    """USD per million tokens."""
+    try:
+        return {"input": round(float(inp), 4), "output": round(float(out), 4)}
+    except (TypeError, ValueError):
+        return None
 
 
-def openrouter_models() -> list[dict]:
+def meta(**kw) -> dict:
+    m = {"name": None, "vendor": None, "description": "", "context_length": None, "input_modalities": ["text"],
+         "tools": None, "reasoning": None, "created": None, "hugging_face_id": None, "open_weights": None, "description_source": None}
+    m.update({k: v for k, v in kw.items() if v is not None})
+    return m
+
+
+def from_openrouter() -> list[dict]:
     out = []
     for m in fetch_json(OPENROUTER)["data"]:
-        p = m.get("pricing") or {}
-        try:
-            free = float(p.get("prompt", 1)) == 0 and float(p.get("completion", 1)) == 0
-        except ValueError:
-            free = False
         arch = m.get("architecture") or {}
         if m["id"].startswith("openrouter/") or any(o != "text" for o in (arch.get("output_modalities") or ["text"])):
             continue
+        p = m.get("pricing") or {}
+        pr = price(float(p.get("prompt", 0) or 0) * 1e6, float(p.get("completion", 0) or 0) * 1e6)
         name = m.get("name") or m["id"]
         vendor, _, short = name.partition(": ")
         if not short:
             vendor, short = m["id"].split("/")[0], name
-        short = short.replace(" (free)", "").strip()
         params = m.get("supported_parameters") or []
-        e = bare(m["id"], short)
-        e.update({
-            "vendor": vendor.strip(),
-            "description": (m.get("description") or "").strip(),
-            "context_length": m.get("context_length"),
-            "input_modalities": arch.get("input_modalities") or ["text"],
-            "tools": "tools" in params,
-            "reasoning": "reasoning" in params or bool(m.get("reasoning")),
-            "created": dt.datetime.fromtimestamp(m["created"], dt.timezone.utc).date().isoformat() if m.get("created") else None,
-            "hugging_face_id": m.get("hugging_face_id") or None,
-            "description_source": "OpenRouter",
-            "offers": [{"provider": "openrouter", "model": m["id"], "access": "free" if free else "paid"}],
+        out.append({
+            "model": m["id"],
+            "price": pr,
+            "free": bool(pr) and pr["input"] == 0 and pr["output"] == 0,
+            "meta": meta(
+                name=short.replace(" (free)", "").strip(), vendor=vendor.strip(), description=(m.get("description") or "").strip(),
+                context_length=m.get("context_length"), input_modalities=arch.get("input_modalities") or ["text"],
+                tools="tools" in params, reasoning="reasoning" in params or bool(m.get("reasoning")),
+                created=dt.datetime.fromtimestamp(m["created"], dt.timezone.utc).date().isoformat() if m.get("created") else None,
+                hugging_face_id=m.get("hugging_face_id") or None, description_source="OpenRouter"),
         })
-        out.append(e)
     return out
 
 
-def catalog_models() -> list[dict]:
+def from_modelsdev(md: dict, pid: str) -> list[dict]:
     out = []
+    for mid, m in (md.get(pid) or {}).get("models", {}).items():
+        mod = m.get("modalities") or {}
+        if (mod.get("output") or ["text"]) != ["text"] or NON_CHAT.search(mid):
+            continue
+        c = m.get("cost") or {}
+        pr = price(c.get("input"), c.get("output")) if c else None
+        canon = m.get("canonical_model_id")
+        out.append({
+            "model": mid,
+            "key": model_key(canon) if canon else None,
+            "price": pr,
+            "free": bool(pr) and pr["input"] == 0 and pr["output"] == 0,
+            "meta": meta(
+                name=re.sub(r"\s*\(free\)$", "", m.get("name") or mid).split("/")[-1], description=(m.get("description") or "").strip(),
+                context_length=(m.get("limit") or {}).get("context"), input_modalities=mod.get("input") or ["text"],
+                tools=m.get("tool_call"), reasoning=m.get("reasoning"), created=m.get("release_date"), open_weights=m.get("open_weights")),
+        })
+    return out
+
+
+def provider_models(p: dict, md: dict | None) -> list[dict]:
+    """All chat models of one platform: [{model, access, price, meta, key}]."""
+    api = p.get("api") or {}
+    raw: list[dict] = []
+    if p["id"] == "openrouter":
+        raw += from_openrouter()
+    srcs = api.get("modelsdev") or []
+    for pid in [srcs] if isinstance(srcs, str) else srcs:
+        if md is not None:
+            raw += from_modelsdev(md, pid)
+    if api.get("models_url"):
+        try:
+            raw += [{"model": m["id"]} for m in fetch_json(api["models_url"])["data"] if not NON_CHAT.search(m["id"])]
+        except Exception as e:  # keep building with the other sources
+            print(f"warning: {p['id']} model list unavailable: {e}", file=sys.stderr)
+    raw += [{"model": n} for n in api.get("models", [])] + [{"model": n} for n in api.get("free_models", [])]
+
+    free = {model_key(n) for n in api.get("free_models", [])}
+    quota = {model_key(n) for n in api.get("quota_models", [])}
+    default = api.get("models_access", "paid" if p["id"] == "openrouter" else "quota")
+    out: dict[str, dict] = {}
+    for r in raw:
+        k = r.get("key") or model_key(r["model"])
+        acc = "free" if (r.get("free") or model_key(r["model"]) in free or k in free) else "quota" if (model_key(r["model"]) in quota or k in quota) else default
+        cur = out.get(k)
+        if cur is None:
+            out[k] = {"key": k, "model": r["model"], "access": acc, "price": r.get("price"), "meta": r.get("meta")}
+            continue
+        if RANK[acc] < RANK[cur["access"]]:  # the cheapest variant wins, e.g. a :free id
+            cur.update(model=r["model"], access=acc)
+        cur["price"] = cur["price"] or r.get("price")
+        cur["meta"] = cur["meta"] or r.get("meta")
+    return list(out.values())
+
+
+def main() -> int:
+    try:  # MODELSDEV_FILE: a local copy of models.dev/api.json, for offline builds
+        md = json.loads(pathlib.Path(os.environ["MODELSDEV_FILE"]).read_text(encoding="utf-8")) if os.environ.get("MODELSDEV_FILE") else fetch_json(MODELSDEV)
+    except Exception as e:
+        print(f"warning: models.dev unavailable: {e}", file=sys.stderr)
+        md = None
+    providers: dict[str, list[dict]] = {}
     for path in sorted((ROOT / "providers").glob("*.yaml")):
         p = yaml.safe_load(path.read_text(encoding="utf-8"))
         if p.get("status") == "delisted":
             continue
-        api = p.get("api") or {}
-        access = api.get("models_access", "quota")
-        listed = [(n, "free") for n in api.get("free_models", [])] + [(n, access) for n in api.get("models", [])]
-        if api.get("models_url"):
-            try:
-                listed += [(m["id"], access) for m in fetch_json(api["models_url"])["data"] if not NON_CHAT.search(m["id"])]
-            except Exception as e:  # keep building with what we have
-                print(f"warning: {p['id']} model list unavailable: {e}", file=sys.stderr)
-        for name, acc in listed:
-            e = bare(name)
-            e["offers"] = [{"provider": p["id"], "model": name, "access": acc}]
-            out.append(e)
-    return out
+        try:
+            providers[p["id"]] = provider_models(p, md)
+        except Exception as e:
+            print(f"warning: {p['id']}: {e}", file=sys.stderr)
+            providers[p["id"]] = []
 
-
-def merge(entries: list[dict]) -> list[dict]:
-    by_key: dict[str, dict] = {}
-    order: list[str] = []
-    for e in entries:
-        k = model_key(e["id"])
-        cur = by_key.get(k)
-        if cur is None:
-            by_key[k] = e
-            order.append(k)
+    # merge across platforms
+    merged: dict[str, dict] = {}
+    for pid, lst in providers.items():
+        for m in lst:
+            e = merged.setdefault(m["key"], {"id": m["model"], "meta": None, "offers": []})
+            mm = m["meta"]
+            if mm and (e["meta"] is None or (mm["description_source"] and not e["meta"]["description_source"])):
+                old = e["meta"]
+                e["meta"] = dict(mm)
+                if old:  # keep fields only the other source has
+                    for f, v in old.items():
+                        if e["meta"].get(f) in (None, "", ["text"]) and v not in (None, ""):
+                            e["meta"][f] = v
+                if mm["description_source"]:
+                    e["id"] = m["model"].split(":")[0]
+            e["offers"].append({"provider": pid, "model": m["model"], "access": m["access"], "price": m["price"]})
+    models = []
+    for k, e in merged.items():
+        mt = e["meta"] or meta()
+        e["offers"].sort(key=lambda o: (RANK[o["access"]], o["provider"]))
+        if e["offers"][0]["access"] == "paid":  # the square lists models usable for free somewhere
             continue
-        if not cur["description_source"] and e["description_source"]:  # prefer the entry with metadata
-            e["offers"], cur = cur["offers"] + e["offers"], e
-            by_key[k] = cur
-        else:
-            cur["offers"] += e["offers"]
-    out = []
-    for k in order:
-        e = by_key[k]
-        best: dict[str, dict] = {}
-        for o in e["offers"]:  # one offer per platform, the cheapest access wins
-            if o["provider"] not in best or RANK[o["access"]] < RANK[best[o["provider"]]["access"]]:
-                best[o["provider"]] = o
-        e["offers"] = sorted(best.values(), key=lambda o: RANK[o["access"]])
-        if e["offers"][0]["access"] != "paid":  # only models usable for free somewhere
-            out.append(e)
-    return out
+        models.append({"id": e["id"], **mt, "name": mt["name"] or e["id"].split("/")[-1], "offers": e["offers"]})
+    models.sort(key=lambda m: (m["created"] or "0000"), reverse=True)
 
-
-def main() -> int:
-    entries = []
-    try:
-        entries += openrouter_models()
-    except Exception as e:  # keep building with catalog data if OpenRouter is unreachable
-        print(f"warning: OpenRouter model list unavailable: {e}", file=sys.stderr)
-    entries += catalog_models()
-    models = merge(entries)
+    summary = {pid: {"total": len(l), "free": sum(m["access"] == "free" for m in l), "quota": sum(m["access"] == "quota" for m in l),
+                     "paid": sum(m["access"] == "paid" for m in l),
+                     "models": sorted(({"model": m["model"], "access": m["access"], "price": m["price"]} for m in l), key=lambda x: (RANK[x["access"]], x["model"].lower()))}
+               for pid, l in providers.items()}
+    out = {
+        "version": 2,
+        "generated_at": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat(),
+        "sources": ["OpenRouter", "models.dev", "platform model lists", "catalog"],
+        "count": len(models),
+        "providers": summary,
+        "models": models,
+    }
     dist = ROOT / "dist"
     dist.mkdir(exist_ok=True)
-    out = {"version": 1, "generated_at": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat(), "count": len(models), "models": models}
-    (dist / "models.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
-    multi = sum(1 for m in models if len(m["offers"]) > 1)
-    print(f"ok: {len(models)} models ({multi} on several platforms) -> dist/models.json")
+    (dist / "models.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    for pid, s in summary.items():
+        print(f"  {pid:24} {s['total']:4} models  free {s['free']:3}  quota {s['quota']:3}  paid {s['paid']:3}")
+    print(f"ok: {len(models)} models on the square ({sum(len(m['offers']) > 1 for m in models)} on several platforms) -> dist/models.json")
     return 0
 
 

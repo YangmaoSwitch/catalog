@@ -11,6 +11,11 @@ api:
   protocol:
   - openai
   base_url: https://ark.cn-beijing.volces.com/api/v3
+  modelsdev: volcengine
+  models_access: paid
+  quota_models:
+  - Doubao-Seed-2.1-pro
+  - Doubao-Seed-2.1-turbo
 signup:
   url: https://console.volcengine.com/ark
   requires:

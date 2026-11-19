@@ -12,6 +12,8 @@ api:
   - openai
   - anthropic
   base_url: https://api.siliconflow.cn/v1
+  modelsdev: siliconflow-cn
+  models_access: quota
   anthropic_base_url: https://api.siliconflow.cn
   free_models:
   - GLM-Z1-9B

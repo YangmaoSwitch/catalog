@@ -10,6 +10,8 @@ api:
   protocol:
   - openai
   base_url: https://aihubmix.com/v1
+  modelsdev: aihubmix
+  models_access: paid
 signup:
   url: https://aihubmix.com
   requires:

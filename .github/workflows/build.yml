@@ -5,6 +5,8 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"  # refresh every platform's model list and prices
 
 permissions:
   contents: write

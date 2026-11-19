@@ -99,7 +99,7 @@
           "items": {
             "type": "string"
           },
-          "description": "Models callable on this platform within its free quota (besides free_models)"
+          "description": "Models entered by hand (besides the public sources)"
         },
         "models_url": {
           "type": "string",
@@ -109,9 +109,31 @@
         "models_access": {
           "enum": [
             "free",
-            "quota"
+            "quota",
+            "paid"
           ],
-          "description": "How `models` / `models_url` models are billed: free = no charge, quota = counted against the free quota or credits"
+          "description": "Default access of the platform's models besides free_models / quota_models: free = no charge, quota = covered by the free quota or credits, paid = paid"
+        },
+        "modelsdev": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
+          "description": "Provider id(s) in models.dev whose model list and prices this platform uses"
+        },
+        "quota_models": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Models covered by the free quota or credits when models_access is paid"
         }
       }
     },

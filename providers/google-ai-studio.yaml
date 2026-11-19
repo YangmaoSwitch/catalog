@@ -11,6 +11,8 @@ api:
   - openai
   - gemini
   base_url: https://generativelanguage.googleapis.com/v1beta/openai/
+  modelsdev: google
+  models_access: quota
 signup:
   url: https://aistudio.google.com/app/apikey
   requires:

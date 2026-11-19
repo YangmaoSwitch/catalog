@@ -11,6 +11,8 @@ api:
   protocol:
   - openai
   base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
+  modelsdev: alibaba-cn
+  models_access: quota
 signup:
   url: https://bailian.console.aliyun.com
   requires:

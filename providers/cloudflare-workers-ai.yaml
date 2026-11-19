@@ -10,6 +10,8 @@ api:
   protocol:
   - openai
   base_url: https://api.cloudflare.com/client/v4/accounts/ACCOUNT_ID/ai/v1
+  modelsdev: cloudflare-workers-ai
+  models_access: quota
   free_model_rule: 部分模型仅付费计划可用
 signup:
   url: https://dash.cloudflare.com/sign-up

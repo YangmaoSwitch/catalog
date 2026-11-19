@@ -10,6 +10,8 @@ api:
   protocol:
   - openai
   base_url: https://api.groq.com/openai/v1
+  modelsdev: groq
+  models_access: quota
 signup:
   url: https://console.groq.com
   requires:

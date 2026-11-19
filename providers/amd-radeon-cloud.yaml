@@ -11,6 +11,8 @@ api:
   - openai
   - anthropic
   base_url: https://developer.amd.com.cn/radeon/api/v1
+  modelsdev: amd
+  models_access: quota
   anthropic_base_url: https://developer.amd.com.cn/radeon/api
 signup:
   url: https://developer.amd.com.cn/login

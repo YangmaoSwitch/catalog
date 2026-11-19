@@ -11,6 +11,7 @@ api:
   - openai
   base_url: https://integrate.api.nvidia.com/v1
   models_url: https://integrate.api.nvidia.com/v1/models
+  modelsdev: nvidia
   models_access: quota
 signup:
   url: https://build.nvidia.com
