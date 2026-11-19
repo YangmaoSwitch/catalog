@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -18,13 +19,14 @@ jobs:
           python-version: "3.12"
       - run: pip install pyyaml jsonschema
       - run: python scripts/build.py
+      - run: python scripts/build_models.py
       - name: Publish catalog.json to the dist branch
-        if: github.event_name == 'push'
+        if: github.event_name != 'pull_request'
         run: |
           cd dist
           git init -q -b dist
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add catalog.json
+          git add catalog.json models.json
           git commit -qm "catalog.json from ${GITHUB_SHA::7}"
           git push -qf "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" dist

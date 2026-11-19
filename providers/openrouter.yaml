@@ -9,7 +9,9 @@ summary: 聚合平台，名称以 :free 结尾的模型免费调用。
 api:
   protocol:
   - openai
+  - anthropic
   base_url: https://openrouter.ai/api/v1
+  anthropic_base_url: https://openrouter.ai/api
   free_model_rule: 模型 ID 以 :free 结尾
 signup:
   url: https://openrouter.ai
