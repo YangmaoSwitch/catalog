@@ -4,38 +4,138 @@
   "title": "YangmaoSwitch provider entry",
   "type": "object",
   "additionalProperties": false,
-  "required": ["id", "name", "homepage", "region", "api_usable", "status", "last_verified", "signup", "quotas", "overage", "onboarding"],
+  "required": [
+    "id",
+    "name",
+    "homepage",
+    "region",
+    "api_usable",
+    "status",
+    "last_verified",
+    "signup",
+    "quotas",
+    "overage",
+    "onboarding"
+  ],
   "properties": {
-    "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
-    "name": {"type": "string", "minLength": 1},
-    "name_zh": {"type": "string"},
-    "homepage": {"type": "string", "format": "uri"},
-    "region": {"enum": ["global", "cn"]},
-    "api_usable": {"type": "boolean"},
-    "status": {"enum": ["verified", "unconfirmed", "delisted"]},
-    "last_verified": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
-    "summary": {"type": "string"},
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name_zh": {
+      "type": "string"
+    },
+    "homepage": {
+      "type": "string",
+      "format": "uri"
+    },
+    "region": {
+      "enum": [
+        "global",
+        "cn"
+      ]
+    },
+    "api_usable": {
+      "type": "boolean"
+    },
+    "status": {
+      "enum": [
+        "verified",
+        "unconfirmed",
+        "delisted"
+      ]
+    },
+    "last_verified": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "summary": {
+      "type": "string"
+    },
     "api": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["protocol", "base_url"],
+      "required": [
+        "protocol",
+        "base_url"
+      ],
       "properties": {
-        "protocol": {"type": "array", "items": {"enum": ["openai", "anthropic", "gemini", "other"]}, "minItems": 1},
-        "base_url": {"type": "string", "format": "uri"},
-        "free_models": {"type": "array", "items": {"type": "string"}},
-        "free_model_rule": {"type": "string"}
+        "protocol": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "openai",
+              "anthropic",
+              "gemini",
+              "other"
+            ]
+          },
+          "minItems": 1
+        },
+        "base_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "free_models": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "free_model_rule": {
+          "type": "string"
+        },
+        "anthropic_base_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Native Anthropic Messages endpoint base (without /v1/messages), if any"
+        }
       }
     },
     "signup": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["url", "requires"],
+      "required": [
+        "url",
+        "requires"
+      ],
       "properties": {
-        "url": {"type": "string", "format": "uri"},
-        "requires": {"type": "array", "items": {"enum": ["email", "phone", "phone_cn", "card", "real_name", "company", "github", "google", "cloud_account"]}},
-        "regions_blocked": {"type": "array", "items": {"type": "string"}},
-        "min_age": {"type": "integer"},
-        "notes": {"type": "string"}
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "requires": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "email",
+              "phone",
+              "phone_cn",
+              "card",
+              "real_name",
+              "company",
+              "github",
+              "google",
+              "cloud_account"
+            ]
+          }
+        },
+        "regions_blocked": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "min_age": {
+          "type": "integer"
+        },
+        "notes": {
+          "type": "string"
+        }
       }
     },
     "quotas": {
@@ -43,55 +143,203 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["unit", "period", "scope", "evidence"],
+        "required": [
+          "unit",
+          "period",
+          "scope",
+          "evidence"
+        ],
         "properties": {
-          "unit": {"enum": ["requests", "tokens", "input_tokens", "output_tokens", "credits", "points", "neurons", "usd", "cny"]},
-          "amount": {"type": ["number", "null"]},
-          "period": {"enum": ["second", "minute", "hour", "day", "week", "month", "one-time"]},
-          "reset": {"type": "string", "description": "e.g. \"00:00 UTC\", \"00:00 Asia/Shanghai\", \"00:00 America/Los_Angeles\", \"rolling\""},
-          "scope": {"enum": ["account", "key", "project", "org", "model", "ip"]},
-          "models": {"type": "string"},
-          "condition": {"type": "string"},
-          "expires_days": {"type": "integer"},
-          "note": {"type": "string"},
-          "evidence": {"type": "string", "format": "uri"}
+          "unit": {
+            "enum": [
+              "requests",
+              "tokens",
+              "input_tokens",
+              "output_tokens",
+              "credits",
+              "points",
+              "neurons",
+              "usd",
+              "cny"
+            ]
+          },
+          "amount": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "period": {
+            "enum": [
+              "second",
+              "minute",
+              "hour",
+              "day",
+              "week",
+              "month",
+              "one-time"
+            ]
+          },
+          "reset": {
+            "type": "string",
+            "description": "e.g. \"00:00 UTC\", \"00:00 Asia/Shanghai\", \"00:00 America/Los_Angeles\", \"rolling\""
+          },
+          "scope": {
+            "enum": [
+              "account",
+              "key",
+              "project",
+              "org",
+              "model",
+              "ip"
+            ]
+          },
+          "models": {
+            "type": "string"
+          },
+          "condition": {
+            "type": "string"
+          },
+          "expires_days": {
+            "type": "integer"
+          },
+          "note": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "string",
+            "format": "uri"
+          }
         }
       }
     },
-    "overage": {"enum": ["blocked", "auto_paid", "manual", "unknown"]},
-    "expires": {"type": ["string", "null"]},
+    "overage": {
+      "enum": [
+        "blocked",
+        "auto_paid",
+        "manual",
+        "unknown"
+      ]
+    },
+    "expires": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "onboarding": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["level"],
+      "required": [
+        "level"
+      ],
       "properties": {
-        "level": {"enum": ["L1", "L2", "L3"]},
-        "key_page": {"type": "string", "format": "uri"},
-        "key_pattern": {"type": "string"},
-        "quota_api": {"type": "string"},
-        "quota_headers": {"type": "array", "items": {"type": "string"}},
+        "level": {
+          "enum": [
+            "L1",
+            "L2",
+            "L3"
+          ]
+        },
+        "key_page": {
+          "type": "string",
+          "format": "uri"
+        },
+        "key_pattern": {
+          "type": "string"
+        },
+        "quota_api": {
+          "type": "string"
+        },
+        "quota_headers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "oauth": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["authorize_url", "token_url", "pkce", "loopback"],
+          "required": [
+            "authorize_url",
+            "token_url",
+            "pkce",
+            "loopback"
+          ],
           "properties": {
-            "authorize_url": {"type": "string", "format": "uri"},
-            "token_url": {"type": "string", "format": "uri"},
-            "client_id": {"type": "string"},
-            "scope": {"type": "string"},
-            "pkce": {"enum": ["S256"]},
-            "loopback": {"type": "boolean"},
-            "docs": {"type": "string", "format": "uri"}
+            "authorize_url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "token_url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "client_id": {
+              "type": "string"
+            },
+            "scope": {
+              "type": "string"
+            },
+            "pkce": {
+              "enum": [
+                "S256"
+              ]
+            },
+            "loopback": {
+              "type": "boolean"
+            },
+            "docs": {
+              "type": "string",
+              "format": "uri"
+            }
           }
         }
       }
     },
     "terms": {
       "type": "array",
-      "items": {"type": "object", "additionalProperties": false, "required": ["point", "url"], "properties": {"point": {"type": "string"}, "url": {"type": "string", "format": "uri"}}}
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "point",
+          "url"
+        ],
+        "properties": {
+          "point": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
     },
-    "tags": {"type": "array", "items": {"type": "string"}},
-    "partner": {"type": "object", "additionalProperties": false, "properties": {"contact": {"type": ["string", "null"]}}},
-    "sources": {"type": "array", "items": {"type": "string"}}
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "partner": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "contact": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
   }
 }
