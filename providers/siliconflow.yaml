@@ -10,7 +10,9 @@ summary: 部分模型长期免费（按模型限速）；实名送代金券。
 api:
   protocol:
   - openai
+  - anthropic
   base_url: https://api.siliconflow.cn/v1
+  anthropic_base_url: https://api.siliconflow.cn
   free_models:
   - GLM-Z1-9B
   - Hunyuan-MT-7B

@@ -10,7 +10,9 @@ summary: GLM Flash 系列模型永久免费。
 api:
   protocol:
   - openai
+  - anthropic
   base_url: https://open.bigmodel.cn/api/paas/v4
+  anthropic_base_url: https://open.bigmodel.cn/api/anthropic
   free_models:
   - GLM-4.7-Flash
   - GLM-4-Flash-250414

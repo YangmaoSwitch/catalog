@@ -9,7 +9,9 @@ summary: 每天赠送积分，12 个免费模型共用。
 api:
   protocol:
   - openai
+  - anthropic
   base_url: https://developer.amd.com.cn/radeon/api/v1
+  anthropic_base_url: https://developer.amd.com.cn/radeon/api
 signup:
   url: https://developer.amd.com.cn/login
   requires:
