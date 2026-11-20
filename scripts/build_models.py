@@ -20,6 +20,7 @@ Access of a model on a platform
 """
 import datetime as dt
 import json
+import math
 import os
 import pathlib
 import re
@@ -31,6 +32,8 @@ import yaml
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OPENROUTER = "https://openrouter.ai/api/v1/models"
 MODELSDEV = "https://models.dev/api.json"
+RANKINGS = "https://openrouter.ai/rankings"
+PUBLISHED = "https://raw.githubusercontent.com/YangmaoSwitch/catalog/dist/models.json"
 RANK = {"free": 0, "quota": 1, "paid": 2}
 # Public lists also contain embedding, safety, speech and image models; only chat models are kept.
 NON_CHAT = re.compile(r"embed|rerank|clip|retriever|detector|guard|safety|riva-|image|bge-|starcoder|tts|lyria|live|ocr|translate|whisper|asr", re.I)
@@ -162,6 +165,47 @@ def provider_models(p: dict, md: dict | None) -> list[dict]:
     return list(out.values())
 
 
+def openrouter_usage() -> dict[str, int]:
+    """Daily tokens of OpenRouter's most used models (from its public rankings page), by model key."""
+    req = urllib.request.Request(RANKINGS, headers={"User-Agent": "Mozilla/5.0 (YangmaoSwitch-catalog)"})
+    with urllib.request.urlopen(req, timeout=60) as r:
+        page = r.read().decode("utf-8", "replace").replace('\\"', '"')
+    out: dict[str, int] = {}
+    for o in re.findall(r"\{[^{}]*model_permaslug[^{}]*\}", page):
+        slug = re.search(r'"model_permaslug":"([^"]+)"', o)
+        tok = [int(x) for x in re.findall(r'"total_(?:prompt|completion)_tokens":(\d+)', o)]
+        if slug and tok:
+            k = model_key(re.sub(r"-\d{8}$", "", slug.group(1)))
+            out[k] = out.get(k, 0) + sum(tok)
+    return out
+
+
+def previous() -> dict:
+    """The last published models.json, to keep the date each free offer first appeared."""
+    try:
+        if os.environ.get("PREVIOUS_FILE"):
+            return json.loads(pathlib.Path(os.environ["PREVIOUS_FILE"]).read_text(encoding="utf-8"))
+        return fetch_json(PUBLISHED)
+    except Exception as e:
+        print(f"warning: previous models.json unavailable: {e}", file=sys.stderr)
+        return {}
+
+
+def heat(m: dict, usage: dict[str, int]) -> float:
+    """Popularity score: OpenRouter daily tokens (top models only), then how many platforms serve the model
+    and how many of them for free, plus a small bonus for models released in the last 30 days."""
+    tokens = usage.get(m["_key"], 0)
+    score = 10 * math.log10(tokens) if tokens else 0.0
+    score += 3 * sum(o["access"] != "paid" for o in m["offers"]) + len(m["offers"])
+    if m.get("created"):
+        try:
+            if (dt.date.today() - dt.date.fromisoformat(m["created"][:10])).days <= 30:
+                score += 5
+        except ValueError:
+            pass
+    return round(score, 2)
+
+
 def main() -> int:
     try:  # MODELSDEV_FILE: a local copy of models.dev/api.json, for offline builds
         md = json.loads(pathlib.Path(os.environ["MODELSDEV_FILE"]).read_text(encoding="utf-8")) if os.environ.get("MODELSDEV_FILE") else fetch_json(MODELSDEV)
@@ -213,8 +257,27 @@ def main() -> int:
         e["offers"].sort(key=lambda o: (RANK[o["access"]], o["provider"]))
         if e["offers"][0]["access"] == "paid":  # the square lists models usable for free somewhere
             continue
-        models.append({"id": e["id"], **mt, "name": mt["name"] or e["id"].split("/")[-1], "offers": e["offers"]})
-    models.sort(key=lambda m: (m["created"] or "0000"), reverse=True)
+        models.append({"id": e["id"], **mt, "name": mt["name"] or e["id"].split("/")[-1], "offers": e["offers"], "_key": k})
+
+    # popularity
+    try:
+        usage = openrouter_usage()
+    except Exception as ex:
+        print(f"warning: OpenRouter rankings unavailable: {ex}", file=sys.stderr)
+        usage = {}
+    # first-seen dates of free / free-quota offers, carried over from the last published file
+    prev = previous()
+    today = dt.date.today().isoformat()
+    baseline = prev.get("baseline") or today
+    seen = {f"{o['provider']}|{o['model']}": o.get("since") for pm in prev.get("models", []) for o in pm.get("offers", []) if o.get("since")}
+    for m in models:
+        m["heat"] = heat(m, usage)
+        m["openrouter_tokens_day"] = usage.get(m["_key"]) or None
+        for o in m["offers"]:
+            if o["access"] != "paid":
+                o["since"] = seen.get(f"{o['provider']}|{o['model']}") or today
+        del m["_key"]
+    models.sort(key=lambda m: m["heat"], reverse=True)
 
     summary = {pid: {"total": len(l), "free": sum(m["access"] == "free" for m in l), "quota": sum(m["access"] == "quota" for m in l),
                      "paid": sum(m["access"] == "paid" for m in l),
@@ -222,6 +285,7 @@ def main() -> int:
                for pid, l in providers.items()}
     out = {
         "version": 2,
+        "baseline": baseline,  # offers dated on this day were already listed when tracking started
         "generated_at": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat(),
         "sources": ["OpenRouter", "models.dev", "platform model lists", "catalog"],
         "count": len(models),
