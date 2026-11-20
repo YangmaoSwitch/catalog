@@ -122,25 +122,33 @@ def provider_models(p: dict, md: dict | None) -> list[dict]:
     raw: list[dict] = []
     if p["id"] == "openrouter":
         raw += from_openrouter()
+    live = None
+    if api.get("models_url"):
+        try:
+            live = [m["id"] for m in fetch_json(api["models_url"])["data"] if not NON_CHAT.search(m["id"])]
+        except Exception as e:  # keep building with the other sources
+            print(f"warning: {p['id']} model list unavailable: {e}", file=sys.stderr)
     srcs = api.get("modelsdev") or []
     for pid in [srcs] if isinstance(srcs, str) else srcs:
         if md is not None:
-            raw += from_modelsdev(md, pid)
-    if api.get("models_url"):
-        try:
-            raw += [{"model": m["id"]} for m in fetch_json(api["models_url"])["data"] if not NON_CHAT.search(m["id"])]
-        except Exception as e:  # keep building with the other sources
-            print(f"warning: {p['id']} model list unavailable: {e}", file=sys.stderr)
+            got = from_modelsdev(md, pid)
+            if live is not None:  # the live list is authoritative; models.dev only adds prices and capabilities
+                ids = set(live)
+                got = [r for r in got if r["model"] in ids]
+            raw += got
+    if live is not None:
+        raw += [{"model": m} for m in live]
     raw += [{"model": n} for n in api.get("models", [])] + [{"model": n} for n in api.get("free_models", [])]
 
     free = {model_key(n) for n in api.get("free_models", [])}
+    free_re = re.compile(api["free_pattern"]) if api.get("free_pattern") else None
     quota = {model_key(n) for n in api.get("quota_models", [])}
     default = api.get("models_access", "paid" if p["id"] == "openrouter" else "quota")
     # one entry per exact model id; variants such as "x" and "x:free" / "x-free" stay separate here
     out: dict[str, dict] = {}
     for r in raw:
         k = r.get("key") or model_key(r["model"])
-        acc = "free" if (r.get("free") or model_key(r["model"]) in free or k in free) else "quota" if (model_key(r["model"]) in quota or k in quota) else default
+        acc = "free" if (r.get("free") or model_key(r["model"]) in free or k in free or (free_re and free_re.search(r["model"]))) else "quota" if (model_key(r["model"]) in quota or k in quota) else default
         cur = out.get(r["model"])
         if cur is None:
             out[r["model"]] = {"key": k, "model": r["model"], "access": acc, "price": r.get("price"), "meta": r.get("meta")}
@@ -161,10 +169,13 @@ def main() -> int:
         print(f"warning: models.dev unavailable: {e}", file=sys.stderr)
         md = None
     providers: dict[str, list[dict]] = {}
+    product_only: set[str] = set()  # free models usable only inside the platform's own product: listed, but not on the square
     for path in sorted((ROOT / "providers").glob("*.yaml")):
         p = yaml.safe_load(path.read_text(encoding="utf-8"))
         if p.get("status") == "delisted":
             continue
+        if not p.get("api_usable"):
+            product_only.add(p["id"])
         try:
             providers[p["id"]] = provider_models(p, md)
         except Exception as e:
@@ -174,6 +185,8 @@ def main() -> int:
     # merge across platforms
     merged: dict[str, dict] = {}
     for pid, lst in providers.items():
+        if pid in product_only:
+            continue
         for m in lst:
             e = merged.setdefault(m["key"], {"id": m["model"], "meta": None, "offers": []})
             mm = m["meta"]

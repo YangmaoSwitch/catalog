@@ -1,0 +1,56 @@
+id: opencode
+name: OpenCode Console
+homepage: https://opencode.ai
+region: global
+api_usable: false
+status: verified
+last_verified: '2026-11-20'
+summary: 编程智能体 OpenCode 的模型平台，一批模型限时免费，但免费模型只能在 OpenCode 里用。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://opencode.ai/inference/openai/v1
+  models_url: https://opencode.ai/inference/openai/v1/models
+  modelsdev: opencode
+  models_access: paid
+  free_pattern: -free$
+  free_models:
+  - big-pickle
+signup:
+  url: https://opencode.ai/console
+  requires: []
+quotas:
+- unit: requests
+  amount: null
+  period: day
+  scope: account
+  evidence: https://opencode.ai/v2/docs/console/models/
+  models: 名称以 Free 结尾的模型和 Big Pickle
+  note: 限时免费，官方未公布总额度和截止日期；LongCat 2.5 Free 每天 100 次
+overage: manual
+onboarding:
+  level: L1
+  key_page: https://opencode.ai/console
+terms:
+- point: 免费模型只能在 OpenCode 客户端里调用，其他客户端只能用付费模型或 Go 订阅
+  url: https://opencode.ai/v2/docs/console/models/
+- point: Big Pickle、Iceman Free、Inkling 2 Small Free、Flint 40B Free 免费期间的数据可能被保留并用于改进或训练模型
+  url: https://opencode.ai/v2/docs/console/models/#privacy
+- point: Beam Free 不对中国（含港澳）等地区开放
+  url: https://opencode.ai/v2/docs/console/models/
+tags:
+- 限时免费
+- 仅限 OpenCode
+en:
+  summary: Model platform of the OpenCode coding agent. Several models are free for a limited time, but free models only work inside OpenCode.
+  tags:
+  - Limited-time free
+  - OpenCode only
+  quotas:
+  - models: Models whose names end in Free, and Big Pickle
+    note: Free for a limited time; no published total quota or end date. LongCat 2.5 Free is limited to 100 requests a day
+  terms:
+  - Free models can only be called from the OpenCode client; other clients can only use paid models or the Go subscription
+  - During their free period, data sent to Big Pickle, Iceman Free, Inkling 2 Small Free and Flint 40B Free may be retained and used to improve or train the models
+  - Beam Free is not available in China (including Hong Kong and Macau) and some other regions

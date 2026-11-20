@@ -134,6 +134,10 @@
             "type": "string"
           },
           "description": "Models covered by the free quota or credits when models_access is paid"
+        },
+        "free_pattern": {
+          "type": "string",
+          "description": "Regular expression; models whose id matches are free"
         }
       }
     },
