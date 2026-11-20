@@ -431,6 +431,10 @@
           }
         }
       }
+    },
+    "promoted": {
+      "type": "boolean",
+      "description": "Paid promotion. Platforms not usable through the app (api_usable false) are only listed when this is true"
     }
   }
 }

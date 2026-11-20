@@ -175,6 +175,8 @@ def main() -> int:
         if p.get("status") == "delisted":
             continue
         if not p.get("api_usable"):
+            if not p.get("promoted"):  # not usable through the app: not listed, unless it is a paid promotion
+                continue
             product_only.add(p["id"])
         try:
             providers[p["id"]] = provider_models(p, md)

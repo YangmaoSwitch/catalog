@@ -36,7 +36,8 @@ def main() -> int:
         print(f"{errors} error(s)", file=sys.stderr)
         return 1
 
-    listed = [p for p in providers if p["status"] != "delisted"]
+    # Only platforms usable through the app are listed; others only as a paid promotion (`promoted: true`).
+    listed = [p for p in providers if p["status"] != "delisted" and (p.get("api_usable") or p.get("promoted"))]
     out = {
         "version": 1,
         "generated_at": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat(),
