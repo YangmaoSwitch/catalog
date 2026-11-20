@@ -45,3 +45,13 @@ terms:
   url: https://docs.bigmodel.cn/cn/terms/user-agreement.md
 tags:
 - 永久免费
+en:
+  summary: GLM Flash models are free permanently.
+  signup_notes: Non-Chinese phone numbers are supported
+  tags:
+  - Always free
+  quotas:
+  - models: Free Flash models
+    note: Free models are not billed; rate-limited per model
+  terms:
+  - Free features are for non-commercial personal research and study only

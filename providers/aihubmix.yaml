@@ -42,3 +42,12 @@ onboarding:
 tags:
 - 聚合
 - 永久免费
+en:
+  summary: Free models on an aggregator platform, reset daily.
+  tags:
+  - Aggregator
+  - Always free
+  quotas:
+  - models: Free models
+  - models: Free models
+  - models: Free models

@@ -33,3 +33,9 @@ onboarding:
   key_page: https://console.volcengine.com/ark
 tags:
 - 新人
+en:
+  summary: New users get 500K tokens for each Doubao model; turning on “Worry-free trial mode” avoids charges.
+  tags:
+  - New users
+  quotas:
+  - models: Doubao-Seed-2.1-pro, Doubao-Seed-2.1-turbo and 2 more

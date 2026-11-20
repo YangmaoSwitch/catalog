@@ -39,3 +39,10 @@ onboarding:
   key_page: https://developer.amd.com.cn/radeon/tokenfactory
 tags:
 - 每日赠送
+en:
+  summary: Daily credits, shared by 12 free models.
+  tags:
+  - Daily credits
+  quotas:
+  - {}
+  - condition: Within 14 days of signing up

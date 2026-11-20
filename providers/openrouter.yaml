@@ -62,3 +62,18 @@ terms:
 tags:
 - 聚合
 - 永久免费
+en:
+  summary: Aggregator; models whose names end in :free can be called for free.
+  free_model_rule: Model ID ends in :free
+  tags:
+  - Aggregator
+  - Always free
+  quotas:
+  - models: :free models
+  - models: :free models
+    condition: Less than $10 in total top-ups
+  - models: :free models
+    condition: $10 or more in total top-ups
+  terms:
+  - One person must not open multiple accounts to get around limits (7.3)
+  - Free models also return 402 when the balance is negative

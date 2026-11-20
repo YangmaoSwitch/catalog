@@ -30,3 +30,7 @@ onboarding:
   key_pattern: ^nvapi-
 tags:
 - 试用
+en:
+  summary: Free for Developer Program members, for prototyping and testing only; the amount is still being verified.
+  tags:
+  - Trial

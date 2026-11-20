@@ -34,3 +34,10 @@ onboarding:
   key_page: https://dashboard.cohere.com/api-keys
 tags:
 - 试用
+en:
+  summary: Trial keys are free, for testing and proofs of concept.
+  tags:
+  - Trial
+  quotas:
+  - {}
+  - models: Chat endpoint

@@ -34,3 +34,10 @@ onboarding:
   key_page: https://modelscope.cn/my/myaccesstoken
 tags:
 - 每日赠送
+en:
+  summary: Daily credits (Mo-Li) for signing in; each call deducts credits by model tier.
+  signup_notes: Requires linking an Alibaba Cloud account with real-name verification
+  tags:
+  - Daily credits
+  quotas:
+  - note: 50 more a day after linking Alibaba Cloud; valid on the day only, no rollover; each call costs 0.5/1/2

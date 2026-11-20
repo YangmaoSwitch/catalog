@@ -33,3 +33,10 @@ terms:
   url: https://www.cloudflare.com/terms/
 tags:
 - 永久免费
+en:
+  summary: The free plan includes 10,000 Neurons a day; requests over the limit return an error.
+  free_model_rule: Some models are only available on paid plans
+  tags:
+  - Always free
+  terms:
+  - Creating accounts in bulk with scripts or proxies is prohibited (2.2.1(e))

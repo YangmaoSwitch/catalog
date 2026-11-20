@@ -36,3 +36,12 @@ terms:
   url: https://help.aliyun.com/zh/model-studio/new-free-quota
 tags:
 - 新人
+en:
+  summary: New users get 1M tokens for each of several models, valid for 90 days; billing switches to paid by default when used up.
+  signup_notes: Beijing (North China 2) region only
+  tags:
+  - New users
+  quotas:
+  - note: A separate allowance for each model
+  terms:
+  - “Stop when the free quota runs out” must be turned on manually; it is off by default

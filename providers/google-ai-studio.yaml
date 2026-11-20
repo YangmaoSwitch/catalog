@@ -42,3 +42,13 @@ terms:
   url: https://developers.google.com/terms
 tags:
 - 永久免费
+en:
+  summary: Free tier of the Gemini API, rate-limited per project; the limits are shown in AI Studio.
+  signup_notes: Users in the EEA, the UK and Switzerland can only use the paid service
+  tags:
+  - Always free
+  quotas:
+  - note: Requests per minute and tokens per minute are also limited; AI Studio shows the values per model
+  terms:
+  - Free-tier inputs and outputs are used to improve the products
+  - Limits must not be circumvented

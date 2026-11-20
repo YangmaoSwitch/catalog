@@ -33,3 +33,9 @@ onboarding:
   - x-ratelimit-remaining-tokens
 tags:
 - 永久免费
+en:
+  summary: Free tier rate-limited per organization; response headers report what is left.
+  tags:
+  - Always free
+  quotas:
+  - note: Requests per minute and tokens per minute/day are also limited; see the Limits page in the console

@@ -381,6 +381,52 @@
       "items": {
         "type": "string"
       }
+    },
+    "en": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "English text for the fields written in Chinese; quotas and terms align by index with the main lists",
+      "properties": {
+        "summary": {
+          "type": "string"
+        },
+        "signup_notes": {
+          "type": "string"
+        },
+        "free_model_rule": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "quotas": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "models": {
+                "type": "string"
+              },
+              "condition": {
+                "type": "string"
+              },
+              "note": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "terms": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
     }
   }
 }

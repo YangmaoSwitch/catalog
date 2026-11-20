@@ -50,3 +50,15 @@ terms:
 tags:
 - 永久免费
 - 新人
+en:
+  summary: Some models are free long-term (rate-limited per model); real-name verification earns a voucher.
+  tags:
+  - Always free
+  - New users
+  quotas:
+  - models: Models marked “free” on the pricing page
+    note: Rate-limited per model
+  - condition: Real-name verification
+    note: Offer ends 2026-12-31
+  terms:
+  - Users may authorize third parties to store access tokens and credentials (1.1.3)

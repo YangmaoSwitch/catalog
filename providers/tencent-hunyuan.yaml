@@ -29,3 +29,7 @@ onboarding:
   key_page: https://console.cloud.tencent.com/hunyuan
 tags:
 - 新人
+en:
+  summary: 1M tokens one-time for Hunyuan text models, valid for 1 year; does not switch to paid when used up.
+  tags:
+  - New users
