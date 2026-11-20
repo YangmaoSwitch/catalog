@@ -136,18 +136,21 @@ def provider_models(p: dict, md: dict | None) -> list[dict]:
     free = {model_key(n) for n in api.get("free_models", [])}
     quota = {model_key(n) for n in api.get("quota_models", [])}
     default = api.get("models_access", "paid" if p["id"] == "openrouter" else "quota")
+    # one entry per exact model id; variants such as "x" and "x:free" / "x-free" stay separate here
     out: dict[str, dict] = {}
     for r in raw:
         k = r.get("key") or model_key(r["model"])
         acc = "free" if (r.get("free") or model_key(r["model"]) in free or k in free) else "quota" if (model_key(r["model"]) in quota or k in quota) else default
-        cur = out.get(k)
+        cur = out.get(r["model"])
         if cur is None:
-            out[k] = {"key": k, "model": r["model"], "access": acc, "price": r.get("price"), "meta": r.get("meta")}
+            out[r["model"]] = {"key": k, "model": r["model"], "access": acc, "price": r.get("price"), "meta": r.get("meta")}
             continue
-        if RANK[acc] < RANK[cur["access"]]:  # the cheapest variant wins, e.g. a :free id
-            cur.update(model=r["model"], access=acc)
+        cur["access"] = min(cur["access"], acc, key=RANK.get)
         cur["price"] = cur["price"] or r.get("price")
         cur["meta"] = cur["meta"] or r.get("meta")
+    for m in out.values():  # a free model costs nothing, whatever a source lists
+        if m["access"] == "free":
+            m["price"] = {"input": 0, "output": 0}
     return list(out.values())
 
 
@@ -183,7 +186,12 @@ def main() -> int:
                             e["meta"][f] = v
                 if mm["description_source"]:
                     e["id"] = m["model"].split(":")[0]
-            e["offers"].append({"provider": pid, "model": m["model"], "access": m["access"], "price": m["price"]})
+            offer = {"provider": pid, "model": m["model"], "access": m["access"], "price": m["price"]}
+            same = next((o for o in e["offers"] if o["provider"] == pid), None)
+            if same is None:
+                e["offers"].append(offer)
+            elif RANK[offer["access"]] < RANK[same["access"]]:  # one offer per platform: its cheapest variant
+                same.update(offer)
     models = []
     for k, e in merged.items():
         mt = e["meta"] or meta()
