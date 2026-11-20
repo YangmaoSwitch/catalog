@@ -191,12 +191,67 @@ def previous() -> dict:
         return {}
 
 
-def heat(m: dict, usage: dict[str, int]) -> float:
-    """Popularity score: OpenRouter daily tokens (top models only), then how many platforms serve the model
-    and how many of them for free, plus a small bonus for models released in the last 30 days."""
+MODELSCOPE_API = "https://modelscope.cn/api/v1/models/"
+# Hugging Face organisations whose ModelScope mirror uses another name
+MS_ORGS = {"zai-org": "ZhipuAI", "thudm": "ZhipuAI", "z-ai": "ZhipuAI", "minimaxai": "MiniMax", "minimax": "MiniMax", "moonshotai": "moonshotai",
+           "deepseek": "deepseek-ai", "qwen": "Qwen", "stepfun": "stepfun-ai", "xiaomimimo": "XiaomiMiMo", "baidu": "PaddlePaddle"}
+
+
+def downloads(models: list[dict], prev: dict) -> dict[str, int]:
+    """Open-weight downloads on ModelScope (reachable from mainland China and from CI), by merged model key.
+    Candidates are the model's Hugging Face id and the repo-style ids providers use (org/Name)."""
+    old = {m["id"]: m.get("downloads") for m in prev.get("models", []) if m.get("downloads")}
+    cands: dict[str, list[str]] = {}
+    for m in models:
+        ids = [m.get("hugging_face_id")] + [o["model"] for o in m["offers"]]
+        out = []
+        for i in ids:
+            if not i or i.count("/") != 1 or i.startswith("@"):
+                continue
+            org, name = i.split("/")
+            name = name.split(":")[0]
+            for o in (org, MS_ORGS.get(org.lower(), org)):
+                c = f"{o}/{name}"
+                if c not in out:
+                    out.append(c)
+        cands[m["_key"]] = out[:4]
+
+    def one(item):
+        key, ids = item
+        for i in ids:
+            try:
+                d = fetch_json(MODELSCOPE_API + i).get("Data") or {}
+                if d.get("Downloads"):
+                    return key, int(d["Downloads"])
+            except Exception:
+                continue
+        return key, 0
+
+    from concurrent.futures import ThreadPoolExecutor
+    res: dict[str, int] = {}
+    with ThreadPoolExecutor(8) as ex:
+        for k, n in ex.map(one, [(k, v) for k, v in cands.items() if v]):
+            if n:
+                res[k] = n
+    for m in models:  # keep the last known count when ModelScope does not answer this time
+        if m["_key"] not in res and old.get(m["id"]):
+            res[m["_key"]] = old[m["id"]]
+    return res
+
+
+def heat(m: dict, usage: dict[str, int], dls: dict[str, int]) -> float:
+    """Popularity score.
+    * OpenRouter daily tokens (its rankings page shows the top 20 only): 10 x log10(tokens / 1e9)
+    * open-weight downloads on ModelScope: 6 x log10(downloads)
+      the larger of the two counts fully, the other a quarter, so closed and open models compare
+    * 2 per provider serving it for free or on a free quota, 1 per provider overall
+    * 5 for models released in the last 30 days"""
     tokens = usage.get(m["_key"], 0)
-    score = 10 * math.log10(tokens) if tokens else 0.0
-    score += 3 * sum(o["access"] != "paid" for o in m["offers"]) + len(m["offers"])
+    a = 10 * math.log10(tokens / 1e9) if tokens > 1e9 else 0.0
+    n = dls.get(m["_key"], 0)
+    b = 6 * math.log10(n) if n > 1 else 0.0
+    score = max(a, b) + 0.25 * min(a, b)
+    score += 2 * sum(o["access"] != "paid" for o in m["offers"]) + len(m["offers"])
     if m.get("created"):
         try:
             if (dt.date.today() - dt.date.fromisoformat(m["created"][:10])).days <= 30:
@@ -270,8 +325,14 @@ def main() -> int:
     today = dt.date.today().isoformat()
     baseline = prev.get("baseline") or today
     seen = {f"{o['provider']}|{o['model']}": o.get("since") for pm in prev.get("models", []) for o in pm.get("offers", []) if o.get("since")}
+    try:
+        dls = downloads(models, prev)
+    except Exception as ex:
+        print(f"warning: ModelScope downloads unavailable: {ex}", file=sys.stderr)
+        dls = {}
     for m in models:
-        m["heat"] = heat(m, usage)
+        m["heat"] = heat(m, usage, dls)
+        m["downloads"] = dls.get(m["_key"]) or None
         m["openrouter_tokens_day"] = usage.get(m["_key"]) or None
         for o in m["offers"]:
             if o["access"] != "paid":
@@ -279,7 +340,21 @@ def main() -> int:
         del m["_key"]
     models.sort(key=lambda m: m["heat"], reverse=True)
 
-    summary = {pid: {"total": len(l), "free": sum(m["access"] == "free" for m in l), "quota": sum(m["access"] == "quota" for m in l),
+    # Provider ranking: popularity of the models each one serves without charge, weighted by how lasting the
+    # access is: free models x3, a free quota that renews (daily / monthly) x1, a one-time gift x0.3.
+    recurring = {}
+    status = {}
+    for path in (ROOT / "providers").glob("*.yaml"):
+        y = yaml.safe_load(path.read_text(encoding="utf-8"))
+        status[y["id"]] = y.get("status")
+        recurring[y["id"]] = any(q.get("period") != "one-time" and not q.get("models") for q in y.get("quotas", []))
+    pscore: dict[str, float] = {}
+    for m in models:
+        for o in m["offers"]:
+            w = {"free": 3.0, "quota": 1.0 if recurring.get(o["provider"]) else 0.3}.get(o["access"], 0)
+            pscore[o["provider"]] = pscore.get(o["provider"], 0) + w * (m["heat"] or 0)
+
+    summary = {pid: {"score": round(pscore.get(pid, 0), 1), "verified": status.get(pid) == "verified", "total": len(l), "free": sum(m["access"] == "free" for m in l), "quota": sum(m["access"] == "quota" for m in l),
                      "paid": sum(m["access"] == "paid" for m in l),
                      "models": sorted(({"model": m["model"], "access": m["access"], "price": m["price"]} for m in l), key=lambda x: (RANK[x["access"]], x["model"].lower()))}
                for pid, l in providers.items()}
