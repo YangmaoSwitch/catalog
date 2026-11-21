@@ -1,0 +1,1042 @@
+{
+ "version": 1,
+ "generated_at": "2026-11-21T07:17:40+00:00",
+ "count": 15,
+ "providers": [
+  {
+   "id": "aihubmix",
+   "name": "AiHubMix",
+   "homepage": "https://aihubmix.com",
+   "region": "global",
+   "api_usable": true,
+   "status": "verified",
+   "last_verified": "2026-11-19",
+   "summary": "聚合平台的免费模型，每日重置。",
+   "api": {
+    "protocol": [
+     "openai"
+    ],
+    "base_url": "https://aihubmix.com/v1",
+    "modelsdev": "aihubmix",
+    "models_access": "paid"
+   },
+   "signup": {
+    "url": "https://aihubmix.com",
+    "requires": [
+     "email"
+    ]
+   },
+   "quotas": [
+    {
+     "unit": "requests",
+     "amount": 100,
+     "period": "day",
+     "scope": "account",
+     "evidence": "https://aihubmix.com/call/free_quota_config",
+     "models": "免费模型"
+    },
+    {
+     "unit": "tokens",
+     "amount": 1000000,
+     "period": "day",
+     "scope": "account",
+     "evidence": "https://aihubmix.com/call/free_quota_config",
+     "models": "免费模型"
+    },
+    {
+     "unit": "requests",
+     "amount": 10,
+     "period": "minute",
+     "scope": "account",
+     "evidence": "https://aihubmix.com/call/free_quota_config",
+     "models": "免费模型"
+    }
+   ],
+   "overage": "blocked",
+   "onboarding": {
+    "level": "L1",
+    "key_page": "https://aihubmix.com/token"
+   },
+   "tags": [
+    "聚合",
+    "永久免费"
+   ],
+   "en": {
+    "summary": "Free models on an aggregator platform, reset daily.",
+    "tags": [
+     "Aggregator",
+     "Always free"
+    ],
+    "quotas": [
+     {
+      "models": "Free models"
+     },
+     {
+      "models": "Free models"
+     },
+     {
+      "models": "Free models"
+     }
+    ]
+   }
+  },
+  {
+   "id": "aliyun-bailian",
+   "name": "Alibaba Cloud Model Studio",
+   "name_zh": "阿里云百炼",
+   "homepage": "https://bailian.console.aliyun.com",
+   "region": "cn",
+   "api_usable": true,
+   "status": "verified",
+   "last_verified": "2026-11-19",
+   "summary": "新人部分模型各送 100 万 Token，90 天有效；用完默认自动转付费。",
+   "api": {
+    "protocol": [
+     "openai"
+    ],
+    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "modelsdev": "alibaba-cn",
+    "models_access": "quota"
+   },
+   "signup": {
+    "url": "https://bailian.console.aliyun.com",
+    "requires": [
+     "phone_cn",
+     "real_name"
+    ],
+    "notes": "仅华北 2（北京）地域"
+   },
+   "quotas": [
+    {
+     "unit": "tokens",
+     "amount": 1000000,
+     "period": "one-time",
+     "scope": "model",
+     "evidence": "https://help.aliyun.com/zh/model-studio/new-free-quota",
+     "expires_days": 90,
+     "note": "每个模型单独一份"
+    }
+   ],
+   "overage": "auto_paid",
+   "onboarding": {
+    "level": "L1",
+    "key_page": "https://bailian.console.aliyun.com"
+   },
+   "terms": [
+    {
+     "point": "需手动开启“免费额度用完即停”，默认关闭",
+     "url": "https://help.aliyun.com/zh/model-studio/new-free-quota"
+    }
+   ],
+   "tags": [
+    "新人"
+   ],
+   "en": {
+    "summary": "New users get 1M tokens for each of several models, valid for 90 days; billing switches to paid by default when used up.",
+    "signup_notes": "Beijing (North China 2) region only",
+    "tags": [
+     "New users"
+    ],
+    "quotas": [
+     {
+      "note": "A separate allowance for each model"
+     }
+    ],
+    "terms": [
+     "“Stop when the free quota runs out” must be turned on manually; it is off by default"
+    ]
+   }
+  },
+  {
+   "id": "amd-radeon-cloud",
+   "name": "AMD Radeon Cloud Token Factory",
+   "homepage": "https://developer.amd.com.cn/radeon/tokenfactory",
+   "region": "cn",
+   "api_usable": true,
+   "status": "verified",
+   "last_verified": "2026-11-19",
+   "summary": "每天赠送积分，12 个免费模型共用。",
+   "api": {
+    "protocol": [
+     "openai",
+     "anthropic"
+    ],
+    "base_url": "https://developer.amd.com.cn/radeon/api/v1",
+    "modelsdev": "amd",
+    "models_access": "quota",
+    "anthropic_base_url": "https://developer.amd.com.cn/radeon/api"
+   },
+   "signup": {
+    "url": "https://developer.amd.com.cn/login",
+    "requires": [
+     "email",
+     "phone"
+    ]
+   },
+   "quotas": [
+    {
+     "unit": "points",
+     "amount": 1,
+     "period": "day",
+     "scope": "account",
+     "evidence": "https://amd-aim.github.io/radeon-cloud-docs/api/rate-limits/",
+     "reset": "00:00 Asia/Shanghai"
+    },
+    {
+     "unit": "points",
+     "amount": 5,
+     "period": "day",
+     "scope": "account",
+     "evidence": "https://amd-aim.github.io/radeon-cloud-docs/api/rate-limits/",
+     "reset": "00:00 Asia/Shanghai",
+     "condition": "注册 14 天内"
+    }
+   ],
+   "overage": "blocked",
+   "onboarding": {
+    "level": "L1",
+    "key_page": "https://developer.amd.com.cn/radeon/tokenfactory"
+   },
+   "tags": [
+    "每日赠送"
+   ],
+   "en": {
+    "summary": "Daily credits, shared by 12 free models.",
+    "tags": [
+     "Daily credits"
+    ],
+    "quotas": [
+     {},
+     {
+      "condition": "Within 14 days of signing up"
+     }
+    ]
+   }
+  },
+  {
+   "id": "cloudflare-workers-ai",
+   "name": "Cloudflare Workers AI",
+   "homepage": "https://developers.cloudflare.com/workers-ai/",
+   "region": "global",
+   "api_usable": true,
+   "status": "verified",
+   "last_verified": "2026-11-19",
+   "summary": "免费计划每天 1 万 Neurons，超额直接报错。",
+   "api": {
+    "protocol": [
+     "openai"
+    ],
+    "base_url": "https://api.cloudflare.com/client/v4/accounts/ACCOUNT_ID/ai/v1",
+    "modelsdev": "cloudflare-workers-ai",
+    "models_access": "quota",
+    "free_model_rule": "部分模型仅付费计划可用"
+   },
+   "signup": {
+    "url": "https://dash.cloudflare.com/sign-up",
+    "requires": [
+     "email"
+    ]
+   },
+   "quotas": [
+    {
+     "unit": "neurons",
+     "amount": 10000,
+     "period": "day",
+     "scope": "account",
+     "evidence": "https://developers.cloudflare.com/workers-ai/platform/pricing/",
+     "reset": "00:00 UTC"
+    }
+   ],
+   "overage": "blocked",
+   "onboarding": {
+    "level": "L2",
+    "key_page": "https://dash.cloudflare.com/profile/api-tokens"
+   },
+   "terms": [
+    {
+     "point": "禁止用脚本或代理批量创建账号（2.2.1(e)）",
+     "url": "https://www.cloudflare.com/terms/"
+    }
+   ],
+   "tags": [
+    "永久免费"
+   ],
+   "en": {
+    "summary": "The free plan includes 10,000 Neurons a day; requests over the limit return an error.",
+    "free_model_rule": "Some models are only available on paid plans",
+    "tags": [
+     "Always free"
+    ],
+    "terms": [
+     "Creating accounts in bulk with scripts or proxies is prohibited (2.2.1(e))"
+    ]
+   }
+  },
+  {
+   "id": "cohere",
+   "name": "Cohere",
+   "homepage": "https://cohere.com",
+   "region": "global",
+   "api_usable": true,
+   "status": "verified",
+   "last_verified": "2026-11-19",
+   "summary": "试用 Key 免费，用于测试和概念验证。",
+   "api": {
+    "protocol": [
+     "openai"
+    ],
+    "base_url": "https://api.cohere.ai/compatibility/v1",
+    "modelsdev": "cohere",
+    "models_access": "quota"
+   },
+   "signup": {
+    "url": "https://dashboard.cohere.com",
+    "requires": [
+     "email"
+    ]
+   },
+   "quotas": [
+    {
+     "unit": "requests",
+     "amount": 1000,
+     "period": "month",
+     "scope": "key",
+     "evidence": "https://docs.cohere.com/docs/rate-limits"
+    },
+    {
+     "unit": "requests",
+     "amount": 20,
+     "period": "minute",
+     "scope": "key",
+     "evidence": "https://docs.cohere.com/docs/rate-limits",
+     "models": "对话接口"
+    }
+   ],
+   "overage": "blocked",
+   "onboarding": {
+    "level": "L1",
+    "key_page": "https://dashboard.cohere.com/api-keys"
+   },
+   "tags": [
+    "试用"
+   ],
+   "en": {
+    "summary": "Trial keys are free, for testing and proofs of concept.",
+    "tags": [
+     "Trial"
+    ],
+    "quotas": [
+     {},
+     {
+      "models": "Chat endpoint"
+     }
+    ]
+   }
+  },
+  {
+   "id": "google-ai-studio",
+   "name": "Google AI Studio (Gemini API)",
+   "homepage": "https://aistudio.google.com",
+   "region": "global",
+   "api_usable": true,
+   "status": "verified",
+   "last_verified": "2026-11-19",
+   "summary": "Gemini API 免费档，按项目限速；具体数值在 AI Studio 页面显示。",
+   "api": {
+    "protocol": [
+     "openai",
+     "gemini"
+    ],
+    "base_url": "https://generativelanguage.googleapis.com/v1beta/openai/",
+    "modelsdev": "google",
+    "models_access": "quota"
+   },
+   "signup": {
+    "url": "https://aistudio.google.com/app/apikey",
+    "requires": [
+     "google"
+    ],
+    "regions_blocked": [
+     "CN",
+     "HK"
+    ],
+    "min_age": 18,
+    "notes": "面向欧洲经济区、英国、瑞士用户只能用付费服务"
+   },
+   "quotas": [
+    {
+     "unit": "requests",
+     "amount": null,
+     "period": "day",
+     "scope": "project",
+     "evidence": "https://aistudio.google.com/docs/rate-limits",
+     "reset": "00:00 America/Los_Angeles",
+     "note": "另有每分钟请求数、每分钟 token 数限制；具体数值按模型在 AI Studio 显示"
+    }
+   ],
+   "overage": "blocked",
+   "onboarding": {
+    "level": "L2",
+    "key_page": "https://aistudio.google.com/app/apikey",
+    "key_pattern": "^AIza"
+   },
+   "terms": [
+    {
+     "point": "免费档的输入输出会被用于改进产品",
+     "url": "https://aistudio.google.com/docs/rate-limits"
+    },
+    {
+     "point": "不得规避限额",
+     "url": "https://developers.google.com/terms"
+    }
+   ],
+   "tags": [
+    "永久免费"
+   ],
+   "en": {
+    "summary": "Free tier of the Gemini API, rate-limited per project; the limits are shown in AI Studio.",
+    "signup_notes": "Users in the EEA, the UK and Switzerland can only use the paid service",
+    "tags": [
+     "Always free"
+    ],
+    "quotas": [
+     {
+      "note": "Requests per minute and tokens per minute are also limited; AI Studio shows the values per model"
+     }
+    ],
+    "terms": [
+     "Free-tier inputs and outputs are used to improve the products",
+     "Limits must not be circumvented"
+    ]
+   }
+  },
+  {
+   "id": "groq",
+   "name": "Groq",
+   "homepage": "https://groq.com",
+   "region": "global",
+   "api_usable": true,
+   "status": "verified",
+   "last_verified": "2026-11-19",
+   "summary": "免费档按组织限速，响应头返回剩余额度。",
+   "api": {
+    "protocol": [
+     "openai"
+    ],
+    "base_url": "https://api.groq.com/openai/v1",
+    "modelsdev": "groq",
+    "models_access": "quota"
+   },
+   "signup": {
+    "url": "https://console.groq.com",
+    "requires": [
+     "email"
+    ]
+   },
+   "quotas": [
+    {
+     "unit": "requests",
+     "amount": null,
+     "period": "day",
+     "scope": "org",
+     "evidence": "https://console.groq.com/docs/rate-limits",
+     "note": "另有每分钟请求数、每分钟/每天 token 数；数值见控制台 Limits 页"
+    }
+   ],
+   "overage": "blocked",
+   "onboarding": {
+    "level": "L2",
+    "key_page": "https://console.groq.com/keys",
+    "key_pattern": "^gsk_",
+    "quota_headers": [
+     "x-ratelimit-remaining-requests",
+     "x-ratelimit-remaining-tokens"
+    ]
+   },
+   "tags": [
+    "永久免费"
+   ],
+   "en": {
+    "summary": "Free tier rate-limited per organization; response headers report what is left.",
+    "tags": [
+     "Always free"
+    ],
+    "quotas": [
+     {
+      "note": "Requests per minute and tokens per minute/day are also limited; see the Limits page in the console"
+     }
+    ]
+   }
+  },
+  {
+   "id": "minekuai",
+   "name": "Minekuai Cloud",
+   "name_zh": "麦块云",
+   "homepage": "https://minekuai.cn",
+   "region": "cn",
+   "api_usable": true,
+   "status": "unconfirmed",
+   "last_verified": "2026-11-20",
+   "summary": "自部署的 DeepSeek V4.1 Flash 免费调用，不限量但高峰期排队；签到鱼币可兑换当日优先额度（目前暂停兑换）。",
+   "api": {
+    "protocol": [
+     "openai",
+     "anthropic"
+    ],
+    "base_url": "https://minekuai.cn/v1",
+    "anthropic_base_url": "https://minekuai.cn",
+    "free_models": [
+     "deepseek-v4.1-flash-1017"
+    ],
+    "free_model_rule": "官方标注“临时部署测试，后续可能调整”"
+   },
+   "signup": {
+    "url": "https://minekuai.cn",
+    "requires": [
+     "qq"
+    ],
+    "notes": "创建 API Key 前须用 QQ 号加入官方群并验证，一个 QQ 号限一个账号"
+   },
+   "quotas": [
+    {
+     "unit": "requests",
+     "amount": null,
+     "period": "day",
+     "scope": "account",
+     "models": "DeepSeek V4.1 Flash 1017（不限量通道）",
+     "evidence": "https://minekuai.cn/app/llm/models/public",
+     "note": "不消耗额度，高峰期排队"
+    },
+    {
+     "unit": "tokens",
+     "amount": null,
+     "period": "day",
+     "reset": "00:00 Asia/Shanghai",
+     "scope": "account",
+     "condition": "每日签到所得鱼币兑换",
+     "evidence": "https://minekuai.cn/app/site/sales",
+     "note": "请求优先处理、不排队，当天有效，用完自动回到不限量通道；2026-11-20 因算力不足暂停兑换"
+    }
+   ],
+   "overage": "blocked",
+   "onboarding": {
+    "level": "L1",
+    "key_page": "https://minekuai.cn"
+   },
+   "tags": [
+    "免费模型",
+    "每日赠送"
+   ],
+   "en": {
+    "summary": "Self-hosted DeepSeek V4.1 Flash, free and unlimited but queued at peak times; daily check-in coins buy a priority allowance for the day (exchange currently paused).",
+    "signup_notes": "Creating an API key requires joining the official QQ group with a QQ number; one QQ number per account",
+    "free_model_rule": "Marked by the platform as a temporary test deployment that may change",
+    "tags": [
+     "Free model",
+     "Daily credits"
+    ],
+    "quotas": [
+     {
+      "models": "DeepSeek V4.1 Flash 1017 (unlimited lane)",
+      "note": "Uses no allowance; requests queue at peak times"
+     },
+     {
+      "condition": "Bought with coins from the daily check-in",
+      "note": "Priority lane without queueing, valid for the day; falls back to the unlimited lane when used up. Exchange paused on 2026-11-20 for lack of capacity"
+     }
+    ]
+   }
+  },
+  {
+   "id": "modelscope",
+   "name": "ModelScope API-Inference",
+   "name_zh": "魔搭社区",
+   "homepage": "https://modelscope.cn",
+   "region": "cn",
+   "api_usable": true,
+   "status": "verified",
+   "last_verified": "2026-11-19",
+   "summary": "每天登录送魔粒，调用按模型档位扣减。",
+   "api": {
+    "protocol": [
+     "openai"
+    ],
+    "base_url": "https://api-inference.modelscope.cn/v1",
+    "models_url": "https://api-inference.modelscope.cn/v1/models",
+    "modelsdev": "modelscope",
+    "models_access": "quota"
+   },
+   "signup": {
+    "url": "https://modelscope.cn",
+    "requires": [
+     "phone",
+     "cloud_account",
+     "real_name"
+    ],
+    "notes": "需绑定阿里云账号并实名"
+   },
+   "quotas": [
+    {
+     "unit": "points",
+     "amount": 200,
+     "period": "day",
+     "scope": "account",
+     "evidence": "https://modelscope.cn/docs/model-service/API-Inference/limits",
+     "note": "绑定阿里云每天再送 50；当天有效不累积；每次调用扣 0.5/1/2"
+    }
+   ],
+   "overage": "blocked",
+   "onboarding": {
+    "level": "L1",
+    "key_page": "https://modelscope.cn/my/myaccesstoken"
+   },
+   "tags": [
+    "每日赠送"
+   ],
+   "en": {
+    "summary": "Daily credits (Mo-Li) for signing in; each call deducts credits by model tier.",
+    "signup_notes": "Requires linking an Alibaba Cloud account with real-name verification",
+    "tags": [
+     "Daily credits"
+    ],
+    "quotas": [
+     {
+      "note": "50 more a day after linking Alibaba Cloud; valid on the day only, no rollover; each call costs 0.5/1/2"
+     }
+    ]
+   }
+  },
+  {
+   "id": "nvidia-nim",
+   "name": "NVIDIA NIM (build.nvidia.com)",
+   "homepage": "https://build.nvidia.com",
+   "region": "global",
+   "api_usable": true,
+   "status": "unconfirmed",
+   "last_verified": "2026-11-19",
+   "summary": "开发者计划成员可免费调用，仅限原型开发和测试；额度数值待核实。",
+   "api": {
+    "protocol": [
+     "openai"
+    ],
+    "base_url": "https://integrate.api.nvidia.com/v1",
+    "models_url": "https://integrate.api.nvidia.com/v1/models",
+    "modelsdev": "nvidia",
+    "models_access": "quota"
+   },
+   "signup": {
+    "url": "https://build.nvidia.com",
+    "requires": [
+     "email"
+    ]
+   },
+   "quotas": [
+    {
+     "unit": "credits",
+     "amount": null,
+     "period": "one-time",
+     "scope": "account",
+     "evidence": "https://docs.api.nvidia.com/nim/docs/faq"
+    }
+   ],
+   "overage": "blocked",
+   "onboarding": {
+    "level": "L1",
+    "key_page": "https://build.nvidia.com",
+    "key_pattern": "^nvapi-"
+   },
+   "tags": [
+    "试用"
+   ],
+   "en": {
+    "summary": "Free for Developer Program members, for prototyping and testing only; the amount is still being verified.",
+    "tags": [
+     "Trial"
+    ]
+   }
+  },
+  {
+   "id": "openrouter",
+   "name": "OpenRouter",
+   "homepage": "https://openrouter.ai",
+   "region": "global",
+   "api_usable": true,
+   "status": "verified",
+   "last_verified": "2026-11-19",
+   "summary": "聚合平台，名称以 :free 结尾的模型免费调用。",
+   "api": {
+    "protocol": [
+     "openai",
+     "anthropic"
+    ],
+    "base_url": "https://openrouter.ai/api/v1",
+    "anthropic_base_url": "https://openrouter.ai/api",
+    "free_model_rule": "模型 ID 以 :free 结尾"
+   },
+   "signup": {
+    "url": "https://openrouter.ai",
+    "requires": [
+     "email"
+    ],
+    "min_age": 18
+   },
+   "quotas": [
+    {
+     "unit": "requests",
+     "amount": 20,
+     "period": "minute",
+     "scope": "account",
+     "evidence": "https://openrouter.ai/docs/api-reference/limits",
+     "reset": "rolling",
+     "models": ":free 模型"
+    },
+    {
+     "unit": "requests",
+     "amount": 50,
+     "period": "day",
+     "scope": "account",
+     "evidence": "https://openrouter.ai/docs/api-reference/limits",
+     "reset": "00:00 UTC",
+     "models": ":free 模型",
+     "condition": "累计充值不足 10 美元"
+    },
+    {
+     "unit": "requests",
+     "amount": 1000,
+     "period": "day",
+     "scope": "account",
+     "evidence": "https://openrouter.ai/docs/api-reference/limits",
+     "reset": "00:00 UTC",
+     "models": ":free 模型",
+     "condition": "累计充值满 10 美元"
+    }
+   ],
+   "overage": "blocked",
+   "onboarding": {
+    "level": "L3",
+    "key_page": "https://openrouter.ai/keys",
+    "key_pattern": "^sk-or-v1-",
+    "quota_api": "GET https://openrouter.ai/api/v1/key",
+    "oauth": {
+     "authorize_url": "https://openrouter.ai/auth",
+     "token_url": "https://openrouter.ai/api/v1/auth/keys",
+     "pkce": "S256",
+     "loopback": true,
+     "docs": "https://openrouter.ai/docs/use-cases/oauth-pkce"
+    }
+   },
+   "terms": [
+    {
+     "point": "禁止同一人开多个账号以绕过限制（7.3）",
+     "url": "https://openrouter.ai/terms"
+    },
+    {
+     "point": "余额为负时免费模型也会返回 402",
+     "url": "https://openrouter.ai/docs/api-reference/limits"
+    }
+   ],
+   "tags": [
+    "聚合",
+    "永久免费"
+   ],
+   "en": {
+    "summary": "Aggregator; models whose names end in :free can be called for free.",
+    "free_model_rule": "Model ID ends in :free",
+    "tags": [
+     "Aggregator",
+     "Always free"
+    ],
+    "quotas": [
+     {
+      "models": ":free models"
+     },
+     {
+      "models": ":free models",
+      "condition": "Less than $10 in total top-ups"
+     },
+     {
+      "models": ":free models",
+      "condition": "$10 or more in total top-ups"
+     }
+    ],
+    "terms": [
+     "One person must not open multiple accounts to get around limits (7.3)",
+     "Free models also return 402 when the balance is negative"
+    ]
+   }
+  },
+  {
+   "id": "siliconflow",
+   "name": "SiliconFlow",
+   "name_zh": "硅基流动",
+   "homepage": "https://siliconflow.cn",
+   "region": "cn",
+   "api_usable": true,
+   "status": "verified",
+   "last_verified": "2026-11-19",
+   "summary": "部分模型长期免费（按模型限速）；实名送代金券。",
+   "api": {
+    "protocol": [
+     "openai",
+     "anthropic"
+    ],
+    "base_url": "https://api.siliconflow.cn/v1",
+    "modelsdev": "siliconflow-cn",
+    "models_access": "quota",
+    "anthropic_base_url": "https://api.siliconflow.cn",
+    "free_models": [
+     "GLM-Z1-9B",
+     "Hunyuan-MT-7B",
+     "Xing4.0-29B",
+     "BAAI/bge-m3",
+     "Kolors"
+    ]
+   },
+   "signup": {
+    "url": "https://cloud.siliconflow.cn",
+    "requires": [
+     "phone_cn"
+    ]
+   },
+   "quotas": [
+    {
+     "unit": "requests",
+     "amount": null,
+     "period": "minute",
+     "scope": "model",
+     "evidence": "https://www.siliconflow.cn/pricing",
+     "models": "定价页标“免费”的模型",
+     "note": "按模型限速"
+    },
+    {
+     "unit": "cny",
+     "amount": 16,
+     "period": "one-time",
+     "scope": "account",
+     "evidence": "https://www.siliconflow.cn/news/od7wj9rr23p95uhihmhrombp",
+     "condition": "实名认证",
+     "note": "活动截至 2026-12-31"
+    }
+   ],
+   "overage": "auto_paid",
+   "onboarding": {
+    "level": "L1",
+    "key_page": "https://cloud.siliconflow.cn/account/ak"
+   },
+   "terms": [
+    {
+     "point": "允许用户授权的第三方保存访问令牌和凭据（1.1.3）",
+     "url": "https://api-docs.siliconflow.cn/cn/legals/terms-of-service"
+    }
+   ],
+   "tags": [
+    "永久免费",
+    "新人"
+   ],
+   "en": {
+    "summary": "Some models are free long-term (rate-limited per model); real-name verification earns a voucher.",
+    "tags": [
+     "Always free",
+     "New users"
+    ],
+    "quotas": [
+     {
+      "models": "Models marked “free” on the pricing page",
+      "note": "Rate-limited per model"
+     },
+     {
+      "condition": "Real-name verification",
+      "note": "Offer ends 2026-12-31"
+     }
+    ],
+    "terms": [
+     "Users may authorize third parties to store access tokens and credentials (1.1.3)"
+    ]
+   }
+  },
+  {
+   "id": "tencent-hunyuan",
+   "name": "Tencent Hunyuan",
+   "name_zh": "腾讯混元",
+   "homepage": "https://cloud.tencent.com/product/hunyuan",
+   "region": "cn",
+   "api_usable": true,
+   "status": "verified",
+   "last_verified": "2026-11-19",
+   "summary": "混元生文一次性送 100 万 Token，1 年有效，用完不自动转付费。",
+   "api": {
+    "protocol": [
+     "openai"
+    ],
+    "base_url": "https://api.hunyuan.cloud.tencent.com/v1"
+   },
+   "signup": {
+    "url": "https://cloud.tencent.com/product/hunyuan",
+    "requires": [
+     "phone_cn",
+     "real_name"
+    ]
+   },
+   "quotas": [
+    {
+     "unit": "tokens",
+     "amount": 1000000,
+     "period": "one-time",
+     "scope": "account",
+     "evidence": "https://cloud.tencent.com/document/product/1729/97731",
+     "expires_days": 365
+    }
+   ],
+   "overage": "blocked",
+   "onboarding": {
+    "level": "L1",
+    "key_page": "https://console.cloud.tencent.com/hunyuan"
+   },
+   "tags": [
+    "新人"
+   ],
+   "en": {
+    "summary": "1M tokens one-time for Hunyuan text models, valid for 1 year; does not switch to paid when used up.",
+    "tags": [
+     "New users"
+    ]
+   }
+  },
+  {
+   "id": "volcengine-ark",
+   "name": "Volcengine Ark",
+   "name_zh": "火山方舟",
+   "homepage": "https://www.volcengine.com/product/ark",
+   "region": "cn",
+   "api_usable": true,
+   "status": "verified",
+   "last_verified": "2026-11-19",
+   "summary": "新用户豆包模型各送 50 万 Token；开启“安心体验模式”可避免产生费用。",
+   "api": {
+    "protocol": [
+     "openai"
+    ],
+    "base_url": "https://ark.cn-beijing.volces.com/api/v3",
+    "modelsdev": "volcengine",
+    "models_access": "paid",
+    "quota_models": [
+     "Doubao-Seed-2.1-pro",
+     "Doubao-Seed-2.1-turbo"
+    ]
+   },
+   "signup": {
+    "url": "https://console.volcengine.com/ark",
+    "requires": [
+     "phone_cn"
+    ]
+   },
+   "quotas": [
+    {
+     "unit": "tokens",
+     "amount": 500000,
+     "period": "one-time",
+     "scope": "model",
+     "evidence": "https://docs.volcengine.com/docs/ark/free-inference-quota",
+     "models": "Doubao-Seed-2.1-pro、Doubao-Seed-2.1-turbo 等 4 款"
+    }
+   ],
+   "overage": "manual",
+   "onboarding": {
+    "level": "L1",
+    "key_page": "https://console.volcengine.com/ark"
+   },
+   "tags": [
+    "新人"
+   ],
+   "en": {
+    "summary": "New users get 500K tokens for each Doubao model; turning on “Worry-free trial mode” avoids charges.",
+    "tags": [
+     "New users"
+    ],
+    "quotas": [
+     {
+      "models": "Doubao-Seed-2.1-pro, Doubao-Seed-2.1-turbo and 2 more"
+     }
+    ]
+   }
+  },
+  {
+   "id": "zhipu-bigmodel",
+   "name": "Zhipu BigModel",
+   "name_zh": "智谱开放平台",
+   "homepage": "https://bigmodel.cn",
+   "region": "cn",
+   "api_usable": true,
+   "status": "verified",
+   "last_verified": "2026-11-19",
+   "summary": "GLM Flash 系列模型永久免费。",
+   "api": {
+    "protocol": [
+     "openai",
+     "anthropic"
+    ],
+    "base_url": "https://open.bigmodel.cn/api/paas/v4",
+    "modelsdev": "zhipuai",
+    "models_access": "paid",
+    "anthropic_base_url": "https://open.bigmodel.cn/api/anthropic",
+    "free_models": [
+     "GLM-4.7-Flash",
+     "GLM-4-Flash-250414",
+     "GLM-Z1-Flash",
+     "GLM-4.6V-Flash",
+     "GLM-4V-Flash",
+     "CogView-3-Flash",
+     "CogVideoX-Flash"
+    ]
+   },
+   "signup": {
+    "url": "https://bigmodel.cn",
+    "requires": [
+     "phone"
+    ],
+    "notes": "支持海外手机号"
+   },
+   "quotas": [
+    {
+     "unit": "requests",
+     "amount": null,
+     "period": "day",
+     "scope": "account",
+     "evidence": "https://docs.bigmodel.cn/cn/guide/start/pricing.md",
+     "models": "Flash 免费模型",
+     "note": "免费模型不计费，按模型限速"
+    }
+   ],
+   "overage": "blocked",
+   "onboarding": {
+    "level": "L1",
+    "key_page": "https://open.bigmodel.cn/usercenter/apikeys"
+   },
+   "terms": [
+    {
+     "point": "免费功能仅限非商业的个人研究学习",
+     "url": "https://docs.bigmodel.cn/cn/terms/user-agreement.md"
+    }
+   ],
+   "tags": [
+    "永久免费"
+   ],
+   "en": {
+    "summary": "GLM Flash models are free permanently.",
+    "signup_notes": "Non-Chinese phone numbers are supported",
+    "tags": [
+     "Always free"
+    ],
+    "quotas": [
+     {
+      "models": "Free Flash models",
+      "note": "Free models are not billed; rate-limited per model"
+     }
+    ],
+    "terms": [
+     "Free features are for non-commercial personal research and study only"
+    ]
+   }
+  }
+ ]
+}
