@@ -239,26 +239,59 @@ def downloads(models: list[dict], prev: dict) -> dict[str, int]:
     return res
 
 
-def heat(m: dict, usage: dict[str, int], dls: dict[str, int]) -> float:
-    """Popularity score.
-    * OpenRouter daily tokens (its rankings page shows the top 20 only): 10 x log10(tokens / 1e9)
+ACCESS_WEIGHT = {"free": 1.0, "quota": 0.5, "gift": 0.2}
+
+
+def access_weight(o: dict, recurring: dict[str, bool]) -> float:
+    """How much a free offer is worth: a free model 1, a free quota that renews 0.5, a one-time gift 0.2, paid 0."""
+    if o["access"] == "free":
+        return ACCESS_WEIGHT["free"]
+    if o["access"] == "quota":
+        return ACCESS_WEIGHT["quota"] if recurring.get(o["provider"]) else ACCESS_WEIGHT["gift"]
+    return 0.0
+
+
+NOT_CHAT = re.compile(r"embed|bge-|rerank|whisper|tts|asr|sensevoice|cosyvoice", re.I)
+
+
+def quality(m: dict, usage: dict[str, int], dls: dict[str, int]) -> float:
+    """How sought-after the model is, from several sources so no single site decides:
     * open-weight downloads on ModelScope: 6 x log10(downloads)
-      the larger of the two counts fully, the other a quarter, so closed and open models compare
-    * 2 per provider serving it for free or on a free quota, 1 per provider overall
-    * 5 for models released in the last 30 days"""
-    tokens = usage.get(m["_key"], 0)
-    a = 10 * math.log10(tokens / 1e9) if tokens > 1e9 else 0.0
+    * how many providers serve it: 3 per provider
+    * OpenRouter daily tokens (top 20 only), a minor term: 3 x log10(tokens / 1e9)
+    * 5 for models released in the last 30 days; older than half a year x0.85, than a year x0.6
+    * embedding, rerank and speech models x0.3: the square is mainly for chat models"""
     n = dls.get(m["_key"], 0)
-    b = 6 * math.log10(n) if n > 1 else 0.0
-    score = max(a, b) + 0.25 * min(a, b)
-    score += 2 * sum(o["access"] != "paid" for o in m["offers"]) + len(m["offers"])
+    score = 6 * math.log10(n) if n > 1 else 0.0
+    score += 3 * len({o["provider"] for o in m["offers"]})
+    tokens = usage.get(m["_key"], 0)
+    if tokens > 1e9:
+        score += 3 * math.log10(tokens / 1e9)
     if m.get("created"):
         try:
-            if (dt.date.today() - dt.date.fromisoformat(m["created"][:10])).days <= 30:
+            age = (dt.date.today() - dt.date.fromisoformat(m["created"][:7] + "-01")).days
+            if age <= 30:
                 score += 5
+            elif age > 365:
+                score *= 0.6
+            elif age > 180:
+                score *= 0.85
         except ValueError:
             pass
-    return round(score, 2)
+    if NOT_CHAT.search(m["name"] + " " + m["id"]):
+        score *= 0.3
+    return score
+
+
+def heat(m: dict, q: float, recurring: dict[str, bool]) -> float:
+    """Ranking score: quality x how freely it can be used. The best free offer counts fully,
+    every further provider offering it without charge adds 10% of its own weight (capped at +50%)."""
+    ws = sorted((access_weight(o, recurring) for o in m["offers"]), reverse=True)
+    ws = [w for w in ws if w > 0]
+    if not ws:
+        return round(q * 0.05, 2)
+    f = ws[0] + min(0.5, 0.1 * sum(ws[1:]))
+    return round(q * f, 2)
 
 
 def main() -> int:
@@ -330,8 +363,15 @@ def main() -> int:
     except Exception as ex:
         print(f"warning: ModelScope downloads unavailable: {ex}", file=sys.stderr)
         dls = {}
+    recurring = {}
+    status = {}
+    for path in (ROOT / "providers").glob("*.yaml"):
+        y = yaml.safe_load(path.read_text(encoding="utf-8"))
+        status[y["id"]] = y.get("status")
+        recurring[y["id"]] = any(q.get("period") != "one-time" and not q.get("models") for q in y.get("quotas", []))
     for m in models:
-        m["heat"] = heat(m, usage, dls)
+        m["quality"] = round(quality(m, usage, dls), 2)
+        m["heat"] = heat(m, m["quality"], recurring)
         m["downloads"] = dls.get(m["_key"]) or None
         m["openrouter_tokens_day"] = usage.get(m["_key"]) or None
         for o in m["offers"]:
@@ -340,19 +380,12 @@ def main() -> int:
         del m["_key"]
     models.sort(key=lambda m: m["heat"], reverse=True)
 
-    # Provider ranking: popularity of the models each one serves without charge, weighted by how lasting the
-    # access is: free models x3, a free quota that renews (daily / monthly) x1, a one-time gift x0.3.
-    recurring = {}
-    status = {}
-    for path in (ROOT / "providers").glob("*.yaml"):
-        y = yaml.safe_load(path.read_text(encoding="utf-8"))
-        status[y["id"]] = y.get("status")
-        recurring[y["id"]] = any(q.get("period") != "one-time" and not q.get("models") for q in y.get("quotas", []))
+    # Provider ranking: quality of the models each one serves without charge, weighted by how lasting the
+    # access is: free models x1, a free quota that renews (daily / monthly) x0.5, a one-time gift x0.2.
     pscore: dict[str, float] = {}
     for m in models:
         for o in m["offers"]:
-            w = {"free": 3.0, "quota": 1.0 if recurring.get(o["provider"]) else 0.3}.get(o["access"], 0)
-            pscore[o["provider"]] = pscore.get(o["provider"], 0) + w * (m["heat"] or 0)
+            pscore[o["provider"]] = pscore.get(o["provider"], 0) + access_weight(o, recurring) * m["quality"]
 
     summary = {pid: {"score": round(pscore.get(pid, 0), 1), "verified": status.get(pid) == "verified", "total": len(l), "free": sum(m["access"] == "free" for m in l), "quota": sum(m["access"] == "quota" for m in l),
                      "paid": sum(m["access"] == "paid" for m in l),
