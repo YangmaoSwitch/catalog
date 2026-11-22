@@ -1,0 +1,51 @@
+id: deepseek
+name: DeepSeek
+name_zh: 深度求索
+homepage: https://www.deepseek.com
+region: cn
+api_usable: true
+status: unconfirmed
+last_verified: '2026-11-22'
+summary: 官方价格页提到"赠送余额"可用于抵扣模型费用，但未公布具体金额；平台页需登录，无法核实注册赠送额度。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://api.deepseek.com
+  anthropic_base_url: https://api.deepseek.com/anthropic
+  models_access: paid
+signup:
+  url: https://platform.deepseek.com
+  requires:
+  - email
+  - phone
+  notes: 平台页需登录，注册流程与赠送额度无法直接核实
+quotas:
+- unit: credits
+  amount: null
+  period: one-time
+  scope: account
+  evidence: https://api-docs.deepseek.com/zh-cn/quick_start/pricing
+  quote: 当充值余额与赠送余额同时存在时，优先扣减赠送余额。
+  note: 官方价格页提到"赠送余额"优先于充值余额扣减，但未公布具体金额
+overage: blocked
+onboarding:
+  level: L2
+  key_page: https://platform.deepseek.com/api_keys
+terms:
+- point: 模型费用从充值余额或赠送余额中扣减，优先扣减赠送余额
+  url: https://api-docs.deepseek.com/zh-cn/quick_start/pricing
+tags:
+- 注册赠送
+sources:
+- https://api-docs.deepseek.com/zh-cn/quick_start/pricing
+- https://api-docs.deepseek.com/zh-cn/quick_start/error_codes
+en:
+  summary: The official pricing page mentions a "granted balance" that can offset model fees, but no amount is published; the platform page requires login, so the signup gift cannot be verified.
+  signup_notes: The platform page requires login; the signup flow and any granted balance cannot be verified directly.
+  tags:
+  - Signup gift
+  quotas:
+  - note: The official pricing page mentions that the granted balance is deducted before the topped-up balance, but no amount is published
+  terms:
+  - Model fees are deducted from the topped-up balance or granted balance, preferring the granted balance first
