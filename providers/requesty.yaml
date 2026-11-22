@@ -1,0 +1,101 @@
+id: requesty
+name: Requesty
+homepage: https://www.requesty.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 聚合网关，免费计划可调用官方列出的免费模型，每个组织每天 200 次请求，无需信用卡。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://router.requesty.ai/v1
+  anthropic_base_url: https://router.requesty.ai/anthropic
+  models_url: https://router.requesty.ai/v1/models
+  models_access: paid
+  free_models:
+  - nvidia/nemotron-3-ultra-550b-a55b
+  - nvidia/nemotron-3-super-120b-a12b
+  - nvidia/nemotron-3-nano-30b-a3b
+  - nvidia/nemotron-3-nano-omni-30b-a3b-reasoning
+  - poolside/laguna-xs.2
+  - poolside/laguna-m.1
+  - google/gemma-4-31b-it
+  - mistral/leanstral-1-5
+  - nvidia/nemotron-3.5-content-safety
+  - nvidia/nemotron-3.5-lightning-30b-a3b
+  - nvidia/muse-glimmer-30b
+  - novita/ling-3.1-flash
+  - novita/inclusionai/ling-3.0-tiny
+signup:
+  url: https://app.requesty.ai/sign-up
+  requires:
+  - email
+  min_age: 18
+  notes: 免费模型不需要绑定信用卡；平台可能要求邮箱、手机或身份验证以防滥用。
+quotas:
+- unit: requests
+  amount: 200
+  period: day
+  scope: org
+  models: 全部免费模型合计
+  condition: 新组织（未付费）
+  evidence: https://docs.requesty.ai/features/free-models
+- unit: requests
+  amount: 20
+  period: minute
+  scope: org
+  models: 全部免费模型合计
+  condition: 新组织（未付费）
+  evidence: https://docs.requesty.ai/features/free-models
+- unit: requests
+  amount: 1000
+  period: day
+  scope: org
+  models: 全部免费模型合计
+  condition: 付费组织（另限每分钟 60 次）
+  evidence: https://docs.requesty.ai/features/free-models
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://app.requesty.ai/api-keys
+terms:
+- point: 每人或每个法人只能有一个账号，禁止注册多个账号绕过用量限制（3.1）
+  url: https://www.requesty.ai/terms
+- point: 禁止用自动化手段注册账号或滥用优惠（10）
+  url: https://www.requesty.ai/terms
+- point: 免费计划调用标为 Training Permitted 的模型时，输入输出可被用于训练（5.9、6.2(a)）
+  url: https://www.requesty.ai/terms
+- point: 禁止在受英国、欧盟、美国全面制裁的地区使用（9.2）
+  url: https://www.requesty.ai/terms
+- point: 免费模型目前免费，价格变动会提前在更新日志公告
+  url: https://docs.requesty.ai/features/free-models
+tags:
+- 聚合
+- 免费模型
+sources:
+- https://www.requesty.ai/pricing
+- https://docs.requesty.ai/features/free-models
+- https://docs.requesty.ai/quickstart
+- https://www.requesty.ai/terms
+en:
+  summary: Aggregator gateway; the free plan can call the listed free models, 200 requests per organization per day, no credit card needed.
+  signup_notes: Free models need no credit card; the platform may ask for email, phone or identity verification to prevent abuse.
+  tags:
+  - Aggregator
+  - Free model
+  quotas:
+  - models: All free models combined
+    condition: New (unpaid) organizations
+  - models: All free models combined
+    condition: New (unpaid) organizations
+  - models: All free models combined
+    condition: Paying organizations (also 60 per minute)
+  terms:
+  - One account per individual or legal entity; multiple accounts to get around usage limits are prohibited (3.1)
+  - Creating accounts or abusing offers by automated means is prohibited (10)
+  - On the free plan, inputs and outputs sent to models labelled Training Permitted may be used for training (5.9, 6.2(a))
+  - Use from jurisdictions under comprehensive UK, EU or US sanctions is prohibited (9.2)
+  - The free models are free for now; price changes will be announced in the changelog in advance

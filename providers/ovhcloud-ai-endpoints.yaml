@@ -1,0 +1,42 @@
+id: ovhcloud-ai-endpoints
+name: OVHcloud AI Endpoints
+homepage: https://www.ovhcloud.com/en/public-cloud/ai-endpoints/
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 法国云厂商 OVHcloud 的模型服务，不带 Key 匿名调用全部模型免费，按 IP、按模型每分钟限 2 次。
+api:
+  protocol:
+  - openai
+  base_url: https://oai.endpoints.kepler.ai.cloud.ovh.net/v1
+  models_url: https://oai.endpoints.kepler.ai.cloud.ovh.net/v1/models
+  modelsdev: ovhcloud
+  models_access: free
+signup:
+  url: https://www.ovhcloud.com/en/public-cloud/ai-endpoints/catalog/
+  requires: []
+  notes: 匿名调用无需注册；创建 API Key 需要 OVHcloud 账号和已绑定支付方式的 Public Cloud 项目，用 Key 调用按量计费
+quotas:
+- unit: requests
+  amount: 2
+  period: minute
+  scope: ip
+  models: 每个模型单独计算
+  condition: 不带 API Key 匿名调用
+  evidence: https://docs.ovhcloud.com/en/guides/public-cloud/ai-machine-learning/ai-endpoints-capabilities
+  note: 超出返回 429
+overage: blocked
+onboarding:
+  level: L1
+tags:
+- 永久免费
+en:
+  summary: Model service of the French cloud provider OVHcloud. Anonymous calls without a key are free for every model, limited to 2 requests per minute per IP and per model.
+  signup_notes: Anonymous calls need no signup; creating an API key requires an OVHcloud account and a Public Cloud project with a payment method, and calls with a key are billed per use
+  tags:
+  - Always free
+  quotas:
+  - models: Counted separately for each model
+    condition: Anonymous calls without an API key
+    note: 429 when exceeded

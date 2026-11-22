@@ -1,0 +1,75 @@
+id: aion-labs
+name: Aion Labs
+homepage: https://www.aionlabs.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 注册后默认进入免费档，每天可用 2 万 token，无需信用卡。
+api:
+  protocol:
+  - openai
+  base_url: https://api.aionlabs.ai/v1
+  models_url: https://api.aionlabs.ai/v1/models
+  models_access: quota
+signup:
+  url: https://www.aionlabs.ai/accounts/signup/
+  requires:
+  - email
+  min_age: 18
+  notes: 可用邮箱注册或第三方身份登录；免费档无需信用卡，任意一次充值即升到付费档位。
+quotas:
+- unit: tokens
+  amount: 20000
+  period: day
+  scope: account
+  note: 免费档每日 token 上限；官方未写明重置时区
+  evidence: https://www.aionlabs.ai/docs/rate-limits/
+- unit: tokens
+  amount: 20000
+  period: minute
+  scope: account
+  evidence: https://www.aionlabs.ai/docs/rate-limits/
+- unit: requests
+  amount: 15
+  period: minute
+  scope: account
+  evidence: https://www.aionlabs.ai/docs/rate-limits/
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://www.aionlabs.ai/app/api-keys/
+terms:
+- point: 每人只能持有一个账号，组织共享访问需联系官方（第 3 条）
+  url: https://www.aionlabs.ai/terms/
+- point: 购买前的免费使用属于优待，官方可随时调整或取消（第 4 条）
+  url: https://www.aionlabs.ai/terms/
+- point: 不得分享、出售或出借 API Key，不得让他人直接用你的凭据调用（第 4 条）
+  url: https://www.aionlabs.ai/terms/
+- point: 预付账户余额为零时停止服务（第 8 条）
+  url: https://www.aionlabs.ai/terms/
+tags:
+- 永久免费
+- 每日赠送
+sources:
+- https://www.aionlabs.ai/pricing/
+- https://www.aionlabs.ai/docs/rate-limits/
+- https://www.aionlabs.ai/docs/models/
+- https://www.aionlabs.ai/docs/quickstart/
+- https://www.aionlabs.ai/terms/
+en:
+  summary: New accounts start on the free tier with a small daily allowance of 20K tokens per day; no credit card needed.
+  signup_notes: Sign up with email or a supported identity provider; the free tier needs no card, and any top-up moves you to a paid tier.
+  tags:
+  - Always free
+  - Daily credits
+  quotas:
+  - note: Daily token cap on the free tier; the reset time zone is not stated
+  - {}
+  - {}
+  terms:
+  - One account per person; contact them for shared organization access (section 3)
+  - Free use before any purchase is a courtesy that may be changed or withdrawn at any time (section 4)
+  - API keys must not be shared, sold or lent, and nobody else may call the API with your credentials (section 4)
+  - Prepaid accounts stop serving requests when the balance reaches zero (section 8)

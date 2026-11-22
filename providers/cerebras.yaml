@@ -1,0 +1,82 @@
+id: cerebras
+name: Cerebras
+homepage: https://www.cerebras.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 新账号绑定有效支付方式后一次性获得 5 美元试用额度，30 天内有效，无长期免费档。
+api:
+  protocol:
+  - openai
+  base_url: https://api.cerebras.ai/v1
+  models:
+  - gpt-oss-120b
+  - qwen-3.8-27b
+  models_access: quota
+signup:
+  url: https://cloud.cerebras.ai
+  requires:
+  - email
+  - card
+  notes: 需添加经验证的支付方式才发放试用额度并开通 Playground 与 API；绑卡本身不扣费，也不会自动转为付费。
+quotas:
+- unit: usd
+  amount: 5
+  period: one-time
+  scope: org
+  expires_days: 30
+  condition: 添加经验证的支付方式
+  note: 可用于全部公开模型；用完或到期后需购买额度才能继续调用
+  evidence: https://inference-docs.cerebras.ai/support/rate-limits
+- unit: tokens
+  amount: 1000000
+  period: day
+  reset: rolling
+  scope: org
+  models: gpt-oss-120b
+  note: 试用期间另限每分钟 5 次请求、每小时 100 万 token
+  evidence: https://inference-docs.cerebras.ai/support/rate-limits
+- unit: requests
+  amount: 300
+  period: minute
+  reset: rolling
+  scope: org
+  models: qwen-3.8-27b
+  note: 无每小时、每天 token 上限，限速与付费档相同
+  evidence: https://inference-docs.cerebras.ai/support/rate-limits
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://cloud.cerebras.ai
+terms:
+- point: 试用额度不可转让、无现金价值，发现欺诈、滥用或重复账号时可扣留或收回
+  url: https://www.cerebras.ai/pricing
+- point: 官方说明没有长期免费档，额度用完或过期后 API 暂停，需购买额度恢复
+  url: https://inference-docs.cerebras.ai/support/rate-limits
+tags:
+- 新人
+- 试用
+sources:
+- https://inference-docs.cerebras.ai/support/rate-limits
+- https://inference-docs.cerebras.ai/console/account-billing
+- https://inference-docs.cerebras.ai/models/overview
+- https://inference-docs.cerebras.ai/quickstart
+- https://www.cerebras.ai/pricing
+en:
+  summary: New accounts get a one-time $5 trial credit, valid for 30 days, after adding a verified payment method; there is no permanent free tier.
+  signup_notes: A verified payment method is required before the trial credit is granted and the Playground and API are enabled; adding it costs nothing and does not enroll you in paid usage.
+  tags:
+  - New users
+  - Trial
+  quotas:
+  - condition: Add a verified payment method
+    note: Usable on all public models; buy credits to continue once it is used up or expires
+  - models: gpt-oss-120b
+    note: The trial also limits it to 5 requests per minute and 1M tokens per hour
+  - models: qwen-3.8-27b
+    note: No hourly or daily token caps; same rate limits as the paid tier
+  terms:
+  - Trial credits are non-transferable, have no cash value, and may be withheld or revoked for fraud, abuse or duplicate accounts
+  - There is no permanent free tier; API access pauses when credits run out or expire until you buy credits

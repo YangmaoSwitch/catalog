@@ -1,0 +1,63 @@
+id: kilo-code
+name: Kilo AI Gateway
+name_zh: Kilo Code 模型网关
+homepage: https://kilo.ai/gateway
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 编程智能体 Kilo Code 的模型网关，名称以 :free 结尾的模型和 kilo-auto/free 免费调用，不登录也能用，按 IP 每小时限 200 次。
+api:
+  protocol:
+  - openai
+  base_url: https://ai-gateway.kilo.ai/api/v1
+  models_url: https://ai-gateway.kilo.ai/api/v1/models
+  modelsdev: kilo
+  models_access: paid
+  free_pattern: :free$
+  free_models:
+  - kilo-auto/free
+  free_model_rule: 模型 ID 以 :free 结尾，或使用 kilo-auto/free 自动路由；免费模型名单随时调整
+signup:
+  url: https://app.kilo.ai
+  requires:
+  - email
+  min_age: 18
+  notes: 免费模型不带 Key 也能调用；也可用 GitHub、Google 等账号登录后在个人资料页底部复制 API Key
+quotas:
+- unit: requests
+  amount: 200
+  period: hour
+  scope: ip
+  models: :free 模型和 kilo-auto/free
+  evidence: https://kilo.ai/docs/gateway/usage-and-billing
+  note: 登录与匿名请求都按 IP 计算，超出返回 429；部分免费模型另受上游限速
+overage: blocked
+onboarding:
+  level: L2
+  key_page: https://app.kilo.ai/profile
+  key_pattern: ^eyJ
+terms:
+- point: 每个个人或组织只能持有一个账号（3.C）
+  url: https://kilo.ai/terms
+- point: kilo-auto/free 和 NVIDIA 免费端点可能记录提示词和输出并用于改进服务，不要提交个人或机密数据
+  url: https://kilo.ai/docs/gateway/models-and-providers
+- point: 余额为零时付费模型返回 402，不会自动扣费；自动充值需用户自行开启
+  url: https://kilo.ai/docs/gateway/usage-and-billing
+tags:
+- 免费模型
+- 聚合
+en:
+  summary: Model gateway of the Kilo Code coding agent. Models whose IDs end in :free and kilo-auto/free are free, even without signing in, limited to 200 requests per hour per IP.
+  signup_notes: Free models can be called without a key; you can also sign in with GitHub, Google and others and copy the API key from the bottom of your profile page
+  free_model_rule: Model ID ends in :free, or use the kilo-auto/free router; the list of free models changes over time
+  tags:
+  - Free model
+  - Aggregator
+  quotas:
+  - models: :free models and kilo-auto/free
+    note: Counted per IP for both signed-in and anonymous requests; 429 when exceeded. Some free models are also rate-limited upstream
+  terms:
+  - An individual or organization may hold only one account (3.C)
+  - kilo-auto/free and NVIDIA free endpoints may log prompts and outputs to improve their services; do not submit personal or confidential data
+  - Paid models return 402 when the balance is zero, with no automatic charge; auto top-up must be turned on by the user

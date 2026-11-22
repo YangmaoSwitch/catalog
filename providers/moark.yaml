@@ -1,0 +1,53 @@
+id: moark
+name: Moark (formerly Gitee AI)
+name_zh: 模力方舟
+homepage: https://moark.com
+region: cn
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 每个账号每天可免费调用模型共 100 次，使用系统默认的免费体验访问令牌，不产生扣费。
+api:
+  protocol:
+  - openai
+  base_url: https://api.moark.com/v1
+  models_url: https://api.moark.com/v1/models
+  modelsdev: moark
+  models_access: quota
+signup:
+  url: https://moark.com
+  requires:
+  - phone
+  - real_name
+  notes: 使用 Gitee 账号登录；服务条款要求完成真实身份核验
+quotas:
+- unit: requests
+  amount: 100
+  period: day
+  scope: account
+  evidence: https://moark.com/docs/getting-started
+  note: 所有模型合计；重置时间未写明；免费体验令牌不可编辑或删除，官方提示勿用于生产环境
+overage: blocked
+onboarding:
+  level: L2
+  key_page: https://moark.com/dashboard/tokens
+terms:
+- point: 账号仅限本人使用，未经同意不得提供给他人
+  url: https://moark.com/docs/appendix/terms
+- point: 不得造成不正常的大流量访问或不合理占用资源
+  url: https://moark.com/docs/appendix/terms
+tags:
+- 每日赠送
+sources:
+- https://moark.com/docs/getting-started
+- https://moark.com/docs/account/access-token
+en:
+  summary: Each account can call models for free 100 times a day in total, using the default free-trial access token, which is never charged.
+  signup_notes: Sign in with a Gitee account; the terms of service require identity verification
+  tags:
+  - Daily credits
+  quotas:
+  - note: Shared by all models; reset time not stated; the free-trial token cannot be edited or deleted and is not meant for production
+  terms:
+  - The account is for your own use only and may not be given to others without consent
+  - Do not cause abnormally heavy traffic or unreasonable use of resources

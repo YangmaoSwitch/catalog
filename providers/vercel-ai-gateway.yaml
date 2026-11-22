@@ -1,0 +1,71 @@
+id: vercel-ai-gateway
+name: Vercel AI Gateway
+homepage: https://vercel.com/ai-gateway
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 聚合网关，每个 Vercel 团队每月有一笔免费额度，可调用免费档模型子集。
+api:
+  protocol:
+  - openai
+  base_url: https://ai-gateway.vercel.sh/v1
+  models_url: https://ai-gateway.vercel.sh/v1/models
+  models_access: paid
+  free_pattern: -free$
+  free_model_rule: 月度免费额度只能用于官网模型列表中标为 Free Tier 的模型子集；另有部分模型限时标价为 0
+signup:
+  url: https://vercel.com/signup
+  requires:
+  - email
+  - card
+  notes: 团队需先添加有效支付方式才能使用免费额度；购买 AI Gateway 额度后转为付费档，每月免费额度不再适用。
+quotas:
+- unit: usd
+  amount: null
+  period: month
+  scope: org
+  condition: 团队未购买过 AI Gateway 额度
+  note: 官方文档未写明金额；免费额度从首次请求开始计算，不是到期即止的试用
+  evidence: https://vercel.com/docs/ai-gateway/pricing
+- unit: requests
+  amount: null
+  period: minute
+  scope: model
+  note: 免费档按模型限速，低于付费档，超出返回 429；官方不公布具体数值
+  evidence: https://vercel.com/docs/ai-gateway/rate-limits
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai-gateway%2Fapi-keys
+  key_pattern: ^vck_
+  quota_api: GET https://ai-gateway.vercel.sh/v1/credits
+terms:
+- point: 未添加支付方式时请求返回 403 customer_verification_required；团队余额不为正时返回 402
+  url: https://vercel.com/docs/ai-gateway/faq
+- point: 各模型的使用还须遵守对应提供方条款及 Vercel AI Product Terms
+  url: https://vercel.com/docs/ai-gateway
+tags:
+- 聚合
+- 每月赠送
+sources:
+- https://vercel.com/docs/ai-gateway/pricing
+- https://vercel.com/docs/ai-gateway/faq
+- https://vercel.com/docs/ai-gateway/rate-limits
+- https://vercel.com/docs/ai-gateway/authentication-and-byok/api-keys
+- https://vercel.com/ai-gateway
+en:
+  summary: Aggregator gateway; every Vercel team gets a monthly free credit for a subset of free-tier models.
+  signup_notes: The team must add a valid payment method before free credits can be used; buying AI Gateway credits moves the team to the paid tier and the monthly free credit no longer applies.
+  free_model_rule: The monthly free credit only covers the subset marked Free Tier in the model list; some models are also temporarily priced at $0
+  tags:
+  - Aggregator
+  - Monthly credits
+  quotas:
+  - condition: The team has never bought AI Gateway credits
+    note: The amount is not stated in the docs; the credit starts with the first request and is not an expiring trial
+  - note: The free tier is rate-limited per model, below the paid tier, and returns 429 when exceeded; exact numbers are not published
+  terms:
+  - Without a payment method requests return 403 customer_verification_required; without a positive balance they return 402
+  - Use of each model is also subject to its provider's terms and Vercel's AI Product Terms

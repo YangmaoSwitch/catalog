@@ -1,0 +1,44 @@
+id: xfyun-spark
+name: iFlytek Spark Lite
+name_zh: 讯飞星火
+homepage: https://xinghuo.xfyun.cn/sparkapi
+region: cn
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 星火 Lite 轻量模型支持免费使用，可通过兼容 OpenAI 的 HTTP 接口调用。
+api:
+  protocol:
+  - openai
+  base_url: https://spark-api-open.xf-yun.com/v1
+  free_models:
+  - lite
+  models_access: paid
+signup:
+  url: https://xinghuo.xfyun.cn/sparkapi
+  requires:
+  - phone
+  notes: 在产品页领取免费额度后，到控制台获取对应版本的 APIPassword
+quotas:
+- unit: tokens
+  amount: null
+  period: day
+  scope: account
+  models: lite
+  evidence: https://www.xfyun.cn/doc/spark/HTTP%E8%B0%83%E7%94%A8%E6%96%87%E6%A1%A3.html
+  note: 官方写明 Lite 支持免费使用；具体并发和日流控上限未在文档写明，超限返回错误码
+overage: blocked
+onboarding:
+  level: L1
+  key_page: https://console.xfyun.cn/services/cbm
+tags:
+- 免费模型
+sources:
+- https://www.xfyun.cn/doc/spark/HTTP%E8%B0%83%E7%94%A8%E6%96%87%E6%A1%A3.html
+en:
+  summary: The lightweight Spark Lite model can be used for free through the OpenAI-compatible HTTP API.
+  signup_notes: Claim the free allowance on the product page, then get the APIPassword for that model version in the console
+  tags:
+  - Free model
+  quotas:
+  - note: The docs state Lite can be used for free; concurrency and daily limits are not stated, and requests over the limit return an error code

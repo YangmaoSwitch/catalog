@@ -1,0 +1,57 @@
+id: mistral
+name: Mistral AI
+homepage: https://mistral.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 新账号默认处于免费模式，可在 Studio 创建 Key 调用 API，限速最低；具体额度在后台 Limits 页显示。
+api:
+  protocol:
+  - openai
+  base_url: https://api.mistral.ai/v1
+  modelsdev: mistral
+  models_access: quota
+signup:
+  url: https://console.mistral.ai
+  requires:
+  - email
+  regions_blocked:
+  - CU
+  - IR
+  - KP
+  - SY
+  notes: 受制裁地区（含克里米亚、顿涅茨克、卢甘斯克）不可使用
+quotas:
+- unit: tokens
+  amount: null
+  period: month
+  scope: org
+  condition: 免费模式（未开通按量付费）
+  evidence: https://help.mistral.ai/en/articles/698531-why-am-i-hitting-api-rate-limits-and-how-do-i-increase-them
+  note: 另有每秒请求数、每分钟 token 数限制；数值见后台 Limits 页，超出返回 429
+overage: blocked
+onboarding:
+  level: L1
+  key_page: https://console.mistral.ai/api-keys
+terms:
+- point: 不得买卖或转让 API Key 和账号（2.2(h)）
+  url: https://legal.mistral.ai/terms/commercial-terms-of-service
+- point: 未关闭训练选项时，输入和输出可能被用于训练模型；Labs 和预览模型始终可用于训练（4.2、4.3）
+  url: https://legal.mistral.ai/terms/commercial-terms-of-service
+- point: 超出免费额度需先购买预付额度并开通按量付费，不会自动扣费
+  url: https://docs.mistral.ai/admin/billing-usage/billing
+tags:
+- 永久免费
+en:
+  summary: New accounts start in Free mode and can create a key in Studio to call the API at the lowest rate limits; the exact limits are shown on the Limits page in the console.
+  signup_notes: Not available in sanctioned regions (including Crimea, Donetsk and Luhansk)
+  tags:
+  - Always free
+  quotas:
+  - condition: Free mode (pay-as-you-go not enabled)
+    note: Requests per second and tokens per minute are also limited; see the Limits page in the console. 429 when exceeded
+  terms:
+  - API keys and accounts must not be bought, sold or transferred (2.2(h))
+  - Unless you opt out of training, inputs and outputs may be used to train models; Labs and preview models can always be used for training (4.2, 4.3)
+  - Going beyond the free allowance requires buying prepaid credits and enabling pay-as-you-go; nothing is charged automatically

@@ -1,0 +1,59 @@
+id: tencent-tokenhub
+name: Tencent Cloud TokenHub
+name_zh: 腾讯云 TokenHub
+homepage: https://cloud.tencent.com/product/tokenhub
+region: cn
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 腾讯云大模型服务平台，新用户每个语言模型和多模态理解模型各送 100 万 Token，1 年有效，未开启后付费时用完即停。
+api:
+  protocol:
+  - openai
+  base_url: https://tokenhub.tencentmaas.com/v1
+  modelsdev: tencent-tokenhub
+  models_access: quota
+signup:
+  url: https://console.cloud.tencent.com/tokenhub/models
+  requires:
+  - phone_cn
+  - real_name
+  notes: 需注册腾讯云并完成实名认证；原腾讯混元平台正在迁往 TokenHub，新开模型服务需在 TokenHub 开通
+quotas:
+- unit: tokens
+  amount: 1000000
+  period: one-time
+  scope: model
+  evidence: https://cloud.tencent.com/document/product/1823/130053
+  expires_days: 365
+  models: 所有语言模型和多模态理解模型
+  condition: 每个主账号每个模型限领一次；本期领取活动截至 2026-12-31
+  note: 在模型广场或开通管理页勾选领取，首次调用支持免费体验的模型时也会自动领取；文档另写“同一账号下的所有模型共享额度”，以控制台显示为准
+overage: blocked
+expires: '2026-12-31'
+onboarding:
+  level: L1
+  key_page: https://console.cloud.tencent.com/tokenhub/apikey
+terms:
+- point: 免费额度按主账号生效，不可转让、不可叠加、不可兑换现金
+  url: https://cloud.tencent.com/document/product/1823/130053
+tags:
+- 新人
+sources:
+- https://cloud.tencent.com/product/tokenhub
+- https://cloud.tencent.com/document/product/1823/130053
+- https://cloud.tencent.com/document/product/1823/130054
+- https://cloud.tencent.com/document/product/1823/130056
+- https://cloud.tencent.com/document/product/1823/130058
+- https://cloud.tencent.com/document/product/1729/97731
+en:
+  summary: Tencent Cloud's LLM platform; new users get 1M tokens for each language and multimodal-understanding model, valid for 1 year, and calls stop when used up unless pay-as-you-go is turned on.
+  signup_notes: Requires a Tencent Cloud account with real-name verification; the old Tencent Hunyuan platform is moving to TokenHub, and new model services must be opened in TokenHub
+  tags:
+  - New users
+  quotas:
+  - models: All language and multimodal-understanding models
+    condition: Each main account can claim once per model; the current claim period ends on 2026-12-31
+    note: Claim it on the Model Square or Activation page, or it is claimed automatically on the first call to an eligible model; the doc also says all models under one account share the quota, so check the console
+  terms:
+  - The free quota applies per main account and cannot be transferred, stacked or exchanged for cash

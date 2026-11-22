@@ -1,0 +1,73 @@
+id: agnes-ai
+name: Agnes AI
+homepage: https://agnes-ai.com
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: Agnes 自研的 Flash 系列文本、图像和视频模型目前按 0 元计费，免费用户按每分钟请求数限速。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://apihub.agnes-ai.com/v1
+  anthropic_base_url: https://apihub.agnes-ai.com
+  modelsdev: agnes
+  models_access: paid
+  free_models:
+  - agnes-3.0-flash
+  - agnes-2.5-flash
+  - agnes-image-2.5-flash
+  - agnes-image-2.1-flash
+  - agnes-image-2.0-flash
+  - agnes-video-2.5-flash
+  free_model_rule: 价格页的“Angel User Trial Price”为 0 元的模型；促销结束时间以平台公告为准，agnes-2.5-flash 将于 2026-11-30 下线
+signup:
+  url: https://platform.agnes-ai.com
+  requires:
+  - email
+  min_age: 18
+  notes: 也可用 Google 或 GitHub 账号登录；不向受制裁地区提供服务
+quotas:
+- unit: requests
+  amount: null
+  period: minute
+  scope: account
+  evidence: https://wiki.agnes-ai.com/en/docs/faqs.md
+  models: agnes-3.0-flash 等 Flash 系列模型
+  note: 免费用户受每分钟请求数限制，具体数值未公布；同类型 Key 多建不叠加。各模型 0 元价格见价格页
+overage: blocked
+onboarding:
+  level: L1
+  key_page: https://platform.agnes-ai.com
+terms:
+- point: 免费 Key 和 Token Plan Key 使用不同的限额；同一类型多建 Key 不会叠加每分钟请求数或订阅额度
+  url: https://wiki.agnes-ai.com/en/docs/faqs.md
+- point: 禁止规避速率限制、访问控制等安全措施，禁止在未获书面许可时抓取服务数据
+  url: https://wiki.agnes-ai.com/en/docs/terms-of-service.md
+- point: 不得与第三方共享账号凭据（含 API Key），授权的员工或承包商除外
+  url: https://wiki.agnes-ai.com/en/docs/terms-of-service.md
+tags:
+- 免费模型
+- 限时免费
+sources:
+- https://agnes-ai.com
+- https://wiki.agnes-ai.com/en/docs/pricing.md
+- https://wiki.agnes-ai.com/en/docs/faqs.md
+- https://wiki.agnes-ai.com/en/docs/agnes-30-flash.md
+- https://wiki.agnes-ai.com/en/docs/quickstart.md
+- https://wiki.agnes-ai.com/en/docs/terms-of-service.md
+en:
+  summary: Agnes's own Flash text, image and video models are currently billed at $0; free users are limited by requests per minute.
+  signup_notes: Google or GitHub sign-in also works; not available in sanctioned jurisdictions
+  free_model_rule: Models whose “Angel User Trial Price” is $0 on the pricing page; promotion end dates follow platform announcements, and agnes-2.5-flash retires on 2026-11-30
+  tags:
+  - Free model
+  - Limited-time free
+  quotas:
+  - models: agnes-3.0-flash and other Flash models
+    note: Free users are limited by requests per minute; the number is not published, and extra keys of the same type do not add up. See the pricing page for the $0 prices
+  terms:
+  - Free keys and Token Plan keys have separate limits; creating more keys of the same type does not add RPM or subscription quota
+  - Circumventing rate limits, access controls or other security measures is prohibited, as is scraping the service without written permission
+  - Account credentials, including API keys, must not be shared with third parties other than authorized employees or contractors

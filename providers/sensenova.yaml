@@ -1,0 +1,59 @@
+id: sensenova
+name: SenseNova Token Plan
+name_zh: 商汤日日新
+homepage: https://www.sensenova.cn
+region: cn
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: Token Plan 公测期免费档 0 元/月，按积分池计量，设滚动 5 小时和滚动周两层额度。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://token.sensenova.cn/v1
+  anthropic_base_url: https://token.sensenova.cn
+  modelsdev: sensenova
+  models_access: quota
+signup:
+  url: https://platform.sensenova.cn/login
+  requires:
+  - phone
+  notes: 注册后需完成手机号验证
+quotas:
+- unit: points
+  amount: 1200000
+  period: week
+  reset: rolling
+  scope: account
+  models: 通用积分池
+  evidence: https://platform.sensenova.cn/docs
+  note: 另有滚动 5 小时上限 120,000 积分；不同模型按实际用量扣不同积分；属公测期权益
+- unit: points
+  amount: 600000
+  period: week
+  reset: rolling
+  scope: account
+  models: sensenova-6.8-flash-lite 专属积分池
+  evidence: https://platform.sensenova.cn/docs
+  note: 另有滚动 5 小时上限 60,000 积分；用完后可继续扣通用积分池
+overage: blocked
+onboarding:
+  level: L2
+  key_page: https://platform.sensenova.cn/console/keys
+  key_pattern: ^sk-
+tags:
+- 限时免费
+sources:
+- https://www.sensenova.cn/token-plan
+- https://platform.sensenova.cn/docs
+en:
+  summary: The Token Plan free tier costs 0 CNY a month during the public beta; usage is metered in credit pools with a rolling 5-hour cap and a rolling weekly cap.
+  signup_notes: Phone verification is required after signing up
+  tags:
+  - Limited-time free
+  quotas:
+  - models: General credit pool
+    note: Also capped at 120,000 credits per rolling 5 hours; each model deducts credits by actual usage; a public-beta benefit
+  - models: Credit pool reserved for sensenova-6.8-flash-lite
+    note: Also capped at 60,000 credits per rolling 5 hours; the general pool is used once it runs out
