@@ -239,11 +239,11 @@ def downloads(models: list[dict], prev: dict) -> dict[str, int]:
     return res
 
 
-ACCESS_WEIGHT = {"free": 1.0, "quota": 0.5, "gift": 0.2}
+ACCESS_WEIGHT = {"free": 1.0, "quota": 0.5, "gift": 0.1}
 
 
 def access_weight(o: dict, recurring: dict[str, bool]) -> float:
-    """How much a free offer is worth: a free model 1, a free quota that renews 0.5, a one-time gift 0.2, paid 0."""
+    """How much a free offer is worth: a free model 1, a free quota that renews 0.5, a one-time gift 0.1, paid 0."""
     if o["access"] == "free":
         return ACCESS_WEIGHT["free"]
     if o["access"] == "quota":
@@ -257,13 +257,13 @@ NOT_CHAT = re.compile(r"embed|bge-|rerank|whisper|tts|asr|sensevoice|cosyvoice",
 def quality(m: dict, usage: dict[str, int], dls: dict[str, int]) -> float:
     """How sought-after the model is, from several sources so no single site decides:
     * open-weight downloads on ModelScope: 6 x log10(downloads)
-    * how many providers serve it: 3 per provider
+    * how many providers serve it: 3 per provider, up to 10
     * OpenRouter daily tokens (top 20 only), a minor term: 3 x log10(tokens / 1e9)
     * 5 for models released in the last 30 days; older than half a year x0.85, than a year x0.6
     * embedding, rerank and speech models x0.3: the square is mainly for chat models"""
     n = dls.get(m["_key"], 0)
     score = 6 * math.log10(n) if n > 1 else 0.0
-    score += 3 * len({o["provider"] for o in m["offers"]})
+    score += 3 * min(10, len({o["provider"] for o in m["offers"]}))
     tokens = usage.get(m["_key"], 0)
     if tokens > 1e9:
         score += 3 * math.log10(tokens / 1e9)
@@ -368,7 +368,11 @@ def main() -> int:
     for path in (ROOT / "providers").glob("*.yaml"):
         y = yaml.safe_load(path.read_text(encoding="utf-8"))
         status[y["id"]] = y.get("status")
-        recurring[y["id"]] = any(q.get("period") != "one-time" and not q.get("models") for q in y.get("quotas", []))
+        # a quota renews if some allowance comes back hourly or longer; per-second/minute rate limits alone don't
+        # make a one-time gift recurring
+        qs = y.get("quotas", [])
+        recurring[y["id"]] = (any(q.get("period") in ("hour", "day", "week", "month") for q in qs)
+                              or not any(q.get("period") == "one-time" for q in qs))
     for m in models:
         m["quality"] = round(quality(m, usage, dls), 2)
         m["heat"] = heat(m, m["quality"], recurring)
@@ -381,7 +385,7 @@ def main() -> int:
     models.sort(key=lambda m: m["heat"], reverse=True)
 
     # Provider ranking: quality of the models each one serves without charge, weighted by how lasting the
-    # access is: free models x1, a free quota that renews (daily / monthly) x0.5, a one-time gift x0.2.
+    # access is: free models x1, a free quota that renews (daily / monthly) x0.5, a one-time gift x0.1.
     # Only the 10 best count, so a long list sharing one small quota doesn't outrank a few good free models.
     parts: dict[str, list[float]] = {}
     for m in models:
