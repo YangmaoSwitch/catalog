@@ -34,7 +34,8 @@ quotas:
   condition: 免费档（另限每分钟输入 100 万、输出 10 万 token）
   evidence: https://docs.inceptionlabs.ai/get-started/rate-limits
 overage: blocked
-expires: '2026-12-28'
+expires: null
+ends: '2026-12-28'
 onboarding:
   level: L2
   key_page: https://platform.inceptionlabs.ai/dashboard/api-keys

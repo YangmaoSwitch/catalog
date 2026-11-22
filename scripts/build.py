@@ -38,6 +38,11 @@ def main() -> int:
 
     # Only platforms usable through the app are listed; others only as a paid promotion (`promoted: true`).
     listed = [p for p in providers if p["status"] != "delisted" and (p.get("api_usable") or p.get("promoted"))]
+    # an announced end date that has passed marks the offer as ended (kept and labelled, not removed)
+    today = dt.date.today().isoformat()
+    for p in listed:
+        if p.get("ends") and p["ends"] < today and not p.get("ended"):
+            p["ended"] = p["ends"]
     out = {
         "version": 1,
         "generated_at": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat(),

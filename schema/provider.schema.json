@@ -255,6 +255,11 @@
           "evidence": {
             "type": "string",
             "format": "uri"
+          },
+          "ended": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "description": "This quota has ended (date); kept and marked as ended"
           }
         }
       }
@@ -272,6 +277,22 @@
         "string",
         "null"
       ]
+    },
+    "ends": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "Announced end date of the free offer or of the service; after this date the entry is shown as ended"
+    },
+    "ended": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "The free offer has ended (date). The entry stays listed and is marked as ended; it is not deleted or delisted"
     },
     "onboarding": {
       "type": "object",

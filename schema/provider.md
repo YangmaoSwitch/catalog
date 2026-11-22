@@ -32,6 +32,8 @@ quotas:                        # 每项额度一条
     evidence: https://openrouter.ai/docs/api-reference/limits
 overage: blocked               # blocked（超额即停）/ auto_paid（自动转付费）/ manual（需用户手动开通付费）
 expires: null                  # 赠金的有效期
+ends: null                     # 官方公布的活动或服务截止日期；过了这天自动显示为已下线
+ended: null                    # 免费活动已下线的日期：条目保留并标注“已下线”，不删除、不下架
 
 onboarding:
   level: L3                    # L1 / L2 / L3

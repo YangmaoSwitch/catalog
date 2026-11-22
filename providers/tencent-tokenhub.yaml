@@ -30,7 +30,8 @@ quotas:
   condition: 每个主账号每个模型限领一次；本期领取活动截至 2026-12-31
   note: 在模型广场或开通管理页勾选领取，首次调用支持免费体验的模型时也会自动领取；文档另写“同一账号下的所有模型共享额度”，以控制台显示为准
 overage: blocked
-expires: '2026-12-31'
+expires: null
+ends: '2026-12-31'
 onboarding:
   level: L1
   key_page: https://console.cloud.tencent.com/tokenhub/apikey

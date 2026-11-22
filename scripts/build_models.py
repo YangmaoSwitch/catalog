@@ -294,6 +294,15 @@ def heat(m: dict, q: float, recurring: dict[str, bool]) -> float:
     return round(q * f, 2)
 
 
+def ended_on(p: dict) -> str | None:
+    """Date the provider's free offer ended: set by hand / the checker, or an announced end date that has passed."""
+    if p.get("ended"):
+        return str(p["ended"])
+    if p.get("ends") and str(p["ends"]) < dt.date.today().isoformat():
+        return str(p["ends"])
+    return None
+
+
 def main() -> int:
     try:  # MODELSDEV_FILE: a local copy of models.dev/api.json, for offline builds
         md = json.loads(pathlib.Path(os.environ["MODELSDEV_FILE"]).read_text(encoding="utf-8")) if os.environ.get("MODELSDEV_FILE") else fetch_json(MODELSDEV)
@@ -315,6 +324,9 @@ def main() -> int:
         except Exception as e:
             print(f"warning: {p['id']}: {e}", file=sys.stderr)
             providers[p["id"]] = []
+        if ended_on(p):  # the free offer is over: the models stay listed as paid
+            for m in providers[p["id"]]:
+                m["access"] = "paid"
 
     # merge across platforms
     merged: dict[str, dict] = {}
@@ -365,12 +377,15 @@ def main() -> int:
         dls = {}
     recurring = {}
     status = {}
+    ended: dict[str, str] = {}
     for path in (ROOT / "providers").glob("*.yaml"):
         y = yaml.safe_load(path.read_text(encoding="utf-8"))
         status[y["id"]] = y.get("status")
+        if ended_on(y):
+            ended[y["id"]] = ended_on(y)
         # a quota renews if some allowance comes back hourly or longer; per-second/minute rate limits alone don't
         # make a one-time gift recurring
-        qs = y.get("quotas", [])
+        qs = [q for q in y.get("quotas", []) if not q.get("ended")]
         recurring[y["id"]] = (any(q.get("period") in ("hour", "day", "week", "month") for q in qs)
                               or not any(q.get("period") == "one-time" for q in qs))
     for m in models:
@@ -395,7 +410,7 @@ def main() -> int:
                 parts.setdefault(o["provider"], []).append(w)
     pscore = {pid: sum(sorted(v, reverse=True)[:10]) for pid, v in parts.items()}
 
-    summary = {pid: {"score": round(pscore.get(pid, 0), 1), "verified": status.get(pid) == "verified", "total": len(l), "free": sum(m["access"] == "free" for m in l), "quota": sum(m["access"] == "quota" for m in l),
+    summary = {pid: {"score": round(pscore.get(pid, 0), 1), "verified": status.get(pid) == "verified", "ended": ended.get(pid), "total": len(l), "free": sum(m["access"] == "free" for m in l), "quota": sum(m["access"] == "quota" for m in l),
                      "paid": sum(m["access"] == "paid" for m in l),
                      "models": sorted(({"model": m["model"], "access": m["access"], "price": m["price"]} for m in l), key=lambda x: (RANK[x["access"]], x["model"].lower()))}
                for pid, l in providers.items()}
