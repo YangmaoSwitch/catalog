@@ -1,0 +1,76 @@
+id: pollinations
+name: Pollinations.ai
+homepage: https://pollinations.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 开源社区运营的多模态生成平台，完成官方任务可获得 Quest 余额，用于调用文本、图像等常规模型。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://gen.pollinations.ai/v1
+  anthropic_base_url: https://gen.pollinations.ai
+  models_url: https://gen.pollinations.ai/v1/models
+  models_access: quota
+signup:
+  url: https://enter.pollinations.ai
+  requires:
+  - github
+  - google
+  notes: 用 GitHub 或 Google 账号登录即自动注册；Quest 余额只能用于常规模型，标为 paid_only 的模型（如全部视频和 3D 模型）需要充值余额。
+quotas:
+- unit: usd
+  amount: 0.25
+  period: one-time
+  scope: account
+  condition: 完成"创建第一个 API Key"任务
+  note: 共 28 个任务，合计可得 212.5 美元 Quest 余额；任务处于测试阶段，可用性和金额可能调整
+  evidence: https://enter.pollinations.ai/quests
+- unit: usd
+  amount: 0.25
+  period: one-time
+  scope: account
+  condition: 完成"首次成功调用文本模型"任务
+  evidence: https://enter.pollinations.ai/quests
+overage: blocked
+expires: null
+onboarding:
+  level: L3
+  key_page: https://enter.pollinations.ai/keys
+  key_pattern: ^sk_
+  quota_api: GET https://gen.pollinations.ai/account/balance
+  oauth:
+    authorize_url: https://enter.pollinations.ai/authorize
+    token_url: https://enter.pollinations.ai/api/oauth/token
+    pkce: S256
+    loopback: true
+    docs: https://github.com/pollinations/pollinations/blob/main/BRING_YOUR_OWN_POLLEN.md
+terms:
+- point: Quest 余额不能支付标为 paid_only 的模型，余额或 Key 预算用完返回 402
+  url: https://gen.pollinations.ai/docs/llm.txt
+- point: 同样的请求可能从共享缓存返回结果，需要新结果时更换提示词或 seed
+  url: https://gen.pollinations.ai/docs/llm.txt
+tags:
+- 新人赠送
+- 聚合
+sources:
+- https://pollinations.ai
+- https://enter.pollinations.ai/quests
+- https://gen.pollinations.ai/docs/llm.txt
+- https://github.com/pollinations/pollinations/blob/main/APIDOCS.md
+- https://github.com/pollinations/pollinations/blob/main/BRING_YOUR_OWN_POLLEN.md
+en:
+  summary: Community-run open-source generation platform. Completing official quests earns Quest balance that pays for regular text, image and other models.
+  signup_notes: Signing in with GitHub or Google creates the account. Quest balance only pays for regular models; models marked paid_only (such as all video and 3D models) need a paid balance.
+  tags:
+  - New user credits
+  - Aggregator
+  quotas:
+  - condition: Complete the "Create your first API key" quest
+    note: 28 quests worth $212.5 of Quest balance in total; quests are in alpha and availability and amounts may change
+  - condition: Complete the "Use a text model" quest (first successful request)
+  terms:
+  - Quest balance cannot pay for paid_only models; an exhausted balance or key budget returns 402
+  - Identical requests may be answered from a shared cache; change the prompt or seed for a new result

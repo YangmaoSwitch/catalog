@@ -1,0 +1,79 @@
+id: freemodel
+name: FreeModel
+homepage: https://freemodel.online
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 聚合网关，优先把请求路由到有免费额度的模型；免费档 fm-v1-lite 无需订阅，每月 800 轮、每天 30 轮，不会转为付费。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://freemodel.online/v1
+  anthropic_base_url: https://freemodel.online/api/gateway
+  models_url: https://freemodel.online/v1/models
+  models_access: paid
+  free_models:
+  - fm-v1-lite
+  free_pattern: (:free|-free)$
+signup:
+  url: https://alli.website/
+  requires:
+  - email
+  notes: 控制台 alli.website 支持邮箱注册，也可用 Google 或 GitHub 登录；开始使用不需要信用卡。
+quotas:
+- unit: requests
+  amount: 800
+  period: month
+  scope: account
+  models: fm-v1-lite 免费档
+  note: 官方按“轮”计；当前额度和重置窗口以控制台显示为准
+  evidence: https://freemodel.online/pricing/
+- unit: requests
+  amount: 30
+  period: day
+  scope: account
+  models: fm-v1-lite 免费档
+  note: 官方未写明重置时区
+  evidence: https://freemodel.online/pricing/
+overage: auto_paid
+expires: null
+onboarding:
+  level: L2
+  key_page: https://alli.website/console/#access?tab=keys
+  key_pattern: ^sk-
+terms:
+- point: 免费额度用完后，请求会落到付费模型并按标价扣费；没有余额和订阅时返回错误；直接调用 fm-v1-lite 不会产生费用
+  url: https://freemodel.online/pricing/
+- point: 禁止轮换账号绕过限速，禁止以滥用免费额度的方式转售容量
+  url: https://freemodel.online/legal/terms/
+- point: 免费容量来自上游厂商，可能不经通知调整或取消，平台不承诺长期可用
+  url: https://freemodel.online/legal/terms/
+tags:
+- 聚合
+- 免费模型
+- 每日赠送
+sources:
+- https://freemodel.online/
+- https://freemodel.online/pricing/
+- https://freemodel.online/models/free/
+- https://freemodel.online/faq/
+- https://freemodel.online/legal/terms/
+- https://freemodel.online/about/
+en:
+  summary: Aggregator gateway that routes requests to models with free quota first; the free tier fm-v1-lite needs no subscription, allows 800 rounds a month and 30 a day, and never turns into paid usage.
+  signup_notes: The console at alli.website supports email signup as well as Google or GitHub login; no credit card is needed to start.
+  tags:
+  - Aggregator
+  - Free model
+  - Daily credits
+  quotas:
+  - models: fm-v1-lite free tier
+    note: Counted in "rounds"; the current allowance and reset window are shown in the console
+  - models: fm-v1-lite free tier
+    note: The reset time zone is not stated
+  terms:
+  - Once free quota is gone, requests fall through to paid models at listed rates; with no balance or plan they return an error; calling fm-v1-lite directly is never charged
+  - Rotating accounts to get around rate limits, or reselling capacity in a way that abuses a free allowance, is prohibited
+  - Free capacity comes from upstream providers and may change or disappear without notice

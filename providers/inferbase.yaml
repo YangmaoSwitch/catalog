@@ -1,0 +1,106 @@
+id: inferbase
+name: Inferbase
+homepage: https://inferbase.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 印度班加罗尔的模型网关，免费计划每月 5000 次请求，托管模型中输出价不超过每百万 token 2 美元的对话、嵌入和重排模型每天免费 100 次、合计 0.5 美元以内，无需信用卡。
+api:
+  protocol:
+  - openai
+  base_url: https://api.inferbase.ai/v1
+  models_url: https://api.inferbase.ai/v1/models
+  models_access: paid
+  free_model_rule: 免费计划下，托管模型中输出价不超过每百万 token 2 美元的对话、嵌入和重排模型在每日额度内免费；图片、语音、转写、视频和更贵的模型需充值（10 美元起）
+signup:
+  url: https://inferbase.ai/register
+  requires:
+  - email
+  min_age: 16
+  notes: 免费计划不需要绑定支付方式，每个新组织默认进入免费计划；也可接入自己的供应商 Key，按次计入每月请求数。
+quotas:
+- unit: requests
+  amount: 5000
+  period: month
+  reset: 00:00 UTC
+  scope: org
+  models: 所有模型和所有 Key 合计（含自带供应商 Key 的请求）
+  note: 按自然月（UTC）计算，用完后暂停到下月 1 日
+  evidence: https://inferbase.ai/pricing
+- unit: requests
+  amount: 100
+  period: day
+  scope: org
+  models: 符合条件的托管模型
+  note: 每次托管请求最多 8192 个输入 token、1024 个输出 token；官方未写明每日重置时区
+  evidence: https://inferbase.ai/pricing
+- unit: usd
+  amount: 0.5
+  period: day
+  scope: org
+  models: 符合条件的托管模型
+  note: 每日免费的模型用量上限，与每天 100 次同时生效
+  evidence: https://inferbase.ai/pricing
+- unit: requests
+  amount: 60
+  period: minute
+  scope: key
+  evidence: https://inferbase.ai/pricing
+- unit: requests
+  amount: 10
+  period: minute
+  scope: org
+  models: 托管模型
+  evidence: https://inferbase.ai/pricing
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_pattern: ^inf_
+terms:
+- point: 不得注册多个账号或组织来叠加免费用量，不得绕过额度、速率限制和计费（3.3）
+  url: https://inferbase.ai/acceptable-use
+- point: 不得转售或转接免费计划，不得把托管推理当作自己的服务对外提供（3.4）
+  url: https://inferbase.ai/acceptable-use
+- point: 不得在组织外共享 API Key（3.5）
+  url: https://inferbase.ai/acceptable-use
+- point: 达到计划额度后请求被拒绝，直到额度重置或升级（7.3）
+  url: https://inferbase.ai/terms
+- point: 不出售内容、不用于训练模型；请求内容默认保存 30 天，可按账号、组织或 Key 关闭（4.2、4.3）
+  url: https://inferbase.ai/terms
+tags:
+- 永久免费
+- 每日赠送
+- 每月赠送
+- 聚合
+sources:
+- https://inferbase.ai/
+- https://inferbase.ai/pricing
+- https://inferbase.ai/docs
+- https://inferbase.ai/terms
+- https://inferbase.ai/acceptable-use
+en:
+  summary: Model gateway based in Bengaluru, India. The free plan includes 5,000 requests a month, and managed chat, embedding and rerank models priced up to $2 per million output tokens are free for 100 requests and $0.50 of usage a day, no card required.
+  signup_notes: The free plan needs no payment method, and every new organization starts on it; you can also connect your own provider keys, whose requests count toward the monthly allowance.
+  free_model_rule: On the free plan, managed chat, embedding and rerank models priced up to $2 per million output tokens are free within the daily limits; images, speech, transcription, video and pricier models need credit (from $10)
+  tags:
+  - Always free
+  - Daily credits
+  - Monthly credits
+  - Aggregator
+  quotas:
+  - models: All models and keys combined (including requests on your own provider keys)
+    note: Counted per calendar month (UTC); paused until the 1st once used up
+  - models: Eligible managed models
+    note: Each managed request is capped at 8,192 input and 1,024 output tokens; the daily reset time zone is not stated
+  - models: Eligible managed models
+    note: Daily cap on free model usage, applied together with the 100 requests a day
+  - {}
+  - models: Managed models
+  terms:
+  - Creating multiple accounts or organizations to multiply free usage, or circumventing quotas, rate limits or billing, is prohibited (3.3)
+  - Reselling or relaying free-plan access, or offering the managed inference as your own service, is prohibited (3.4)
+  - API keys must not be shared outside your organization (3.5)
+  - Requests are refused once a plan limit is reached, until it resets or you upgrade (7.3)
+  - Content is not sold or used to train models; request content is stored for 30 days by default and can be turned off per account, organization or key (4.2, 4.3)

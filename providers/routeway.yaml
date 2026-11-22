@@ -1,0 +1,74 @@
+id: routeway
+name: Routeway
+homepage: https://routeway.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 聚合网关，名称以 :free 结尾的模型免费调用，每天 200 次请求，UTC 零点重置。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://api.routeway.ai/v1
+  models_url: https://api.routeway.ai/v1/models
+  models_access: paid
+  free_pattern: :free$
+  free_model_rule: 模型 ID 以 :free 结尾；免费模型名单随时调整，可能不经通知下线
+signup:
+  url: https://routeway.ai/dashboard
+  requires:
+  - email
+  min_age: 18
+  notes: 免费计划无需订阅；服务条款 3.1 写有注册需提供有效邮箱和支付方式，官方免费计划页面未要求绑卡。
+quotas:
+- unit: requests
+  amount: 200
+  period: day
+  reset: 00:00 UTC
+  scope: account
+  models: 全部 :free 模型合计
+  note: 每分钟上限官方页面不一致（限流页写 5 次，FAQ 与模型页写 20 次）；单并发、低优先级队列；超出返回 429
+  evidence: https://docs.routeway.ai/getting-started/rate-limits.md
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://routeway.ai/dashboard
+  quota_headers:
+  - X-RateLimit-Remaining-Day
+  - X-RateLimit-Remaining-Minute
+terms:
+- point: 禁止创建虚假账号，禁止绕过用量限制或计费机制（4.2）
+  url: https://routeway.ai/terms
+- point: 禁止主要用于色情内容或成人 AI 陪伴服务（4.2）
+  url: https://routeway.ai/terms
+- point: 平台不保存提示词和回复，但上游模型服务商可能按其政策保存和使用（7.1、11.1）
+  url: https://routeway.ai/terms
+- point: 免费模型仅供开发测试，可能随时下线，官方不承诺可用性
+  url: https://docs.routeway.ai/getting-started/faq.md
+tags:
+- 聚合
+- 免费模型
+sources:
+- https://routeway.ai/
+- https://docs.routeway.ai/getting-started/rate-limits.md
+- https://docs.routeway.ai/getting-started/models.md
+- https://docs.routeway.ai/getting-started/faq.md
+- https://docs.routeway.ai/getting-started/billing.md
+- https://routeway.ai/terms
+en:
+  summary: Aggregator gateway; models whose IDs end in :free are free, 200 requests a day, reset at 00:00 UTC.
+  signup_notes: The free plan needs no subscription; section 3.1 of the terms says sign-up requires a valid email and payment method, while the free plan page does not ask for a card.
+  free_model_rule: Model ID ends in :free; the list of free models changes and models may be removed without notice
+  tags:
+  - Aggregator
+  - Free model
+  quotas:
+  - models: All :free models combined
+    note: The per-minute limit differs between official pages (5 on the rate-limit page, 20 in the FAQ and models page); single concurrent request, low-priority queue; 429 when exceeded
+  terms:
+  - Creating fake accounts and circumventing usage limits or billing are prohibited (4.2)
+  - Services primarily for pornographic content or adult AI companionship are prohibited (4.2)
+  - Prompts and responses are not stored by Routeway, but upstream providers may store and use them under their own policies (7.1, 11.1)
+  - Free models are for development and testing only and may be removed at any time, with no availability guarantee

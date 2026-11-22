@@ -1,0 +1,74 @@
+id: gonka-broker
+name: Gonka Broker
+homepage: https://gonkabroker.com
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 去中心化算力网络 Gonka 的美元计费网关，验证手机号后每月赠送至少 100 万 token 免费额度，可用于全部模型，无需信用卡。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://proxy.gonkabroker.com/v1
+  anthropic_base_url: https://proxy.gonkabroker.com
+  models_url: https://proxy.gonkabroker.com/v1/models
+  models_access: quota
+signup:
+  url: https://app.gonkabroker.com/signup
+  requires:
+  - email
+  - phone
+  min_age: 18
+  notes: 可用邮箱或 Google 注册；免费额度需用短信验证码验证手机号，每个号码只能领一份，不接受网络电话和座机号；无需信用卡。官方写明免费额度“在你的账户可用时”发放，并非所有账户都能领到。
+quotas:
+- unit: tokens
+  amount: 1000000
+  period: month
+  scope: account
+  models: 全部模型
+  condition: 已验证手机号
+  note: 按最贵模型计算至少 100 万 token，便宜模型折算更多；每个自然月初重新发放，未用完的不累积，官方未写明重置时区；只用免费额度时另有较低的每分钟请求上限，可用 /test-auth 查看 maxRpm
+  evidence: https://docs.gonkabroker.com/guides/billing-and-deposits/
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://app.gonkabroker.com/
+  key_pattern: ^gnk-prx-
+  quota_api: GET https://proxy.gonkabroker.com/test-auth
+terms:
+- point: 免费额度由平台自行决定发放，可随时调整或取消，发现滥用可收回
+  url: https://app.gonkabroker.com/terms-of-service
+- point: 余额（含免费额度）用完后 Key 自动停用、返回 429，不会自动扣费，除非自行开启自动充值
+  url: https://docs.gonkabroker.com/support/faq/
+- point: 禁止用自己的邀请链接注册新账号；多账号注册者可被移出邀请计划
+  url: https://app.gonkabroker.com/terms-of-service
+- point: 平台不记录、不保存提示词和回复，只保留计费和防滥用所需的元数据
+  url: https://app.gonkabroker.com/terms-of-service
+tags:
+- 每月赠送
+- 永久免费
+sources:
+- https://gonkabroker.com
+- https://gonkabroker.com/free-llm-api/
+- https://docs.gonkabroker.com/guides/billing-and-deposits/
+- https://docs.gonkabroker.com/reference/limits-and-quotas/
+- https://docs.gonkabroker.com/support/faq/
+- https://docs.gonkabroker.com/getting-started/create-api-key/
+- https://app.gonkabroker.com/terms-of-service
+en:
+  summary: USD-billed gateway to the decentralized Gonka GPU network. After phone verification, every account gets at least 1M free tokens a month, usable on any model, no credit card needed.
+  signup_notes: Sign up with email or Google; the free tier requires verifying a mobile number by SMS code, one free tier per number, VoIP and landline numbers not accepted; no credit card needed. The free tier is granted "if available on your account", not guaranteed for every account.
+  tags:
+  - Monthly credits
+  - Always free
+  quotas:
+  - models: All models
+    condition: Verified phone number
+    note: Sized as at least 1M tokens of the most expensive model, more on cheaper ones; granted again at the start of each calendar month with no rollover, reset time zone not stated; free-only accounts also have a lower per-minute request cap, shown as maxRpm by /test-auth
+  terms:
+  - Free credits are granted at their discretion and may be changed, withdrawn or revoked for abuse at any time
+  - When the balance (including free tokens) runs out, keys are blocked with 429; nothing is charged automatically unless you set up auto top-up
+  - Registering extra accounts through your own referral link is prohibited; multi-account registration can lead to exclusion from the referral program
+  - Prompts and completions are not logged or stored; only billing and abuse-prevention metadata is kept

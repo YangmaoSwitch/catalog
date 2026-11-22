@@ -1,0 +1,63 @@
+id: ai-horde
+name: AI Horde
+homepage: https://aihorde.net
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 志愿者贡献显卡的开源社区服务，OpenAI 兼容接口免费调用在线 worker 提供的文本模型，不注册可用匿名 Key 0000000000，但排队优先级最低。
+api:
+  protocol:
+  - openai
+  base_url: https://oai.aihorde.net/v1
+  models_url: https://oai.aihorde.net/v1/models
+  models_access: free
+signup:
+  url: https://aihorde.net/register
+  requires: []
+  min_age: 13
+  notes: 不注册可用匿名 Key 0000000000；注册账号可用 Google、Discord、GitHub 等第三方登录，账号凭 kudos 获得更高排队优先级，贡献算力可赚 kudos
+quotas:
+- unit: requests
+  amount: 90
+  period: minute
+  scope: ip
+  note: 每个地址另限每秒 2 次；同一来源同时进行的请求最多 5 个；没有 kudos 时每次请求的免费输出上限随排队情况在 512 到 4096 token 之间变化，更长的输出需要 kudos
+  evidence: https://haidra-org.github.io/AI-Horde/reference/service_limits/
+overage: blocked
+expires: null
+onboarding:
+  level: L1
+  key_page: https://aihorde.net/register
+terms:
+- point: 请求由志愿者运行的 worker 处理，可用模型、排队和延迟随时变化
+  url: https://oai.aihorde.net/
+- point: kudos 不是货币，禁止换成现实货币，官方可调整 kudos 数量
+  url: https://aihorde.net/terms
+- point: 禁止用于加密货币、NFT 和区块链用途
+  url: https://aihorde.net/terms
+- point: 不得在美国禁运国家使用（United States Legal Compliance）
+  url: https://aihorde.net/terms
+- point: 须年满 13 岁
+  url: https://aihorde.net/terms
+tags:
+- 永久免费
+sources:
+- https://aihorde.net/
+- https://oai.aihorde.net/
+- https://haidra-org.github.io/AI-Horde/tutorial/first_chat_completion/
+- https://haidra-org.github.io/AI-Horde/reference/service_limits/
+- https://aihorde.net/terms
+en:
+  summary: Open-source community service where volunteers share GPUs; the OpenAI-compatible front serves text models from online workers for free, and without signing up you can use the anonymous key 0000000000 at the lowest queue priority.
+  signup_notes: Without registering, use the anonymous key 0000000000; registered accounts can sign in with Google, Discord, GitHub and others, kudos give higher queue priority, and contributing compute earns kudos
+  tags:
+  - Always free
+  quotas:
+  - note: Each address is also limited to 2 per second; at most 5 open requests per source; without kudos the free output cap per request is 512 to 4,096 tokens depending on the queue, and longer replies need kudos
+  terms:
+  - Requests are served by volunteer-run workers; available models, queue and latency change over time
+  - Kudos are not a currency and must not be exchanged for real money; amounts may be adjusted
+  - Use for cryptocurrency, NFT or blockchain purposes is prohibited
+  - Use from countries under US embargo is prohibited (United States Legal Compliance)
+  - Users must be at least 13

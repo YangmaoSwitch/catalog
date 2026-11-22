@@ -1,0 +1,66 @@
+id: vectoree
+name: Vectoree
+homepage: https://vectoree.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 面向编程智能体的后端云，模型网关聚合多家模型；用官方 CLI 登录并关联项目后赠送 5 美元，余额用完需充值。
+api:
+  protocol:
+  - openai
+  base_url: https://vectoree.ai/api/v1
+  models_access: quota
+signup:
+  url: https://vectoree.ai/dashboard/login
+  requires:
+  - email
+  notes: 可用邮箱或 Google 登录；赠送额度要在执行 npx @vectoree/cli login 和 link 关联项目后到账，项目 Key 以 sk-ve-v1- 开头
+quotas:
+- unit: usd
+  amount: 5
+  period: one-time
+  scope: org
+  condition: 用 CLI 登录并关联项目后
+  note: 进入组织钱包，按模型目录价格扣费；官方未写明有效期
+  evidence: https://vectoree.ai/pricing
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_pattern: ^sk-ve-v1-
+terms:
+- point: 钱包余额为零时模型网关调用返回余额不足错误，不会静默扣费
+  url: https://docs.vectoree.ai/billing.md
+- point: 禁止绕过速率限制或安全机制，违规可被暂停（第 5 条）
+  url: https://vectoree.ai/terms
+- point: 不得转售服务（第 4 条）
+  url: https://vectoree.ai/terms
+- point: 接入的 AI 智能体和自动化客户端的行为由账号持有人负责（第 6 条）
+  url: https://vectoree.ai/terms
+- point: 不用客户数据为其他客户训练基础模型（第 7 条）
+  url: https://vectoree.ai/terms
+tags:
+- 新人
+- 聚合
+sources:
+- https://vectoree.ai/
+- https://vectoree.ai/pricing
+- https://docs.vectoree.ai/billing.md
+- https://docs.vectoree.ai/faq.md
+- https://vectoree.ai/terms
+en:
+  summary: Backend cloud for coding agents whose model gateway aggregates models from several vendors; $5 is credited after you log in and link a project with the official CLI, and the wallet must be topped up once it runs out.
+  signup_notes: Sign in with email or Google; the credit arrives after running npx @vectoree/cli login and link to attach a project, and project keys start with sk-ve-v1-
+  tags:
+  - New users
+  - Aggregator
+  quotas:
+  - condition: After logging in and linking a project with the CLI
+    note: Goes into the organization wallet and is deducted at catalog prices; no expiry is stated
+  terms:
+  - Gateway calls return an insufficient-balance error when the wallet is empty, with no silent charge
+  - Bypassing rate limits or security is prohibited and may lead to suspension (section 5)
+  - The service must not be resold (section 4)
+  - The account holder is responsible for connected AI agents and automated clients (section 6)
+  - Customer data is not used to train foundation models for other customers (section 7)

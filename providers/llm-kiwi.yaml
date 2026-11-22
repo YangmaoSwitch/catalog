@@ -1,0 +1,60 @@
+id: llm-kiwi
+name: LLM.kiwi
+homepage: https://llm.kiwi
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 免费的 OpenAI 兼容接口，提供自动路由模型 auto 和克罗地亚语模型 hrllm，无需信用卡，受限速和合理使用限制。
+api:
+  protocol:
+  - openai
+  base_url: https://api.llm.kiwi/v1
+  models_access: free
+  models:
+  - auto
+  - hrllm
+signup:
+  url: https://llm.kiwi/login
+  requires: []
+  notes: 官方页面未写明登录方式；无需信用卡。免费计划最多 3 个有效 API Key
+quotas:
+- unit: requests
+  amount: null
+  period: minute
+  scope: account
+  note: 官方只说明有按分钟的速率限制，未公布具体数值；超出返回 429
+  evidence: https://docs.llm.kiwi/limits.md
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://llm.kiwi/dashboard
+  key_pattern: ^sk_kiwi_
+terms:
+- point: 不要创建多个 API Key 来规避限额，否则可能被限制访问
+  url: https://docs.llm.kiwi/limits.md
+- point: 禁止规避速率限制、安全系统或账号限制（第 5 条）
+  url: https://llm.kiwi/terms-of-service
+- point: auto 背后的实际模型可能随时变化，不要依赖其固定对应某个模型
+  url: https://docs.llm.kiwi/models
+tags:
+- 永久免费
+sources:
+- https://llm.kiwi/pricing
+- https://docs.llm.kiwi/
+- https://docs.llm.kiwi/limits.md
+- https://docs.llm.kiwi/models
+- https://docs.llm.kiwi/faq.md
+- https://llm.kiwi/terms-of-service
+en:
+  summary: Free OpenAI-compatible API with the auto router model and the Croatian-focused hrllm model, no credit card, subject to rate limits and fair use.
+  signup_notes: Sign-in methods are not stated on the official pages; no credit card needed. Up to 3 active API keys on the free plan
+  tags:
+  - Always free
+  quotas:
+  - note: Only per-minute rate limits are mentioned, without published numbers; 429 when exceeded
+  terms:
+  - Do not create many API keys to evade limits; this may lead to access restrictions
+  - Circumventing rate limits, safety systems or account restrictions is prohibited (section 5)
+  - The model behind auto may change at any time; do not rely on it mapping to a fixed model

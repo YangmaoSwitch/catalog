@@ -1,0 +1,52 @@
+id: hpc-ai
+name: HPC-AI Model APIs
+homepage: https://www.hpc-ai.com/model-apis
+region: global
+api_usable: true
+status: unconfirmed
+last_verified: '2026-11-22'
+summary: 新加坡 GPU 云厂商的模型 API 服务，页面有“免费试用”入口，文档称注册和充值可获代金券，但未写明金额。
+api:
+  protocol:
+  - openai
+  base_url: https://api.hpc-ai.com/inference/v1
+  models_access: paid
+signup:
+  url: https://www.hpc-ai.com/account/signup
+  requires:
+  - email
+  notes: 可用邮箱注册（需验证邮箱）或 Google 账号登录。
+quotas:
+- unit: usd
+  amount: null
+  period: one-time
+  scope: account
+  condition: 新注册账号
+  note: 快速入门文档称“注册、充值即可获得代金券”，具体金额以官网首页为准，但首页未写明；模型 API 页的“免费试用”说明为折叠内容，未能读到
+  evidence: https://www.hpc-ai.com/doc/docs/quickstart
+overage: manual
+expires: null
+onboarding:
+  level: L2
+  key_page: https://www.hpc-ai.com/models-console/api-key
+terms:
+- point: 扣费顺序为先用代金券（先到期先用），再用月度额度，最后扣余额；余额不可提现
+  url: https://www.hpc-ai.com/doc/docs/billing/
+tags:
+- 试用
+sources:
+- https://www.hpc-ai.com/model-apis
+- https://www.hpc-ai.com/pricing
+- https://www.hpc-ai.com/doc/docs/quickstart
+- https://www.hpc-ai.com/doc/docs/Model-APIs/User-Guides/QuickStart/
+- https://www.hpc-ai.com/doc/docs/billing/
+en:
+  summary: Model API service from a Singapore GPU cloud; the page has a "Start Free Trial" button and the docs say signing up and topping up earn vouchers, but no amount is given.
+  signup_notes: Sign up with email (email verification required) or a Google account.
+  tags:
+  - Trial
+  quotas:
+  - condition: New accounts
+    note: The quickstart says you "sign up, top up, and receive vouchers" and points to the home page for amounts, which does not state them; the Model APIs free-trial FAQ is collapsed and could not be read
+  terms:
+  - Billing uses vouchers first (earliest expiry first), then monthly credits, then balance; balance cannot be withdrawn

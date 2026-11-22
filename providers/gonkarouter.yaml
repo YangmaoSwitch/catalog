@@ -1,0 +1,63 @@
+id: gonkarouter
+name: GonkaRouter
+homepage: https://gonkarouter.io
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 基于去中心化算力网络 Gonka 的模型网关，新账号赠送 100 万 token，无需信用卡。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://api.gonkarouter.io/v1
+  anthropic_base_url: https://api.gonkarouter.io
+  models_access: quota
+  models:
+  - zai-org/GLM-5.3-Flash
+  - deepseek-ai/DeepSeek-V4-Flash-0731
+  - MiniMaxAI/MiniMax-M2.7
+signup:
+  url: https://gonkarouter.io/dashboard
+  requires:
+  - email
+  min_age: 18
+  notes: 可用邮箱或 Google 登录，新账号自动获得赠送额度，无需信用卡。
+quotas:
+- unit: tokens
+  amount: 1000000
+  period: one-time
+  scope: account
+  models: 全部模型
+  condition: 新账号
+  note: 赠送额度先于付费余额扣除；官方未写明有效期
+  evidence: https://gonkarouter.io/pricing
+overage: unknown
+expires: null
+onboarding:
+  level: L2
+  key_page: https://gonkarouter.io/dashboard
+terms:
+- point: 禁止绕过限流或安全机制；平台可对滥用账户限流、暂停或终止访问（第 4、5 条）
+  url: https://gonkarouter.io/terms-of-service
+- point: 所请求模型不可用时默认自动换用其他模型，响应头 X-Gonka-Fallback 会标明；加请求头 X-Gonka-No-Fallback 可关闭
+  url: https://gonkarouter.io/docs
+tags:
+- 新人
+sources:
+- https://gonkarouter.io
+- https://gonkarouter.io/pricing
+- https://gonkarouter.io/docs
+- https://gonkarouter.io/terms-of-service
+en:
+  summary: Model gateway on the decentralized Gonka GPU network. New accounts get 1M free tokens, no credit card needed.
+  signup_notes: Sign in with email or Google; new accounts receive the free tokens automatically, no credit card needed.
+  tags:
+  - New users
+  quotas:
+  - models: All models
+    condition: New accounts
+    note: Free tokens are spent before any paid balance; no expiry is stated
+  terms:
+  - Bypassing rate limits or security mechanisms is prohibited; abusive accounts may be throttled, suspended or terminated (sections 4, 5)
+  - If the requested model cannot serve, the request falls back to another model by default, named in the X-Gonka-Fallback header; send X-Gonka-No-Fallback to turn this off

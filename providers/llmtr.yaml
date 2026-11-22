@@ -1,0 +1,74 @@
+id: llmtr
+name: LLMTR
+homepage: https://llmtr.com
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 土耳其的模型聚合网关，目录中标为免费的模型（如 Nemotron 3 Ultra、Qwen3.8 27B Free）调用不扣余额，按每日配额限量，邮箱验证码注册即可使用。
+api:
+  protocol:
+  - openai
+  base_url: https://llmtr.com/v1
+  models_url: https://llmtr.com/v1/models
+  models_access: paid
+  free_models:
+  - nvidia/nemotron-3-ultra-550b-a55b
+  - qwen/qwen3.8-27b-free
+  - nvidia/nemotron-3.5-super-vl-free
+  - openai/gpt-oss-safeguard-20b
+  - liquid/lfm3-1.7b-free
+  - parallel/parallel-free
+  free_model_rule: 目录中标为免费、价格为 0 的模型；EVREN 系列价格为 0 是因为要自带 EVREN Key，不算免费；部分免费模型有截止日期（如 liquid/lfm3-1.7b-free 到 2026-12-30、parallel/parallel-free 到 2027-01-04，土耳其时间），名单随时调整
+signup:
+  url: https://llmtr.com
+  requires:
+  - email
+  notes: 用邮箱和一次性验证码注册，免费模型不需要充值；付费模型需先充值 5 或 10 美元起，充值时另收 8% 平台费。
+quotas:
+- unit: requests
+  amount: null
+  period: day
+  scope: account
+  models: 免费模型
+  note: 模型说明写有“每日配额”，但官方未公布具体次数和重置时区
+  evidence: https://llmtr.com/pricing
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_pattern: ^llmtr-
+terms:
+- point: 不得用假身份、自动化或误导手段突破服务限制（第 6 条）
+  url: https://llmtr.com/terms
+- point: 不得转售平台或借此搭建竞争服务（第 6 条）
+  url: https://llmtr.com/terms
+- point: 各模型的数据处理地域、日志保存和是否用于训练不同，敏感数据请先看模型页（第 5 条）
+  url: https://llmtr.com/terms
+- point: 余额不足时请求返回 402 insufficient_credits，不会扣费；已充值金额原则上不退
+  url: https://llmtr.com/docs/billing/
+tags:
+- 免费模型
+- 聚合
+sources:
+- https://llmtr.com/
+- https://llmtr.com/pricing
+- https://llmtr.com/docs/billing/
+- https://llmtr.com/docs/api-keys/
+- https://llmtr.com/docs/faq/
+- https://llmtr.com/terms
+en:
+  summary: Turkish model aggregator gateway. Models marked free in the catalog, such as Nemotron 3 Ultra and Qwen3.8 27B Free, cost nothing within a daily quota; sign up with an email one-time code.
+  signup_notes: Sign up with email and a one-time code; free models need no top-up. Paid models need a top-up from $5 or $10, with an 8% platform fee added at top-up.
+  free_model_rule: Models marked free with a price of 0 in the catalog. EVREN models show 0 because they need your own EVREN key and are not free. Some free models have end dates (liquid/lfm3-1.7b-free until 2026-12-30, parallel/parallel-free until 2027-01-04, Turkey time), and the list changes over time
+  tags:
+  - Free model
+  - Aggregator
+  quotas:
+  - models: Free models
+    note: Model descriptions mention a daily quota, but the exact count and reset time zone are not published
+  terms:
+  - Using fake identities, automation or deceptive techniques to exceed service limits is prohibited (section 6)
+  - Reselling the platform or using it to build a competing service is prohibited (section 6)
+  - Data location, logging and training use differ by model; check the model page before sending sensitive data (section 5)
+  - Requests return 402 insufficient_credits when the balance is short, with no charge; top-ups are generally non-refundable

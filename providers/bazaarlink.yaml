@@ -1,0 +1,110 @@
+id: bazaarlink
+name: BazaarLink
+name_zh: 集聯 BazaarLink
+homepage: https://bazaarlink.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 台湾的模型聚合网关，免费模型每个账户每天 60 个加权单位、每分钟 10 次，充值后翻倍，无需信用卡。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://api.bazaarlink.ai/v1
+  models_url: https://api.bazaarlink.ai/v1/models
+  models_access: paid
+  free_pattern: :free$
+  free_models:
+  - qwen/qwen3.7-flash
+  - stealth/glyph-cluster
+  - nvidia/nemotron-3.5-lightning-free
+  - deepseek/deepseek-v4-flash-0731free
+  - auto:free
+  free_model_rule: 平台按模型授予免费额度，/v1/models 中以 :free 结尾的条目为免费；给付费模型自行加 :free 不会变免费
+signup:
+  url: https://bazaarlink.ai/login
+  requires:
+  - email
+  notes: 注册无需信用卡；登录后在 API 金钥页面创建 sk-bl- 开头的 Key。
+quotas:
+- unit: points
+  amount: 60
+  period: day
+  reset: 00:00 UTC
+  scope: account
+  models: 全部免费模型合计
+  condition: 未充值账户
+  note: 按输入长度加权扣量，4K token 以内扣 1 单位，越长扣得越多（超过 85K 扣 120）；另有按 IP 的限制
+  evidence: https://bazaarlink.ai/free
+- unit: requests
+  amount: 10
+  period: minute
+  scope: account
+  models: 全部免费模型合计
+  condition: 未充值账户
+  note: 滚动 60 秒窗口；每账户最多 2 个并发免费请求，全站免费请求上限每分钟 20 次
+  evidence: https://bazaarlink.ai/free
+- unit: points
+  amount: 120
+  period: day
+  reset: 00:00 UTC
+  scope: account
+  models: 全部免费模型合计
+  condition: 已充值账户（另限每分钟 20 次）
+  evidence: https://bazaarlink.ai/free
+overage: auto_paid
+expires: null
+onboarding:
+  level: L3
+  key_page: https://bazaarlink.ai/keys
+  key_pattern: ^sk-bl-
+  quota_api: GET https://api.bazaarlink.ai/v1/key
+  quota_headers:
+  - x-ratelimit-remaining
+  oauth:
+    authorize_url: https://bazaarlink.ai/auth
+    token_url: https://bazaarlink.ai/api/v1/auth/keys
+    pkce: S256
+    loopback: true
+    docs: https://bazaarlink.ai/docs
+terms:
+- point: '免费额度用完且账户有余额时，默认按付费价格继续计费；请求头加 X-Free-Fallback: false 可改为返回 429'
+  url: https://bazaarlink.ai/docs
+- point: 禁止转售或转让 Key，未经书面同意不得向第三方再分发服务（第 4、16 条）
+  url: https://bazaarlink.ai/en/terms
+- point: 不得在受制裁国家或地区使用（第 4 条）
+  url: https://bazaarlink.ai/en/terms
+- point: 输入可能送第三方内容安全评分，违规、疑似违规或抽样的请求可能保留全文；平台不用请求内容训练模型（第 16 条）
+  url: https://bazaarlink.ai/en/terms
+tags:
+- 免费模型
+- 每日赠送
+- 聚合
+sources:
+- https://bazaarlink.ai/free
+- https://bazaarlink.ai/
+- https://bazaarlink.ai/docs
+- https://bazaarlink.ai/en/terms
+en:
+  summary: Taiwan-based model aggregation gateway. Free models get 60 weighted units per day and 10 requests per minute per account, doubled after a top-up; no credit card needed.
+  signup_notes: No credit card needed to sign up; create a key starting with sk-bl- on the API keys page after signing in.
+  free_model_rule: Free access is granted per model; entries ending in :free in /v1/models are free. Adding :free to a paid model does not make it free
+  tags:
+  - Free model
+  - Daily credits
+  - Aggregator
+  quotas:
+  - models: All free models combined
+    condition: Accounts without credit
+    note: Weighted by input length; up to 4K tokens costs 1 unit, longer inputs cost more (120 above 85K); there is also a per-IP limit
+  - models: All free models combined
+    condition: Accounts without credit
+    note: Rolling 60-second window; at most 2 concurrent free requests per account and 20 free requests per minute site-wide
+  - models: All free models combined
+    condition: Accounts with credit (also 20 per minute)
+  terms:
+  - 'Once the free allowance is used up and the account has credit, requests continue at paid prices by default; send X-Free-Fallback: false to get 429 instead'
+  - Keys may not be resold or transferred, and the service may not be redistributed to third parties without written consent (sections 4, 16)
+  - Use from sanctioned countries or regions is prohibited (section 4)
+  - Inputs may be sent to a third-party content-safety scorer, and violating, suspected or sampled requests may be kept in full; the platform does not train on request content (section 16)

@@ -1,0 +1,76 @@
+id: inception-labs
+name: Inception
+name_zh: Inception Labs（Mercury 扩散模型）
+homepage: https://www.inceptionlabs.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: Mercury 扩散语言模型 API，新账号赠送 1 亿 token，无需付款信息；官方已宣布 API 于 2026-12-28 后停止服务。
+api:
+  protocol:
+  - openai
+  base_url: https://api.inceptionlabs.ai/v1
+  models_access: quota
+  models:
+  - mercury-3
+signup:
+  url: https://platform.inceptionlabs.ai
+  requires:
+  - email
+  notes: 注册 Inception Platform 后在 API Keys 页创建 Key，即可使用赠送 token，无需填写付款信息。本机从中国大陆网络访问 api.inceptionlabs.ai 时被 CloudFront 按国家拦截，官方页面未写明地区限制。
+quotas:
+- unit: tokens
+  amount: 100000000
+  period: one-time
+  scope: account
+  condition: 新用户注册
+  note: 赠送额度用完后需在 Billing 页添加付款方式才能继续使用；服务在 2026-12-28 后停止，届时额度一并失效
+  evidence: https://docs.inceptionlabs.ai/get-started/get-started
+- unit: requests
+  amount: 1000
+  period: minute
+  scope: account
+  condition: 免费档（另限每分钟输入 100 万、输出 10 万 token）
+  evidence: https://docs.inceptionlabs.ai/get-started/rate-limits
+overage: blocked
+expires: '2026-12-28'
+onboarding:
+  level: L2
+  key_page: https://platform.inceptionlabs.ai/dashboard/api-keys
+terms:
+- point: Mercury API 和控制台只服务到 2026-12-28，之后停止响应请求并无法访问平台上的数据
+  url: https://docs.inceptionlabs.ai/support/wind-down.md
+- point: 默认可用你的输入训练模型，可在 API 平台用户设置中关闭“Improve the model for everyone”
+  url: https://www.inceptionlabs.ai/docs/terms-of-use
+- point: 只能用于自己内部、个人用途，不得代表第三方使用；不得转让账号或共享账号、密码
+  url: https://www.inceptionlabs.ai/docs/terms-of-use
+- point: 禁止抓取服务内容，禁止对基础设施造成不合理负载
+  url: https://www.inceptionlabs.ai/docs/terms-of-use
+- point: 不得向美国禁运国家或制裁名单上的人员提供访问
+  url: https://www.inceptionlabs.ai/docs/terms-of-use
+tags:
+- 新人
+- 限时免费
+sources:
+- https://docs.inceptionlabs.ai/get-started/get-started
+- https://docs.inceptionlabs.ai/get-started/rate-limits
+- https://docs.inceptionlabs.ai/support/wind-down.md
+- https://www.inceptionlabs.ai/
+- https://www.inceptionlabs.ai/docs/terms-of-use
+en:
+  summary: API for the Mercury diffusion language models. New accounts get 100 million free tokens with no payment details; the API has been announced to shut down after 2026-12-28.
+  signup_notes: Sign up on the Inception Platform and create a key on the API Keys page to use the free tokens; no payment details needed. From a mainland China network, api.inceptionlabs.ai was blocked by CloudFront by country; the official pages do not state region restrictions.
+  tags:
+  - New users
+  - Limited-time free
+  quotas:
+  - condition: New users on signup
+    note: Add a payment method on the Billing page to continue after the free tokens run out; the service stops after 2026-12-28 and the tokens expire with it
+  - condition: Free tier (also 1M input and 100K output tokens per minute)
+  terms:
+  - The Mercury API and dashboard are available only through 2026-12-28; after that requests stop being served and platform data becomes inaccessible
+  - Your inputs may be used to train models by default; turn off "Improve the model for everyone" in the API platform user settings
+  - For your own internal, personal use only, not on behalf of third parties; accounts and passwords may not be transferred or shared
+  - Scraping the service and placing unreasonable load on its infrastructure are prohibited
+  - Access may not be provided to US-embargoed countries or sanctioned parties

@@ -1,0 +1,66 @@
+id: regolo
+name: Regolo.ai
+homepage: https://regolo.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 意大利云厂商 Seeweb 的欧盟模型推理服务，新用户可免费试用 30 天，期间每天 100 万 token，可用全部 Core 模型，无需信用卡。
+api:
+  protocol:
+  - openai
+  base_url: https://api.regolo.ai/v1
+  models_url: https://api.regolo.ai/v1/models
+  models_access: quota
+signup:
+  url: https://regolo.ai/signup
+  requires:
+  - email
+  notes: 邮箱注册并验证后在控制台 Virtual Keys 页面创建 API Key；免费试用无需信用卡，试用结束后需订阅或改为按量付费（PayPal 支付）。
+quotas:
+- unit: tokens
+  amount: 1000000
+  period: day
+  scope: account
+  models: 全部 Core 对话模型（按模型倍率折算，小模型 ×0.5，大模型最高 ×5）
+  condition: 新用户 30 天免费试用期内
+  expires_days: 30
+  note: 试用期限速更严格；官方未写明每日重置时区
+  evidence: https://regolo.ai/pricing/
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://dashboard.regolo.ai/
+terms:
+- point: 30 天免费订阅每个用户只能享受一次，违规者将被封禁
+  url: https://regolo.ai/terms-and-conditions/
+- point: 登录凭据和 API Key 仅限本人使用，不得转让或交给第三方使用（7.2）
+  url: https://regolo.ai/terms-and-conditions/
+- point: 固定套餐不得转售、再分发或通过 API 代理商用（5.3）
+  url: https://regolo.ai/terms-and-conditions/
+- point: 账号连续 9 个月未使用可能被删除（2.3）
+  url: https://regolo.ai/terms-and-conditions/
+tags:
+- 试用
+- 每日赠送
+sources:
+- https://regolo.ai/pricing/
+- https://regolo.ai/
+- https://docs.regolo.ai/getting-started/sign-up/
+- https://regolo.ai/terms-and-conditions/
+en:
+  summary: EU inference service from Italian cloud provider Seeweb. New users get a free 30-day trial with 1M tokens per day on all Core models; no credit card needed.
+  signup_notes: Sign up with email, verify it, then create an API key under Virtual Keys in the dashboard. The free trial needs no credit card; after it ends you subscribe or switch to pay-as-you-go (paid via PayPal).
+  tags:
+  - Trial
+  - Daily credits
+  quotas:
+  - models: All Core chat models (weighted by a per-model multiplier, ×0.5 for small models up to ×5 for large ones)
+    condition: During the 30-day free trial for new users
+    note: Stricter rate limits apply during the trial; the daily reset time zone is not stated
+  terms:
+  - The 30-day free subscription can be used only once per subscriber; violators are banned
+  - Login credentials and API keys are personal and must not be transferred or used by third parties (7.2)
+  - Flat-rate plans may not be resold, redistributed or proxied commercially (5.3)
+  - Accounts unused for 9 months may be deleted (2.3)

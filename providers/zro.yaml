@@ -1,0 +1,71 @@
+id: zro
+name: Zro (MoonMath.ai)
+homepage: https://zro.moonmath.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 面向编程智能体的开源模型推理接口，免费计划每天可免费使用 DeepSeek V4.1 Flash，额度每日重置，官方未公布具体数量。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://zro.moonmath.ai/v1
+  anthropic_base_url: https://zro.moonmath.ai
+  models_access: paid
+  free_models:
+  - deepseek-v4.1-flash
+signup:
+  url: https://zro.moonmath.ai/sign-up
+  requires:
+  - email
+  notes: 可用邮箱、Google 或 GitHub 注册。
+quotas:
+- unit: tokens
+  amount: null
+  period: day
+  scope: account
+  models: deepseek-v4.1-flash
+  condition: 免费计划
+  note: 定价页写“DeepSeek V4.1 Flash 每日免费用量，每天重置”，未公布数量和重置时区
+  evidence: https://zro.moonmath.ai/pricing
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_pattern: ^sk-
+terms:
+- point: 每个账号只能对应一个人或一个组织，禁止注册多个账号获取额外免费额度、试用或赠送
+  url: https://zro.moonmath.ai/terms
+- point: 禁止转售或转授 Zro 推理访问及 API Key，禁止与第三方共享
+  url: https://zro.moonmath.ai/terms
+- point: 不保留请求内容，不用于训练
+  url: https://zro.moonmath.ai/terms
+- point: 推理请求经欧盟网关，可能在美国或欧洲处理
+  url: https://zro.moonmath.ai/terms
+tags:
+- 每日赠送
+- 免费模型
+sources:
+- https://zro.moonmath.ai/
+- https://zro.moonmath.ai/pricing
+- https://zro.moonmath.ai/docs/models
+- https://zro.moonmath.ai/docs/plans
+- https://zro.moonmath.ai/docs/quickstart
+- https://zro.moonmath.ai/llms.txt
+- https://zro.moonmath.ai/terms
+en:
+  summary: Open-model inference API for coding agents; the free plan includes daily free usage of DeepSeek V4.1 Flash that resets every day, with the amount not published.
+  signup_notes: Sign up with email, Google or GitHub.
+  tags:
+  - Daily credits
+  - Free model
+  quotas:
+  - models: deepseek-v4.1-flash
+    condition: Free plan
+    note: The pricing page says "free daily usage on DeepSeek V4.1 Flash, resets every day" without giving the amount or reset time zone
+  terms:
+  - One account per person or organization; multiple accounts to obtain extra plan allowances, free trials, credits or promotions are prohibited
+  - Reselling or sublicensing Zro inference access or API keys, or sharing them with third parties, is prohibited
+  - Request content is not retained and not used for training
+  - Inference requests pass through an EU gateway and may be processed in the US or Europe

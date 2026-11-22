@@ -1,0 +1,61 @@
+id: sea-lion
+name: SEA-LION API
+homepage: https://sea-lion.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 新加坡 AI Singapore 的东南亚语言模型 API，用 Google 账号登录后可免费申请一把试用 Key，每人每分钟 10 次请求，面向概念验证。
+api:
+  protocol:
+  - openai
+  base_url: https://api.sea-lion.ai/v1
+  models_access: free
+  models:
+  - aisingapore/Qwen-SEA-LION-v4.5-27B-IT
+  - aisingapore/Llama-SEA-LION-v3.5-70B-R
+signup:
+  url: https://playground.sea-lion.ai/
+  requires:
+  - google
+  notes: 用 Google 账号登录 SEA-LION Playground，在 API Key 管理页点“Create New Trial API Key”；每个用户只能建 1 把 Key，Key 只显示一次。不需要信用卡；未成年人或依法不得使用者不能使用。
+quotas:
+- unit: requests
+  amount: 10
+  period: minute
+  scope: account
+  models: 全部模型
+  note: 官方称免费 API 仅用于概念验证，不适合生产，也不提供提额；可用模型以 /v1/models 返回为准
+  evidence: https://docs.sea-lion.ai/guides/inferencing/api
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://playground.sea-lion.ai/key-manager
+terms:
+- point: 免费 API 只用于概念验证，有速率限制，不承诺生产可用；需要更高吞吐请改用云平台合作方
+  url: https://docs.sea-lion.ai/overview/readme/faq.md
+- point: 官方可将输入输出内容用于提供、维护、开发和改进服务
+  url: https://sea-lion.ai/terms-of-use/
+- point: 不得向第三方透露账号信息，不得绕过平台的防护措施
+  url: https://sea-lion.ai/terms-of-use/
+tags:
+- 试用
+- 免费模型
+sources:
+- https://docs.sea-lion.ai/guides/inferencing/api
+- https://docs.sea-lion.ai/overview/readme/faq.md
+- https://sea-lion.ai/terms-of-use/
+en:
+  summary: AI Singapore's Southeast Asian language model API. Sign in with Google to create one free trial key, limited to 10 requests per minute per user and intended for proofs of concept.
+  signup_notes: Sign in to SEA-LION Playground with a Google account and click "Create New Trial API Key" on the API key page; each user can create only one key and it is shown once. No credit card needed; minors and people barred by law may not use it.
+  tags:
+  - Trial
+  - Free model
+  quotas:
+  - models: All models
+    note: The free API is for proofs of concept only, not production, and limits cannot be raised; check /v1/models for the available models
+  terms:
+  - The free API is for proofs of concept only and is rate-limited with no production commitment; use a cloud partner for higher throughput
+  - Inputs and outputs may be used to provide, maintain, develop and improve the service
+  - Do not disclose account details to third parties or circumvent the platform's protective measures

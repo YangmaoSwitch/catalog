@@ -1,0 +1,73 @@
+id: anyapi
+name: AnyAPI
+homepage: https://anyapi.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 聚合网关，免费计划每天赠送 10 万 AnyToken，UTC 零点重置，可调用免费模型和基础模型，无需信用卡。
+api:
+  protocol:
+  - openai
+  base_url: https://api.anyapi.ai/v1
+  models_access: paid
+  free_pattern: :free$
+  free_models:
+  - qwen/qwen3.8-27b:free
+  free_model_rule: 模型 ID 以 :free 结尾的模型价格为 0；免费模型名单随时调整
+signup:
+  url: https://dash.anyapi.ai/
+  requires:
+  - email
+  min_age: 18
+  notes: 免费计划无需信用卡
+quotas:
+- unit: credits
+  amount: 100000
+  period: day
+  reset: 00:00 UTC
+  scope: account
+  models: 免费计划可用的免费模型和基础模型
+  note: 单位为平台计费单位 AnyToken，不是模型 token；当天未用完不累积
+  evidence: https://anyapi.ai/terms-of-service
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://dash.anyapi.ai/
+terms:
+- point: 免费计划每人或每个法人只能有一个账号，官方会用设备、支付、网络和行为信号识别重复账号并撤销其免费额度（第 9 条）
+  url: https://anyapi.ai/terms-of-service
+- point: 禁止多账号，包括用多个邮箱、别名、关联实体或脚本自动注册来绕过免费计划和限额（第 13 条）
+  url: https://anyapi.ai/terms-of-service
+- point: 官方可随时调整、限制或停止免费计划，不另行通知（第 9 条）
+  url: https://anyapi.ai/terms-of-service
+- point: 禁止用服务生成数据集或训练语料，禁止转售（4.3）
+  url: https://anyapi.ai/terms-of-service
+tags:
+- 聚合
+- 每日赠送
+- 免费模型
+sources:
+- https://anyapi.ai/pricing
+- https://anyapi.ai/ai-models
+- https://anyapi.ai/ai-models/qwen-qwen3-8-27b-free
+- https://docs.anyapi.ai/
+- https://docs.anyapi.ai/get-started/faq.md
+- https://anyapi.ai/terms-of-service
+en:
+  summary: Aggregator gateway; the free plan grants 100,000 AnyTokens a day, reset at 00:00 UTC, for free and basic models, no credit card needed.
+  signup_notes: The free plan needs no credit card
+  free_model_rule: Models whose IDs end in :free are priced at 0; the list of free models changes over time
+  tags:
+  - Aggregator
+  - Daily credits
+  - Free model
+  quotas:
+  - models: Free and basic models available on the free plan
+    note: The unit is the platform's billing unit AnyToken, not model tokens; unused allowance does not carry over
+  terms:
+  - The free plan is limited to one account per individual or legal entity; duplicate accounts are detected by device, payment, network and behavioural signals and lose their free credits (section 9)
+  - Multiple accounts are prohibited, including via several emails, aliases, related entities or scripted sign-ups to get around the free plan or limits (section 13)
+  - The free plan may be changed, limited or discontinued at any time without notice (section 9)
+  - Using the service to build datasets or training corpora, or reselling it, is prohibited (4.3)

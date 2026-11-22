@@ -1,0 +1,66 @@
+id: hyperbolic
+name: Hyperbolic
+homepage: https://hyperbolic.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 美国 GPU 云平台的模型推理服务，免费档个人账号验证手机号后可调用接口并获赠 1 美元额度。
+api:
+  protocol:
+  - openai
+  base_url: https://api.hyperbolic.ai/inference/v1
+  models_access: quota
+  models:
+  - glm-5.3-flash
+  - glm-5.3
+  - kimi-k3
+  - minimax-m3
+  - deepseek-v4.1-flash
+  - deepseek-v4-flash-0731
+  - nemotron-3-ultra-550b-a55b
+  - step-5-preview
+  - mimo-v2.6-flash
+  - hy4-preview
+  - qwen3.8-27b
+signup:
+  url: https://app.hyperbolic.ai
+  requires:
+  - email
+  - phone
+  notes: 免费档个人账号须验证手机号才能调用推理接口，已在其他 Hyperbolic 账号验证过的号码不算；也可一次性充值 5 美元升级 Pro 档。旧接口 api.hyperbolic.xyz/v1 已停用。
+quotas:
+- unit: usd
+  amount: 1
+  period: one-time
+  scope: account
+  condition: 免费档个人账号验证手机号
+  evidence: https://hyperbolic.ai/docs/inference/overview
+  note: 按 token 从余额扣费，余额为零后返回 402
+- unit: requests
+  amount: 60
+  period: minute
+  scope: account
+  condition: 免费档
+  evidence: https://hyperbolic.ai/docs/general/account-management
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://app.hyperbolic.ai/settings/api-keys
+  key_pattern: ^sk_live_
+tags:
+- 新人
+sources:
+- https://hyperbolic.ai/docs/inference/overview
+- https://hyperbolic.ai/docs/inference/quickstart
+- https://hyperbolic.ai/docs/general/account-management
+en:
+  summary: Model inference from a US GPU cloud. Free-tier personal accounts can call the API after verifying a phone number, which also adds a $1 credit.
+  signup_notes: Free-tier personal accounts must verify a phone number to use inference; a number already verified on another Hyperbolic account does not count. A one-time $5 deposit upgrades to Pro instead. The old endpoint api.hyperbolic.xyz/v1 is decommissioned.
+  tags:
+  - New users
+  quotas:
+  - condition: Free-tier personal account verifies a phone number
+    note: Billed per token from the balance; 402 once the balance reaches zero
+  - condition: Free tier

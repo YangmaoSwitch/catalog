@@ -1,0 +1,73 @@
+id: nous-portal
+name: Nous Portal
+homepage: https://portal.nousresearch.com
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: Nous Research 的模型聚合门户，免费计划可调用名称以 :free 结尾的免费模型，按标准限速。
+api:
+  protocol:
+  - openai
+  base_url: https://inference-api.nousresearch.com/v1
+  models_url: https://inference-api.nousresearch.com/v1/models
+  models_access: paid
+  free_pattern: :free$
+  free_models:
+  - meituan/longcat-2.5:free
+  - qwen/qwen4-max:free
+  - stepfun/step-3.7-flash:free
+  - tencent/hy4-flash:free
+  - upstage/solar-mini4:free
+  free_model_rule: 模型 ID 以 :free 结尾；免费模型名单随时调整
+signup:
+  url: https://portal.nousresearch.com/login
+  requires:
+  - email
+  min_age: 18
+  notes: 免费计划只能用免费模型；付费模型需充值额度。官方可能要求身份或支付方式验证后才发放试用或额度。
+quotas:
+- unit: requests
+  amount: null
+  period: minute
+  scope: account
+  models: :free 模型
+  condition: 免费计划
+  note: 官方只写明"标准限速"，未公布具体数值
+  evidence: https://portal.nousresearch.com/
+overage: blocked
+expires: null
+onboarding:
+  level: L1
+terms:
+- point: 每个客户只能持有一个账号（5.1）
+  url: https://portal.nousresearch.com/terms
+- point: 禁止自动化注册，禁止用多个账号获取额外试用、额度或绕过限速（10.1）
+  url: https://portal.nousresearch.com/terms
+- point: 未开启 Privacy Mode 时，输入和输出可被用于训练模型，并可能提供给第三方（12.3）
+  url: https://portal.nousresearch.com/terms
+- point: 未经书面同意，不得转售或向第三方提供服务（10.2）
+  url: https://portal.nousresearch.com/terms
+tags:
+- 免费模型
+- 聚合
+sources:
+- https://portal.nousresearch.com/
+- https://portal.nousresearch.com/models
+- https://portal.nousresearch.com/terms
+en:
+  summary: Model aggregation portal from Nous Research. The free plan can call free models whose IDs end in :free, under standard rate limits.
+  signup_notes: The free plan covers free models only; paid models need credits. Identity or payment-method verification may be required before trials or credits are granted.
+  free_model_rule: Model ID ends in :free; the list of free models changes over time
+  tags:
+  - Free model
+  - Aggregator
+  quotas:
+  - models: :free models
+    condition: Free plan
+    note: Only "standard rate limits" are stated; no figures are published
+  terms:
+  - Each client may hold only one account (5.1)
+  - Automated sign-ups and multiple accounts to get extra trials, credits or capacity or to get around rate limits are prohibited (10.1)
+  - Unless Privacy Mode is on, inputs and outputs may be used to train models and may be made available to third parties (12.3)
+  - The service may not be resold or provided to third parties without written consent (10.2)

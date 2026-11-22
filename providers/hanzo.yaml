@@ -1,0 +1,89 @@
+id: hanzo
+name: Hanzo
+homepage: https://hanzo.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 美国 Hanzo AI 的模型平台，免费计划每天可通过 API 调用 enso-auto 路由模型 50 次，另有 Kai 决策接口每天 50 次，无需信用卡。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://api.hanzo.ai/v1
+  anthropic_base_url: https://api.hanzo.ai
+  models_url: https://api.hanzo.ai/v1/models
+  models_access: paid
+  free_models:
+  - enso-auto
+signup:
+  url: https://platform.hanzo.ai/signup
+  requires:
+  - email
+  min_age: 18
+  notes: 可用邮箱验证码、Google 或 GitHub 登录，也可用钱包签名注册；注册和创建 Key 都不需要信用卡。
+quotas:
+- unit: requests
+  amount: 50
+  period: day
+  scope: account
+  models: enso-auto
+  condition: 个人账号的免费计划
+  note: 用完返回 429（free_plan_cap），响应里的 resets_at 给出重置时间；官方未写明时区
+  evidence: https://docs.hanzo.ai/docs/agents.md
+- unit: requests
+  amount: 50
+  period: day
+  scope: account
+  models: kai（/v1/decisions 决策接口，不是对话接口）
+  condition: 个人账号的免费计划
+  evidence: https://docs.hanzo.ai/docs/agents.md
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://platform.hanzo.ai
+  key_pattern: ^sk-
+  quota_headers:
+  - x-ratelimit-remaining
+  - x-ratelimit-reset
+terms:
+- point: 一人一个账号，不得为绕过限额、封禁或价格开设多个账号（第 2 条）
+  url: https://hanzo.ai/terms
+- point: 不得分享密码或 API Key，不得让他人使用你的账号（第 2 条）
+  url: https://hanzo.ai/terms
+- point: 除官方文档列出的 API、SDK 和工具外，不得用自动化手段访问服务，不得绕过速率限制和用量计量（第 3 条）
+  url: https://hanzo.ai/terms
+- point: API 内容默认不用于训练；对话和编程会话是否用于训练由“帮助改进模型”开关决定，默认不开（第 4、5.4 条）
+  url: https://hanzo.ai/terms
+- point: 免费账号没有绑定卡，额度用完只会被拒绝，不会扣费
+  url: https://docs.hanzo.ai/docs/agents.md
+tags:
+- 永久免费
+- 每日赠送
+sources:
+- https://hanzo.ai/pricing
+- https://platform.hanzo.ai/llms.txt
+- https://platform.hanzo.ai/auth.md
+- https://docs.hanzo.ai/llms.txt
+- https://docs.hanzo.ai/docs/agents.md
+- https://docs.hanzo.ai/docs/credits.md
+- https://hanzo.ai/terms
+en:
+  summary: Model platform from Hanzo AI in the US. The free plan allows 50 API calls a day to the enso-auto router model, plus 50 Kai decisions a day, no credit card needed.
+  signup_notes: Sign in with an email code, Google or GitHub, or register by signing with a wallet; neither sign-up nor creating a key needs a card.
+  tags:
+  - Always free
+  - Daily credits
+  quotas:
+  - models: enso-auto
+    condition: Free plan of a personal account
+    note: Returns 429 (free_plan_cap) when used up, with resets_at in the response; the time zone is not stated
+  - models: kai (the /v1/decisions endpoint, not chat)
+    condition: Free plan of a personal account
+  terms:
+  - One person, one account; accounts must not be opened to get around a limit, suspension or price (section 2)
+  - Passwords and API keys must not be shared, and nobody else may use your account (section 2)
+  - No automated access other than the documented APIs, SDKs and tools, and no getting around rate limits or usage metering (section 3)
+  - API content is not used for training by default; whether chats and coding sessions are used is set by the "Help improve Hanzo's models" switch, off by default (sections 4, 5.4)
+  - A free account has no card on file, so running out only means refusal, never a charge

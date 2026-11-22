@@ -1,0 +1,96 @@
+id: orcarouter
+name: OrcaRouter
+homepage: https://www.orcarouter.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 聚合网关，名称以 -free 结尾的模型和 orcarouter/free 免费调用，未充值账号每分钟 10 次、每天 50 次，需绑定注册较久的 GitHub 账号。
+api:
+  protocol:
+  - openai
+  - anthropic
+  - gemini
+  base_url: https://api.orcarouter.ai/v1
+  anthropic_base_url: https://api.orcarouter.ai
+  models_url: https://api.orcarouter.ai/v1/models
+  models_access: paid
+  free_pattern: -free$
+  free_models:
+  - orcarouter/free
+  free_model_rule: 模型 ID 以 -free 结尾，或使用 orcarouter/free 自动路由；免费模型名单随容量轮换
+signup:
+  url: https://www.orcarouter.ai/register
+  requires:
+  - github
+  notes: 无需信用卡；调用免费模型需在工作区所有者的资料中绑定注册时间较久的 GitHub 账号，或累计充值达到门槛
+quotas:
+- unit: requests
+  amount: 50
+  period: day
+  reset: 00:00 UTC
+  scope: org
+  models: -free 模型和 orcarouter/free
+  condition: 从未充值的工作区
+  note: tencent/hy4-preview-free 单独为每天 250 次、每分钟 50 次；单次请求另有未公布的提示词长度上限
+  evidence: https://docs.orcarouter.ai/routing/free-models.md
+- unit: requests
+  amount: 10
+  period: minute
+  scope: org
+  models: -free 模型和 orcarouter/free
+  condition: 从未充值的工作区
+  evidence: https://docs.orcarouter.ai/routing/free-models.md
+- unit: requests
+  amount: 800
+  period: day
+  reset: 00:00 UTC
+  scope: org
+  models: -free 模型和 orcarouter/free
+  condition: 累计充值满 20 美元的工作区（另限每分钟 20 次）
+  note: 具体数值以官方公开接口 /api/free-package/public 为准，官方会实时调整
+  evidence: https://docs.orcarouter.ai/routing/free-models.md
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://www.orcarouter.ai/console
+  key_pattern: ^sk-orca-
+terms:
+- point: 免费模型额度用完或拥堵时不会自动转到付费模型
+  url: https://docs.orcarouter.ai/routing/free-models.md
+- point: 免费档属于尽力而为，限额实时调整，不适合生产流量
+  url: https://docs.orcarouter.ai/routing/free-models.md
+- point: 速率限制按工作区计算，同一工作区下多个 Key 共用
+  url: https://docs.orcarouter.ai/operations/rate-limits.md
+tags:
+- 聚合
+- 免费模型
+sources:
+- https://www.orcarouter.ai/
+- https://www.orcarouter.ai/pricing
+- https://docs.orcarouter.ai/
+- https://docs.orcarouter.ai/routing/free-models.md
+- https://docs.orcarouter.ai/operations/rate-limits.md
+- https://docs.orcarouter.ai/getting-started/get-api-key.md
+- https://api.orcarouter.ai/api/free-package/public
+en:
+  summary: Aggregator gateway; models whose IDs end in -free and orcarouter/free are free, 10 requests per minute and 50 per day for workspaces that never topped up, with an established GitHub account linked.
+  signup_notes: No credit card needed; free models require the workspace owner to link a GitHub account that has been registered for some time, or reach a lifetime top-up threshold
+  free_model_rule: Model ID ends in -free, or use the orcarouter/free router; the free lineup rotates with capacity
+  tags:
+  - Aggregator
+  - Free model
+  quotas:
+  - models: -free models and orcarouter/free
+    condition: Workspaces that have never topped up
+    note: tencent/hy4-preview-free has its own 250 per day and 50 per minute; an unpublished per-request prompt size cap also applies
+  - models: -free models and orcarouter/free
+    condition: Workspaces that have never topped up
+  - models: -free models and orcarouter/free
+    condition: Workspaces with $20 or more in lifetime top-ups (also 20 per minute)
+    note: Current numbers are published at the public /api/free-package/public endpoint and tuned live
+  terms:
+  - Free models never fall back to paid models when exhausted or congested
+  - The free tier is best effort with limits tuned live and is not meant for production traffic
+  - Rate limits are counted per workspace and shared by all of its keys

@@ -1,0 +1,77 @@
+id: inferaft
+name: Inferaft
+homepage: https://inferaft.com
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 韩国公司运营的编程智能体开源模型推理服务，前 300 个新账号注册送 300 万 GLM 5.3 Flash token，邀请好友双方再各得 300 万。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://inferaft.com/v1
+  anthropic_base_url: https://inferaft.com
+  models_access: paid
+  quota_models:
+  - glm-5.3-flash
+signup:
+  url: https://inferaft.com/signup
+  requires:
+  - email
+  notes: 注册后需验证邮箱才能创建 API Key；付费套餐通过 Paddle 刷卡订阅。
+quotas:
+- unit: tokens
+  amount: 3000000
+  period: one-time
+  scope: account
+  models: glm-5.3-flash
+  condition: 前 300 个新账号（2026-11-22 首页显示剩 250 个）
+  note: 官方未写明有效期；服务条款称免费预览访问在控制台显示的时间结束
+  evidence: https://inferaft.com/llms.txt
+- unit: tokens
+  amount: 3000000
+  period: one-time
+  scope: account
+  models: glm-5.3-flash
+  condition: 邀请好友注册，双方各得
+  evidence: https://inferaft.com/llms.txt
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://inferaft.com/dashboard/keys
+terms:
+- point: 每人一个账号，不得绕过共享限额
+  url: https://inferaft.com/terms
+- point: 不要为绕过限额额外开 API Key，所有 Key 共享工作区的并发上限
+  url: https://inferaft.com/docs
+- point: 免费预览访问在控制台显示的时间结束；所有购买不退款
+  url: https://inferaft.com/terms
+- point: 只存请求元数据和 token 数，不保存提示词和回复正文
+  url: https://inferaft.com/docs
+tags:
+- 新人
+sources:
+- https://inferaft.com/
+- https://inferaft.com/pricing
+- https://inferaft.com/models
+- https://inferaft.com/docs
+- https://inferaft.com/terms
+- https://inferaft.com/llms.txt
+en:
+  summary: Open-model inference service for coding agents run by a Korean company; the first 300 new accounts get 3M GLM 5.3 Flash tokens, and inviting a friend gives both of you 3M more.
+  signup_notes: You must verify your email before creating an API key; paid plans are card subscriptions through Paddle.
+  tags:
+  - New users
+  quotas:
+  - models: glm-5.3-flash
+    condition: First 300 new accounts (250 left on the home page on 2026-11-22)
+    note: No expiry is stated; the terms say free preview access ends at the time shown in your console
+  - models: glm-5.3-flash
+    condition: Invite a friend to sign up; both of you get it
+  terms:
+  - One account per person; do not bypass shared limits
+  - Do not open extra API keys to get around limits; all keys share the workspace concurrency cap
+  - Free preview access ends at the time shown in your console; all purchases are final
+  - Only request metadata and token counts are stored, not prompt or completion bodies

@@ -1,0 +1,120 @@
+id: synap
+name: Synap
+homepage: https://synap402.com
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 开源模型 API 平台，用 Google 或邮箱登录后可免费调用 qwen3-coder-30b，前 7 天每天 10 万 token、50 次请求，之后每天 5 万 token、10 次请求，无需信用卡。
+api:
+  protocol:
+  - openai
+  base_url: https://synap402.com/v1
+  models_url: https://synap402.com/v1/models
+  models_access: paid
+  free_models:
+  - qwen3-coder-30b
+signup:
+  url: https://synap402.com/login.html
+  requires:
+  - email
+  notes: 用 Google 账号或邮箱登录，无需信用卡；在账户页创建 Key，Key 以 sk-pool- 开头
+quotas:
+- unit: tokens
+  amount: 100000
+  period: day
+  reset: 00:00 UTC
+  scope: account
+  models: qwen3-coder-30b
+  condition: 账号开通后前 7 天
+  note: 输入输出合计；每次最多输出 4096 token
+  evidence: https://synap402.com/free.html
+- unit: requests
+  amount: 50
+  period: day
+  reset: 00:00 UTC
+  scope: account
+  models: qwen3-coder-30b
+  condition: 账号开通后前 7 天
+  evidence: https://synap402.com/free.html
+- unit: tokens
+  amount: 50000
+  period: day
+  reset: 00:00 UTC
+  scope: account
+  models: qwen3-coder-30b
+  condition: 第 8 天起
+  evidence: https://synap402.com/free.html
+- unit: requests
+  amount: 10
+  period: day
+  reset: 00:00 UTC
+  scope: account
+  models: qwen3-coder-30b
+  condition: 第 8 天起
+  evidence: https://synap402.com/free.html
+- unit: requests
+  amount: 10
+  period: minute
+  scope: key
+  models: qwen3-coder-30b
+  evidence: https://synap402.com/free.html
+- unit: tokens
+  amount: 300000
+  period: day
+  reset: 00:00 UTC
+  scope: ip
+  models: qwen3-coder-30b
+  note: 同一网络地址另限每天 150 次请求；账号和网络地址哪个先用完以哪个为准；全体免费用户每日总量也有上限
+  evidence: https://synap402.com/api/account/free-tier
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://synap402.com/account.html#keys
+  key_pattern: ^sk-pool-
+  quota_api: https://synap402.com/api/account/free-tier
+terms:
+- point: 一人一个账号，不得共享 API Key（Accounts）
+  url: https://synap402.com/terms.html
+- point: 不得绕过速率限制和额度（Acceptable use）
+  url: https://synap402.com/terms.html
+- point: 免费 Key 请求其他模型返回 402 和充值链接，不会自动扣费
+  url: https://synap402.com/free.html
+- point: 不用提示词训练模型，API 请求不保存提示词和回答文本
+  url: https://synap402.com/
+- point: 免费模型只在平台自营 GPU 上运行，没有在线节点时返回 503
+  url: https://synap402.com/free.html
+tags:
+- 免费模型
+- 每日赠送
+sources:
+- https://synap402.com/
+- https://synap402.com/free.html
+- https://synap402.com/api/account/free-tier
+- https://synap402.com/terms.html
+en:
+  summary: Open-model API platform; after signing in with Google or email you can call qwen3-coder-30b for free, 100K tokens and 50 requests a day for the first 7 days, then 50K tokens and 10 requests a day, no credit card needed.
+  signup_notes: Sign in with a Google account or email, no credit card; create a key on the account page, keys start with sk-pool-
+  tags:
+  - Free model
+  - Daily credits
+  quotas:
+  - models: qwen3-coder-30b
+    condition: First 7 days after the account starts
+    note: Input and output counted together; at most 4,096 output tokens per request
+  - models: qwen3-coder-30b
+    condition: First 7 days after the account starts
+  - models: qwen3-coder-30b
+    condition: From day 8
+  - models: qwen3-coder-30b
+    condition: From day 8
+  - models: qwen3-coder-30b
+  - models: qwen3-coder-30b
+    note: The same network address is also limited to 150 requests a day; whichever of the account or network allowance runs out first applies; total free capacity across all users is also capped daily
+  terms:
+  - One person, one account; API keys must not be shared (Accounts)
+  - Rate limits and quotas must not be circumvented (Acceptable use)
+  - A free key asking for another model gets a 402 with a top-up link, not a charge
+  - Prompts are not used for training, and prompt and completion text of API requests is not stored
+  - The free model runs only on GPUs the platform operates; 503 when none is online

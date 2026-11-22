@@ -1,0 +1,79 @@
+id: kiosapi
+name: Kiosapi.id
+homepage: https://kiosapi.id
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 印度尼西亚的模型网关，免费模型每个账号每天可调用 50 次，不扣余额，UTC 零点重置，需验证邮箱。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://api.kiosapi.id/v1
+  anthropic_base_url: https://api.kiosapi.id
+  models_url: https://api.kiosapi.id/v1/models
+  models_access: paid
+  free_models:
+  - meta/llama-3.1-8b
+  - qwen/qwen3-30b
+  - zai/glm-4.7-flash
+  - google/gemma-4-26b
+  - aisingapore/sea-lion-27b
+signup:
+  url: https://kiosapi.id/dashboard/keys
+  requires:
+  - email
+  notes: 免费额度要求邮箱已验证；付费模型用印尼盾预付余额，支持 QRIS、电子钱包、虚拟账户和银行卡
+quotas:
+- unit: requests
+  amount: 50
+  period: day
+  reset: 00:00 UTC
+  scope: account
+  models: 全部免费模型合计
+  note: 官方写明每天 07:00 WIB 重置；单次输出约 2048 token、输入约 2.4 万字符以内
+  evidence: https://kiosapi.id/docs
+- unit: requests
+  amount: 5
+  period: minute
+  scope: account
+  models: 免费档
+  evidence: https://kiosapi.id/docs
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://kiosapi.id/dashboard/keys
+  key_pattern: ^kios_live_
+terms:
+- point: 每个人或企业只能有一个账号，注册多个账号获取免费额度会导致全部相关账号被停用（第 2 条）
+  url: https://kiosapi.id/terms
+- point: 禁止通过自动化或批量方式滥用免费额度（第 4 条）
+  url: https://kiosapi.id/terms
+- point: 免费档出于善意提供，限额可随时调整或停止（第 6 条）
+  url: https://kiosapi.id/terms
+- point: 不得分享、出售或转让 API Key（第 3 条）
+  url: https://kiosapi.id/terms
+tags:
+- 免费模型
+- 每日赠送
+sources:
+- https://kiosapi.id/pricing
+- https://kiosapi.id/docs
+- https://kiosapi.id/terms
+en:
+  summary: Indonesian model gateway; free models can be called 50 times per account per day without using the balance, reset at 00:00 UTC, with a verified email.
+  signup_notes: The free allowance requires a verified email; paid models use a prepaid rupiah balance via QRIS, e-wallets, virtual accounts or cards
+  tags:
+  - Free model
+  - Daily credits
+  quotas:
+  - models: All free models combined
+    note: Officially resets at 07:00 WIB; output about 2,048 tokens and input about 24k characters per request
+  - models: Free tier
+  terms:
+  - One account per person or business; multiple accounts to get free quota lead to suspension of all related accounts (section 2)
+  - Abusing the free quota through automation or bulk use is prohibited (section 4)
+  - The free tier is offered in good faith and its limits may be changed or stopped at any time (section 6)
+  - API keys must not be shared, sold or transferred (section 3)

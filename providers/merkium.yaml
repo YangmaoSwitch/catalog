@@ -1,0 +1,67 @@
+id: merkium
+name: Merkium
+homepage: https://www.merkium.nl
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 荷兰个人团队的自研模型，当前全部模型通过 API 永久免费，每个 Key 每分钟 30 次请求，无需信用卡。
+api:
+  protocol:
+  - openai
+  base_url: https://chat.merkium.nl/api/v1
+  models_access: free
+  models:
+  - ganymede-1.1
+  - pluto-1.2-flash
+  - pluto-1.2-pro
+  - ceres-1.0
+  - ceres-1.0-pro
+  - pluto-1.1-flash
+  - pluto-1.1-pro
+signup:
+  url: https://chat.merkium.nl/
+  requires:
+  - email
+  min_age: 16
+  notes: 在 chat.merkium.nl 注册登录后到控制台 API 页创建 Key，免费且无需信用卡；运营者是个人，不是注册公司。
+quotas:
+- unit: requests
+  amount: 30
+  period: minute
+  scope: key
+  models: 全部当前模型
+  note: 超限返回 429 并带 Retry-After；官方称当前模型永久免费，之后发布的新模型可能收费
+  evidence: https://www.merkium.nl/docs
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://chat.merkium.nl/console
+terms:
+- point: 服务条款仍是未生效的草案，运营者为个人，不是注册公司
+  url: https://www.merkium.nl/legal
+- point: 隐私政策称用户对话不会用于训练、微调或评估模型
+  url: https://www.merkium.nl/legal
+- point: 当前模型免费，价格可能变化
+  url: https://www.merkium.nl/pricing
+tags:
+- 永久免费
+sources:
+- https://www.merkium.nl/
+- https://www.merkium.nl/pricing
+- https://www.merkium.nl/docs
+- https://www.merkium.nl/docs/authentication
+- https://www.merkium.nl/legal
+en:
+  summary: Self-built models from a small Netherlands-based team; all current models are permanently free through the API at 30 requests per minute per key, no credit card needed.
+  signup_notes: Sign in at chat.merkium.nl and create a key on the Console API tab; it is free with no card. The operator is an individual, not a registered company.
+  tags:
+  - Always free
+  quotas:
+  - models: All current models
+    note: Over the limit you get 429 with Retry-After; current models are stated to be free permanently, while later models may be paid
+  terms:
+  - The terms of service are still an unadopted draft; the operator is an individual, not a registered company
+  - The privacy policy says user conversations are never used to train, fine-tune or evaluate models
+  - Current models are free; pricing may change

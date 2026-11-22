@@ -1,0 +1,58 @@
+id: bytez
+name: Bytez
+homepage: https://bytez.com
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 模型 API 平台，免费计划每 4 周赠送 1 美元额度，可调用 7B 以内的开源模型和各家闭源模型。
+api:
+  protocol:
+  - openai
+  base_url: https://api.bytez.com/models/v2/openai/v1
+  models_access: quota
+signup:
+  url: https://bytez.com/api
+  requires: []
+  notes: 官方页面未写明注册要求；免费计划无月费，开源模型仅限 7B 以内且同时只能跑 1 个请求
+quotas:
+- unit: usd
+  amount: 1
+  period: month
+  scope: account
+  models: 7B 以内开源模型（按推理秒数计费）和闭源模型（按上游价格加 2% 计费）
+  note: 每 4 周刷新一次，额度发放 4 周后过期
+  evidence: https://docs.bytez.com/model-api/docs/billing
+- unit: requests
+  amount: 10
+  period: second
+  scope: account
+  models: 闭源模型
+  condition: 免费计划
+  evidence: https://docs.bytez.com/model-api/docs/billing
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://bytez.com/api
+terms:
+- point: 额度用完后新请求返回 402；自动充值需用户自行开启并绑卡
+  url: https://docs.bytez.com/model-api/docs/billing
+tags:
+- 每月赠送
+sources:
+- https://docs.bytez.com/model-api/docs/billing
+- https://docs.bytez.com/http-reference/examples/openai-compliant/chatCompletionsExample.md
+- https://docs.bytez.com/model-api/docs/understand-the-api.md
+en:
+  summary: Model API platform; the free plan grants $1 of credit every 4 weeks, usable on open models up to 7B and on closed models from major providers.
+  signup_notes: Sign-up requirements are not stated on the official pages; the free plan has no monthly fee, open models are limited to 7B and one concurrent request
+  tags:
+  - Monthly credits
+  quotas:
+  - models: Open models up to 7B (billed per inference second) and closed models (provider price plus 2%)
+    note: Refreshed every 4 weeks; credits expire 4 weeks after they are granted
+  - models: Closed models
+    condition: Free plan
+  terms:
+  - New requests return 402 once credits run out; auto-reload must be turned on by the user with a saved card

@@ -1,0 +1,77 @@
+id: dxnt
+name: DX TOKEN
+name_zh: 地心网络
+homepage: https://www.dxnt.com
+region: cn
+api_usable: true
+status: unconfirmed
+last_verified: '2026-11-22'
+summary: 国内 API 中转平台，免费路由页写明注册送 10 元赠送额度，可按原价调用指定的几个开源模型；关于页另写注册送 100 万 token，两处说法不一致。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://www.dxnt.com/v1
+  anthropic_base_url: https://www.dxnt.com
+  models_access: paid
+  quota_models:
+  - glm-4.7-flash
+  - Qwen3.8-27B
+  - qwen3-vl-30b-a3b
+  - nemotron-3-nano-omni
+  - gemma4-26b-a4b
+signup:
+  url: https://www.dxnt.com/auth/login
+  requires:
+  - phone_cn
+  notes: 登录页只提供微信扫码（关注公众号自动注册）和手机号登录两种方式。
+quotas:
+- unit: cny
+  amount: 10
+  period: one-time
+  scope: account
+  models: 免费路由页列出的模型（glm-4.7-flash、Qwen3.8-27B、qwen3-vl-30b-a3b、nemotron-3-nano-omni、gemma4-26b-a4b）
+  condition: 新注册账号
+  note: 赠送额度按模型原价扣费，用完后扣主余额；其他模型只能用主余额。官方未写明有效期
+  evidence: https://www.dxnt.com/free
+- unit: tokens
+  amount: 1000000
+  period: one-time
+  scope: account
+  condition: 新注册账号
+  note: 关于页常见问题写“注册送 100 万 token 免费额度，无需信用卡”，与免费路由页的 10 元说法不一致，以实际到账为准
+  evidence: https://www.dxnt.com/about
+overage: manual
+expires: null
+onboarding:
+  level: L2
+  key_pattern: ^sk-at-
+terms:
+- point: 余额不足时接口返回 402 insufficient_quota，需在控制台充值
+  url: https://www.dxnt.com/docs
+- point: 页脚“服务条款”“隐私政策”链接都指向关于页，未找到单独的条款正文
+  url: https://www.dxnt.com/about
+tags:
+- 新人
+- 聚合
+sources:
+- https://www.dxnt.com/free
+- https://www.dxnt.com/about
+- https://www.dxnt.com/docs
+- https://www.dxnt.com/pricing
+- https://www.dxnt.com/auth/login
+en:
+  summary: Chinese API relay platform; its free-route page says new accounts get CNY 10 of bonus credit for a few listed open models at list price, while the about page says 1M free tokens on signup, so the two statements disagree.
+  signup_notes: The login page only offers WeChat QR login (following the official account registers you) and phone-number login.
+  tags:
+  - New users
+  - Aggregator
+  quotas:
+  - models: Models listed on the free-route page (glm-4.7-flash, Qwen3.8-27B, qwen3-vl-30b-a3b, nemotron-3-nano-omni, gemma4-26b-a4b)
+    condition: New accounts
+    note: Bonus credit is charged at the models' list prices and the main balance is used after it runs out; other models only use the main balance. No expiry is stated
+  - condition: New accounts
+    note: The about page FAQ says signup gives 1M free tokens with no credit card, which disagrees with the CNY 10 on the free-route page; check what is actually credited
+  terms:
+  - When the balance runs out the API returns 402 insufficient_quota and you top up in the console
+  - The footer Terms of Service and Privacy Policy links both point to the about page; no separate terms text was found

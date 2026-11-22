@@ -1,0 +1,56 @@
+id: novita
+name: Novita AI
+homepage: https://novita.ai
+region: global
+api_usable: true
+status: unconfirmed
+last_verified: '2026-11-22'
+summary: 开源模型推理与 GPU 云平台，注册账号发放代金券额度，官方文档未写明金额。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://api.novita.ai/openai/v1
+  anthropic_base_url: https://api.novita.ai/anthropic
+  models_url: https://api.novita.ai/openai/v1/models
+  modelsdev: novita-ai
+  models_access: quota
+signup:
+  url: https://novita.ai/user/register
+  requires:
+  - email
+  notes: 可用邮箱或 Google、GitHub 账号注册；部分模型可能要求身份验证。
+quotas:
+- unit: usd
+  amount: null
+  period: one-time
+  scope: account
+  condition: 新注册账号的代金券
+  evidence: https://docs.novita.ai/guides/faq
+  note: 官方文档只提到注册代金券，未写明金额和有效期
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://novita.ai/settings/key-management
+terms:
+- point: 检测到可疑注册（如恶意注册、同一设备注册多个账号）时会自动收回注册代金券
+  url: https://docs.novita.ai/guides/faq
+tags:
+- 新人
+sources:
+- https://novita.ai/pricing
+- https://docs.novita.ai/guides/quickstart
+- https://docs.novita.ai/guides/llm-api
+- https://docs.novita.ai/guides/faq
+- https://docs.novita.ai/guides/llm-rate-limits
+en:
+  summary: Open-model inference and GPU cloud platform; new accounts get a sign-up credit voucher, but the official docs do not state the amount.
+  signup_notes: Sign up with email or a Google or GitHub account; some models may require identity verification.
+  tags:
+  - New users
+  quotas:
+  - condition: Sign-up voucher for new accounts
+    note: The docs only mention a sign-up voucher, without the amount or validity
+  terms:
+  - Sign-up vouchers are revoked automatically when suspicious registration is detected, such as malicious sign-ups or several accounts from the same device

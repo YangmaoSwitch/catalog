@@ -1,0 +1,76 @@
+id: sarvam
+name: Sarvam AI
+homepage: https://www.sarvam.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 印度 Sarvam AI 的模型 API，每个通过验证的新用户注册送 100 卢比额度，永不过期，可用于大模型对话及语音、翻译等全部接口。
+api:
+  protocol:
+  - openai
+  base_url: https://api.sarvam.ai/v1
+  models_url: https://api.sarvam.ai/v1/models
+  modelsdev: sarvam
+  models_access: quota
+signup:
+  url: https://indus.sarvam.ai/key-management
+  requires:
+  - email
+  notes: 注册 Sarvam 控制台后需手动创建 API Key，Key 只显示一次；官方写明“验证用户”才送额度，未说明验证方式。对话接口可用 api-subscription-key 头或 Authorization Bearer；/v1 只提供 sarvam-105b 系列，GLM、Gemma、DeepSeek 等开源模型走 /v2/chat/completions。
+quotas:
+- unit: credits
+  amount: 100
+  period: one-time
+  scope: account
+  condition: 新注册且通过验证的用户
+  note: 1 credit = ₹1（印度卢比），即赠送 ₹100，全部 API 通用，永不过期；用完后返回 402，需自行充值
+  evidence: https://docs.sarvam.ai/api-reference-docs/getting-started/pricing
+- unit: requests
+  amount: 60
+  period: minute
+  scope: account
+  models: sarvam-105b、sarvam-105b-conversations
+  condition: 按量付费档（另 gemma4、glm5.3、deepseekv4.1-flash-1017 为每分钟 50 次）
+  evidence: https://docs.sarvam.ai/api-reference-docs/getting-started/pricing
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://indus.sarvam.ai/key-management
+terms:
+- point: 禁止超出、绕过或操纵速率限制和额度，禁止注册多个账号利用免费方案（10.5(c)）
+  url: https://www.sarvam.ai/terms-of-service
+- point: 禁止批量或用自动化手段创建账号（9(c)）
+  url: https://www.sarvam.ai/terms-of-service
+- point: 免费额度由官方酌情发放，可随时修改、限制或取消，不可转让、不可兑现（5.4）
+  url: https://www.sarvam.ai/terms-of-service
+- point: 不得用服务或输出训练、改进其他 AI 模型，不得转售 API 访问（10.5(a)(d)）
+  url: https://www.sarvam.ai/terms-of-service
+- point: 若用输入输出训练模型，按隐私政策并在需要时征得同意（17.5）
+  url: https://www.sarvam.ai/terms-of-service
+tags:
+- 新人
+sources:
+- https://www.sarvam.ai/api-pricing
+- https://docs.sarvam.ai/api-reference-docs/getting-started/pricing
+- https://docs.sarvam.ai/api-reference-docs/getting-started/quickstart
+- https://docs.sarvam.ai/api-reference-docs/authentication.md
+- https://docs.sarvam.ai/api/token-factory/chat-completions.md
+- https://www.sarvam.ai/terms-of-service
+en:
+  summary: Model API from India's Sarvam AI. Each verified new user gets ₹100 of credit on signup that never expires, usable for LLM chat and all other APIs such as speech and translation.
+  signup_notes: After signing up to the Sarvam dashboard, create an API key manually; it is shown once. Credits go to "verified" users, but the verification method is not stated. Chat accepts the api-subscription-key header or Authorization Bearer; /v1 serves only the sarvam-105b models, while open-weight models such as GLM, Gemma and DeepSeek use /v2/chat/completions.
+  tags:
+  - New users
+  quotas:
+  - condition: New users who pass verification
+    note: 1 credit = ₹1 (Indian rupee), so ₹100 in total, usable across all APIs and never expires; returns 402 when used up, top up yourself to continue
+  - models: sarvam-105b and sarvam-105b-conversations
+    condition: Pay-as-you-go plan (gemma4, glm5.3 and deepseekv4.1-flash-1017 are 50 per minute)
+  terms:
+  - Exceeding, circumventing or manipulating rate limits and quotas, or creating multiple accounts to exploit free plans, is prohibited (10.5(c))
+  - Creating accounts in bulk or by automated means is prohibited (9(c))
+  - Free credits are discretionary and may be changed, limited or withdrawn at any time; they are non-transferable and have no cash value (5.4)
+  - The service or its outputs may not be used to train or improve other AI models, and API access may not be resold (10.5(a)(d))
+  - Any use of inputs and outputs for training follows the privacy policy and requires consent where needed (17.5)

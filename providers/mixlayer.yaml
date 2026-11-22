@@ -1,0 +1,77 @@
+id: mixlayer
+name: Mixlayer
+homepage: https://www.mixlayer.com
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 开源模型推理平台，qwen/qwen3.5-4b-free 输入输出均为 0 元，免费模型不需要预付余额，其余模型按量付费。
+api:
+  protocol:
+  - openai
+  base_url: https://mixlayer.ai/v1
+  models_access: paid
+  free_pattern: '-free$'
+  free_models:
+  - qwen/qwen3.5-4b-free
+  free_model_rule: 模型 ID 以 -free 结尾，价格页标为 FREE；目前只有 qwen/qwen3.5-4b-free
+signup:
+  url: https://console.mixlayer.com/sign-up
+  requires:
+  - email
+  min_age: 18
+  notes: 在控制台注册后到 API Keys 页面创建 Key；免费模型不需要预付余额，官方未写明是否要求绑卡
+quotas:
+- unit: requests
+  amount: null
+  period: minute
+  scope: org
+  models: qwen/qwen3.5-4b-free
+  note: 按组织和模型限制每分钟请求数和 token 数，官方不公布固定数值，可从 x-ratelimit-* 响应头查看；超出返回 429
+  evidence: https://docs.mixlayer.com/credits-and-limits
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://console.mixlayer.com/app/api-keys
+  quota_headers:
+  - x-ratelimit-remaining-requests
+  - x-ratelimit-remaining-tokens
+terms:
+- point: 需年满 18 岁（第 2 条）
+  url: https://www.mixlayer.com/terms-of-service
+- point: 禁止共享账号或登录凭据（4.2）
+  url: https://www.mixlayer.com/terms-of-service
+- point: 不得绕过用量限制，过度或滥用可能被限速、暂停或终止（第 5 条）
+  url: https://www.mixlayer.com/terms-of-service
+- point: 默认不用客户内容训练模型，需用户主动选择加入（第 7 条）
+  url: https://www.mixlayer.com/terms-of-service
+- point: 受美国全面制裁地区不得使用（第 18 条）
+  url: https://www.mixlayer.com/terms-of-service
+- point: 预付账户余额不足时付费模型返回 402，不会自动扣费；自动充值需用户自行设置
+  url: https://docs.mixlayer.com/credits-and-limits
+tags:
+- 免费模型
+sources:
+- https://www.mixlayer.com/pricing
+- https://docs.mixlayer.com/quickstart
+- https://docs.mixlayer.com/credits-and-limits
+- https://docs.mixlayer.com/pricing
+- https://docs.mixlayer.com/api-keys
+- https://www.mixlayer.com/terms-of-service
+en:
+  summary: Open-model inference platform; qwen/qwen3.5-4b-free costs $0 for input and output and needs no prepaid credit, other models are pay-as-you-go.
+  signup_notes: Sign up in the console and create a key on the API Keys page; free models need no prepaid credit, and the docs do not say whether a card is required
+  free_model_rule: Model ID ends in -free and is marked FREE on the pricing page; currently only qwen/qwen3.5-4b-free
+  tags:
+  - Free model
+  quotas:
+  - models: qwen/qwen3.5-4b-free
+    note: Requests and tokens per minute are limited per organization and model; fixed values are not published but are shown in the x-ratelimit-* response headers. 429 when exceeded
+  terms:
+  - Users must be at least 18 (section 2)
+  - Sharing accounts or login credentials is prohibited (4.2)
+  - Usage limits must not be bypassed; excessive or abusive use may be throttled, suspended or terminated (section 5)
+  - Customer content is not used for model training unless the user opts in (section 7)
+  - Use from regions under comprehensive US sanctions is prohibited (section 18)
+  - Paid models return 402 when the prepaid balance is insufficient, with no automatic charge; auto top-up must be set up by the user

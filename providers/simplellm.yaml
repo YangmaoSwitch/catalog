@@ -1,0 +1,77 @@
+id: simplellm
+name: SimpleLLM
+homepage: https://simplellm.eu
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 德国的欧盟境内推理平台，模型 ID 以 free- 开头的免费模型不需要余额即可调用，每个账号同一时间只能运行 1 个免费请求。
+api:
+  protocol:
+  - openai
+  base_url: https://api.simplellm.eu/v1
+  models_access: paid
+  free_pattern: ^free-
+  free_models:
+  - free-gemma-4-E4B
+  - free-Llama-3.1-8B-Instruct
+  free_model_rule: 模型 ID 以 free- 开头（价格为 0）；免费模型名单可能调整
+signup:
+  url: https://app.simplellm.eu/signup
+  requires:
+  - email
+  notes: 邮箱注册后在控制台 API Keys 页创建 Key；免费模型不需要充值。付费模型按 SimpleCredits 预付（1 欧元 = 100 SC）。
+quotas:
+- unit: requests
+  amount: null
+  period: day
+  scope: account
+  models: 全部免费模型合计
+  note: 免费模型另有每小时、每天的请求数和 token 上限，官方未公布具体数值，可调用 /v1/rate-limit 查看当前计数；同一账号所有 Key 合计只能同时运行 1 个免费请求，并发超出返回 429
+  evidence: https://simplellm.eu/docs/limits.html
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://app.simplellm.eu/api-keys
+  quota_api: https://api.simplellm.eu/v1/rate-limit
+  quota_headers:
+  - X-RateLimit-Remaining
+terms:
+- point: 禁止注册或使用多个账号绕过使用限制，特别是免费额度限制（§3(5)）
+  url: https://simplellm.eu/agb
+- point: 免费模型无需余额即可使用，官方保留限制免费模型可用性的权利（§4(7)）
+  url: https://simplellm.eu/agb
+- point: 不用用户数据训练，输入输出不用于改进模型（§9(3)）
+  url: https://simplellm.eu/agb
+- point: 服务处于测试阶段，不承诺可用性，不建议用于关键业务（§2(4)）
+  url: https://simplellm.eu/agb
+- point: 余额不足时付费模型返回 402，免费模型不受影响
+  url: https://simplellm.eu/agb
+tags:
+- 永久免费
+- 免费模型
+sources:
+- https://simplellm.eu/docs/
+- https://simplellm.eu/docs/models.html
+- https://simplellm.eu/docs/limits.html
+- https://simplellm.eu/docs/billing.html
+- https://simplellm.eu/docs/authentication.html
+- https://simplellm.eu/models
+- https://simplellm.eu/agb
+en:
+  summary: German EU-hosted inference platform; free models whose IDs start with free- can be called without credit, with one running free request per account at a time.
+  signup_notes: Sign up with email and create a key on the API Keys page of the dashboard; free models need no top-up. Paid models use prepaid SimpleCredits (1 EUR = 100 SC).
+  free_model_rule: Model ID starts with free- (zero price); the list of free models may change
+  tags:
+  - Always free
+  - Free model
+  quotas:
+  - models: All free models combined
+    note: Free models also have hourly and daily request and token caps whose values are not published; call /v1/rate-limit to see current counters. Only one free request can run at a time across all keys of an account; extra concurrent requests get 429
+  terms:
+  - Creating or using multiple accounts to get around usage limits, in particular free allowances, is prohibited (§3(5))
+  - Free models can be used without credit; the provider may restrict their availability (§4(7))
+  - No training on user data; inputs and outputs are not used to improve models (§9(3))
+  - The service is in beta with no availability commitment and is not meant for business-critical use (§2(4))
+  - Paid models return 402 when credit is insufficient; free models are not affected

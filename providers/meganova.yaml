@@ -1,0 +1,101 @@
+id: meganova
+name: MegaNova AI
+homepage: https://www.meganova.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 以角色扮演模型见长的推理平台，免费注册的 Tier 1 账号每天可免费调用 Manta Mini、Manta Flash、Mistral Small 等 8 个文本模型各 50 次，UTC 零点重置，无需信用卡。
+api:
+  protocol:
+  - openai
+  base_url: https://api.meganova.ai/v1
+  models_url: https://api.meganova.ai/v1/models
+  models_access: paid
+  free_models:
+  - meganova-ai/manta-mini-1.0
+  - meganova-ai/manta-flash-1.0
+  - mistralai/Mistral-Small-3.2-24B-Instruct-2506
+  - Steelskull/L3.3-MS-Nevoria-70b
+  - Sao10K/L3-70B-Euryale-v2.1
+  - Sao10K/L3-8B-Stheno-v3.2
+  - BruhzWater/Sapphira-L3.3-70b-0.1
+  - FallenMerick/MN-Violet-Lotus-12B
+  free_model_rule: Tier 1 可用的免费模型；充值 1 美元升到 Tier 2 后额度提高，并加入 Manta Pro 和 GLM-4.7-Flash
+signup:
+  url: https://www.meganova.ai/register
+  requires:
+  - email
+  notes: Tier 1 免费注册，不需要信用卡；只在官方支持的国家和地区提供服务，用 VPN 或代理从不支持的地区访问属违规。
+quotas:
+- unit: requests
+  amount: 50
+  period: day
+  reset: 00:00 UTC
+  scope: model
+  models: 每个免费文本模型各 50 次
+  condition: Tier 1（免费注册）
+  note: 按账号、按模型计；用完后默认停止，只有在账号里打开“免费额度用完后允许付费”才会转为扣余额
+  evidence: https://docs.meganova.ai/free-model-quota.md
+- unit: requests
+  amount: 500
+  period: day
+  reset: 00:00 UTC
+  scope: model
+  models: Manta Mini、Manta Flash、Stheno、Violet-Lotus 各 500 次；Mistral Small、Nevoria、Euryale、Sapphira 各 300 次；Manta Pro 和 GLM-4.7-Flash 各 50 次
+  condition: Tier 2（充值 1 美元解锁）
+  evidence: https://docs.meganova.ai/free-model-quota.md
+- unit: requests
+  amount: 60
+  period: minute
+  scope: account
+  condition: Tier 1，另限每分钟 20 万 token
+  evidence: https://docs.meganova.ai/tiers/tier-1.md
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+terms:
+- point: 免费模块只用于评估和交互使用，不得用于生产或无人值守的批量任务，高并发使用会被暂停
+  url: https://docs.meganova.ai/legal-docs/terms-of-service.md
+- point: 提交的内容授予平台广泛的使用许可，角色和对话生成内容可被平台使用、出售和授权
+  url: https://docs.meganova.ai/legal-docs/terms-of-service.md
+- point: 不得用自动化手段从服务抓取数据，被封禁后不得设法绕过
+  url: https://docs.meganova.ai/legal-docs/terms-of-service.md
+- point: 只在支持的国家和地区提供服务，用 VPN、代理从不支持的地区访问可能导致封号
+  url: https://docs.meganova.ai/faq/supported-countries.md
+- point: 免费额度的模型范围会根据算力和使用情况调整
+  url: https://docs.meganova.ai/free-model-quota.md
+tags:
+- 永久免费
+- 免费模型
+- 每日赠送
+sources:
+- https://docs.meganova.ai/tiers
+- https://docs.meganova.ai/tiers/tier-1.md
+- https://docs.meganova.ai/free-model-quota.md
+- https://docs.meganova.ai/api-reference/inference-models.md
+- https://docs.meganova.ai/quickstart.md
+- https://docs.meganova.ai/legal-docs/terms-of-service.md
+- https://docs.meganova.ai/faq/supported-countries.md
+en:
+  summary: Inference platform known for role-play models. Free Tier 1 accounts can call 8 text models, including Manta Mini, Manta Flash and Mistral Small, 50 times each per day for free, reset at 00:00 UTC, no credit card needed.
+  signup_notes: Tier 1 sign-up is free and needs no credit card; service is limited to the officially supported countries and regions, and using a VPN or proxy from an unsupported region breaks the terms.
+  free_model_rule: Free models available on Tier 1; a $1 deposit moves you to Tier 2 with higher quotas plus Manta Pro and GLM-4.7-Flash
+  tags:
+  - Always free
+  - Free model
+  - Daily credits
+  quotas:
+  - models: 50 for each free text model
+    condition: Tier 1 (free sign-up)
+    note: Counted per account and per model; usage stops once used up unless you turn on "Allow paid usage after free quota", which then charges your balance
+  - models: 500 each for Manta Mini, Manta Flash, Stheno and Violet-Lotus; 300 each for Mistral Small, Nevoria, Euryale and Sapphira; 50 each for Manta Pro and GLM-4.7-Flash
+    condition: Tier 2 (unlocked by a $1 deposit)
+  - condition: Tier 1, also 200K tokens per minute
+  terms:
+  - Free modules are for evaluation and interactive use only, not production or unattended batch work; high-throughput use leads to suspension
+  - Submitted content is licensed broadly to the platform, and characters and generated chats may be used, sold and licensed by it
+  - No automated data gathering from the service, and no getting around a block
+  - Service is limited to supported countries and regions; access via VPN or proxy from unsupported regions may get the account suspended
+  - The models with free quota may change with capacity and usage

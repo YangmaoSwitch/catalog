@@ -1,0 +1,64 @@
+id: fireworks
+name: Fireworks AI
+homepage: https://fireworks.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 美国开源模型推理平台，新账号带 1 美元起步额度，用完后未绑定支付方式的账号会被暂停。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://api.fireworks.ai/inference/v1
+  anthropic_base_url: https://api.fireworks.ai/inference
+  modelsdev: fireworks-ai
+  models_access: quota
+signup:
+  url: https://app.fireworks.ai/signup
+  requires:
+  - email
+  notes: 可用邮箱或 Google、GitHub、LinkedIn 账号登录；未绑定支付方式或无余额时账户每分钟限 10 次请求。
+quotas:
+- unit: usd
+  amount: 1
+  period: one-time
+  scope: account
+  condition: 新账号起步额度
+  evidence: https://docs.fireworks.ai/faq-new/billing-pricing/what-happens-when-i-finish-my-1-dollar-credit
+  note: 用完后未绑定支付方式的账号会被暂停，需绑定支付方式并充值才能继续
+- unit: requests
+  amount: 10
+  period: minute
+  scope: account
+  condition: 未绑定支付方式或无余额
+  evidence: https://docs.fireworks.ai/guides/quotas_usage/account-quotas
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://app.fireworks.ai/settings/users/api-keys
+terms:
+- point: 预付费模式，余额用完且未开启自动充值时暂停调用；自动充值需用户自行开启
+  url: https://docs.fireworks.ai/faq-new/billing-pricing/how-does-billing-and-credit-usage-work
+tags:
+- 新人
+- 试用
+sources:
+- https://fireworks.ai/pricing
+- https://docs.fireworks.ai/serverless/pricing
+- https://docs.fireworks.ai/getting-started/quickstart
+- https://docs.fireworks.ai/guides/quotas_usage/account-quotas
+- https://docs.fireworks.ai/faq-new/billing-pricing/what-happens-when-i-finish-my-1-dollar-credit
+en:
+  summary: US open-model inference platform. New accounts come with a $1 starter credit; accounts without a payment method are suspended once it is used up.
+  signup_notes: Sign in with email or a Google, GitHub or LinkedIn account; with no payment method or no credits the account is limited to 10 requests per minute.
+  tags:
+  - New users
+  - Trial
+  quotas:
+  - condition: Starter credit for new accounts
+    note: Accounts without a payment method are suspended once it is used up; add a payment method and credits to continue
+  - condition: No payment method or no credits
+  terms:
+  - Prepaid billing; usage pauses when the balance runs out unless Auto Reload is turned on, which the user must enable

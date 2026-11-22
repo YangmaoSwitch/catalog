@@ -1,0 +1,60 @@
+id: scaleway
+name: Scaleway Generative APIs
+homepage: https://www.scaleway.com/en/generative-apis/
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 法国云厂商 Scaleway 的模型服务，免费档可免费处理 100 万 token，超出后自动按量计费，需绑定支付方式。
+api:
+  protocol:
+  - openai
+  base_url: https://api.scaleway.ai/v1
+  modelsdev: scaleway
+  models_access: quota
+signup:
+  url: https://account.scaleway.com/register?service=console
+  requires:
+  - email
+  - card
+  notes: 组织须登记有效支付方式才获得 Generative APIs 的基础配额，完成身份验证后限额提高；模型部署在法国巴黎。
+quotas:
+- unit: tokens
+  amount: 1000000
+  period: one-time
+  scope: org
+  models: 按 token 计费的模型
+  evidence: https://www.scaleway.com/en/docs/generative-apis/faq/
+  note: 优先抵扣单价最高的 token；官方未写明是否按月重置；另含 60 分钟音频转写
+overage: auto_paid
+expires: null
+onboarding:
+  level: L1
+  quota_headers:
+  - x-ratelimit-remaining-requests
+  - x-ratelimit-remaining-tokens
+terms:
+- point: 超出免费档后按 token 自动计费，目前无法设置用量封顶，只能设置账单提醒
+  url: https://www.scaleway.com/en/docs/generative-apis/faq/
+- point: 默认零数据保留，输入输出不用于训练；仅在请求引发异常错误或疑似恶意时临时保存最多两周
+  url: https://www.scaleway.com/en/docs/generative-apis/reference-content/data-privacy/
+tags:
+- 新人
+sources:
+- https://www.scaleway.com/en/pricing/model-as-a-service/
+- https://www.scaleway.com/en/docs/generative-apis/faq/
+- https://www.scaleway.com/en/docs/generative-apis/quickstart/
+- https://www.scaleway.com/en/docs/generative-apis/reference-content/rate-limits/
+- https://www.scaleway.com/en/docs/organizations-and-projects/organization/organization-quotas/
+- https://www.scaleway.com/en/docs/generative-apis/reference-content/data-privacy/
+en:
+  summary: Model service of the French cloud provider Scaleway. The free tier covers 1M tokens; usage beyond it is billed automatically, and a payment method is required.
+  signup_notes: The organization needs a valid payment method to get the base Generative APIs quotas, which rise after identity verification; models are hosted in Paris, France.
+  tags:
+  - New users
+  quotas:
+  - models: Models billed by tokens
+    note: Applied to the most expensive tokens first; the page does not say whether it renews monthly; also includes 60 minutes of audio transcription
+  terms:
+  - Usage beyond the free tier is billed per token automatically; there is no hard spending cap yet, only billing alerts
+  - Zero data retention by default and no training on inputs or outputs; request content may be kept for up to two weeks only when it causes abnormal errors or looks malicious

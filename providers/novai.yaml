@@ -1,0 +1,82 @@
+id: novai
+name: NovAI
+homepage: https://aiapi-pro.com
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 香港运营的国产模型聚合网关，智谱 GLM Flash 系列等 5 个模型免费调用，每天 10 次，另送 2 美元新人额度，无需信用卡和手机号。
+api:
+  protocol:
+  - openai
+  base_url: https://aiapi-pro.com/v1
+  models_url: https://aiapi-pro.com/v1/models
+  models_access: paid
+  free_models:
+  - glm-4.7-flash
+  - glm-4.1v-thinking-flash
+  - glm-4.6v-flash
+  - cogview-3-flash
+  - cogvideox-flash
+signup:
+  url: https://aiapi-pro.com/register
+  requires:
+  - email
+  notes: 只需邮箱，不需要信用卡、充值或手机号；注册会经自动反滥用审核，高风险注册可能被拒或冻结。
+quotas:
+- unit: requests
+  amount: 10
+  period: day
+  reset: 00:00 Asia/Hong_Kong
+  scope: account
+  models: 全部免费模型合计
+  note: 另限每分钟 5 次；cogvideox-flash 视频每天最多 5 次；任意一次充值即取消每日上限和限速
+  evidence: https://aiapi-pro.com/free/index.html
+- unit: usd
+  amount: 2
+  period: one-time
+  scope: account
+  condition: 新注册账号
+  note: 官网首页标注，官方未写明有效期和适用模型
+  evidence: https://aiapi-pro.com/
+overage: blocked
+expires: null
+onboarding:
+  level: L1
+  key_pattern: ^nvai-
+terms:
+- point: 一人一个账号，禁止自动化、脚本化、批量或重复注册（4.1）
+  url: https://aiapi-pro.com/terms.html
+- point: 为刷赠送额度而注册的账号会被直接封停并收回赠送余额，相关 IP 可被封禁（4.1）
+  url: https://aiapi-pro.com/terms.html
+- point: 未经书面许可不得转售服务（第 4 条）
+  url: https://aiapi-pro.com/terms.html
+- point: 不保存请求和回复内容，也不用于训练（第 7 条）
+  url: https://aiapi-pro.com/terms.html
+tags:
+- 免费模型
+- 每日赠送
+- 新人
+- 聚合
+sources:
+- https://aiapi-pro.com/
+- https://aiapi-pro.com/free/index.html
+- https://aiapi-pro.com/terms.html
+en:
+  summary: Hong Kong-based gateway to Chinese models. Five models including Zhipu's GLM Flash series are free, 10 calls a day, plus $2 of credit for new users; no credit card or phone number needed.
+  signup_notes: Email only; no credit card, deposit or phone number. Every registration goes through automated anti-abuse review, and high-risk sign-ups may be rejected or frozen.
+  tags:
+  - Free model
+  - Daily credits
+  - New users
+  - Aggregator
+  quotas:
+  - models: All free models combined
+    note: Also 5 requests per minute; cogvideox-flash videos capped at 5 a day; any top-up removes the daily cap and rate limit
+  - condition: Newly registered accounts
+    note: Stated on the homepage; expiry and eligible models are not stated
+  terms:
+  - One person, one account; automated, scripted, bulk or repeat registration is prohibited (4.1)
+  - Accounts created to farm promotional credits are suspended without notice and the bonus reclaimed; the IPs involved may be banned (4.1)
+  - Reselling the service without written permission is prohibited (section 4)
+  - Request and response content is not stored or used for training (section 7)

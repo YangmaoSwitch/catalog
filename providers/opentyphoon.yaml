@@ -1,0 +1,75 @@
+id: opentyphoon
+name: Typhoon API
+name_zh: Typhoon（泰语大模型）
+homepage: https://opentyphoon.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 泰国 SCB 10X 的泰语大模型 API，作为研究展示免费使用，每个模型限每秒 5 次、每分钟 200 次请求。
+api:
+  protocol:
+  - openai
+  base_url: https://api.opentyphoon.ai/v1
+  models_access: free
+  models:
+  - typhoon-v2.5-30b-a3b-instruct
+  - typhoon-v2.1-12b-instruct
+signup:
+  url: https://playground.opentyphoon.ai/api-key
+  requires:
+  - email
+  notes: 在 Typhoon Playground 注册账号后创建免费 API Key；不需要信用卡。15 岁以下需监护人同意。
+quotas:
+- unit: requests
+  amount: 200
+  period: minute
+  scope: model
+  models: typhoon-v2.5-30b-a3b-instruct、typhoon-v2.1-12b-instruct（各自计算）
+  evidence: https://docs.opentyphoon.ai/en/rate-limits/
+- unit: requests
+  amount: 5
+  period: second
+  scope: model
+  models: typhoon-v2.5-30b-a3b-instruct、typhoon-v2.1-12b-instruct（各自计算）
+  evidence: https://docs.opentyphoon.ai/en/rate-limits/
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://playground.opentyphoon.ai/api-key
+terms:
+- point: 官方 API 是研究展示，免费使用，处于测试阶段，不提供正式支持；生产使用建议走 Together AI
+  url: https://docs.opentyphoon.ai/en/faq/
+- point: 官方可将输入用于开发和训练其模型，也会收集使用数据改进模型；输入中不得包含个人数据（第 2、4 条）
+  url: https://opentyphoon.ai/tac
+- point: 禁止用机器人、爬虫或抓取手段访问系统，禁止绕过速率限制（第 2 条）
+  url: https://opentyphoon.ai/tac
+- point: 不得用服务或输出训练、微调其他模型，不得做竞品基准测试（第 2 条）
+  url: https://opentyphoon.ai/tac
+- point: 未经书面许可不得让第三方使用你的账号，不得转让 API Token（第 2、5 条）
+  url: https://opentyphoon.ai/tac
+tags:
+- 永久免费
+- 免费模型
+sources:
+- https://docs.opentyphoon.ai/en/
+- https://docs.opentyphoon.ai/en/rate-limits/
+- https://docs.opentyphoon.ai/en/authentication/
+- https://docs.opentyphoon.ai/en/faq/
+- https://opentyphoon.ai/tac
+en:
+  summary: Thai-language LLM API from SCB 10X, free to use as a research showcase, limited to 5 requests per second and 200 per minute per model.
+  signup_notes: Create an account on Typhoon Playground and generate a free API key; no credit card needed. Users under 15 need a guardian's consent.
+  tags:
+  - Always free
+  - Free model
+  quotas:
+  - models: typhoon-v2.5-30b-a3b-instruct and typhoon-v2.1-12b-instruct (counted separately)
+  - models: typhoon-v2.5-30b-a3b-instruct and typhoon-v2.1-12b-instruct (counted separately)
+  terms:
+  - The official API is a free research showcase in beta with no formal support; Together AI is recommended for production
+  - Inputs may be used to develop and train their models and usage data is collected to improve them; inputs must not contain personal data (sections 2, 4)
+  - Bots, crawlers and scraping are prohibited, as is circumventing rate limits (section 2)
+  - The service or its outputs may not be used to train or fine-tune other models, and competitive benchmarking is prohibited (section 2)
+  - Third parties may not use your account without written permission, and API tokens may not be transferred (sections 2, 5)

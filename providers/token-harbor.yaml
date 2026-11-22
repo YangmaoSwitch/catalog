@@ -1,0 +1,96 @@
+id: token-harbor
+name: Token Harbor
+homepage: https://tokenharbor.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 新加坡公司运营的聚合网关，名称以 :free 结尾的模型免费调用，按滚动 7 天发放免费额度，无需信用卡；不对中国大陆和香港开放。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://tokenharbor.ai/v1
+  models_access: paid
+  free_pattern: :free$
+  free_model_rule: 模型 ID 以 :free 结尾，当前名单见官网模型页 Free 分类；需先在控制台开启免费模型，名单随时调整
+signup:
+  url: https://tokenharbor.ai/login?mode=signup
+  requires:
+  - email
+  regions_blocked:
+  - CN
+  - HK
+  - MO
+  - RU
+  - BY
+  - IR
+  - KP
+  - CU
+  - SY
+  - VE
+  - MM
+  - AF
+  min_age: 18
+  notes: 注册免费，无需信用卡，钱包初始为 0，没有注册赠金；按连接出口所在国家判断地区，付费也不能绕过地区限制；克里米亚、顿涅茨克、卢甘斯克也不可用。
+quotas:
+- unit: usd
+  amount: null
+  period: week
+  reset: rolling
+  scope: account
+  models: 全部 :free 模型合计
+  note: 第一次免费请求起算个人滚动 7×24 小时周期；额度按标价折算的用量计，控制台只显示 0–100% 进度，官方未公布具体数额
+  evidence: https://tokenharbor.ai/docs/billing/cashback
+- unit: requests
+  amount: 60
+  period: minute
+  scope: account
+  condition: 免费账户（未充值、无 Pass）
+  note: 另限每小时 1800 次；按 IP 每分钟 100 次、每小时 3000 次；单次请求最大 4 MB
+  evidence: https://tokenharbor.ai/docs/api/rate-limits
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://tokenharbor.ai/dashboard/api-keys
+  key_pattern: ^thk_live_
+terms:
+- point: 开启免费模型后，平台可保存和分析免费线路的提示词与回复，员工可能阅读，提供免费模型的服务商可能用于训练（7.2、7.3）
+  url: https://tokenharbor.ai/terms
+- point: 禁止用服务输出训练、微调或蒸馏模型（第 3 条）
+  url: https://tokenharbor.ai/terms
+- point: 被暂停或终止后另开账号规避属于违规，可被一并终止（9.2(h)）
+  url: https://tokenharbor.ai/terms
+- point: 无订阅时预付余额耗尽即自动停止 API 访问（4.2）
+  url: https://tokenharbor.ai/terms
+- point: 不对受制裁或当地法规不允许的地区提供服务（第 6 条）
+  url: https://tokenharbor.ai/terms
+tags:
+- 聚合
+- 免费模型
+sources:
+- https://tokenharbor.ai/pricing
+- https://tokenharbor.ai/docs/billing/cashback
+- https://tokenharbor.ai/docs/api/rate-limits
+- https://tokenharbor.ai/docs/getting-started/quickstart
+- https://tokenharbor.ai/faq
+- https://tokenharbor.ai/terms
+en:
+  summary: Aggregator gateway run by a Singapore company. Models whose IDs end in :free are free, with an allowance on a rolling 7-day period, no credit card needed; not available in mainland China or Hong Kong.
+  signup_notes: Free sign-up with no credit card; the wallet starts at $0 with no sign-up credit. Region is judged by the country your connection exits from, and a paid plan does not bypass the restriction.
+  free_model_rule: Model ID ends in :free; see the Free tab on the models page. Free models must first be enabled in the dashboard, and the list changes over time; Crimea, Donetsk and Luhansk are also unavailable
+  tags:
+  - Aggregator
+  - Free model
+  quotas:
+  - models: All :free models combined
+    note: A personal rolling 7×24-hour period starts with your first free request; the allowance is measured by list-price value and shown only as a 0–100% bar; no amount is published
+  - condition: Free accounts (no top-up, no Pass)
+    note: Also 1,800 per hour; per IP 100 per minute and 3,000 per hour; 4 MB maximum request size
+  terms:
+  - Once free models are enabled, free-route prompts and responses may be kept and analyzed, staff may read them, and providers serving free models may train on them (7.2, 7.3)
+  - Using outputs to train, fine-tune or distill models is prohibited (section 3)
+  - Opening another account to get around a suspension or termination is a violation and may be terminated too (9.2(h))
+  - Without a Pass, API access stops automatically when the prepaid balance runs out (4.2)
+  - Not available in sanctioned regions or where local rules prohibit the service (section 6)

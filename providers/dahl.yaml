@@ -1,0 +1,66 @@
+id: dahl
+name: Dahl Inference
+homepage: https://inference.dahl.global
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 基于去中心化 GPU 网络的开源模型推理接口，新账号注册送 1 亿 token，连续 7 天没有请求会清零，充值过的账号不受影响。
+api:
+  protocol:
+  - openai
+  base_url: https://inference.dahl.global/v1
+  models_url: https://inference.dahl.global/v1/models
+  models_access: quota
+signup:
+  url: https://inference.dahl.global/account
+  requires: []
+  min_age: 18
+  notes: 只需用户名，注册时显示一次的指纹（fingerprint）就是登录密码，丢失无法找回；注册须在浏览器里完成（有 Cloudflare 浏览器校验），新 Key 初始为 0，需要先从账户池分配 token。
+quotas:
+- unit: tokens
+  amount: 100000000
+  period: one-time
+  scope: account
+  condition: 新注册账号
+  note: 赠送额度在账户池里，要手动分配到 Key 才能调用；连续 7 天没有任何请求即清零，充值过的账号不清零
+  evidence: https://inference.dahl.global/docs/tokens/
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://inference.dahl.global/account
+  key_pattern: ^dahl_
+  quota_api: https://inference.dahl.global/tokens/current
+terms:
+- point: 免费 token（注册赠送和免 key 的访客额度）连续 7 天没有请求即过期且不恢复；官方可随时调整免费额度规则（第 8 条）
+  url: https://inference.dahl.global/terms/
+- point: 禁止自动化批量注册账号来获取赠送额度，禁止用多个身份重复领取新人优惠（第 4、5 条）
+  url: https://inference.dahl.global/terms/
+- point: 出售 API Key 或做独立转售服务需书面许可，在自己的应用里给用户提供功能不算转售（第 4 条）
+  url: https://inference.dahl.global/terms/
+- point: 请求可能由去中心化网络中的独立算力运营方处理，不承诺零留存；少量已脱敏的请求可能被拿到测试环境回放做压测
+  url: https://inference.dahl.global/privacy/
+tags:
+- 新人
+sources:
+- https://inference.dahl.global/
+- https://inference.dahl.global/pricing/
+- https://inference.dahl.global/docs/tokens/
+- https://inference.dahl.global/docs/authentication/
+- https://inference.dahl.global/docs/quickstart/
+- https://inference.dahl.global/terms/
+- https://inference.dahl.global/privacy/
+en:
+  summary: Open-model inference API on a decentralized GPU network; new accounts get 100M tokens at signup, which are wiped after 7 days without a request unless the account has topped up.
+  signup_notes: Only a username is needed; the fingerprint shown once at signup is the password and cannot be recovered. Signup must happen in a browser (Cloudflare browser check), and new keys start at 0 until you allocate tokens from the account pool.
+  tags:
+  - New users
+  quotas:
+  - condition: New accounts
+    note: The grant sits in the account pool and must be allocated to a key; it is removed after 7 consecutive days without a request, unless the account has topped up
+  terms:
+  - Free tokens (signup grant and free guest keys) expire after 7 days without a request and are not restored; the free-token rules may change at any time (section 8)
+  - Automating account creation to harvest promotional allocations, or using multiple identities to get repeated introductory benefits, is prohibited (sections 4 and 5)
+  - Selling API keys or running a standalone resale service needs written approval; offering functionality in your own app is not resale (section 4)
+  - Requests may be processed by independent operators in a decentralized network with no zero-retention guarantee; a small sample of scrubbed requests may be replayed on test infrastructure for load testing

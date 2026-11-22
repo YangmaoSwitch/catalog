@@ -1,0 +1,78 @@
+id: sail-research
+name: Sail Research
+homepage: https://www.sailresearch.com
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 主打低价的开源模型推理服务，免费计划绑定支付方式后每月赠送 5 美元额度。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://api.sailresearch.com/v1
+  anthropic_base_url: https://api.sailresearch.com
+  models_access: quota
+  models:
+  - moonshotai/Kimi-K3.1-Pro
+  - zai-org/GLM-5.3
+  - zai-org/GLM-5.3-Flash
+  - deepseek-ai/DeepSeek-V4.1-Flash-1017
+  - deepseek-ai/DeepSeek-V4-Pro-0813
+  - deepseek-ai/DeepSeek-V4-Flash-0731
+  - google/gemma-4-31B-it
+  - nvidia/Gemma-4-31B-IT-NVFP4
+  - google/gemma-4-12B-it
+  - Qwen/Qwen3.6-35B-A3B
+signup:
+  url: https://app.sailresearch.com
+  requires:
+  - email
+  - card
+  min_age: 18
+  notes: 在控制台注册并创建 API Key；每月 5 美元免费额度需先绑定支付方式。服务面向企业内部业务用途。
+quotas:
+- unit: usd
+  amount: 5
+  period: month
+  scope: org
+  condition: 免费计划，绑定支付方式后
+  note: 按量计费的预付额度；可用于推理和 Sailbox
+  evidence: https://docs.sailresearch.com/pricing
+overage: unknown
+expires: null
+onboarding:
+  level: L2
+  key_page: https://app.sailresearch.com
+terms:
+- point: 服务仅面向企业的内部业务用途，不面向个人消费者（1.2）
+  url: https://www.sailresearch.com/terms
+- point: 不得绕过或超出限速、配额等使用限制（2.5(h)）
+  url: https://www.sailresearch.com/terms
+- point: 禁止在受制裁地区使用，包括古巴、伊朗、朝鲜、叙利亚、克里米亚等地区和俄罗斯（2.5(k)）
+  url: https://www.sailresearch.com/terms
+- point: 不会用客户数据训练模型，除非客户主动同意（3.3）
+  url: https://www.sailresearch.com/terms
+- point: 授权按用量从绑定的支付方式扣费，费用一般不退（7.1、7.4）
+  url: https://www.sailresearch.com/terms
+tags:
+- 每月赠送
+sources:
+- https://docs.sailresearch.com/pricing
+- https://docs.sailresearch.com/
+- https://docs.sailresearch.com/quickstart
+- https://www.sailresearch.com/terms
+en:
+  summary: Low-cost inference for open models. The free plan gives $5 of credit every month once you attach a payment method.
+  signup_notes: Sign up in the dashboard and create an API key; the $5 monthly credit requires attaching a payment method first. The service is meant for internal business use.
+  tags:
+  - Monthly credits
+  quotas:
+  - condition: Free plan, after attaching a payment method
+    note: Prepaid usage credit; covers inference and Sailboxes
+  terms:
+  - The service is for internal business use only, not for personal consumer use (1.2)
+  - You may not circumvent or exceed rate limits, quotas or usage restrictions (2.5(h))
+  - Use from sanctioned regions is prohibited, including Cuba, Iran, North Korea, Syria, Crimea and Russia (2.5(k))
+  - Customer data is not used to train models without opt-in consent (3.3)
+  - You authorize usage charges to your payment method; fees are generally non-refundable (7.1, 7.4)
