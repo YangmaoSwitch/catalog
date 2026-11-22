@@ -382,10 +382,14 @@ def main() -> int:
 
     # Provider ranking: quality of the models each one serves without charge, weighted by how lasting the
     # access is: free models x1, a free quota that renews (daily / monthly) x0.5, a one-time gift x0.2.
-    pscore: dict[str, float] = {}
+    # Only the 10 best count, so a long list sharing one small quota doesn't outrank a few good free models.
+    parts: dict[str, list[float]] = {}
     for m in models:
         for o in m["offers"]:
-            pscore[o["provider"]] = pscore.get(o["provider"], 0) + access_weight(o, recurring) * m["quality"]
+            w = access_weight(o, recurring) * m["quality"]
+            if w:
+                parts.setdefault(o["provider"], []).append(w)
+    pscore = {pid: sum(sorted(v, reverse=True)[:10]) for pid, v in parts.items()}
 
     summary = {pid: {"score": round(pscore.get(pid, 0), 1), "verified": status.get(pid) == "verified", "total": len(l), "free": sum(m["access"] == "free" for m in l), "quota": sum(m["access"] == "quota" for m in l),
                      "paid": sum(m["access"] == "paid" for m in l),
