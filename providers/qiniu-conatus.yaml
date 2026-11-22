@@ -1,0 +1,84 @@
+id: qiniu-conatus
+name: Qiniu Cloud Conatus
+name_zh: 七牛云 Conatus
+homepage: https://www.qiniu.com
+region: cn
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: 七牛云限时免费模型 qiniu/conatus-free，完成实名认证后每日免费 1 亿 Token，充值满 100 元后提升至每日 10 亿 Token，额度用尽即停不扣费。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://api.qnaigc.com/v1
+  anthropic_base_url: https://api.qnaigc.com/
+  free_models:
+  - qiniu/conatus-free
+  models_access: paid
+signup:
+  url: https://portal.qiniu.com/signup
+  requires:
+  - phone
+  - real_name
+  notes: 需登录七牛云账号并完成实名认证后方可免费调用；新注册用户另有最高 2000 万 Token 赠送。
+quotas:
+- unit: tokens
+  amount: 100000000
+  period: day
+  reset: 00:00 Asia/Shanghai
+  scope: account
+  models: qiniu/conatus-free
+  condition: 已实名认证用户
+  evidence: https://www.qiniu.com/ai/free-models/conatus-2026
+  quote: 已认证用户每日 1 亿 Token
+  note: 同一账号下所有 API Key 共享额度；每日 00:00（北京时间）重置，未使用额度不结转；活动结束后停止调用。
+- unit: tokens
+  amount: 1000000000
+  period: day
+  reset: 00:00 Asia/Shanghai
+  scope: account
+  models: qiniu/conatus-free
+  condition: 已实名认证且任意一笔充值大于 100 元（多笔不累计）
+  evidence: https://www.qiniu.com/ai/free-models/conatus-2026
+  quote: 任意一笔大于 100 元且已到账的充值（多笔不累计）后提升至每日 10 亿 Token
+  note: 充值提升额度不属于付费续用；额度用尽后请求被拒绝，不扣减账户余额、资源包、订阅额度或积分。
+overage: blocked
+ends: '2026-11-30'
+onboarding:
+  level: L2
+  key_page: https://portal.qiniu.com/ai-inference/model
+terms:
+- point: 不得配置运行与所购服务无关的程序或进程，导致大量占用七牛云系统资源（3.1.3.6）
+  url: https://www.qiniu.com/agreements/user-agreement
+- point: 违反协议条款时七牛云有权冻结账户、限制或终止服务（8.1）
+  url: https://www.qiniu.com/agreements/user-agreement
+- point: 使用 AI 服务须遵守数据与内容合规承诺，不向境外传输个人信息或重要数据（3.1.11）
+  url: https://www.qiniu.com/agreements/user-agreement
+- point: 部分服务需提供真实身份信息完成实名认证，拒绝实名将无法使用（7.1）
+  url: https://www.qiniu.com/agreements/user-agreement
+tags:
+- 限时免费
+- 免费模型
+sources:
+- https://www.qiniu.com/ai/free-models/conatus-2026
+- https://www.qiniu.com/ai/model/qiniu/conatus-free
+- https://www.qiniu.com/agreements/user-agreement
+en:
+  summary: Qiniu Cloud's limited-time free model qiniu/conatus-free; after real-name verification you get 100 million tokens free per day, raised to 1 billion per day after a recharge of 100+ CNY, and calls stop when the quota runs out with no charge.
+  signup_notes: You must sign in to a Qiniu Cloud account and complete real-name verification to call the model for free; new registrants also get up to 20 million tokens.
+  tags:
+  - Limited-time free
+  - Free model
+  quotas:
+  - models: qiniu/conatus-free
+    condition: Real-name verified users
+    note: All API keys under one account share the quota; resets daily at 00:00 Beijing time, unused quota does not carry over; calls stop after the activity ends.
+  - models: qiniu/conatus-free
+    condition: Real-name verified with any single recharge over 100 CNY (multiple recharges do not accumulate)
+    note: Raising the quota via recharge is not paid continuation; when the quota is exhausted requests are rejected and no balance, resource pack, subscription or points are deducted.
+  terms:
+  - Do not run programs or processes unrelated to the purchased service that heavily consume Qiniu Cloud resources (3.1.3.6)
+  - Qiniu Cloud may freeze the account, restrict or terminate service for violating the agreement (8.1)
+  - Use of AI services must comply with data and content compliance commitments; do not transmit personal information or important data abroad (3.1.11)
+  - Some services require real-name verification; refusing it means the service cannot be used (7.1)
