@@ -29,6 +29,7 @@ quotas:                        # 每项额度一条
     scope: account             # account / key / project / org / model
     models: ":free 模型"
     condition: "累计充值不足 10 美元"
+    new_users: false           # 只给新用户的活动（如注册后 N 天内）设 true，页面标“新用户活动”
     evidence: https://openrouter.ai/docs/api-reference/limits
     quote: "..."               # 证据页面上逐字复制的一句原文，用于自动比对是否变化
 overage: blocked               # blocked（超额即停）/ auto_paid（自动转付费）/ manual（需用户手动开通付费）

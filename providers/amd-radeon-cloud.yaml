@@ -5,7 +5,7 @@ region: cn
 api_usable: true
 status: verified
 last_verified: '2026-11-19'
-summary: 每天赠送积分，12 个免费模型共用。
+summary: 每天赠送积分，所有模型共用；新用户注册后 14 天内每天 5 积分。
 api:
   protocol:
   - openai
@@ -33,6 +33,7 @@ quotas:
   evidence: https://amd-aim.github.io/radeon-cloud-docs/api/rate-limits/
   reset: 00:00 Asia/Shanghai
   condition: 注册 14 天内
+  new_users: true
 overage: blocked
 onboarding:
   level: L1
@@ -40,7 +41,7 @@ onboarding:
 tags:
 - 每日赠送
 en:
-  summary: Daily credits, shared by 12 free models.
+  summary: Daily credits shared by all models; new users get 5 credits a day for the first 14 days.
   tags:
   - Daily credits
   quotas:

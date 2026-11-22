@@ -264,6 +264,10 @@
           "quote": {
             "type": "string",
             "description": "One sentence copied exactly from the evidence page that states this quota; compared automatically to notice changes"
+          },
+          "new_users": {
+            "type": "boolean",
+            "description": "Only for new users (for example the first days after sign-up); shown as a new-user offer"
           }
         }
       }
