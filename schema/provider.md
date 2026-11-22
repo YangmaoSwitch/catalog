@@ -30,6 +30,7 @@ quotas:                        # 每项额度一条
     models: ":free 模型"
     condition: "累计充值不足 10 美元"
     evidence: https://openrouter.ai/docs/api-reference/limits
+    quote: "..."               # 证据页面上逐字复制的一句原文，用于自动比对是否变化
 overage: blocked               # blocked（超额即停）/ auto_paid（自动转付费）/ manual（需用户手动开通付费）
 expires: null                  # 赠金的有效期
 ends: null                     # 官方公布的活动或服务截止日期；过了这天自动显示为已下线
