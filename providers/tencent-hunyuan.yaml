@@ -4,9 +4,9 @@ name_zh: 腾讯混元
 homepage: https://cloud.tencent.com/product/hunyuan
 region: cn
 api_usable: true
-status: verified
-last_verified: '2026-11-19'
-summary: 混元生文一次性送 100 万 Token，1 年有效，用完不自动转付费。
+status: delisted
+last_verified: '2026-11-22'
+summary: 混元大模型服务正在迁往腾讯云 TokenHub，旧平台停止新购；新用户请看 TokenHub 条目。
 api:
   protocol:
   - openai
@@ -30,6 +30,6 @@ onboarding:
 tags:
 - 新人
 en:
-  summary: 1M tokens one-time for Hunyuan text models, valid for 1 year; does not switch to paid when used up.
+  summary: Hunyuan is moving to Tencent Cloud TokenHub and the old platform no longer takes new purchases; new users should see the TokenHub entry.
   tags:
   - New users
