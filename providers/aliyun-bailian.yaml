@@ -5,7 +5,7 @@ homepage: https://bailian.console.aliyun.com
 region: cn
 api_usable: true
 status: verified
-last_verified: '2026-11-19'
+last_verified: '2026-11-23'
 summary: 新人部分模型各送 100 万 Token，90 天有效；用完默认自动转付费。
 api:
   protocol:
@@ -27,6 +27,7 @@ quotas:
   evidence: https://help.aliyun.com/zh/model-studio/new-free-quota
   expires_days: 90
   note: 每个模型单独一份
+  quote: 免费额度用完后自动转为按量付费。
 overage: auto_paid
 onboarding:
   level: L1
