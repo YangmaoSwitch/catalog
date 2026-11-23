@@ -4,7 +4,7 @@ homepage: https://www.experientiallabs.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-23'
 summary: 开源 AI 网关的托管服务，免费计划每天可用 100 万 token 调用 GPT-6 Luna 和 DeepSeek V4.1 Flash，UTC 零点重置，需先做信用卡验证。
 api:
   protocol:
@@ -31,18 +31,21 @@ quotas:
   models: gpt-6-luna、deepseek-v4.1-flash 和 Clef 决策接口合计
   note: 输入和输出 token 合计；超出返回 429
   evidence: https://www.experientiallabs.ai/pricing
+  quote: Free core models share one pool of 10 RPM, 250K TPM and 1M input and output tokens a day, reset at 00:00 UTC.
 - unit: requests
   amount: 10
   period: minute
   scope: account
   models: 免费核心模型合计
   evidence: https://www.experientiallabs.ai/pricing
+  quote: Free core models share one pool of 10 RPM, 250K TPM and 1M input and output tokens a day, reset at 00:00 UTC.
 - unit: tokens
   amount: 250000
   period: minute
   scope: account
   models: 免费核心模型合计
   evidence: https://www.experientiallabs.ai/pricing
+  quote: Free core models share one pool of 10 RPM, 250K TPM and 1M input and output tokens a day, reset at 00:00 UTC.
 overage: blocked
 expires: null
 onboarding:
