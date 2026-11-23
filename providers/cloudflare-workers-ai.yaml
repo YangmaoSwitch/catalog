@@ -4,7 +4,7 @@ homepage: https://developers.cloudflare.com/workers-ai/
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-19'
+last_verified: '2026-11-23'
 summary: 免费计划每天 1 万 Neurons，超额直接报错。
 api:
   protocol:
@@ -24,6 +24,7 @@ quotas:
   scope: account
   evidence: https://developers.cloudflare.com/workers-ai/platform/pricing/
   reset: 00:00 UTC
+  quote: Our free allocation allows anyone to use a total of 10,000 Neurons per day at no charge.
 overage: blocked
 onboarding:
   level: L2
