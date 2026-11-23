@@ -4,7 +4,7 @@ homepage: https://groq.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-19'
+last_verified: '2026-11-23'
 summary: 免费档按组织限速，响应头返回剩余额度。
 api:
   protocol:
@@ -23,6 +23,7 @@ quotas:
   scope: org
   evidence: https://console.groq.com/docs/rate-limits
   note: 另有每分钟请求数、每分钟/每天 token 数；数值见控制台 Limits 页
+  quote: Rate limits apply at the organization level, not individual users.
 overage: blocked
 onboarding:
   level: L2
