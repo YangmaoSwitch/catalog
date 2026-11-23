@@ -4,7 +4,7 @@ homepage: https://opencode.ai
 region: global
 api_usable: false
 status: verified
-last_verified: '2026-11-20'
+last_verified: '2026-11-23'
 summary: 编程智能体 OpenCode 的模型平台，一批模型限时免费，但免费模型只能在 OpenCode 里用。
 api:
   protocol:
@@ -28,6 +28,7 @@ quotas:
   evidence: https://opencode.ai/v2/docs/console/models/
   models: 名称以 Free 结尾的模型和 Big Pickle
   note: 限时免费，官方未公布总额度和截止日期；LongCat 2.5 Free 每天 100 次
+  quote: Free-tier chat models require OpenCode; use paid models or Go from other clients.
 overage: manual
 onboarding:
   level: L1
