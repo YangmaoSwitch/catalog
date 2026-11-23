@@ -4,7 +4,7 @@ homepage: https://openrouter.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-19'
+last_verified: '2026-11-23'
 summary: 聚合平台，名称以 :free 结尾的模型免费调用。
 api:
   protocol:
