@@ -4,7 +4,7 @@ homepage: https://developer.amd.com.cn/radeon/tokenfactory
 region: cn
 api_usable: true
 status: verified
-last_verified: '2026-11-19'
+last_verified: '2026-11-23'
 summary: 每天赠送积分，所有模型共用；新用户注册后 14 天内每天 5 积分。
 api:
   protocol:
@@ -26,6 +26,7 @@ quotas:
   scope: account
   evidence: https://amd-aim.github.io/radeon-cloud-docs/api/rate-limits/
   reset: 00:00 Asia/Shanghai
+  quote: Counted in Token Factory points (pts) over the calendar day in Beijing time; resets at 00:00 UTC+8
 - unit: points
   amount: 5
   period: day
@@ -34,6 +35,7 @@ quotas:
   reset: 00:00 Asia/Shanghai
   condition: 注册 14 天内
   new_users: true
+  quote: Counted in Token Factory points (pts) over the calendar day in Beijing time; resets at 00:00 UTC+8
 overage: blocked
 onboarding:
   level: L1
