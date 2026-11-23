@@ -4,7 +4,7 @@ homepage: https://cohere.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-19'
+last_verified: '2026-11-23'
 summary: 试用 Key 免费，用于测试和概念验证。
 api:
   protocol:
@@ -22,12 +22,14 @@ quotas:
   period: month
   scope: key
   evidence: https://docs.cohere.com/docs/rate-limits
+  quote: Trial keys (and prod keys on newer Chat model variants) are limited to 1,000 API calls a month.
 - unit: requests
   amount: 20
   period: minute
   scope: key
   evidence: https://docs.cohere.com/docs/rate-limits
   models: 对话接口
+  quote: Command A20 req / min
 overage: blocked
 onboarding:
   level: L1
