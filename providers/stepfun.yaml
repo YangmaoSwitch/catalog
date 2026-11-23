@@ -1,0 +1,71 @@
+id: stepfun
+name: StepFun
+name_zh: 阶跃星辰
+homepage: https://www.stepfun.com
+region: cn
+api_usable: true
+status: verified
+last_verified: '2026-11-22'
+summary: StepAudio 3 系列预览模型限时免费，官方未公布具体额度上限，限免至 2026-11-23 上午 11:59:59（北京时间）结束。
+api:
+  protocol:
+  - openai
+  base_url: https://api.stepfun.com/v1
+  free_models:
+  - stepaudio-3-gen-preview
+  - stepaudio-3-music-preview
+  - stepaudio-3-realtime-preview
+  - stepaudio-3-chat-preview
+  models_access: paid
+signup:
+  url: https://account.stepfun.com/login
+  requires:
+  - phone_cn
+  - email
+  min_age: 18
+  notes: 支持手机号或邮箱注册，需阅读并同意用户协议与隐私条款。
+quotas:
+- unit: tokens
+  amount: null
+  period: one-time
+  scope: account
+  models: stepaudio-3-gen-preview, stepaudio-3-music-preview, stepaudio-3-realtime-preview, stepaudio-3-chat-preview
+  evidence: https://platform.stepfun.com/docs/zh/guides/pricing/details.md
+  quote: 适用限时免费政策的模型限免至北京时间 2026 年 11 月 23 日上午11:59:59
+  note: 官方未公布具体额度上限，仅说明限免期内免费；限免到期后预览版本下线并新增正式付费版本。
+overage: blocked
+ends: '2026-11-23'
+onboarding:
+  level: L2
+  key_page: https://platform.stepfun.com/interface-key
+terms:
+- point: 禁止用提示词和输出训练 AI 模型（模型抓取）（2.2.3(3)）
+  url: https://platform.stepfun.com/docs/zh/agreement/userservice
+- point: 禁止绕过安全或隐私过滤机制（2.2.3(9)）
+  url: https://platform.stepfun.com/docs/zh/agreement/userservice
+- point: 部分服务需完成实名认证，未认证可能限制使用（1.2.1）
+  url: https://platform.stepfun.com/docs/zh/agreement/userservice
+- point: 需年满 18 岁（1.1.1）
+  url: https://platform.stepfun.com/docs/zh/agreement/userservice
+tags:
+- 限时免费
+- 语音模型
+sources:
+- https://platform.stepfun.com/docs/zh/guides/pricing/details.md
+- https://platform.stepfun.com/docs/zh/guides/models/stepaudio-3-gen.md
+- https://platform.stepfun.com/docs/zh/guides/models/stepaudio-3-music.md
+- https://platform.stepfun.com/docs/zh/agreement/userservice
+en:
+  summary: StepAudio 3 series preview models are free for a limited time; the official pages do not state a specific quota, and the free period ends at 11:59:59 AM Beijing time on 2026-11-23.
+  signup_notes: Sign up with a phone number or email; you must read and agree to the user agreement and privacy policy.
+  tags:
+  - Limited-time free
+  - Voice models
+  quotas:
+  - models: stepaudio-3-gen-preview, stepaudio-3-music-preview, stepaudio-3-realtime-preview, stepaudio-3-chat-preview
+    note: No specific quota is published; the official pages only state the models are free during the limited-time period. After the free period ends, the preview versions are retired and formal paid versions are added.
+  terms:
+  - Do not use prompts and outputs to train AI models (model scraping) (2.2.3(3))
+  - Do not bypass safety or privacy filters (2.2.3(9))
+  - Some services require real-name verification; failing it may restrict use (1.2.1)
+  - You must be at least 18 years old (1.1.1)
