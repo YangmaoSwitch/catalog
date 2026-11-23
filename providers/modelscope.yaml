@@ -5,7 +5,7 @@ homepage: https://modelscope.cn
 region: cn
 api_usable: true
 status: verified
-last_verified: '2026-11-19'
+last_verified: '2026-11-23'
 summary: 每天登录送魔粒，调用按模型档位扣减。
 api:
   protocol:
@@ -26,7 +26,8 @@ quotas:
   amount: 200
   period: day
   scope: account
-  evidence: https://modelscope.cn/docs/model-service/API-Inference/limits
+  evidence: https://www.modelscope.cn/docs/model-service/API-Inference/limits.md
+  quote: 魔搭通过API-Inference，将开源模型服务化并通过API接口进行标准化，**免费**提供给广大开发者体验。
   note: 绑定阿里云每天再送 50；当天有效不累积；每次调用扣 0.5/1/2
 overage: blocked
 onboarding:
