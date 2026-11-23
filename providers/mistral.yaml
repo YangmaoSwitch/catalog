@@ -4,7 +4,7 @@ homepage: https://mistral.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-23'
 summary: 新账号默认处于免费模式，可在 Studio 创建 Key 调用 API，限速最低；具体额度在后台 Limits 页显示。
 api:
   protocol:
@@ -31,6 +31,7 @@ quotas:
   evidence: https://help.mistral.ai/en/articles/698531-why-am-i-hitting-api-rate-limits-and-how-do-i-increase-them
   note: 另有每秒请求数、每分钟 token 数限制；数值见后台 Limits 页，超出返回 429
 overage: blocked
+ended: '2026-11-23'
 onboarding:
   level: L1
   key_page: https://console.mistral.ai/api-keys
