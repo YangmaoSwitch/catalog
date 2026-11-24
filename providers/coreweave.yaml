@@ -1,0 +1,59 @@
+id: coreweave
+name: CoreWeave Forge
+homepage: https://coreweave.com/forge
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-24'
+summary: CoreWeave Forge 免费档提供 Serverless Inference 的 OpenAI 兼容 API，含每月 Inference 额度（官方未公布具体数值），用尽后需开启按量付费或升级。
+api:
+  protocol:
+  - openai
+  base_url: https://api.inference.wandb.ai/v1
+  models_access: quota
+signup:
+  url: https://id.coreweave.com/signup
+  requires:
+  - email
+  min_age: 18
+  notes: 用邮箱注册；Serverless Inference 仅限受支持的地理位置访问，其他地区返回 403。
+quotas:
+- unit: credits
+  amount: null
+  period: month
+  scope: org
+  evidence: https://docs.coreweave.com/products/inference/serverless/usage-limits.md
+  note: 官方未公布免费档 Inference 额度的具体数值；免费档额度用尽后需开启按量付费或升级计划。官方 FAQ 说明部分档位为每月循环发放、部分为一次性发放，免费档归属未明确。
+  quote: Your allowance is used first.
+overage: blocked
+onboarding:
+  level: L2
+  key_page: https://forge.coreweave.com/settings
+terms:
+- point: 用户须年满 18 岁
+  url: https://docs.coreweave.com/policies/terms-of-service
+- point: Serverless Inference 仅限受支持的地理位置访问，受美国贸易管制等合规要求限制，其他地区返回 403
+  url: https://docs.coreweave.com/products/inference/serverless/usage-limits.md
+- point: 使用须遵守可接受使用政策（AUP）
+  url: https://docs.coreweave.com/policies/terms-of-service/acceptable-use-policy
+tags:
+- 免费模型
+- 每月赠送
+sources:
+- https://coreweave.com/forge-pricing
+- https://docs.coreweave.com/products/inference/serverless/usage-limits.md
+- https://docs.coreweave.com/products/inference/serverless.md
+- https://docs.coreweave.com/products/inference/serverless/api-reference.md
+- https://docs.coreweave.com/policies/terms-of-service
+en:
+  summary: CoreWeave Forge's free plan provides an OpenAI-compatible Serverless Inference API with a monthly inference allowance (exact amount not published); once used up you must enable pay-as-you-go or upgrade.
+  signup_notes: Sign up with email; Serverless Inference is only available from supported geographic locations, other regions get a 403.
+  tags:
+  - Free model
+  - Monthly credits
+  quotas:
+  - note: The exact amount of the free-tier inference allowance is not published; once used up you must enable pay-as-you-go or upgrade.
+  terms:
+  - Users must be at least 18 years old
+  - Serverless Inference is only available from supported geographic locations, subject to US trade controls and other compliance requirements; other regions get a 403
+  - Use must comply with the Acceptable Use Policy (AUP)
