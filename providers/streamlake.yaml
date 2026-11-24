@@ -1,0 +1,72 @@
+id: streamlake
+name: StreamLake Vanchin
+name_zh: 快手万擎
+homepage: https://www.streamlake.com
+region: cn
+api_usable: true
+status: verified
+last_verified: '2026-11-24'
+ends: '2026-12-31'
+summary: 活动期间（2026-09-07 至 2026-12-31）首次开通万擎并完成实名认证的用户获赠 ¥20 代金券，可用于在线推理和 API 调用，30 天内有效；平台本身按量付费，没有长期免费额度。
+api:
+  protocol:
+  - openai
+  base_url: https://wanqing.streamlakeapi.com/api/gateway/v1/endpoints
+  models_access: paid
+  free_model_rule: 没有免费模型；请求里的 model 需填写在控制台创建的推理接入点 ID（形如 ep-xxx），不是通用模型名
+signup:
+  url: https://console.streamlake.com/console/user/sign-up/tenant
+  requires:
+  - phone_cn
+  - real_name
+  notes: 手机号（+86）注册；领取代金券须完成实名认证并开通万擎；调用前需在控制台创建推理接入点
+quotas:
+- unit: cny
+  amount: 20
+  period: one-time
+  scope: account
+  new_users: true
+  expires_days: 30
+  condition: 活动期间首次开通万擎且已实名认证；同一实名身份只能领取 1 次
+  models: 在线推理（含模型广场体验与 API 调用）
+  note: 自发放之日起 30 个自然日有效，逾期作废；活动时间 2026-09-07 至 2026-12-31；2026-08-06 至 09-06 开通的用户也视为新户
+  evidence: https://www.streamlake.com/marketing/wanqing-privilege
+  quote: 资格确认后，¥20 代金券将自动发放至账户内，无需手动领取。
+overage: unknown
+onboarding:
+  level: L3
+  key_page: https://console.streamlake.com/wanqing/inference/list
+terms:
+- point: 同一实名认证身份视为同一账号，每个账号仅可领取 1 次；批量注册或虚假认证会被取消资格并收回已发放的权益
+  url: https://www.streamlake.com/marketing/wanqing-privilege
+- point: 不得频繁注册或批量注册账号，不得把账号赠与、借用、出租、转让或出售给他人
+  url: https://www.streamlake.com/document/POL/16u3z8
+- point: 未经许可不得使用自动化程序、爬虫等工具接入平台或服务
+  url: https://www.streamlake.com/document/POL/16u3z8
+- point: 服务通过中国境内设施提供，适用中国大陆法律
+  url: https://www.streamlake.com/document/POL/16u3z8
+tags:
+- 新人赠送
+- 限时免费
+sources:
+- https://www.streamlake.com/marketing/wanqing-privilege
+- https://www.streamlake.com/product/wanqing
+- https://www.streamlake.com/document/WANQING/me6z3u08sjus2mzplbj
+- https://www.streamlake.com/document/WANQING/mdsosw46egl9m9lfbg
+- https://www.streamlake.com/document/POL/16u3z8
+en:
+  summary: During the campaign (2026-09-07 to 2026-12-31), users who activate Vanchin for the first time and pass identity verification get a ¥20 voucher for online inference and API calls, valid for 30 days; otherwise the platform is pay-as-you-go with no ongoing free quota.
+  signup_notes: Sign up with a mainland China (+86) phone number; the voucher requires identity verification and activating Vanchin; you must create an inference endpoint in the console before calling the API
+  free_model_rule: No free models; the model field must be an inference endpoint ID created in the console (like ep-xxx), not a generic model name
+  tags:
+  - New-user credits
+  - Limited-time free
+  quotas:
+  - models: Online inference (model playground and API calls)
+    condition: First-time Vanchin activation during the campaign with identity verification; one voucher per verified identity
+    note: Valid for 30 calendar days from issue, then void; campaign runs 2026-09-07 to 2026-12-31; users who activated between 2026-08-06 and 09-06 also count as new
+  terms:
+  - One verified identity counts as one account and can claim once; bulk sign-ups or fake verification lose eligibility and the benefits are taken back
+  - No frequent or bulk registration; accounts may not be given, lent, rented, transferred or sold to others
+  - No automated programs or crawlers may access the platform or service without permission
+  - The service runs on facilities in mainland China and mainland China law applies
