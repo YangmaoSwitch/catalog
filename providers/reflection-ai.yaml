@@ -1,0 +1,73 @@
+id: reflection-ai
+name: Reflection AI
+homepage: https://reflection.ai
+region: global
+api_usable: true
+status: unconfirmed
+last_verified: '2026-11-24'
+summary: Reflection 自家 API 提供 Beam-1.0-501B-A23B 模型，官方博客称公开测试期可免费开始使用，具体免费额度未公开，部分组织需先验证信用卡。
+api:
+  protocol:
+  - openai
+  base_url: https://api.reflection.ai/openai/v1
+  models:
+  - Beam-1.0-501B-A23B
+  models_access: quota
+signup:
+  url: https://platform.reflection.ai/login
+  requires:
+  - email
+  min_age: 18
+  notes: 邮箱注册；文档写明部分组织需在 Billing 中验证信用卡后 API Key 才能使用。
+quotas:
+- unit: tokens
+  amount: null
+  period: day
+  reset: 00:00 UTC
+  scope: org
+  models: Beam-1.0-501B-A23B
+  condition: 公开测试期（public beta）
+  note: 官方未公布免费额度数字；文档说明套餐可能设每日未缓存输入 token 和输出 token 额度，按组织计算，每天 00:00 UTC 重置，具体数值只在响应头中返回。
+  evidence: http://reflection.ai/blog/beam-is-available
+  quote: It’s free to start.
+overage: unknown
+onboarding:
+  level: L2
+  key_page: https://platform.reflection.ai/api-keys
+  quota_headers:
+  - x-ratelimit-limit-uncached-input-tokens-day
+  - x-ratelimit-remaining-uncached-input-tokens-day
+  - x-ratelimit-limit-output-tokens-day
+  - x-ratelimit-remaining-output-tokens-day
+  - x-ratelimit-remaining-tokens-day
+terms:
+- point: 限额按组织计算，增加 Key 或项目不会提高限额
+  url: https://developers.reflection.ai/rate-limits.md
+- point: 不得与他人共享登录凭据、转让或转售账号，不得设法绕过用量限制
+  url: https://reflection.ai/legal/commercial-terms-of-service
+- point: 使用免费或折扣服务（含 Contributor Plan）时，输入输出可被用于训练模型
+  url: https://reflection.ai/legal/commercial-terms-of-service
+- point: 须年满 18 岁或所在地成年年龄
+  url: https://reflection.ai/legal/commercial-terms-of-service
+tags:
+- 试用
+sources:
+- http://reflection.ai/blog/beam-is-available
+- https://developers.reflection.ai/rate-limits.md
+- https://developers.reflection.ai/authentication.md
+- https://developers.reflection.ai/models.md
+- https://reflection.ai/legal/commercial-terms-of-service
+en:
+  summary: Reflection's own API serves the Beam-1.0-501B-A23B model; the official blog says it is free to start during the public beta, but the free allowance is not published and some organizations must verify a credit card first.
+  signup_notes: Sign up with email; the docs say some organizations must verify a credit card in Billing before API keys work.
+  tags:
+  - Trial
+  quotas:
+  - models: Beam-1.0-501B-A23B
+    condition: Public beta
+    note: No free allowance figure is published; the docs say a plan may set daily allowances of uncached input tokens and output tokens per organization, renewing at 00:00 UTC, with values reported only in response headers.
+  terms:
+  - Limits apply per organization; adding keys or projects does not raise them
+  - Do not share login credentials, transfer or resell the account, or try to get around usage limits
+  - With free or discounted services (including the Contributor Plan), inputs and outputs may be used to train models
+  - Must be at least 18 or the age of majority where you live
