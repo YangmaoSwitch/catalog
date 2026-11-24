@@ -4,7 +4,7 @@ homepage: https://regolo.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-24'
 summary: 意大利云厂商 Seeweb 的欧盟模型推理服务，新用户可免费试用 30 天，期间每天 100 万 token，可用全部 Core 模型，无需信用卡。
 api:
   protocol:
@@ -27,6 +27,7 @@ quotas:
   expires_days: 30
   note: 试用期限速更严格；官方未写明每日重置时区
   evidence: https://regolo.ai/pricing/
+  quote: 1M tokens per day
 overage: blocked
 expires: null
 onboarding:
