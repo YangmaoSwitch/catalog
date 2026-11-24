@@ -1,0 +1,62 @@
+id: mancer
+name: Mancer
+homepage: https://mancer.tech
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-24'
+summary: 无内容过滤的推理服务，注册后可免费调用 MythoLite（13B，上下文 2560、单次输出最多 150 token），其他模型按 credits 付费。
+api:
+  protocol:
+  - openai
+  base_url: https://neuro.mancer.tech/oai/v1
+  models_url: https://neuro.mancer.tech/oai/v1/models
+  models_access: paid
+  free_models:
+  - mytholite
+signup:
+  url: https://mancer.tech
+  requires:
+  - email
+  min_age: 18
+  notes: 需注册账号；条款规定未成年人不得注册。
+quotas:
+- unit: requests
+  amount: null
+  period: day
+  scope: account
+  models: mytholite
+  evidence: https://mancer.tech
+  quote: Sign up to use a pretty good LLM as much as you want, for free!
+  note: 官方未公布免费模型的次数或速率限制；模型页显示 MythoLite 价格为 FREE，上下文 2560、输出上限 150 token。
+overage: unknown
+expires: null
+onboarding:
+  level: L2
+terms:
+- point: 除企业账号外，不得让他人使用账号，不得共享登录信息和 API Key
+  url: https://mancer.tech/terms
+- point: 输入内容可能被用于改进服务和训练模型，可按平台说明选择退出
+  url: https://mancer.tech/terms
+- point: 未成年人（一般为 18 岁以下）不得注册或使用
+  url: https://mancer.tech/terms
+tags:
+- 免费模型
+sources:
+- https://mancer.tech
+- https://mancer.tech/models
+- https://mancer.tech/docs-api/
+- https://mancer.tech/terms
+- https://neuro.mancer.tech/oai/v1/models
+en:
+  summary: Unfiltered inference service; after sign-up MythoLite (13B, 2560 context, up to 150 output tokens per reply) is free to call, other models are paid with credits.
+  signup_notes: An account is required; the terms say minors may not register.
+  tags:
+  - Free model
+  quotas:
+  - models: mytholite
+    note: No request or rate limits are published for the free model; the model page lists MythoLite as FREE with 2560 context and a 150-token output cap.
+  terms:
+  - Unless you have a business account, you may not let others use your account or share your login and API key
+  - Inputs may be used to improve the service and train models; you can opt out following the platform's instructions
+  - Minors (generally under 18) may not register or use the platform
