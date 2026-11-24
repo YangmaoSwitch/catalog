@@ -1,0 +1,59 @@
+id: morph
+name: Morph (MorphLLM)
+homepage: https://www.morphllm.com
+region: global
+api_usable: true
+status: unconfirmed
+last_verified: '2026-11-24'
+summary: 面向编程智能体的推理平台，按量付费；价格页写有每月 200 次免费请求，但没有说明适用的模型和计划。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://api.morphllm.com/v1
+  anthropic_base_url: https://api.morphllm.com
+  models_access: paid
+signup:
+  url: https://www.morphllm.com/sign-up
+  requires:
+  - email
+  notes: 登录页可用邮箱或手机号注册；按量付费最低充值 10 美元，首次充值另送 5 美元（需先付费，不算免费额度）。
+quotas:
+- unit: requests
+  amount: 200
+  period: month
+  scope: account
+  note: 价格页在 Ultra 订阅卡片下方列出“200 req free every month”，页面未说明它属于哪个计划、适用哪些模型、何时重置，官方文档中也未找到对应说明；免费部分用完后的计费方式未公布。
+  evidence: https://www.morphllm.com/pricing
+  quote: 200 reqfree every month
+overage: unknown
+onboarding:
+  level: L2
+  key_page: https://www.morphllm.com/dashboard/api-keys
+terms:
+- point: 不会用输入和输出训练模型；免费和付费层的内容最多保留 30 天
+  url: https://www.morphllm.com/privacy/tos
+- point: 速率限制可随时调整，无需单独通知
+  url: https://www.morphllm.com/privacy/tos
+- point: 订阅计划（如 Ultra）不得在账号或组织外共享 Key、转售或用于服务自己产品的用户
+  url: https://www.morphllm.com/privacy/tos
+tags:
+- 每月赠送
+sources:
+- https://www.morphllm.com/pricing
+- https://docs.morphllm.com
+- https://docs.morphllm.com/llms.txt
+- https://docs.morphllm.com/general-inference
+- https://docs.morphllm.com/ultra-plan
+- https://www.morphllm.com/privacy/tos
+en:
+  summary: Inference platform for coding agents, pay as you go; the pricing page lists 200 free requests every month but does not say which models or plan they apply to.
+  signup_notes: Sign up with email or phone on the sign-in page; pay-as-you-go top-ups start at $10, and the first top-up adds $5 (requires paying first, so not a free allowance).
+  tags:
+  - Monthly credits
+  quotas:
+  - note: The pricing page lists "200 req free every month" below the Ultra subscription card, without saying which plan or models it covers or when it resets; no matching statement was found in the docs. Billing after the free part is used up is not stated.
+  terms:
+  - Inputs and outputs are not used to train models; content on free and paid tiers is kept at most 30 days
+  - Rate limits can be changed at any time without individual notice
+  - Subscription plans (such as Ultra) may not share keys outside the account or organization, be resold, or serve your own product's users
