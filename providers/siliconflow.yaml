@@ -5,7 +5,7 @@ homepage: https://siliconflow.cn
 region: cn
 api_usable: true
 status: verified
-last_verified: '2026-11-19'
+last_verified: '2026-11-24'
 summary: 部分模型长期免费（按模型限速）；实名送代金券。
 api:
   protocol:
@@ -33,6 +33,7 @@ quotas:
   evidence: https://www.siliconflow.cn/pricing
   models: 定价页标“免费”的模型
   note: 按模型限速
+  quote: 生成图片每图片免费
 - unit: cny
   amount: 16
   period: one-time
@@ -40,6 +41,7 @@ quotas:
   evidence: https://www.siliconflow.cn/news/od7wj9rr23p95uhihmhrombp
   condition: 实名认证
   note: 活动截至 2026-12-31
+  quote: 认证立得 16 元代金券：用户（含机构用户）完成实名认证后，进入活动中心，并在认证专享礼页面领取 1 张 16 元通用代金券。
 overage: auto_paid
 onboarding:
   level: L1
