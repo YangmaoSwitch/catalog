@@ -4,7 +4,7 @@ homepage: https://aihorde.net
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-24'
 summary: 志愿者贡献显卡的开源社区服务，OpenAI 兼容接口免费调用在线 worker 提供的文本模型，不注册可用匿名 Key 0000000000，但排队优先级最低。
 api:
   protocol:
@@ -24,6 +24,7 @@ quotas:
   scope: ip
   note: 每个地址另限每秒 2 次；同一来源同时进行的请求最多 5 个；没有 kudos 时每次请求的免费输出上限随排队情况在 512 到 4096 token 之间变化，更长的输出需要 kudos
   evidence: https://haidra-org.github.io/AI-Horde/reference/service_limits/
+  quote: An idle fleet can serve instruction and reasoning replies longer than the former 512-token allowance
 overage: blocked
 expires: null
 onboarding:
