@@ -1,0 +1,64 @@
+id: nebius
+name: Nebius Token Factory
+homepage: https://nebius.com/token-factory
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-24'
+summary: Nebius 的开源模型推理平台，提供 OpenAI 兼容接口；免费加入 AI Builder Program 可领取一次性 25 美元 Token Factory 额度，主要用于学习和测试。
+api:
+  protocol:
+  - openai
+  base_url: https://api.tokenfactory.nebius.com/v1
+  models_access: quota
+signup:
+  url: https://dev.nebius.com/builders
+  requires:
+  - email
+  - google
+  - github
+  min_age: 18
+  notes: Token Factory 用 Google 或 GitHub 账号登录；额度需加入 AI Builder Program 并验证邮箱后领取。官方未写明额度有效期。
+quotas:
+- unit: usd
+  amount: 25
+  period: one-time
+  scope: account
+  new_users: true
+  condition: 加入 AI Builder Program（免费）并验证邮箱后领取
+  note: 官方称该计划主要用于学习、测试和实验；有效期官方未公布；合作方优惠视资格和可用性而定
+  evidence: https://dev.nebius.com/builders
+  quote: You’ll receive $25 in Nebius AI Cloud credit, $25 in Nebius Token Factory credit, $50 in Toloka credit, and $25 in Tavily credit as well as access to a Nebius Academy certification for $1.
+overage: unknown
+onboarding:
+  level: L2
+  key_page: https://tokenfactory.nebius.com/
+terms:
+- point: 禁止转售、转让服务，禁止超出限速或给接口造成过重负载
+  url: https://docs.nebius.com/legal/agreement
+- point: 受全面制裁地区（古巴、伊朗、朝鲜、克里米亚等）的客户不得使用
+  url: https://docs.nebius.com/legal/agreement
+- point: 限速按 15 分钟窗口动态调整，最高可到基础额度的 4 倍，超出返回 429
+  url: https://docs.tokenfactory.nebius.com/ai-models-inference/rate-limits.md
+tags:
+- 新人赠送
+sources:
+- https://dev.nebius.com/builders
+- https://nebius.com/token-factory
+- https://docs.tokenfactory.nebius.com/quickstart
+- https://docs.tokenfactory.nebius.com/switch.md
+- https://docs.tokenfactory.nebius.com/ai-models-inference/rate-limits.md
+- https://docs.tokenfactory.nebius.com/legal/terms-of-service.md
+- https://docs.nebius.com/legal/agreement
+en:
+  summary: Nebius's inference platform for open models with an OpenAI-compatible API; joining the free AI Builder Program gives a one-time $25 Token Factory credit, mainly meant for learning and testing.
+  signup_notes: Token Factory sign-in uses a Google or GitHub account; the credit is claimed after joining the AI Builder Program and verifying your email. Credit expiry is not stated.
+  tags:
+  - New-user credits
+  quotas:
+  - condition: Claimed after joining the (free) AI Builder Program and verifying your email
+    note: Nebius says the program is mainly for learning, testing and experimentation; expiry not published; partner offers depend on eligibility and availability
+  terms:
+  - Reselling or transferring the service, exceeding rate limits or overloading the API is prohibited
+  - Customers in comprehensively sanctioned regions (Cuba, Iran, North Korea, Crimea, etc.) may not use the service
+  - Rate limits adjust dynamically in 15-minute windows, up to 4x the base allocation; going over returns HTTP 429
