@@ -4,7 +4,7 @@ homepage: https://build.nvidia.com
 region: global
 api_usable: true
 status: unconfirmed
-last_verified: '2026-11-19'
+last_verified: '2026-11-24'
 summary: 开发者计划成员可免费调用，仅限原型开发和测试；额度数值待核实。
 api:
   protocol:
@@ -23,6 +23,7 @@ quotas:
   period: one-time
   scope: account
   evidence: https://docs.api.nvidia.com/nim/docs/faq
+  quote: Remote API calls to NVIDIA-hosted endpoints count against trail API credits.
 overage: blocked
 onboarding:
   level: L1
