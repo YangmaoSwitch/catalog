@@ -1,0 +1,65 @@
+id: ai21-labs
+name: AI21 Labs
+homepage: https://ai21.com
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-24'
+summary: 新账号注册即送 10 美元试用额度，无需信用卡，可用于 Jamba 系列模型的 API、SDK 与 Playground 调用。
+api:
+  protocol:
+  - openai
+  base_url: https://api.ai21.com/studio/v1
+  models_access: quota
+  quota_models:
+  - jamba-large
+  - jamba-mini
+signup:
+  url: https://studio.ai21.com/sign-up
+  requires:
+  - email
+  - google
+  - github
+  min_age: 18
+quotas:
+- unit: usd
+  amount: 10
+  period: one-time
+  scope: account
+  new_users: true
+  evidence: https://docs.ai21.com/docs/usage-cost.md
+  quote: New accounts are given a \$10 credit good for three months on the AI21 platform.
+  note: 定价页写“$10 credits for 7 days”，文档页写“$10 credit good for three months”，两处金额一致（10 美元）但有效期说法不同；额度可用于 API、SDK 与 Playground 的全部用量。
+overage: auto_paid
+onboarding:
+  level: L2
+  key_page: https://studio.ai21.com/v2/account/api-key
+terms:
+- point: 必须年满 18 岁（或所在司法辖区的成年年龄）才能使用服务（第 2 条）
+  url: https://www.ai21.com/terms-policies/terms-of-use/
+- point: 禁止规避限流、用量或访问相关功能，或使用自动化手段访问服务（第 6.2(f) 条）
+  url: https://www.ai21.com/terms-policies/terms-of-use/
+- point: 除非另有书面约定，AI21 不会用客户数据训练其基础或通用 AI 模型（第 7.2 条）
+  url: https://www.ai21.com/terms-policies/terms-of-use/
+tags:
+- 新人赠送
+- 试用
+sources:
+- https://www.ai21.com/pricing
+- https://docs.ai21.com/docs/usage-cost.md
+- https://docs.ai21.com/docs/create-api-key.md
+- https://docs.ai21.com/reference/jamba-1-6-api-ref.md
+- https://www.ai21.com/terms-policies/terms-of-use/
+en:
+  summary: New accounts get a $10 trial credit, no credit card needed, usable for the Jamba family models via API, SDK and the playground.
+  tags:
+  - New-user offer
+  - Trial
+  quotas:
+  - models: All Jamba platform usage (API, SDK, playground)
+    condition: New accounts
+    note: The pricing page says "$10 credits for 7 days" while the docs say "$10 credit good for three months"; both agree on $10 but differ on the validity period.
+  terms:
+  - You must be at least 18 years of age (or the age of majority in your jurisdiction) to use the Services (Section 2)
+  - Circumventing rate-limiting, usage or access-related features, or using automated means to access the Services is prohibited (Section 6.2(f))
+  - Unless otherwise agreed in writing, AI21 will not use your Customer Data to train its foundational or generally available AI models (Section 7.2)
