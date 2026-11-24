@@ -4,7 +4,7 @@ homepage: https://aihubmix.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-19'
+last_verified: '2026-11-24'
 summary: 聚合平台的免费模型，每日重置。
 api:
   protocol:
@@ -23,18 +23,21 @@ quotas:
   scope: account
   evidence: https://aihubmix.com/call/free_quota_config
   models: 免费模型
+  quote: '"daily_request_limit":100'
 - unit: tokens
   amount: 1000000
   period: day
   scope: account
   evidence: https://aihubmix.com/call/free_quota_config
   models: 免费模型
+  quote: '"daily_token_limit":1000000'
 - unit: requests
   amount: 10
   period: minute
   scope: account
   evidence: https://aihubmix.com/call/free_quota_config
   models: 免费模型
+  quote: '"minute_limit":10'
 overage: blocked
 onboarding:
   level: L1
