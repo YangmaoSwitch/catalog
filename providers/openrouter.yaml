@@ -4,7 +4,7 @@ homepage: https://openrouter.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-23'
+last_verified: '2026-11-24'
 summary: 聚合平台，名称以 :free 结尾的模型免费调用。
 api:
   protocol:
@@ -23,14 +23,16 @@ quotas:
   amount: 20
   period: minute
   scope: account
-  evidence: https://openrouter.ai/docs/api-reference/limits
+  evidence: https://openrouter.ai/pricing
+  quote: Free models are capped at 20 requests per minute and 50 per day, rising to 1,000 per day once your account has bought at least $10 of credits.
   reset: rolling
   models: :free 模型
 - unit: requests
   amount: 50
   period: day
   scope: account
-  evidence: https://openrouter.ai/docs/api-reference/limits
+  evidence: https://openrouter.ai/pricing
+  quote: Free models are capped at 20 requests per minute and 50 per day, rising to 1,000 per day once your account has bought at least $10 of credits.
   reset: 00:00 UTC
   models: :free 模型
   condition: 累计充值不足 10 美元
@@ -38,7 +40,8 @@ quotas:
   amount: 1000
   period: day
   scope: account
-  evidence: https://openrouter.ai/docs/api-reference/limits
+  evidence: https://openrouter.ai/pricing
+  quote: Free models are capped at 20 requests per minute and 50 per day, rising to 1,000 per day once your account has bought at least $10 of credits.
   reset: 00:00 UTC
   models: :free 模型
   condition: 累计充值满 10 美元
