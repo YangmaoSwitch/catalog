@@ -1,0 +1,63 @@
+id: siliconflow-global
+name: SiliconFlow (International)
+name_zh: 硅基流动国际站
+homepage: https://www.siliconflow.com
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-24'
+summary: 硅基流动国际站，按量付费的模型 API 平台；官方定价页写明新账号可用 1 美元免费额度起步，不面向中国大陆用户。
+api:
+  protocol:
+  - openai
+  base_url: https://api.siliconflow.com/v1
+  models_access: quota
+signup:
+  url: https://cloud.siliconflow.com
+  requires:
+  - google
+  - github
+  regions_blocked:
+  - CN
+  notes: 登录页提供 Google 或 GitHub 登录；服务条款写明不向中国大陆用户提供服务，大陆用户需使用 siliconflow.cn。
+quotas:
+- unit: usd
+  amount: 1
+  period: one-time
+  scope: account
+  evidence: https://www.siliconflow.com/pricing
+  quote: No, there are no minimum commitments. You only pay for what you use, and you can start with $1 in free credits.
+  note: 定价页常见问题写明的起步免费额度；领取条件和有效期官方未公布。
+  new_users: true
+overage: unknown
+onboarding:
+  level: L1
+  key_page: https://cloud.siliconflow.com/account/ak
+terms:
+- point: 服务不向中国大陆用户提供，大陆用户需使用 siliconflow.cn
+  url: https://docs.siliconflow.com/en/legals/terms-of-service
+- point: 不得将平台或服务提供给他人使用，不得转租、转售或分发（3.4 e、f）
+  url: https://docs.siliconflow.com/en/legals/terms-of-service
+- point: 禁止用平台或服务从事商业用途（3.4 p）
+  url: https://docs.siliconflow.com/en/legals/terms-of-service
+- point: 禁止用爬虫等自动化手段抓取平台数据（3.4 i）
+  url: https://docs.siliconflow.com/en/legals/terms-of-service
+tags:
+- 新人赠送
+sources:
+- https://www.siliconflow.com/pricing
+- https://docs.siliconflow.com/en/userguide/quickstart
+- https://docs.siliconflow.com/en/userguide/rate-limits/rate-limit-and-upgradation
+- https://docs.siliconflow.com/en/legals/terms-of-service
+en:
+  summary: SiliconFlow's international site, a pay-as-you-go model API platform; the official pricing page says you can start with $1 in free credits. Not available to users in mainland China.
+  signup_notes: The login page offers Google or GitHub sign-in; the terms say the service is not available in mainland China, where users should use siliconflow.cn.
+  tags:
+  - New users
+  quotas:
+  - note: Starting free credit stated in the pricing FAQ; eligibility and expiry are not published.
+  terms:
+  - Not available to users in mainland China; they should use siliconflow.cn
+  - You may not make the platform available to others, or rent, resell or distribute it (3.4 e, f)
+  - Commercial use of the platform or services is prohibited (3.4 p)
+  - Scraping platform data with automated tools is prohibited (3.4 i)
