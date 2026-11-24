@@ -4,7 +4,7 @@ homepage: https://aistudio.google.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-19'
+last_verified: '2026-11-24'
 summary: Gemini API 免费档，按项目限速；具体数值在 AI Studio 页面显示。
 api:
   protocol:
@@ -30,6 +30,7 @@ quotas:
   evidence: https://aistudio.google.com/docs/rate-limits
   reset: 00:00 America/Los_Angeles
   note: 另有每分钟请求数、每分钟 token 数限制；具体数值按模型在 AI Studio 显示
+  quote: Rate limits are applied per project, not per API key.
 overage: blocked
 onboarding:
   level: L2
