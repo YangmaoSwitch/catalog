@@ -1,0 +1,69 @@
+id: ppio
+name: PPIO
+name_zh: PPIO 派欧云
+homepage: https://ppio.com
+region: cn
+api_usable: true
+status: unconfirmed
+last_verified: '2026-11-24'
+summary: 按量付费的模型 API 平台，注册页写明新用户受邀注册可得 ¥5 免费额度，没有长期免费模型；未实名账号限速每分钟 1 次。
+api:
+  protocol:
+  - openai
+  base_url: https://api.ppio.com/openai
+  models_url: https://api.ppio.com/openai/v1/models
+  models_access: quota
+signup:
+  url: https://ppio.com/user/register
+  requires:
+  - phone_cn
+  - real_name
+  notes: 注册页支持手机号（默认 +86）、账号或微信扫码注册；未实名账号 API 限速每分钟 1 次，且不能充值，实际使用需完成实名认证。
+quotas:
+- unit: cny
+  amount: 5
+  period: one-time
+  scope: account
+  new_users: true
+  condition: 新用户通过邀请注册
+  quote: 新用户受邀注册，立得 ¥5 免费额度
+  evidence: https://ppio.com/user/register
+  note: 注册页写的是“受邀注册”，官方公告称“邀请奖励”活动已于 2025-11-30 下线；文档常见问题只说首次注册用户可领取新用户代金券，未写金额和有效期。直接注册能否获得官方未明确，按保守理解只计受邀注册。
+overage: blocked
+onboarding:
+  level: L2
+  key_page: https://ppio.com/settings/key-management
+terms:
+- point: 每个个人主体最多实名认证 3 个账号，每个企业主体最多 10 个
+  url: https://ppio.com/docs/support/identity-verification.md
+- point: 未实名认证账号 API 调用限速为每分钟 1 次请求，且不能充值
+  url: https://ppio.com/docs/support/identity-verification.md
+- point: 部分大语言模型仅对企业认证用户开放
+  url: https://ppio.com/docs/support/identity-verification.md
+- point: 余额耗尽时请求返回 403，需充值后继续使用
+  url: https://ppio.com/docs/model/FAQs.md
+tags:
+- 新人赠送
+- 试用
+sources:
+- https://ppio.com/user/register
+- https://ppio.com/pricing
+- https://ppio.com/docs/model/FAQs.md
+- https://ppio.com/docs/model/get-start.md
+- https://ppio.com/docs/model/llm.md
+- https://ppio.com/docs/support/identity-verification.md
+- https://ppio.com/docs/announcement/announcement.md
+en:
+  summary: Pay-as-you-go model API platform; the sign-up page says new users who register through an invitation get ¥5 of free credit. There are no permanently free models, and accounts without real-name verification are limited to 1 request per minute.
+  signup_notes: Sign up with a phone number (+86 by default), a username or WeChat QR; unverified accounts are limited to 1 API request per minute and cannot top up, so real-name verification is needed in practice.
+  tags:
+  - New-user credits
+  - Trial
+  quotas:
+  - condition: New users who register through an invitation
+    note: The sign-up page says "invited registration", while an official announcement says the referral reward program ended on 2025-11-30; the docs FAQ only says first-time users can claim a new-user voucher, with no amount or validity. Whether direct sign-ups get it is not stated, so this is conservatively limited to invited sign-ups.
+  terms:
+  - At most 3 accounts per verified individual and 10 per verified company
+  - Accounts without real-name verification are limited to 1 API request per minute and cannot top up
+  - Some LLMs are only available to company-verified users
+  - When the balance runs out requests return 403; top up to continue
