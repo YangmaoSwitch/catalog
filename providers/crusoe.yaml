@@ -1,0 +1,85 @@
+id: crusoe
+name: Crusoe Cloud
+homepage: https://crusoe.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-24'
+summary: Crusoe 的托管推理平台，文档写明可用 5 美元免费额度试用 Serverless Inference 和 Serverless Fine-Tuning，之后按 token 计费。
+api:
+  protocol:
+  - openai
+  base_url: https://api.inference.crusoecloud.com/v1
+  models_access: quota
+  models:
+  - deepseek-ai/DeepSeek-V4.1-Flash
+  - google/gemma-4-31b-it
+  - nvidia/Nemotron-3-Nano-Omni-Reasoning-30B-A3B
+  - nvidia/nemotron-3.5-lightning-30b-a3b
+  - nvidia/nemotron-3.5-super-vl-120b-a12b
+  - openai/gpt-oss-120b
+  - qwen/Qwen3.8-27B
+  - zai-org/GLM-5.3
+  - zai-org/GLM-5.3-Flash
+signup:
+  url: https://console.crusoecloud.com/request-foundry
+  requires:
+  - email
+  - company
+  - card
+  notes: 注册表单要求填写公司名称，可用 Google 或 GitHub 注册。“创建账号”文档写明使用托管推理服务须启用计费并绑定有效的非预付信用卡；但限流文档又列出了“未添加支付方式”账号的默认限额，两者说法不一致，这里按需要绑卡记录。
+quotas:
+- unit: usd
+  amount: 5
+  period: one-time
+  scope: account
+  models: Serverless Inference 与 Serverless Fine-Tuning
+  evidence: https://docs.crusoe.ai/quickstart/getting-started-with-serverless-inference
+  quote: Use $5 in free credits to explore
+  note: 文档页顶部横幅写明；官方未写明有效期、是否仅限新账号以及发放条件。
+- unit: tokens
+  amount: 500000
+  period: minute
+  scope: model
+  condition: 未添加支付方式的组织（每个项目每个模型）
+  evidence: https://docs.crusoe.ai/serverless-inference/rate-limits
+  quote: Your default limits depend on whether your organization has a payment method on file
+  note: 速率上限，不是赠送额度；同时限每分钟 30 次请求。添加支付方式后为每分钟 2,000,000 token、600 次请求。
+overage: unknown
+onboarding:
+  level: L2
+  key_page: https://console.crusoecloud.com/foundry/models
+  quota_headers:
+  - x-ratelimit-limit-tokens
+  - x-ratelimit-remaining-tokens
+  - x-ratelimit-limit-requests
+  - x-ratelimit-remaining-requests
+terms:
+- point: Serverless Inference 流量可能由任意 Crusoe Cloud 机房处理
+  url: https://docs.crusoe.ai/quickstart/getting-started-with-serverless-inference
+- point: 使用托管推理服务需要启用计费，须绑定有效的非预付信用卡
+  url: https://docs.crusoe.ai/create-an-account
+tags:
+- 新人赠送
+- 试用
+sources:
+- https://www.crusoe.ai/cloud/pricing
+- https://crusoe.ai/cloud/managed-inference
+- https://docs.crusoe.ai/quickstart/getting-started-with-serverless-inference
+- https://docs.crusoe.ai/serverless-inference/rate-limits
+- https://docs.crusoe.ai/serverless-inference/available-models
+- https://docs.crusoe.ai/create-an-account
+en:
+  summary: Crusoe's managed inference platform; the docs say you can use $5 in free credits to try Serverless Inference and Serverless Fine-Tuning, then usage is billed per token.
+  signup_notes: The sign-up form asks for a company name; Google or GitHub sign-up is available. The account docs say billing must be enabled with a valid non-prepaid credit card to use managed inference, while the rate-limit docs list default limits for organizations with no payment method; the two disagree, so a card is recorded as required.
+  tags:
+  - New-user credits
+  - Trial
+  quotas:
+  - models: Serverless Inference and Serverless Fine-Tuning
+    note: Stated in the docs banner; expiry, whether it is only for new accounts, and grant conditions are not published.
+  - condition: Organizations without a payment method (per project, per model)
+    note: A rate limit, not a credit; also 30 requests per minute. With a payment method the limits are 2,000,000 tokens and 600 requests per minute.
+  terms:
+  - Serverless Inference traffic may be served from any Crusoe Cloud location
+  - Using managed inference requires enabling billing with a valid non-prepaid credit card
