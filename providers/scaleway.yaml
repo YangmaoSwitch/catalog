@@ -4,7 +4,7 @@ homepage: https://www.scaleway.com/en/generative-apis/
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-24'
 summary: 法国云厂商 Scaleway 的模型服务，免费档可免费处理 100 万 token，超出后自动按量计费，需绑定支付方式。
 api:
   protocol:
