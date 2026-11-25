@@ -4,7 +4,7 @@ homepage: https://developers.cloudflare.com/workers-ai/
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-23'
+last_verified: '2026-11-25'
 summary: 免费计划每天 1 万 Neurons，超额直接报错。
 api:
   protocol:
