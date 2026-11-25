@@ -1,0 +1,64 @@
+id: unisound
+name: Unisound MaaS
+name_zh: 云知声 MaaS 平台
+homepage: https://maas.unisound.com
+region: cn
+api_usable: true
+status: unconfirmed
+last_verified: '2026-11-25'
+summary: 云知声 MaaS 平台的 U Plan 订阅设有可免费领取的 Free 档，额度和周期官方页面未公布；按量计费的模型需付费。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://maas-api.unisound.com/v1
+  anthropic_base_url: https://maas-api.unisound.com/anthropic
+  models_access: paid
+  quota_models:
+  - u2-flash
+  - u2-med
+signup:
+  url: https://maas.unisound.com
+  requires:
+  - phone_cn
+  - real_name
+  notes: 手机验证码登录，首次登录自动注册；需完成个人或企业开发者实名认证。U Plan 使用套餐专属 Key（tp- 开头），与按量计费 Key 不通用，仅在套餐有效期内可用。
+quotas:
+- unit: requests
+  amount: null
+  period: month
+  scope: account
+  models: U Plan 套餐内模型（公告提到 U2-Flash、U2-Med）
+  condition: 领取 U Plan Free 档
+  note: 官方未公布 Free 档的具体额度、计量单位和周期；周期按 U Plan 付费档按月计价暂填，待核实。
+  evidence: https://maas.unisound.com/docs/guide/quickstart
+  quote: U Plan 正式上线！Free 档免费领，套餐升级限时7折，低至41.3元/月！
+overage: blocked
+onboarding:
+  level: L2
+  key_page: https://maas.unisound.com
+terms:
+- point: U Plan 套餐专属 Key 每账户唯一一把，仅用于套餐额度，套餐有效期结束后不可用
+  url: https://maas.unisound.com/docs/guide/quickstart
+- point: 有速率限制，例如 u2-flash 每分钟 100 次请求、1000 万 Token
+  url: https://maas.unisound.com/docs/api/rate-limits
+tags:
+- 试用
+sources:
+- https://maas.unisound.com/docs
+- https://maas.unisound.com/docs/guide/quickstart
+- https://maas.unisound.com/docs/api/text/openai-compatible
+- https://maas.unisound.com/docs/api/rate-limits
+- https://maas.unisound.com/docs/toolAI/codex
+en:
+  summary: Unisound MaaS offers a Free tier of its U Plan subscription that can be claimed at no cost; the quota and period are not published on the official pages. Pay-as-you-go models are paid.
+  signup_notes: Sign in with an SMS code (first sign-in creates the account); individual or company developer real-name verification is required. U Plan uses a dedicated plan key (tp- prefix) that is not interchangeable with pay-as-you-go keys and only works while the plan is valid.
+  tags:
+  - Trial
+  quotas:
+  - models: Models in the U Plan (the notice mentions U2-Flash and U2-Med)
+    condition: Claim the U Plan Free tier
+    note: The official pages do not state the Free tier's amount, unit or period; the monthly period is a placeholder based on the paid U Plan tiers being priced per month, pending confirmation.
+  terms:
+  - One dedicated U Plan key per account, only for plan quota, unusable after the plan expires
+  - Rate limits apply, e.g. u2-flash at 100 requests and 10,000,000 tokens per minute
