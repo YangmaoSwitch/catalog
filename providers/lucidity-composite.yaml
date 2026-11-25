@@ -1,0 +1,82 @@
+id: lucidity-composite
+name: Lucidity Composite
+homepage: https://composite.lucidity.sh
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-25'
+summary: 面向角色扮演的 OpenAI 兼容 API。自家模型 Synth 免费不限量，限每账号每分钟 5 次；另有部分免费模型，每天合计 80 次请求，部分模型每次调用按多次计。
+api:
+  protocol:
+  - openai
+  - anthropic
+  - gemini
+  base_url: https://composite.lucidity.sh/v1
+  anthropic_base_url: https://composite.lucidity.sh
+  models_url: https://composite.lucidity.sh/v1/models
+  models_access: paid
+  free_models:
+  - lucidityai/synth-2.5-flash
+  free_pattern: ':free$'
+  free_model_rule: 模型 ID 以 :free 结尾的为免费模型，共用每日 80 次额度；Synth（lucidityai/synth-2.5-flash）免费且不计入每日额度。
+signup:
+  url: https://composite.lucidity.sh
+  requires: []
+  notes: 需注册免费账号后在 Keys 页面创建 Key，Key 只显示一次。官方页面未写明注册所需信息。
+quotas:
+- unit: requests
+  amount: 80
+  period: day
+  scope: account
+  models: 全部 :free 免费模型合计
+  note: 模型列表页注明部分免费模型每次调用按多次计（如 DeepSeek V4 Flash 0731 每次计 11 次，DeepSeek V4.1 Flash 每次计 25 次），实际可用调用次数会更少。重置时间官方未公布。
+  evidence: https://composite.lucidity.sh/
+  quote: Free models such as GLM 5.3 Flash and DeepSeek V4 Flash share 80 requests a day
+- unit: requests
+  amount: 5
+  period: minute
+  scope: account
+  models: Synth（lucidityai/synth-2.5-flash）
+  note: Synth 不设每日上限；免费请求和自带 Key 请求共用每分钟 5 次的限制。
+  evidence: https://composite.lucidity.sh/
+  quote: Synth, LuciditySH's creative model, is unlimited and free for everyone, with a limit of 5 requests per minute per account.
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+terms:
+- point: 禁止将 Composite 用于代码编辑器、IDE 或编程代理，带工具调用定义的请求会被拒绝，反复尝试可能被封号
+  url: https://lucidity.sh/terms.html
+- point: 禁止规避速率限制等技术保护措施
+  url: https://lucidity.sh/terms.html
+- point: 训练数据收集默认开启，可在账号设置中关闭
+  url: https://composite.lucidity.sh/
+- point: 禁止生成 banned.txt 中列出的内容类别，虚构或角色扮演场景同样适用
+  url: https://lucidity.sh/terms.html
+tags:
+- 免费模型
+- 每日赠送
+sources:
+- https://composite.lucidity.sh/
+- https://composite.lucidity.sh/docs
+- https://composite.lucidity.sh/models
+- https://composite.lucidity.sh/models/deepseek/deepseek-v4-flash-0731:free
+- https://composite.lucidity.sh/models/lucidityai/synth-2.5-flash
+- https://lucidity.sh/terms.html
+en:
+  summary: Roleplay-focused OpenAI-compatible API. Its own model Synth is free with no daily cap, limited to 5 requests per minute per account; some other free models share 80 requests a day, and some of them count each call as several requests.
+  signup_notes: Create a free account, then make a key on the Keys page; the key is shown once. The official pages do not state what sign-up requires.
+  free_model_rule: Model IDs ending in :free are free and share the daily 80-request allowance; Synth (lucidityai/synth-2.5-flash) is free and not counted against it.
+  tags:
+  - Free model
+  - Daily allowance
+  quotas:
+  - models: All :free models combined
+    note: The model list says some free models count each call as several requests (e.g. DeepSeek V4 Flash 0731 counts as 11, DeepSeek V4.1 Flash as 25), so fewer actual calls are possible. Reset time not published.
+  - models: Synth (lucidityai/synth-2.5-flash)
+    note: Synth has no daily cap; free and BYOK requests share the 5-per-minute limit.
+  terms:
+  - Using Composite with code editors, IDEs or coding agents is prohibited; requests that define tools are rejected and repeated attempts can lead to suspension
+  - Circumventing rate limits or other technical protections is prohibited
+  - Content in the categories listed in banned.txt is prohibited, including in fiction or roleplay
+  - Training data collection is on by default, with an opt-out in account settings
