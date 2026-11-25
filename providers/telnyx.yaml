@@ -1,0 +1,67 @@
+id: telnyx
+name: Telnyx
+homepage: https://telnyx.com
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-25'
+summary: 通信云平台，提供 OpenAI 兼容的推理 API（GLM、Kimi、DeepSeek、Qwen 等开源模型）；试用账号赠送 5 美元测试额度，可用于推理，用完需付费充值。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://api.telnyx.com/v2/ai/openai
+  models_access: quota
+signup:
+  url: https://telnyx.com/sign-up
+  requires:
+  - email
+  notes: 注册需验证邮箱并通过风控检查（域名、IP 信誉、reCAPTCHA 等），部分情况要求验证手机号或 KYC。预试用（Pretrial）账号不能使用推理；升级到试用（Trial）账号需通过欺诈审核（LinkedIn/GitHub 验证或 AI agent 评估）。
+quotas:
+- unit: usd
+  amount: 5
+  period: one-time
+  scope: account
+  new_users: true
+  condition: 试用（Trial）账号；预试用账号的 25 美元 AI 额度不能用于推理
+  note: 测试额度与短信、语音等其他产品共用；按各模型公布的每百万 token 价格扣费。服务条款写明赠送的额度六个月内未用完可被收回。
+  evidence: https://telnyx.com/agent-signup.md
+  quote: A new account starts with $5 in free credit.
+overage: unknown
+onboarding:
+  level: L2
+  key_page: https://portal.telnyx.com/#/app/api-keys
+terms:
+- point: 试用账号同一时间只能有 1 个 API Key，Telnyx 可不经通知修改限制
+  url: https://developers.telnyx.com/docs/account-setup/levels-and-capabilities/trial.md
+- point: 每次注册都会经过域名、IP 信誉、注册来源等风控检查，任一项不通过即注册失败
+  url: https://developers.telnyx.com/docs/account-setup/signup.md
+- point: 赠送的促销或使用额度六个月内未使用，Telnyx 可收回（6.5）
+  url: https://telnyx.com/terms-and-conditions-of-service
+- point: 余额为负时 Telnyx 可暂停全部服务（4.2）
+  url: https://telnyx.com/terms-and-conditions-of-service
+tags:
+- 新人赠送
+- 试用
+sources:
+- https://telnyx.com/pricing/inference-api
+- https://developers.telnyx.com/docs/inference/getting-started
+- https://developers.telnyx.com/docs/inference/rate-limits
+- https://developers.telnyx.com/docs/account-setup/levels-and-capabilities/trial.md
+- https://developers.telnyx.com/docs/account-setup/levels-and-capabilities/pretrial.md
+- https://developers.telnyx.com/docs/account-setup/account-upgrade.md
+- https://telnyx.com/agent-signup.md
+en:
+  summary: Communications cloud with an OpenAI-compatible inference API (open models such as GLM, Kimi, DeepSeek, Qwen); trial accounts get $5 in testing credit usable for inference, after which paid top-up is needed.
+  signup_notes: Sign-up requires a verified email and passes trust and safety checks (domain, IP reputation, reCAPTCHA, etc.); some sign-ups must verify a mobile number or pass KYC. Pretrial accounts cannot use Inference; moving to Trial requires passing a fraud review (LinkedIn/GitHub verification or AI agent evaluation).
+  tags:
+  - New-user credits
+  - Trial
+  quotas:
+  - condition: Trial accounts; the $25 pretrial AI credit cannot be used for Inference
+    note: The testing credit is shared with SMS, voice and other products; charged at each model's published per-million-token price. The terms say granted credits unused within six months may be withdrawn.
+  terms:
+  - Trial accounts may hold only 1 API key at a time; Telnyx may change limits without notice
+  - Every sign-up goes through checks on domain, IP reputation, signup origin and more; failing any one blocks the sign-up
+  - Promotional or usage credits unused within six months may be withdrawn (6.5)
+  - Telnyx may suspend all services if the balance goes negative (4.2)
