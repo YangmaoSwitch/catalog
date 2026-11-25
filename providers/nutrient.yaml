@@ -1,0 +1,61 @@
+id: nutrient
+name: Nutrient
+homepage: https://www.nutrient.io/api/ai-gateway-api/
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-25'
+summary: 文档处理平台 Nutrient 的 AI Gateway 提供 OpenAI 兼容接口，免费计划每月含 5 美元用量，与其他 Nutrient API 共用，无需信用卡；用完后未开通钱包则暂停请求。
+api:
+  protocol:
+  - openai
+  base_url: https://api.nutrient.io/ai/v1
+  models_access: quota
+  models:
+  - nutrient-s
+  - nutrient-m
+  - nutrient-l
+signup:
+  url: https://dashboard.nutrient.io/sign_up/?product=ai-gateway
+  requires:
+  - email
+  notes: 免费计划无需信用卡；超出免费用量需先开通预付钱包（首次充值 25 美元）。
+quotas:
+- unit: usd
+  amount: 5
+  period: month
+  reset: 每个计费周期重置
+  scope: account
+  models: nutrient-s、nutrient-m、nutrient-l 等 AI Gateway 模型，按 token 计费
+  note: 5 美元为全部 Nutrient API（数据提取、Processor、Viewer、AI Gateway 等）共用；未用完的部分到期作废；未开通钱包时商业使用受限。
+  evidence: https://www.nutrient.io/api/ai-gateway-api/
+  quote: AI Gateway is billed on the same plans as every Nutrient API, and the free plan includes $5 of usage per month.
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://dashboard.nutrient.io
+terms:
+- point: 用完每月用量后，若未开通钱包，请求会暂停到下个周期重置
+  url: https://www.nutrient.io/api/pricing/
+- point: 免费计划未开通钱包时商业使用受限
+  url: https://www.nutrient.io/api/pricing/
+- point: OpenAI 支持的请求可能在全球处理，并为滥用监控保留最多 30 天，目前不提供零数据保留
+  url: https://www.nutrient.io/api/ai-gateway-api/
+tags:
+- 每月赠送
+sources:
+- https://www.nutrient.io/api/pricing/
+- https://www.nutrient.io/api/ai-gateway-api/
+en:
+  summary: Nutrient, a document-processing platform, offers an OpenAI-compatible AI Gateway; the free plan includes $5 of usage per month, shared with other Nutrient APIs, no credit card needed; without a wallet, requests pause once it is used up.
+  signup_notes: The free plan needs no credit card; going past the free usage requires a prepaid wallet (first top-up $25).
+  tags:
+  - Monthly credits
+  quotas:
+  - models: AI Gateway models such as nutrient-s, nutrient-m, nutrient-l, billed per token
+    note: The $5 is shared across all Nutrient APIs (Data Extraction, Processor, Viewer, AI Gateway, etc.); unused usage expires each period; commercial use is limited without a wallet.
+  terms:
+  - After the monthly usage is used up, requests pause until the next reset unless a wallet is set up
+  - Limited commercial use on the free plan without a wallet
+  - OpenAI-backed requests may be processed globally and retained up to 30 days for abuse monitoring; Zero Data Retention is not currently available
