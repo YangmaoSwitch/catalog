@@ -1,0 +1,67 @@
+id: vikasit-ai
+name: Vikasit AI
+homepage: https://vikasit.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-25'
+summary: 印度公司 Chandorkar Technologies 的 OpenAI 兼容推理 API，用 GitHub 登录后可免费调用 vikasit-nova，每个账号每天 200 万 tokens，不需要信用卡；其他模型按量付费。
+api:
+  protocol:
+  - openai
+  base_url: https://api.vikasit.ai/v1
+  free_models:
+  - vikasit-nova
+  models_access: paid
+signup:
+  url: https://vikasit.ai/auth
+  requires:
+  - github
+  notes: 用 GitHub 账号登录获取 API Key，免费额度不需要信用卡。
+quotas:
+- unit: tokens
+  amount: 2000000
+  period: day
+  scope: account
+  models: vikasit-nova
+  condition: 已登录的开发者账号
+  note: 官方注明每日免费额度可能调整，按账号适用合理使用限制，也可能随时调整或取消免费档；重置时间官方未公布。
+  evidence: https://vikasit.ai/inference
+  quote: 2,000,000 tokens per day, free
+overage: unknown
+expires: null
+onboarding:
+  level: L2
+  key_page: https://vikasit.ai/auth
+terms:
+- point: 禁止绕过用量限制、计费、速率限制或安全控制（第 3 条）
+  url: https://vikasit.ai/terms
+- point: 未经明确许可禁止转售或再授权服务（第 3 条）
+  url: https://vikasit.ai/terms
+- point: 免费额度可能变动，按账号适用合理使用限制，官方可随时调整或取消免费档
+  url: https://vikasit.ai/inference
+- point: 自家付费模型的内容不用于训练；CLI 中由第三方运营的 Free Preview 模型，其运营方可能用请求内容训练
+  url: https://vikasit.ai/privacy
+tags:
+- 免费模型
+- 每日赠送
+sources:
+- https://vikasit.ai
+- https://vikasit.ai/inference
+- https://vikasit.ai/terms
+- https://vikasit.ai/privacy
+en:
+  summary: OpenAI-compatible inference API from India's Chandorkar Technologies; after GitHub sign-in, vikasit-nova is free at 2M tokens per account per day with no card required; other models are pay-as-you-go.
+  signup_notes: Sign in with GitHub to get an API key; the free allowance needs no credit card.
+  tags:
+  - Free model
+  - Daily allowance
+  quotas:
+  - models: vikasit-nova
+    condition: Signed-in developer accounts
+    note: The provider says the free daily allowance may change, fair-use limits apply per account, and the free tier may be adjusted or retired at any time; reset time not published.
+  terms:
+  - Circumventing usage limits, billing, rate limits or security controls is prohibited (section 3)
+  - Reselling or sublicensing the service is prohibited unless expressly permitted (section 3)
+  - The free allowance may change, fair-use limits apply per account, and the free tier may be adjusted or retired at any time
+  - Content sent to paid Vikasit models is not used for training; third-party operators of Free Preview models in the CLI may train on request content
