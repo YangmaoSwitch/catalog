@@ -4,16 +4,19 @@ homepage: https://vercel.com/ai-gateway
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-24'
-summary: 聚合网关，每个 Vercel 团队免费档每月含 5 美元额度，只能调用标为 Free Tier 的模型。
+last_verified: '2026-11-25'
+summary: 聚合网关，每个 Vercel 团队免费档每月含 5 美元额度，只能调用标为 Free Tier 的模型；另有部分模型标价为 0（如 reflection/beam-free、stealth/glyph-cluster）。
 api:
   protocol:
   - openai
   base_url: https://ai-gateway.vercel.sh/v1
   models_url: https://ai-gateway.vercel.sh/v1/models
   models_access: paid
+  free_models:
+  - reflection/beam-free
+  - stealth/glyph-cluster
   free_pattern: -free$
-  free_model_rule: 月度免费额度只能用于官网模型列表中标为 Free Tier 的模型子集；另有部分模型限时标价为 0
+  free_model_rule: 月度免费额度只能用于官网模型列表中标为 Free Tier 的模型子集；另有部分模型标价为 0（目前官网模型页显示 reflection/beam-free 与 stealth/glyph-cluster 为 Free），未公布截止日期
 signup:
   url: https://vercel.com/signup
   requires:
@@ -48,22 +51,28 @@ terms:
   url: https://vercel.com/docs/ai-gateway/faq
 - point: 各模型的使用还须遵守对应提供方条款及 Vercel AI Product Terms
   url: https://vercel.com/docs/ai-gateway
+- point: stealth/glyph-cluster 为匿名早期访问模型，提示词和输出会被提供方保留
+  url: https://vercel.com/ai-gateway/models/glyph-cluster
 tags:
 - 聚合
 - 每月赠送
+- 免费模型
 sources:
 - https://vercel.com/docs/ai-gateway/pricing
 - https://vercel.com/docs/ai-gateway/faq
 - https://vercel.com/docs/ai-gateway/rate-limits
 - https://vercel.com/docs/ai-gateway/authentication-and-byok/api-keys
 - https://vercel.com/ai-gateway
+- https://vercel.com/ai-gateway/models/beam-free
+- https://vercel.com/ai-gateway/models/glyph-cluster
 en:
-  summary: Aggregator gateway; every Vercel team's free tier includes $5 of credit per month, usable only on models marked Free Tier.
+  summary: Aggregator gateway; every Vercel team's free tier includes $5 of credit per month, usable only on models marked Free Tier; some models are also priced at $0 (e.g. reflection/beam-free, stealth/glyph-cluster).
   signup_notes: The team must add a valid payment method before free credits can be used; BYOK is not available on the free tier; buying AI Gateway credits moves the team to the paid tier and the monthly free credit no longer applies.
-  free_model_rule: The monthly free credit only covers the subset marked Free Tier in the model list; some models are also temporarily priced at $0
+  free_model_rule: The monthly free credit only covers the subset marked Free Tier in the model list; some models are also priced at $0 (currently reflection/beam-free and stealth/glyph-cluster are shown as Free on the official model pages), with no end date announced
   tags:
   - Aggregator
   - Monthly credits
+  - Free models
   quotas:
   - condition: The team has never bought AI Gateway credits
     note: The credit starts with the first request and is not an expiring trial; Free Tier models only
@@ -71,3 +80,4 @@ en:
   terms:
   - Without a payment method requests return 403 customer_verification_required; without a positive balance they return 402
   - Use of each model is also subject to its provider's terms and Vercel's AI Product Terms
+  - stealth/glyph-cluster is an anonymous early-access model; prompts and outputs are retained by the provider
