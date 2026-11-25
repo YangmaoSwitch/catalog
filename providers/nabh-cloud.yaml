@@ -1,0 +1,102 @@
+id: nabh-cloud
+name: nabh.cloud
+homepage: https://nabh.cloud
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-25'
+summary: 印度预付费模型 API 平台，免费计划注册送 50 积分，之后每月 1 日再送 50 积分（1 积分 = 1 卢比），只能调用 GPT OSS 20B，每分钟 5 次、每天 500 次。
+api:
+  protocol:
+  - openai
+  base_url: https://api.nabh.cloud/v1
+  models_access: paid
+  quota_models:
+  - gpt-oss-20b
+signup:
+  url: https://app.nabh.cloud/signup
+  requires:
+  - email
+  min_age: 18
+  notes: 可用邮箱或 Google 账号注册，不需要绑卡。首次充值 500 卢比以上升级到 Developer 计划，可用更多模型。
+quotas:
+- unit: credits
+  amount: 50
+  period: one-time
+  scope: account
+  models: gpt-oss-20b
+  new_users: true
+  note: 注册赠送；1 积分 = 1 卢比，按 token 扣费（gpt-oss-20b 每千输入 token 0.01 积分、每千输出 token 0.03 积分）；条款写明免费积分可能过期或被收回
+  quote: 50 Free Credits on Signup, Then 50 Every Month
+  evidence: https://nabh.cloud/pricing
+- unit: credits
+  amount: 50
+  period: month
+  reset: 每月 1 日（时区未写明）
+  scope: account
+  models: gpt-oss-20b
+  condition: 免费计划账号
+  note: 1 积分 = 1 卢比；条款写明免费积分可能过期或被收回
+  quote: Free-plan accounts also get 50 free credits automatically on the 1st of every month, on top of the signup bonus; whatever you bought yourself stays until you spend it.
+  evidence: https://nabh.cloud/pricing
+- unit: requests
+  amount: 500
+  period: day
+  reset: 00:00 UTC
+  scope: account
+  condition: 免费计划
+  note: 所有 API Key 共用；免费计划只能建 1 个 Key
+  quote: per-day limit counts requests in a calendar day that resets at midnight UTC (5.30 am IST).
+  evidence: https://nabh.cloud/docs/rate-limits
+- unit: requests
+  amount: 5
+  period: minute
+  reset: rolling
+  scope: account
+  condition: 免费计划
+  quote: 5 Requests/Min Rate Limit
+  evidence: https://nabh.cloud/pricing
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+terms:
+- point: 免费积分没有现金价值，可能过期或被平台收回（第 6 条）
+  url: https://nabh.cloud/terms
+- point: 禁止绕过速率限制、余额检查等技术限制（第 5 条）
+  url: https://nabh.cloud/terms
+- point: 禁止以与平台竞争的方式转售或向第三方开放服务（第 5 条）
+  url: https://nabh.cloud/terms
+- point: 用户须年满 18 岁（第 3 条）
+  url: https://nabh.cloud/terms
+- point: 提示词和输出只用于提供服务、计费和防滥用，不用于训练
+  url: https://nabh.cloud/pricing
+tags:
+- 每月赠送
+- 新人赠送
+sources:
+- https://nabh.cloud
+- https://nabh.cloud/pricing
+- https://nabh.cloud/docs
+- https://nabh.cloud/docs/pricing
+- https://nabh.cloud/docs/rate-limits
+- https://nabh.cloud/terms
+en:
+  summary: Indian prepaid model API platform; the Free plan gives 50 credits on signup and 50 more on the 1st of every month (1 credit = ₹1), usable only on GPT OSS 20B, at 5 requests per minute and 500 per day.
+  signup_notes: Sign up with email or Google, no card needed. A first recharge of ₹500 or more moves you to the Developer plan with more models.
+  tags:
+  - Monthly credits
+  - New-user credits
+  quotas:
+  - note: Signup bonus; 1 credit = ₹1, billed per token (gpt-oss-20b ₹0.01 per 1K input, ₹0.03 per 1K output tokens); the terms say free credits may expire or be withdrawn
+  - condition: Free-plan accounts
+    note: 1 credit = ₹1; the terms say free credits may expire or be withdrawn
+  - condition: Free plan
+    note: Shared by all API keys; the Free plan allows only 1 key
+  - condition: Free plan
+  terms:
+  - Free credits have no cash value and may expire or be withdrawn (section 6)
+  - Bypassing rate limits, balance checks or other technical controls is prohibited (section 5)
+  - Reselling or exposing the service to third parties in competition with nabh.cloud is prohibited (section 5)
+  - Users must be at least 18 (section 3)
+  - Prompts and completions are used only to serve requests, bill and prevent abuse, never for training
