@@ -1,0 +1,83 @@
+id: aws-bedrock
+name: Amazon Bedrock (AWS)
+name_zh: 亚马逊云科技 Bedrock
+homepage: https://aws.com
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-25'
+summary: AWS 新客户注册即得 100 美元额度，完成指定活动最多再得 100 美元，可用于 Amazon Bedrock 的模型调用；Free plan 最长 6 个月，额度用完或到期后账号关闭，期间不产生费用。
+api:
+  protocol:
+  - openai
+  base_url: https://bedrock-runtime.us-east-1.amazonaws.com/openai/v1
+  models_access: quota
+signup:
+  url: https://signin.aws.amazon.com/signup?request_type=builderId
+  requires:
+  - email
+  notes: 大多数新客户注册不需要支付方式，个别情况可能要求提供支付方式验证身份。只有从未有过 AWS 账号的新客户才可领取。Bedrock API Key 需在控制台 Bedrock 页面的 API keys 中生成（长期 Key 会创建 IAM 用户），地址按区域区分。
+quotas:
+- unit: usd
+  amount: 100
+  period: one-time
+  scope: account
+  new_users: true
+  condition: 新 AWS 客户注册（Free plan 或 Paid plan 均可）
+  note: 额度通用于参与的 AWS 服务，Bedrock 在 Free plan 可用服务之列；FAQ 写额度 6 个月后过期，条款页写 12 个月，按 6 个月理解；Free plan 在 6 个月或额度用完时结束，账号随之关闭
+  evidence: https://aws.amazon.com/free/
+  quote: When you create a new AWS Free Tier account, you get $100 in credits immediately.
+- unit: usd
+  amount: 100
+  period: one-time
+  scope: account
+  new_users: true
+  condition: 在控制台 Explore AWS 中完成指定活动，最多再得 100 美元
+  evidence: https://aws.amazon.com/free/
+  quote: As you explore key services, you can earn up to $100 more.
+overage: blocked
+onboarding:
+  level: L2
+  key_page: https://console.aws.amazon.com/bedrock
+terms:
+- point: 同一人不能为多个账号领取 Free Tier 额度，已有或曾有 AWS 账号的不符合条件
+  url: https://aws.amazon.com/free/terms/
+- point: Free plan 账号仅供评估，不应处理敏感数据
+  url: https://aws.amazon.com/free/terms/
+- point: Free plan 到期后账号停用，90 天内不升级为 Paid plan 将删除账号和数据
+  url: https://aws.amazon.com/free/terms/
+- point: AWS 可随时终止 Free Tier 页面上的任何优惠
+  url: https://aws.amazon.com/free/terms/
+- point: Free Tier 额度不适用于中国区（宁夏、北京）和 GovCloud 区域
+  url: https://aws.amazon.com/free/free-tier-faqs/
+- point: 升级为 Paid plan 后，超出额度的用量按标准价格自动计费
+  url: https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-plans.html
+tags:
+- 新人赠送
+- 试用
+sources:
+- https://aws.com
+- https://aws.amazon.com/free/
+- https://aws.amazon.com/free/free-tier-faqs/
+- https://aws.amazon.com/free/terms/
+- https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-plans.html
+- https://docs.aws.amazon.com/bedrock/latest/userguide/api-keys.html
+- https://docs.aws.amazon.com/bedrock/latest/userguide/bedrock-mantle.html
+- https://aws.amazon.com/bedrock/pricing/
+en:
+  summary: New AWS customers get $100 in credits at sign-up and can earn up to $100 more through set activities, usable for model calls on Amazon Bedrock; the Free plan lasts up to 6 months and the account closes when credits run out or the period ends, with no charges during it.
+  signup_notes: Most new customers need no payment method to sign up, though one may be requested to verify identity. Only customers who have never had an AWS account qualify. Bedrock API keys are generated under API keys in the Bedrock console (a long-term key creates an IAM user); endpoints are per region.
+  tags:
+  - New-user credits
+  - Trial
+  quotas:
+  - condition: New AWS customers (Free plan or Paid plan)
+    note: Credits apply across participating AWS services, and Bedrock is available on the Free plan; the FAQ says credits expire after 6 months while the terms say 12 months, read as 6 months; the Free plan ends after 6 months or when credits run out, and the account closes
+  - condition: Complete set activities in Explore AWS in the console for up to $100 more
+  terms:
+  - Free Tier credits cannot be received for more than one account; people who have or had an AWS account are not eligible
+  - Free plan accounts are for evaluation and should not process sensitive data
+  - After the Free plan ends the account is suspended and is deleted with its data if not upgraded within 90 days
+  - AWS may terminate any offer on the Free Tier page at any time
+  - Free Tier credits do not apply in the China (Ningxia, Beijing) and GovCloud regions
+  - After upgrading to the Paid plan, usage beyond the credits is billed at standard rates automatically
