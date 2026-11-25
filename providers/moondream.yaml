@@ -1,0 +1,73 @@
+id: moondream
+name: Moondream
+homepage: https://moondream.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-25'
+summary: Moondream 视觉语言模型的云 API，每个工作区每月含 5 美元用量额度，超出部分按 token 计费。
+api:
+  protocol:
+  - openai
+  base_url: https://api.moondream.ai/v1
+  models_access: quota
+  models:
+  - moondream3.1-9B-A2B
+  - moondream3-preview
+signup:
+  url: https://moondream.ai/c/cloud/api-keys
+  requires:
+  - email
+  min_age: 18
+  notes: 服务条款要求年满 18 岁；注册所需信息官方页面未详细说明。
+quotas:
+- unit: usd
+  amount: 5
+  period: month
+  scope: account
+  models: 全部云端模型
+  note: 按工作区计；用完后按 token 计费（3.1 实时：输入 0.30 美元/百万，输出 1.00 美元/百万）；重置时间未写明
+  evidence: https://moondream.ai/pricing
+  quote: Every workspace includes $5/month usage credits.
+- unit: requests
+  amount: 2
+  period: second
+  scope: key
+  condition: 基础档；账户余额不少于 10 美元时为每秒 10 次
+  evidence: https://docs.moondream.ai/rate-limits
+  quote: 2req/sec
+overage: unknown
+onboarding:
+  level: L2
+  key_page: https://moondream.ai/c/cloud/api-keys
+terms:
+- point: 须年满 18 岁
+  url: https://moondream.ai/terms
+- point: 不得超出速率限制或过度、滥用式使用
+  url: https://moondream.ai/terms
+- point: 不得转售、出租或托管服务进行商业利用
+  url: https://moondream.ai/terms
+- point: 官方不会用客户内容或输出训练公开模型
+  url: https://moondream.ai/terms
+tags:
+- 每月赠送
+sources:
+- https://moondream.ai/pricing
+- https://docs.moondream.ai/pricing
+- https://docs.moondream.ai/openai
+- https://docs.moondream.ai/rate-limits
+- https://moondream.ai/terms
+en:
+  summary: Cloud API for the Moondream vision language models; each workspace includes $5 of usage credits per month, usage beyond that is billed per token.
+  signup_notes: The terms require users to be at least 18; the exact sign-up requirements are not detailed on official pages.
+  tags:
+  - Monthly credits
+  quotas:
+  - models: All cloud models
+    note: Per workspace; after the credits are used, usage is billed per token (3.1 real-time $0.30/M input, $1.00/M output); reset time not stated
+  - condition: Base tier; 10 requests per second with an account balance of at least $10
+  terms:
+  - Users must be at least 18
+  - Do not exceed rate limits or use the service excessively or abusively
+  - Do not resell, rent or host the service for commercial exploitation
+  - Customer content and outputs are not used to train generally available models
