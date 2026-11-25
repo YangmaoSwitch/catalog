@@ -1,0 +1,79 @@
+id: powertokens
+name: PowerTokens
+homepage: https://www.powertokens.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-25'
+summary: 聚合国内大模型的 API 平台，模型页标明 glm-4.7-flash 输入输出价格均为 0；其余模型按量付费，限额官方未公布。
+api:
+  protocol:
+  - openai
+  base_url: https://api.powertokens.ai/v1
+  models_access: paid
+  free_models:
+  - glm-4.7-flash
+signup:
+  url: https://www.powertokens.ai
+  requires:
+  - email
+  min_age: 18
+  notes: 可用 Google、GitHub 或邮箱注册；免费模型调用是否需要账户有余额，官方未写明。
+quotas:
+- unit: tokens
+  amount: null
+  period: day
+  scope: account
+  models: glm-4.7-flash
+  note: 模型页标价输入、输出均为 0 Credits / 1M Tokens；调用次数和 token 限额官方未公布。
+  evidence: https://www.powertokens.ai/models/glm-4.7-flash
+  quote: Output$0/ 1M Tokens(0 Credits)
+- unit: credits
+  amount: null
+  period: one-time
+  scope: account
+  new_users: true
+  condition: 仅在平台举办新用户注册赠送活动且满足条件时发放
+  note: 快速入门写明该活动并非一直有；模型页写注册可获免费测试额度。金额官方未公布，按保守理解为不一定有。
+  evidence: https://docs.powertokens.ai/en/
+  quote: This promotion is not always available; when no promotion is running, newly registered users will not automatically receive bonus Credits.
+overage: unknown
+onboarding:
+  level: L2
+  key_page: https://www.powertokens.ai/en/api-keys
+terms:
+- point: 使用者须年满 18 岁（5.1）
+  url: https://www.powertokens.ai/terms-of-use
+- point: 受出口管制、制裁等法律限制者不得使用（5.2）
+  url: https://www.powertokens.ai/terms-of-use
+- point: 平台不会未经同意用用户内容训练模型，但第三方模型提供方可能按其自身条款处理或使用输入输出（9.3）
+  url: https://www.powertokens.ai/terms-of-use
+- point: 赠送积分不可退款、不可转让，有效期一年，平台可随时调整或清零；领取赠送积分须对价格信息保密（8.9）
+  url: https://www.powertokens.ai/terms-of-use
+tags:
+- 聚合
+- 免费模型
+- 新人赠送
+sources:
+- https://www.powertokens.ai/models/glm-4.7-flash
+- https://www.powertokens.ai/pricing
+- https://docs.powertokens.ai/en/
+- https://docs.powertokens.ai/en/guides/api-key-and-model-call.md
+- https://www.powertokens.ai/terms-of-use
+en:
+  summary: API platform aggregating Chinese models; the model page lists glm-4.7-flash at 0 for both input and output. Other models are pay-as-you-go; limits are not published.
+  signup_notes: Sign up with Google, GitHub or email; whether calling the free model requires a positive balance is not stated.
+  tags:
+  - Aggregator
+  - Free model
+  - New-user credits
+  quotas:
+  - models: glm-4.7-flash
+    note: The model page prices input and output at 0 Credits / 1M tokens; request and token limits are not published.
+  - condition: Only while a new-user sign-up bonus promotion is running and its requirements are met
+    note: The quickstart says this promotion is not always available; the model page says sign-up gives free test credits. Amount not published; treated conservatively as not guaranteed.
+  terms:
+  - Users must be at least 18 (5.1)
+  - Not available to those barred by export control, sanctions or similar laws (5.2)
+  - The platform does not train on user content without consent, but third-party model providers may process or use inputs and outputs under their own terms (9.3)
+  - Bonus points are non-refundable, non-transferable, valid for one year and may be adjusted or zeroed at any time; receiving them requires keeping prices confidential (8.9)
