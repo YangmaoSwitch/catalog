@@ -1,0 +1,65 @@
+id: shuyanai
+name: DataEye
+name_zh: 数眼智能
+homepage: https://www.shuyanai.com
+region: cn
+api_usable: true
+status: verified
+last_verified: '2026-11-25'
+summary: 国内大模型 API 聚合平台，注册并绑定手机号可领取 50 万 Tokens 一次性免费额度，用完后需充值按量付费。
+api:
+  protocol:
+  - openai
+  base_url: https://platform.shuyanai.com/v1
+  models_access: quota
+signup:
+  url: https://www.shuyanai.com/login?redirect=%2Fadmin%2Fhome
+  requires:
+  - phone
+  notes: 可用手机号或邮箱注册，也可微信登录；领取免费额度需绑定手机号。
+quotas:
+- unit: tokens
+  amount: 500000
+  period: one-time
+  scope: account
+  condition: 注册并绑定手机号
+  new_users: true
+  note: 定价页写 50 万 Tokens，首页写“新用户赠送 5M 词元”，两处不一致，按较少的 50 万填写；适用模型和有效期官方未写明。邀请用户可再获得 50 万 Tokens。
+  evidence: https://www.shuyanai.com/price
+  quote: 注册并绑定手机号可免费领取 50 万 Tokens，邀请用户可再次获得 50 万 Tokens！
+overage: unknown
+expires: null
+onboarding:
+  level: L2
+terms:
+- point: 不得恶意注册账号，包括频繁注册、批量注册
+  url: https://www.shuyanai.com/terms-of-service
+- point: 不得出租、出借、转让、售卖、共享账号、会员权益或 API Key
+  url: https://www.shuyanai.com/terms-of-service
+- point: 禁止用自动化、批量注册、脚本、代理池、恶意并发等方式干扰平台；未经书面授权不得转售或共享 API 与额度
+  url: https://www.shuyanai.com/terms-of-service
+- point: 平台可根据负载、套餐、风险等对调用频率、并发、额度、模型类型等设置限制，并可调整额度规则和价格
+  url: https://www.shuyanai.com/terms-of-service
+tags:
+- 聚合
+- 新人赠送
+sources:
+- https://www.shuyanai.com/price
+- https://www.shuyanai.com/
+- https://www.shuyanai.com/openclaw
+- https://www.shuyanai.com/coding-plan
+- https://www.shuyanai.com/terms-of-service
+en:
+  summary: Chinese LLM API aggregator; signing up and binding a phone number gives a one-time free credit of 500,000 tokens, after which you top up and pay per use.
+  signup_notes: Sign up with phone or email, or log in with WeChat; a bound phone number is required to claim the free credit.
+  tags:
+  - Aggregator
+  - New-user credits
+  quotas:
+  - condition: Sign up and bind a phone number
+    note: The pricing page says 500,000 tokens while the homepage says new users get 5M tokens; the smaller figure is used. Eligible models and expiry are not stated. Inviting a user gives another 500,000 tokens.
+  terms:
+  - No malicious registration, including frequent or bulk sign-ups
+  - Accounts, membership benefits and API keys may not be rented, lent, transferred, sold or shared
+  - No automation, bulk registration, scripts, proxy pools or abusive concurrency; reselling or sharing the API or credits needs written authorization
+  - The platform may limit rate, concurrency, quota and model types based on load, plan or risk, and may change quota rules and prices
