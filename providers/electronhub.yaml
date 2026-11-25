@@ -1,0 +1,95 @@
+id: electronhub
+name: Electron Hub
+homepage: https://www.electronhub.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-25'
+summary: 聚合网关，免费计划每周补到 0.25 美元额度，另有每天 10 次免费模型（:free 后缀）请求，看广告最多可增至每天 200 次；免费计划每分钟 5 次请求。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://api.electronhub.ai/v1
+  models_url: https://api.electronhub.ai/v1/models
+  models_access: paid
+  free_pattern: ':free$'
+  free_model_rule: 以 :free 结尾的模型消耗 Neutrinos，不扣额度；每周 0.25 美元额度可用于不需订阅的 freemium 模型，Pro 模型需付费计划或按量充值。
+signup:
+  url: https://app.electronhub.ai
+  requires:
+  - google
+  min_age: 18
+  notes: 用 Google 或 Discord 账号登录；部分功能需验证邮箱、手机号或 Discord 账号；免费计划不需要信用卡。
+quotas:
+- unit: usd
+  amount: 0.25
+  period: week
+  reset: Sunday 21:00 UTC
+  scope: account
+  models: 不需订阅的 freemium 模型
+  note: 每周日补到 0.25 美元，不累加；官方公告 2027-01-03 调整价格时免费计划的每周 0.25 美元不变
+  evidence: https://electronhub.ai/pricing
+  quote: Start free with $0.25 of weekly credits and no card.
+- unit: requests
+  amount: 10
+  period: day
+  reset: 21:00 UTC
+  scope: account
+  models: 以 :free 结尾的免费模型
+  note: 以 Neutrinos 计，每次请求 1 个；未用完不结转；官方不承诺免费模型可用，提供方可能用提示词训练
+  evidence: https://docs.electronhub.ai/billing/credits.md
+  quote: All users get **10 Neutrinos per day** (resets at 21:00 UTC)
+- unit: requests
+  amount: 200
+  period: day
+  reset: 21:00 UTC
+  scope: account
+  models: 以 :free 结尾的免费模型
+  condition: 免费计划需每天观看最多 3 个广告（10 → 40 → 100 → 200）
+  evidence: https://tos.electronhub.ai/legal
+  quote: Up to 200 free-model requests a day.
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://app.electronhub.ai
+terms:
+- point: 每人只能有一个账号，禁止用多个账号获取更多免费额度、Neutrinos 或奖励（2.3）
+  url: https://tos.electronhub.ai/
+- point: 禁止出售、出借或公开账号与 Key，不得转售服务（4.3）
+  url: https://tos.electronhub.ai/
+- point: 须年满 18 岁；受全面制裁地区不可用，不得用 VPN 或代理绕过地区限制（2.1、2.2）
+  url: https://tos.electronhub.ai/
+- point: :free 和实验模型的第三方提供方可能用提示词和输出训练模型
+  url: https://docs.electronhub.ai/billing/privacy-security.md
+tags:
+- 聚合
+- 免费模型
+- 每日赠送
+sources:
+- https://electronhub.ai/pricing
+- https://docs.electronhub.ai/billing/credits.md
+- https://docs.electronhub.ai/billing/model-access.md
+- https://docs.electronhub.ai/getting-started/rate-limits.md
+- https://tos.electronhub.ai/
+en:
+  summary: Aggregator gateway; the free plan is topped up to $0.25 of credits each week, plus 10 free-model (:free suffix) requests a day, up to 200 a day by watching ads; 5 requests per minute on the free plan.
+  signup_notes: Sign in with Google or Discord; some features need a verified email, phone number or Discord account; no credit card for the free plan.
+  free_model_rule: Models ending in :free use Neutrinos instead of credits; the $0.25 weekly credit works on freemium models that need no subscription; Pro models need a paid plan or pay-as-you-go credits.
+  tags:
+  - Aggregator
+  - Free model
+  - Daily credits
+  quotas:
+  - models: Freemium models that need no subscription
+    note: Topped up to $0.25 every Sunday, not added on top; the announced January 3, 2027 pricing change leaves the Free plan's $0.25 a week unchanged
+  - models: Free models ending in :free
+    note: Counted in Neutrinos, one per request; unused ones do not carry over; free models have no uptime commitment and their providers may train on prompts
+  - models: Free models ending in :free
+    condition: On the free plan, by watching up to 3 ads a day (10 → 40 → 100 → 200)
+  terms:
+  - One account per person; multiple accounts to get more free allowances, Neutrinos or rewards are prohibited (2.3)
+  - Selling, lending or publishing accounts and keys, or reselling the service, is prohibited (4.3)
+  - Must be 18 or older; unavailable in comprehensively sanctioned regions, and VPNs or proxies may not be used to get around regional limits (2.1, 2.2)
+  - Third-party providers of :free and experimental models may train on prompts and outputs
