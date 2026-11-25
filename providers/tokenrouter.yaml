@@ -1,0 +1,69 @@
+id: tokenrouter
+name: TokenRouter
+homepage: https://www.tokenrouter.com
+region: global
+api_usable: true
+status: unconfirmed
+last_verified: '2026-11-25'
+summary: 多模型聚合网关，模型页把 deepseek/deepseek-v4.1-flash-1017-free 标为免费（输入输出 $0），官方未公布调用次数上限；其余模型按量付费。
+api:
+  protocol:
+  - openai
+  base_url: https://api.tokenrouter.com/v1
+  models_access: paid
+  free_models:
+  - deepseek/deepseek-v4.1-flash-1017-free
+signup:
+  url: https://tokenrouter.com
+  requires:
+  - email
+  notes: 邮箱注册后在控制台创建 API Key；按账户余额预付扣费。
+quotas:
+- unit: requests
+  amount: null
+  period: day
+  scope: account
+  models: deepseek/deepseek-v4.1-flash-1017-free
+  note: 模型页标价输入、输出均为 $0.0000，标注 Free Self-hosted Inference；官方未公布次数或 token 上限。并发上限按账户实时余额分档，表中最低档为余额大于 $0，余额为 0 的账号能否调用官方未说明。
+  evidence: https://www.tokenrouter.com/models/deepseek/deepseek-v4.1-flash-1017-free
+  quote: Input Price:$0.0000 Output Price:$0.0000
+- unit: requests
+  amount: null
+  period: one-time
+  scope: account
+  models: z-ai/glm-5.3
+  note: GLM 5.3 上线首周（至 9 月 4 日）对所有账号免费，活动已结束，之后按标准价收费。
+  evidence: https://www.tokenrouter.com/blog/tokenrouter-announces-day-0-availability-of-self-hosted-glm-5-3
+  quote: GLM 5.3 is available at no cost on TokenRouter for one week from launch, through September 4.
+  ended: '2026-09-04'
+overage: unknown
+onboarding:
+  level: L2
+  key_page: https://www.tokenrouter.com/console/token
+terms:
+- point: 每个账号的最大并发请求数按实时余额分档，余额 $0 以上至 $10 为 5 个并发；超出可能排队、限流或被拒绝
+  url: https://www.tokenrouter.com/docs/rate-limits-concurrency
+- point: 请求转发到第三方模型商时，数据处理受该模型商条款约束；平台称不保存提示词和回复内容
+  url: https://tokenrouter.com
+tags:
+- 聚合
+- 免费模型
+sources:
+- https://tokenrouter.com
+- https://www.tokenrouter.com/models?free=true
+- https://www.tokenrouter.com/docs/rate-limits-concurrency
+- https://www.tokenrouter.com/blog/tokenrouter-announces-day-0-availability-of-self-hosted-glm-5-3
+en:
+  summary: Multi-model aggregator gateway; the model page lists deepseek/deepseek-v4.1-flash-1017-free as free ($0 input and output), with no published request limit; other models are pay-as-you-go.
+  signup_notes: Sign up with email and create an API key in the console; usage is deducted from a prepaid balance.
+  tags:
+  - Aggregator
+  - Free model
+  quotas:
+  - models: deepseek/deepseek-v4.1-flash-1017-free
+    note: The model page prices input and output at $0.0000 and labels it Free Self-hosted Inference; no request or token limit is published. Concurrency is tiered by real-time balance and the lowest listed tier is a balance above $0; whether zero-balance accounts can call it is not stated.
+  - models: z-ai/glm-5.3
+    note: GLM 5.3 was free for all accounts during its first week (through September 4); the promotion has ended and standard pricing applies.
+  terms:
+  - Maximum concurrent requests per account are tiered by real-time balance; over $0 up to $10 allows 5; excess requests may be queued, throttled or rejected
+  - When requests go to third-party model providers, their terms govern data handling; the platform says it does not store prompts or completions
