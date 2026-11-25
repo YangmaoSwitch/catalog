@@ -5,7 +5,7 @@ homepage: https://www.sensenova.cn
 region: cn
 api_usable: true
 status: verified
-last_verified: '2026-11-24'
+last_verified: '2026-11-25'
 summary: Token Plan 公测期免费档 0 元/月，按积分池计量，设滚动 5 小时和滚动周两层额度。
 api:
   protocol:
