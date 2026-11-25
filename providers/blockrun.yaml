@@ -1,0 +1,86 @@
+id: blockrun
+name: BlockRun
+homepage: https://blockrun.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-25'
+summary: 按次付费的模型网关，官方标为免费的 8 个聊天模型无需钱包、无需注册即可调用，按 IP 限速每分钟 30 次、每小时 300 次；其余模型需用 USDC 或账户余额付费。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://blockrun.ai/api/v1
+  models_url: https://blockrun.ai/api/v1/models
+  models_access: paid
+  free_models:
+  - nvidia/minimax-m3.1-flash
+  - nvidia/muse-glimmer-30b
+  - nvidia/nemotron-3-nano-omni-30b-a3b-reasoning
+  - nvidia/nemotron-3-ultra-550b
+  - nvidia/nemotron-3.5-bolt
+  - nvidia/nemotron-3.5-lightning
+  - nvidia/nemotron-3-super-120b
+  - poolside/laguna-xs-2.1
+  free_model_rule: /v1/models 中 billing_mode 为 free 的模型免费，无需付款头。
+signup:
+  url: https://blockrun.ai
+  requires: []
+  notes: 免费模型不需要钱包、付款头或注册；付费模型可用 USDC 钱包按次付款，或用 Google 登录 user.blockrun.ai 获取 API Key 并充值。
+quotas:
+- unit: requests
+  amount: 30
+  period: minute
+  scope: ip
+  models: 全部免费模型合计
+  evidence: https://blockrun.ai/docs/api-reference/rate-limits
+  quote: 'Free chat models (the ones GET /v1/models lists with "billing_mode": "free") need no wallet and no payment, so they are the one place BlockRun throttles per source IP: 30 requests per minute (burst) and 300 requests per hour (sustained).'
+- unit: requests
+  amount: 300
+  period: hour
+  scope: ip
+  models: 全部免费模型合计
+  note: 免费模型池整体容量不足时也会返回 429，与个人额度无关。
+  evidence: https://blockrun.ai/docs/api-reference/rate-limits
+  quote: 'Free chat models (the ones GET /v1/models lists with "billing_mode": "free") need no wallet and no payment, so they are the one place BlockRun throttles per source IP: 30 requests per minute (burst) and 300 requests per hour (sustained).'
+overage: blocked
+expires: null
+onboarding:
+  level: L1
+terms:
+- point: 免费模型运行在上游免费档上，其条款可能允许上游用提示词改进服务，不要发送敏感数据
+  url: https://blockrun.ai/faq
+- point: 免费模型故障时可能自动切换到其他免费模型
+  url: https://blockrun.ai/faq
+- point: 禁止在受美国全面制裁的国家或地区使用
+  url: https://blockrun.ai/terms
+- point: 禁止规避付费、干扰服务，或以隐瞒来源的方式转售
+  url: https://blockrun.ai/terms
+tags:
+- 聚合
+- 免费模型
+sources:
+- https://blockrun.ai/pricing
+- https://blockrun.ai/faq
+- https://blockrun.ai/docs/api-reference/rate-limits
+- https://blockrun.ai/docs/api-reference/chat-completions
+- https://blockrun.ai/llms.txt
+- https://api.blockrun.ai/llms.txt
+- https://user.blockrun.ai/dashboard/keys
+- https://blockrun.ai/terms
+en:
+  summary: Pay-per-call model gateway; the 8 chat models marked free can be called with no wallet and no sign-up, rate-limited per IP to 30 requests per minute and 300 per hour; other models are paid in USDC or from an account balance.
+  signup_notes: Free models need no wallet, payment header or sign-up; paid models are paid per call from a USDC wallet, or with an API key from user.blockrun.ai (Google sign-in) and a topped-up balance.
+  free_model_rule: Models listed in /v1/models with billing_mode free are free and need no payment header.
+  tags:
+  - Aggregator
+  - Free model
+  quotas:
+  - models: All free models combined
+  - models: All free models combined
+    note: When the free model pool itself is out of capacity it also returns 429, independent of your quota.
+  terms:
+  - Free models run on upstream free tiers whose terms may let the host use prompts to improve its service; do not send sensitive data
+  - Free models may fall back to other free models when one fails
+  - Use from countries or regions under comprehensive U.S. sanctions is prohibited
+  - Circumventing payment, interfering with the service, or reselling access in a way that misrepresents its origin is prohibited
