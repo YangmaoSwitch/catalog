@@ -1,0 +1,53 @@
+id: jamai-base
+name: JamAI Base
+homepage: https://www.jamaibase.com
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-25'
+summary: EmbeddedLLM 的 AI 后端平台，免费计划每月含 300 万 Token 可用于 ELLM 托管模型（输入加输出合计），无需信用卡；其他厂商模型按价格表付费。
+api:
+  protocol:
+  - openai
+  base_url: https://api.jamaibase.com/api/v1
+  models_access: paid
+signup:
+  url: https://cloud.jamaibase.com
+  requires:
+  - email
+  notes: 官网写明免费试用无需信用卡。API 使用个人访问令牌（PAT）以 Bearer 方式认证；创建 PAT 时绑定项目可省去 X-PROJECT-ID 请求头。聊天接口路径 /api/v1/chat/completions 来自官方 SDK 源码，官方文档未明确说明与 OpenAI 客户端完全兼容。
+quotas:
+- unit: tokens
+  amount: 3000000
+  period: month
+  scope: org
+  models: ELLM 托管模型
+  condition: Free 计划（$0/月，1 名成员）
+  evidence: https://www.jamaibase.com/pricing
+  quote: 3 M Tokens for ELLM-hosted models
+  note: 输入加输出合计；免费计划每月 credit 赠送为 $0，其他厂商模型需付费；未用完的免费额度不结转到下月；具体哪些模型 ID 属于 ELLM 托管未逐一列出；重置时间未写明
+overage: unknown
+onboarding:
+  level: L2
+  key_page: https://cloud.jamaibase.com/settings/account
+terms:
+- point: 未用完的免费额度不会结转到下个月
+  url: https://www.jamaibase.com/pricing
+tags:
+- 每月赠送
+sources:
+- https://www.jamaibase.com/pricing
+- https://docs.jamaibase.com/developer-reference/openapi-documentation/making-your-first-api-request.md
+- https://docs.jamaibase.com/introducing-jamai-base-v2/new-features-and-required-actions.md
+- https://docs.jamaibase.com/developer-reference/typescript-sdk-documentation.md
+en:
+  summary: EmbeddedLLM's AI backend platform; the free plan includes 3M tokens per month for ELLM-hosted models (input plus output), no credit card needed; other providers' models are paid per the price list.
+  signup_notes: The site states the free trial needs no credit card. The API uses a Personal Access Token (PAT) as a Bearer token; linking the PAT to a project lets you omit the X-PROJECT-ID header. The chat path /api/v1/chat/completions comes from the official SDK source; the docs do not explicitly state full OpenAI client compatibility.
+  tags:
+  - Monthly credits
+  quotas:
+  - models: ELLM-hosted models
+    condition: Free plan ($0/month, 1 team member)
+    note: Input plus output combined; the free plan's monthly credit grant is $0, so other providers' models are paid; unused free credits do not carry over; the exact ELLM-hosted model IDs are not listed; reset time not stated
+  terms:
+  - Unused free credits do not carry over to the next month
