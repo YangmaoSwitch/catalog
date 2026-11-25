@@ -1,0 +1,99 @@
+id: plugsky
+name: Plugsky
+homepage: https://plugsky.com
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-25'
+summary: OpenAI 兼容 API 平台，免费计划无需信用卡，可调用 plugsky-micro 和 plugsky-lite，新账号每天约 100 次请求、5 万 tokens，按滚动 5 小时窗口计量。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://api.plugsky.com/v1
+  anthropic_base_url: https://api.plugsky.com
+  models_url: https://api.plugsky.com/v1/models
+  models_access: paid
+  free_models:
+  - plugsky-micro
+  - plugsky-lite
+signup:
+  url: https://plugsky.com/dashboard
+  requires: []
+  min_age: 16
+  notes: 官方写明免费计划无需信用卡；注册所需信息页面未写明。
+quotas:
+- unit: requests
+  amount: 100
+  period: day
+  reset: rolling
+  scope: account
+  models: plugsky-micro、plugsky-lite 合计
+  condition: 2026 年 11 月 2 日及之后注册的账号
+  note: 实际按滚动 5 小时窗口计量，每个窗口约 21 次请求，100 次/天为参考值；另限 1 个并发、每分钟 30 次，单次输入 32K、输出 2K。服务条款写的是新账号仅前 24 小时为 100 次/天、之后为 500 次/天，与价格页不一致，这里按价格页较低的数字填写。
+  evidence: https://plugsky.com/pricing
+  quote: Accounts created from 2 November 2026 receive about 21 requests and 10,400 tokens per rolling 5-hour window (100 / 50,000 per day reference), one concurrent request and 30 RPM.
+- unit: tokens
+  amount: 50000
+  period: day
+  reset: rolling
+  scope: account
+  models: plugsky-micro、plugsky-lite 合计
+  condition: 2026 年 11 月 2 日及之后注册的账号
+  note: 按滚动 5 小时窗口计量，每个窗口约 10,400 tokens，50,000/天为参考值。
+  evidence: https://plugsky.com/pricing
+  quote: Accounts created from 2 November 2026 receive about 21 requests and 10,400 tokens per rolling 5-hour window (100 / 50,000 per day reference), one concurrent request and 30 RPM.
+- unit: requests
+  amount: 30
+  period: minute
+  scope: account
+  models: plugsky-micro、plugsky-lite
+  condition: 免费计划
+  evidence: https://plugsky.com/terms
+  quote: 'Published free fair-use limits are: 2 active API keys, 30 requests/minute, 2 concurrent requests, 500 requests/day, 250,000 tokens/day, 32K input / 2K output tokens per request, and no agents.'
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://plugsky.com/dashboard
+  key_pattern: sk-live-
+terms:
+- point: 创建多个账号、共享 Key、转售或大量自动化调用可能被限速或封停（3.1）
+  url: https://plugsky.com/terms
+- point: 请求会转发给第三方模型提供方（如 opencode.ai、NVIDIA NIM），需同时遵守其使用条款（7）
+  url: https://plugsky.com/terms
+- point: OpenAI、Anthropic 等模型名只是兼容别名，实际由 Plugsky 自己的模型处理，不是原厂模型
+  url: https://plugsky.com/facts
+- point: 免费计划无 SLA，按尽力提供（8）
+  url: https://plugsky.com/terms
+tags:
+- 永久免费
+- 免费模型
+- 每日赠送
+sources:
+- https://plugsky.com/pricing
+- https://plugsky.com/terms
+- https://plugsky.com/docs
+- https://plugsky.com/facts
+- https://api.plugsky.com/v1/models
+en:
+  summary: OpenAI-compatible API platform; the Free plan needs no card and covers plugsky-micro and plugsky-lite, with about 100 requests and 50,000 tokens per day for new accounts, metered in a rolling 5-hour window.
+  signup_notes: The Free plan needs no credit card per the official pages; what sign-up requires is not stated.
+  tags:
+  - Free forever
+  - Free model
+  - Daily credits
+  quotas:
+  - models: plugsky-micro and plugsky-lite combined
+    condition: Accounts created on or after 2 November 2026
+    note: Metered per rolling 5-hour window, about 21 requests per window; 100/day is a reference figure. Also 1 concurrent request, 30 RPM, 32K input / 2K output per request. The terms say new accounts get 100/day only for the first 24 hours and 500/day after; this conflicts with the pricing page, so the lower pricing-page figure is used.
+  - models: plugsky-micro and plugsky-lite combined
+    condition: Accounts created on or after 2 November 2026
+    note: Metered per rolling 5-hour window, about 10,400 tokens per window; 50,000/day is a reference figure.
+  - models: plugsky-micro and plugsky-lite
+    condition: Free plan
+  terms:
+  - Multiple accounts, key sharing, resale or high-volume automated workloads may be throttled or suspended (3.1)
+  - Requests are routed to third-party model providers (e.g. opencode.ai, NVIDIA NIM), whose terms also apply (7)
+  - OpenAI, Anthropic and other model names are compatibility aliases served by Plugsky's own models, not the original vendors
+  - The Free plan has no SLA, best effort only (8)
