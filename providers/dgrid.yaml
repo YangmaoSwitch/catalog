@@ -1,0 +1,90 @@
+id: dgrid
+name: DGrid AI
+homepage: https://dgrid.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-25'
+summary: 去中心化 AI 网关，免费模型路由 dgridai/free 不收费，未充值账号每天 100 次、每分钟 10 次；累计充值满 5 美元后为每天 1000 次、每分钟 20 次。
+api:
+  protocol:
+  - openai
+  - anthropic
+  - gemini
+  base_url: https://api.dgrid.ai/v1
+  models_access: paid
+  free_models:
+  - dgridai/free
+signup:
+  url: https://dgrid.ai/api-keys
+  requires: []
+  notes: 官方博客的 Key 创建教程写明需连接加密钱包登录；官方列出了可使用商业 API 的国家和地区名单，中国大陆不在名单内。
+quotas:
+- unit: requests
+  amount: 100
+  period: day
+  scope: account
+  models: dgridai/free
+  condition: 累计有效充值不足 5 美元的账号
+  note: 免费路由会把请求转到不同的后端模型，具体模型不固定；重置时间未写明
+  evidence: https://docs.dgrid.ai/ai-gateway/free-models-router.md
+  quote: Limits are enforced per account.
+- unit: requests
+  amount: 10
+  period: minute
+  scope: account
+  models: dgridai/free
+  condition: 累计有效充值不足 5 美元的账号
+  evidence: https://docs.dgrid.ai/ai-gateway/free-models-router.md
+  quote: Limits are enforced per account.
+- unit: requests
+  amount: 1000
+  period: day
+  scope: account
+  models: dgridai/free
+  condition: 累计有效充值满 5 美元的账号（另限每分钟 20 次）
+  evidence: https://docs.dgrid.ai/ai-gateway/free-models-router.md
+  quote: A qualifying top-up is a direct addition of funds to the account balance and is used to determine whether the account meets the `$5` threshold.
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://dgrid.ai/api-keys
+terms:
+- point: 禁止绕过速率限制、访问控制或地区限制
+  url: https://docs.dgrid.ai/ai-gateway/terms-of-service.md
+- point: API 凭证不得共享、公开或转售；未经书面许可不得转售或向第三方提供访问
+  url: https://docs.dgrid.ai/ai-gateway/terms-of-service.md
+- point: DGrid 可在提供、维护和改进服务所需范围内处理用户提交的内容
+  url: https://docs.dgrid.ai/ai-gateway/terms-of-service.md
+- point: 仅在官方列出的国家和地区提供商业 API 访问，不得从受限地区绕过地域控制使用
+  url: https://docs.dgrid.ai/ai-gateway/supported-regions.md
+tags:
+- 聚合
+- 免费模型
+sources:
+- https://docs.dgrid.ai/ai-gateway/free-models-router.md
+- https://dgrid.ai/models/dgridai/free
+- https://docs.dgrid.ai/quickstart.md
+- https://blog.dgrid.ai/posts/2026-01-04/
+- https://docs.dgrid.ai/ai-gateway/terms-of-service.md
+- https://docs.dgrid.ai/ai-gateway/supported-regions.md
+en:
+  summary: Decentralized AI gateway; the free models router dgridai/free costs nothing, 100 requests per day and 10 per minute for accounts without top-ups, 1,000 per day and 20 per minute after $5 in total top-ups.
+  signup_notes: The official blog's key guide says you sign in by connecting a crypto wallet; the official list of supported countries and regions for commercial API access does not include mainland China.
+  tags:
+  - Aggregator
+  - Free model
+  quotas:
+  - models: dgridai/free
+    condition: Accounts with less than $5 in qualifying top-ups
+    note: The free router sends requests to varying backend models; reset time not stated
+  - models: dgridai/free
+    condition: Accounts with less than $5 in qualifying top-ups
+  - models: dgridai/free
+    condition: Accounts with at least $5 in qualifying top-ups (also 20 per minute)
+  terms:
+  - Bypassing rate limits, access controls or geographic restrictions is prohibited
+  - API credentials must not be shared, exposed or resold; reselling or giving third parties access needs written permission
+  - DGrid may process submitted content as needed to provide, maintain and improve the service
+  - Commercial API access is offered only in the listed countries and regions; bypassing geographic controls from restricted regions is prohibited
