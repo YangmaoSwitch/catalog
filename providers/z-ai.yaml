@@ -5,7 +5,7 @@ homepage: https://z.ai/model-api
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-24'
+last_verified: '2026-11-25'
 summary: 智谱国际站的 GLM-4.7-Flash、GLM-4.5-Flash 和 GLM-4.6V-Flash 三款模型免费调用，按模型限速。
 api:
   protocol:
