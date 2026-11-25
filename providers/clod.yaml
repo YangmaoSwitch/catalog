@@ -1,0 +1,80 @@
+id: clod
+name: CLōD
+homepage: https://clod.io
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-25'
+summary: OpenAI 兼容的模型网关，免费档每天 100 次免费请求，可用官方标为免费的开源模型，无需信用卡。
+api:
+  protocol:
+  - openai
+  base_url: https://api.clod.io/v1
+  models_access: paid
+  free_models:
+  - clod/trinity-mini
+  - clod/gemma-4-31b-it
+  - clod/qwen3p5-9b
+  free_model_rule: 模型页标有 Free 的模型；价格页写“8 个免费开源模型”，但模型列表和 llms.txt 目前只标出 3 个免费模型，按 3 个填写。
+signup:
+  url: https://app.clod.io/auth
+  requires:
+  - email
+  notes: 可用邮箱、Google 或 Microsoft 账号注册；官方称无需信用卡。隐私政策写明服务不面向 16 岁以下用户。
+quotas:
+- unit: requests
+  amount: 100
+  period: day
+  scope: account
+  models: 免费模型
+  evidence: https://clod.io/pricing
+  quote: 100 daily free requests (auto-replenished)
+  note: 官方写每天自动补充，未写明重置时间，也未写明是按账号还是按 Key 计算；价格页同时写有“8 个免费开源模型”，实际模型页标为免费的为 3 个。
+- unit: requests
+  amount: 1000
+  period: day
+  scope: account
+  models: 免费模型
+  condition: 累计消费 25 美元后
+  evidence: https://clod.io/pricing
+  quote: Make a $25 purchase → unlock 1,000 daily free requests forever
+  note: 需先付费 25 美元；重置时间未写明。
+overage: unknown
+onboarding:
+  level: L2
+  key_page: https://app.clod.io
+terms:
+- point: 隐私政策写明不会用用户的输入和输出训练或改进模型
+  url: https://clod.io/privacy
+- point: 服务不面向 16 岁以下用户
+  url: https://clod.io/privacy
+- point: 请求会按电价路由到不同数据中心处理，可能位于美国等其他地区
+  url: https://clod.io/privacy
+tags:
+- 免费模型
+- 每日赠送
+sources:
+- https://clod.io/pricing
+- https://clod.io
+- https://app.clod.io/docs
+- https://app.clod.io/models
+- https://app.clod.io/models.json
+- https://app.clod.io/llms.txt
+- https://clod.io/privacy
+en:
+  summary: OpenAI-compatible model gateway; the free tier gives 100 free requests per day on the models marked free, no credit card needed.
+  signup_notes: Sign up with email, Google or Microsoft; no credit card required per the site. The privacy policy says the service is not meant for anyone under 16.
+  free_model_rule: Models marked Free on the models page. The pricing page says 8 free open-source models, but the model list and llms.txt currently mark only 3 as free, so 3 are listed.
+  tags:
+  - Free model
+  - Daily credits
+  quotas:
+  - models: Free models
+    note: Stated as auto-replenished daily; reset time and whether it counts per account or per key are not stated. The pricing page says 8 free models while the models page marks 3 as free.
+  - models: Free models
+    condition: After a $25 purchase
+    note: Requires paying $25 first; reset time not stated.
+  terms:
+  - The privacy policy says inputs and outputs are not used to train or improve AI models
+  - The service is not meant for anyone under 16
+  - Requests are routed by energy price to data centers that may be in other jurisdictions, including the US
