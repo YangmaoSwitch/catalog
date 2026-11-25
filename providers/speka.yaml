@@ -1,0 +1,93 @@
+id: speka
+name: Speka
+homepage: https://speka.me
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-25'
+summary: OpenAI 兼容的模型网关，注册即送一次性 1 美元额度，无需信用卡；免费档每分钟 2 次请求、1 个 Key，只能调用单价不超过每百万 token 1 美元的模型。
+api:
+  protocol:
+  - openai
+  base_url: https://speka.me/v1
+  models_access: paid
+  quota_models:
+  - nvidia/nemotron-3-super-120b-a12b
+  - nvidia/nemotron-3-nano-30b-a3b
+  - nvidia/llama-3.3-nemotron-super-49b-v1.5
+  - nvidia/nvidia-nemotron-nano-9b-v2
+  - meta/llama-3.3-70b-instruct
+  - meta/llama-3.1-8b-instruct
+  - meta/llama-3.2-3b-instruct
+  - mistralai/mistral-nemotron
+  - mistralai/mistral-medium-3.5-128b
+  - stepfun-ai/step-3.7-flash
+  - openai/gpt-oss-120b
+  - openai/gpt-oss-20b
+  - poolside/laguna-xs-2.1
+  - meta/llama-3.2-90b-vision-instruct
+  - nvidia/nemotron-nano-12b-v2-vl
+  - meta/llama-3.2-11b-vision-instruct
+signup:
+  url: https://speka.me/signup
+  requires:
+  - email
+  notes: 注册页写明无需信用卡；注册后自动生成一个 API Key，只显示一次。注册页默认勾选“在社区动态中显示邮箱”，可取消。
+quotas:
+- unit: usd
+  amount: 1
+  period: one-time
+  scope: account
+  new_users: true
+  models: 单价不超过每百万 token 1 美元的在线模型
+  evidence: https://speka.me/
+  quote: Free to start — $1 lifetime credit on every account. No credit card required.
+  note: 一次性额度，不按月刷新（线索中“每月”的说法与官网不符）。官网写“every live model priced up to $1 / 1M tokens”，quota_models 按输入、输出单价都不超过 1 美元整理，属本条目的理解。
+- unit: requests
+  amount: 2
+  period: minute
+  scope: account
+  condition: 免费档
+  evidence: https://speka.me/
+  quote: You get a $1 lifetime usage credit, 1 API key, 2 requests per minute, and every live model priced up to $1 per 1M tokens — enough to prototype and test.
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://speka.me/dashboard/keys
+  key_pattern: sk-speka-live-
+terms:
+- point: 禁止通过轮换 Key、刷请求或代理绕过速率限制和额度，违者可能被停用账号
+  url: https://speka.me/acceptable-use
+- point: 禁止转售原始 API 访问
+  url: https://speka.me/acceptable-use
+- point: 官方称不保存提示词内容，也不用于训练模型
+  url: https://speka.me/terms
+- point: 部分模型许可限制商用（如 FLUX.1 [dev]），使用前需自行核对模型许可
+  url: https://speka.me/acceptable-use
+tags:
+- 聚合
+- 新人赠送
+sources:
+- https://speka.me/
+- https://speka.me/signup
+- https://speka.me/docs
+- https://speka.me/models
+- https://speka.me/terms
+- https://speka.me/acceptable-use
+- https://speka.me/privacy
+en:
+  summary: OpenAI-compatible model gateway; sign-up gives a one-time $1 credit with no credit card. The free tier allows 2 requests per minute, 1 key, and only models priced up to $1 per 1M tokens.
+  signup_notes: The sign-up page says no card is required; an API key is created automatically after sign-up and shown only once. The sign-up form pre-ticks showing your email in the community feed; you can untick it.
+  tags:
+  - Aggregator
+  - New-user credit
+  quotas:
+  - models: Live models priced up to $1 per 1M tokens
+    note: One-time credit, not refreshed monthly (the lead's "monthly" claim does not match the official site). The site says "every live model priced up to $1 / 1M tokens"; quota_models lists models whose input and output prices are both at most $1, which is this entry's reading.
+  - condition: Free tier
+  terms:
+  - Bypassing rate limits or quotas through key rotation, request flooding or proxy routing is prohibited and may lead to suspension
+  - Reselling raw API access is prohibited
+  - The provider says it does not store prompt content or use it to train models
+  - Some model licenses restrict commercial use (e.g. FLUX.1 [dev]); check the model license yourself
