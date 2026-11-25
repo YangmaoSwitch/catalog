@@ -1,0 +1,82 @@
+id: zenmux
+name: ZenMux
+homepage: https://zenmux.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-25'
+summary: 模型聚合网关，模型列表中标为 Free 的几个模型输入输出单价为 0 美元，可用按量付费 API Key 调用；官方未公布这些模型的用量上限，账户余额不能为负。
+api:
+  protocol:
+  - openai
+  - anthropic
+  - gemini
+  base_url: https://zenmux.ai/api/v1
+  anthropic_base_url: https://zenmux.ai/api/anthropic
+  models_url: https://zenmux.ai/api/v1/models
+  models_access: paid
+  free_models:
+  - dots-studio/dots3-note-prev
+  - sapiens-ai/agnes-2.5-flash
+  - z-ai/glm-4.7-flash-free
+  - z-ai/glm-4.6v-flash-free
+  free_model_rule: 以官网模型列表 Free 筛选结果为准，单价标为输入、输出均 0 美元每百万 token；名单会变动
+signup:
+  url: https://zenmux.ai/login
+  requires:
+  - email
+  min_age: 18
+  notes: 可用邮箱、GitHub 或 Google 账号登录。免费订阅档（Free 计划）只能在网页 Studio Chat 使用，不提供 API 调用；通过 API 调用免费模型需使用按量付费（PAYG）API Key。
+quotas:
+- unit: tokens
+  amount: null
+  period: day
+  scope: account
+  models: 模型列表中标为 Free 的模型
+  note: 官方未公布免费模型的次数或 token 上限，GLM 4.7 Flash (Free) 页面带 Rate Limit 标记但无数值。错误码文档写明为防滥用，所有模型（含免费档）都要求账户余额非负；是否必须先充值才能调用免费模型，官方未明确写出
+  evidence: https://zenmux.ai/models?price_filter=free
+  quote: 'Z.AI: GLM 4.7 Flash (Free)'
+overage: unknown
+expires: null
+onboarding:
+  level: L2
+  key_page: https://zenmux.ai/platform/pay-as-you-go
+terms:
+- point: 不得频繁或批量注册账号（3.3）
+  url: https://zenmux.ai/docs/terms-of-service.html
+- point: 未经同意不得出借、出租、转让账号或让他人使用（3.3）
+  url: https://zenmux.ai/docs/terms-of-service.html
+- point: 经用户授权，平台可使用输入内容来提供、维护、开发和改进服务（6.2）
+  url: https://zenmux.ai/docs/terms-of-service.html
+- point: 须年满 18 岁或所在地成年年龄（2.2）
+  url: https://zenmux.ai/docs/terms-of-service.html
+- point: 为防滥用，所有模型（含免费档）都要求账户余额非负
+  url: https://zenmux.ai/docs/guide/advanced/error-codes.html
+tags:
+- 聚合
+- 免费模型
+sources:
+- https://zenmux.ai/pricing/overview
+- https://zenmux.ai/pricing/subscription
+- https://zenmux.ai/models?price_filter=free
+- https://zenmux.ai/z-ai/glm-4.7-flash-free
+- https://zenmux.ai/docs/guide/quickstart.html
+- https://zenmux.ai/docs/guide/subscription.html
+- https://zenmux.ai/docs/guide/advanced/error-codes.html
+- https://zenmux.ai/docs/terms-of-service.html
+en:
+  summary: Model aggregation gateway; the few models marked Free in the model list are priced at $0 for input and output and can be called with a pay-as-you-go API key; no usage limits are published for them, and the account balance must not be negative.
+  signup_notes: Sign in with email, GitHub or Google. The Free subscription plan works only in the web Studio Chat and has no API access; calling free models through the API uses a pay-as-you-go (PAYG) API key.
+  free_model_rule: Follow the Free filter in the official model list; prices are shown as $0 per million input and output tokens; the list changes
+  tags:
+  - Aggregator
+  - Free model
+  quotas:
+  - models: Models marked Free in the model list
+    note: No request or token limit is published for the free models; the GLM 4.7 Flash (Free) page carries a Rate Limit badge without numbers. The error code docs say that to prevent abuse all models (including free tiers) require a non-negative balance; whether a top-up is required before using free models is not stated explicitly
+  terms:
+  - No frequent or bulk account registration (3.3)
+  - Accounts may not be lent, leased, transferred or used by others without consent (3.3)
+  - With user authorization, the platform may use input content to provide, maintain, develop and improve the service (6.2)
+  - Users must be at least 18 or the age of majority where they live (2.2)
+  - To prevent abuse, all models (including free tiers) require a non-negative account balance
