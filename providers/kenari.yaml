@@ -1,0 +1,101 @@
+id: kenari
+name: Kenari
+homepage: https://kenari.id
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-25'
+summary: 印尼的模型聚合网关，ID 以 :free 结尾的模型不收费，未充值账号每天 50 次、每分钟 5 次，余额为零也能调用。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://kenari.id/v1
+  anthropic_base_url: https://kenari.id
+  models_url: https://kenari.id/v1/models
+  models_access: paid
+  free_pattern: ':free$'
+  free_model_rule: 模型 ID 以 :free 结尾的免费；也可用内置路由 kenari-free 随机选一个免费模型。免费模型会随时间变化，以 /v1/models 中 pricing.free 为准。
+signup:
+  url: https://kenari.id/login
+  requires:
+  - email
+  notes: 邮箱或 Google 账号注册；免费模型不需要充值。付费模型用印尼 QRIS 或加密货币充值，以印尼盾计费。
+quotas:
+- unit: requests
+  amount: 50
+  period: day
+  reset: 00:00 UTC
+  scope: account
+  models: 全部 :free 模型合计
+  condition: 未充值账号
+  note: 只计成功的请求；单个模型可能另有每分钟、每日、并发或总 token 限制；官方说明免费模型尽力提供，数值可能调整
+  evidence: https://kenari.id
+  quote: 'Tanpa top up: 50 request per hari, 5 request per menit.'
+- unit: requests
+  amount: 5
+  period: minute
+  scope: account
+  models: 全部 :free 模型合计
+  condition: 未充值账号
+  evidence: https://kenari.id
+  quote: 'Tanpa top up: 50 request per hari, 5 request per menit.'
+- unit: requests
+  amount: 1000
+  period: day
+  reset: 00:00 UTC
+  scope: account
+  models: 全部 :free 模型合计
+  condition: 累计充值满 1 万印尼盾（另限每分钟 10 次）
+  note: 赠送码得到的余额不计入充值门槛
+  evidence: https://kenari.id
+  quote: 'Sudah top up Rp 10.000: 1.000 request per hari, 10 request per menit.'
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+  key_page: https://kenari.id/login
+  key_pattern: ^kn-
+terms:
+- point: 未经书面协议，不得违反条款转售访问权限（第 3 条）
+  url: https://kenari.id/terms
+- point: 不得违反各模型提供方的使用政策；违反第 3 条可被立即停用账号
+  url: https://kenari.id/terms
+- point: 请求内容会转发给所选模型的提供方，按其隐私政策处理；Kenari 只保存用量元数据，不保存提示词和回复
+  url: https://kenari.id/privacy
+- point: 注册和登录用 Cloudflare Turnstile 拦截自动注册
+  url: https://kenari.id/privacy
+tags:
+- 聚合
+- 免费模型
+- 每日赠送
+sources:
+- https://kenari.id
+- https://kenari.id/en/docs/free-models
+- https://kenari.id/en/docs/rate-limits
+- https://kenari.id/en/docs/quickstart
+- https://kenari.id/api/public/pricing
+- https://kenari.id/terms
+- https://kenari.id/privacy
+en:
+  summary: Indonesian model gateway; models whose id ends in :free cost nothing, 50 requests a day and 5 a minute for accounts that have not topped up, usable with a zero balance.
+  signup_notes: Sign up with email or Google; free models need no top up. Paid models are billed in Rupiah and topped up via Indonesian QRIS or crypto.
+  free_model_rule: Model ids ending in :free are free; the built-in kenari-free route picks a free model at random. The free models change over time; check pricing.free in /v1/models.
+  tags:
+  - Aggregator
+  - Free model
+  - Daily credits
+  quotas:
+  - models: All :free models combined
+    condition: Accounts that have not topped up
+    note: Only successful requests count; a single model may carry its own per-minute, daily, concurrency or token-budget limit; free models are best effort and the numbers can change
+  - models: All :free models combined
+    condition: Accounts that have not topped up
+  - models: All :free models combined
+    condition: After top ups totalling Rp 10,000 (also 10 per minute)
+    note: Bonus balance from codes does not count toward the threshold
+  terms:
+  - Reselling access in breach of the terms without a written agreement is prohibited (section 3)
+  - Model providers' usage policies must be followed; breaches of section 3 can lead to immediate suspension
+  - Request content is forwarded to the chosen model provider under its own privacy policy; Kenari keeps usage metadata only, not prompts or responses
+  - Sign-up and sign-in use Cloudflare Turnstile to block automated sign-ups
