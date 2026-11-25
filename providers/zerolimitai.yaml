@@ -1,0 +1,76 @@
+id: zerolimitai
+name: ZeroLimitAI
+homepage: https://zerolimitai.com
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-25'
+summary: OpenAI 兼容的免费模型路由服务，注册后可创建 API Key 免费试用 7 天，每天 25 次调用，无需信用卡；试用期后需购买付费计划。
+api:
+  protocol:
+  - openai
+  base_url: https://www.zerolimitai.com/api/v1
+  models:
+  - auto
+  models_access: quota
+signup:
+  url: https://zerolimitai.com
+  requires:
+  - email
+  min_age: 13
+  notes: 可用邮箱或 Google 账号注册，无需信用卡。试用期结束后 Key 返回 HTTP 402，需购买 Annual 或 Lifetime 计划。
+quotas:
+- unit: requests
+  amount: 25
+  period: day
+  reset: 00:00 UTC
+  scope: account
+  models: auto（自动路由到当前排名最高的免费模型）
+  condition: 从创建第一个 API Key 起 7 天内有效，仅用于评估
+  expires_days: 7
+  new_users: true
+  evidence: https://zerolimitai.com/terms
+  quote: 'Developer API, free week: every account can create an API key that works for 7 days from the first key it creates, with 25 calls per day, for evaluation.'
+  note: 另有每个 Key 每分钟 60 次、每个 IP 每分钟 120 次的限制；免费账号单次请求输入约 16,000 tokens 上限；上游免费额度紧张时，免费请求可能由较弱模型应答。
+overage: blocked
+onboarding:
+  level: L2
+  key_pattern: ^zlai_
+  quota_api: GET /api/v1/usage
+  quota_headers:
+  - X-RateLimit-Limit
+  - X-RateLimit-Remaining
+  - X-RateLimit-Reset
+terms:
+- point: 不得共享账号，也不得让他人使用你的计划额度
+  url: https://zerolimitai.com/terms
+- point: 禁止通过自动化手段绕过计划限制或速率限制
+  url: https://zerolimitai.com/terms
+- point: 官方称不会用用户输入训练 AI 模型
+  url: https://zerolimitai.com/terms
+- point: 免费试用周仅用于评估，不能用于为他人提供服务
+  url: https://zerolimitai.com/developers
+tags:
+- 免费模型
+- 新人赠送
+- 试用
+sources:
+- https://zerolimitai.com
+- https://zerolimitai.com/developers
+- https://zerolimitai.com/terms
+en:
+  summary: OpenAI-compatible router over free models; after sign-up you can create an API key for a 7-day free trial with 25 calls per day, no credit card; after the trial a paid plan is needed.
+  signup_notes: Sign up with email or Google, no credit card. After the trial the key returns HTTP 402 until you buy the Annual or Lifetime plan.
+  tags:
+  - Free model
+  - New-user credits
+  - Trial
+  quotas:
+  - models: auto (routes to the currently top-ranked free model)
+    condition: Valid for 7 days from the first API key created, for evaluation only
+    note: Also 60 requests per minute per key and 120 per minute per IP; free accounts are limited to about 16,000 input tokens per request; when the upstream free allowance is low, free requests may be answered by a lesser model.
+  terms:
+  - Do not share your account or let others use your plan limits
+  - Circumventing plan or rate limits through automation is prohibited
+  - The provider states it does not use your inputs to train AI models
+  - The free week is for evaluation only, not for serving users
