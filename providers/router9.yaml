@@ -1,0 +1,73 @@
+id: router9
+name: Router9
+homepage: https://www.router9.com
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-25'
+summary: 订阅制模型网关，免费计划每月 10,000 积分（约 1 美元），每 4 小时限 5 次请求，只能调用标为免费档的模型。
+api:
+  protocol:
+  - openai
+  base_url: https://api.router9.com/v1
+  models_url: https://api.router9.com/v1/models
+  models_access: paid
+  free_model_rule: 免费账号只能调用后台标为免费档（free-tier）的模型，官方未公开具体名单；调用其他模型返回 403 model_requires_upgrade。
+signup:
+  url: https://www.router9.com
+  requires:
+  - email
+  min_age: 16
+  notes: 用 Google 账号或邮箱一次性验证码登录；条款规定一人一个账号。
+quotas:
+- unit: credits
+  amount: 10000
+  period: month
+  reset: 按账号注册日每月续期
+  scope: account
+  models: 仅免费档模型
+  condition: 免费计划
+  note: 1 美元 = 10,000 积分，按各模型实际成本扣减；另有每 4 小时 5 次请求的限制。积分说明页写未用完的积分不结转，限流页写结转 80%（最多 2 倍），按不结转理解。额度与 Studio 生成及所有 Key 共用。
+  evidence: https://www.router9.com/pricing
+  quote: 10,000 credit monthly quota (~$1)
+overage: auto_paid
+onboarding:
+  level: L2
+terms:
+- point: 一人一个账号，账号和 API Key 的使用由本人负责（第 1 条）
+  url: https://www.router9.com/terms
+- point: 禁止绕过速率限制、额度或其他限制（第 3 条）
+  url: https://www.router9.com/terms
+- point: 未经书面授权不得转售访问权限（第 3 条）
+  url: https://www.router9.com/terms
+- point: 官方声明不使用用户输入输出训练模型，但上游模型商按各自条款处理内容（第 2 条）
+  url: https://www.router9.com/terms
+- point: 免费额度用完后从预付余额扣费；余额也用完才返回 429
+  url: https://www.router9.com/docs/token-plan/credits
+tags:
+- 聚合
+- 每月赠送
+sources:
+- https://www.router9.com/pricing
+- https://www.router9.com/docs/token-plan/billing
+- https://www.router9.com/docs/token-plan/credits
+- https://www.router9.com/docs/api-reference/rate-limiting
+- https://www.router9.com/docs/api-reference/models
+- https://www.router9.com/terms
+en:
+  summary: Subscription model gateway; the Free plan gives 10,000 credits (about $1) per month, 5 requests per 4 hours, and only models flagged as free-tier.
+  signup_notes: Sign in with Google or a one-time code sent by email; the terms allow one account per person.
+  free_model_rule: Free accounts can only call models flagged free-tier by the admins; the list is not published. Other models return 403 model_requires_upgrade.
+  tags:
+  - Aggregator
+  - Monthly credits
+  quotas:
+  - models: Free-tier models only
+    condition: Free plan
+    note: $1 = 10,000 credits, charged by each model's cost; there is also a limit of 5 requests per 4 hours. The credits page says unused credits do not roll over, the rate-limit page says 80% carries over (up to 2x); treated as no rollover. Shared with Studio and all keys.
+  terms:
+  - One person, one account; you are responsible for use of your account and keys (section 1)
+  - Getting around rate limits, quotas or other limits is prohibited (section 3)
+  - Reselling access without written authorisation is prohibited (section 3)
+  - Router9 states it does not train on inputs or outputs; upstream providers process content under their own terms (section 2)
+  - After the free allowance runs out, usage is drawn from the prepaid balance; 429 only when that is also empty
