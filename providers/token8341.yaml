@@ -1,0 +1,61 @@
+id: token8341
+name: 8341TokenFactory
+name_zh: 8341Token工厂
+homepage: https://token8341.com
+region: cn
+api_usable: true
+status: verified
+last_verified: '2026-11-25'
+summary: 按量计费的大模型 API 聚合平台，新用户注册赠送 ¥0.5 体验额度，无需绑定信用卡；没有长期免费模型。
+api:
+  protocol:
+  - openai
+  base_url: https://www.token8341.com/v1
+  models_access: quota
+signup:
+  url: https://token8341.com
+  requires:
+  - email
+  notes: 服务条款要求用真实有效的邮箱注册；首次充值满 ¥5 另送 ¥5，需付费，不算免费额度。
+quotas:
+- unit: cny
+  amount: 0.5
+  period: one-time
+  scope: account
+  new_users: true
+  condition: 新注册用户
+  note: 体验额度不可提现、不可转让；有效期官方未公布；余额不足时接口返回 402。
+  evidence: https://token8341.com/docs
+  quote: 新用户注册后将获得 ¥0.5 免费体验额度；首次充值满 ¥5 额外赠送 ¥5，无需绑定信用卡即可开始使用。
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+terms:
+- point: 禁止以自动化手段批量注册、领取赠额或绕过计费，违反可暂停或终止账号
+  url: https://token8341.com/terms
+- point: 禁止将账号转售、出租或出借给第三方用于违法用途
+  url: https://token8341.com/terms
+- point: 免费赠送额度部分不提供可用性承诺
+  url: https://token8341.com/terms
+tags:
+- 聚合
+- 新人赠送
+sources:
+- https://token8341.com
+- https://token8341.com/docs
+- https://token8341.com/pricing
+- https://token8341.com/terms
+en:
+  summary: Pay-as-you-go LLM API aggregator; new users get ¥0.5 trial credit on sign-up with no credit card needed; no long-term free models.
+  signup_notes: The terms require a real, valid email to register; the extra ¥5 on a first top-up of ¥5 or more requires payment and is not a free quota.
+  tags:
+  - Aggregator
+  - New-user credit
+  quotas:
+  - condition: Newly registered users
+    note: Trial credit cannot be withdrawn or transferred; expiry not published; the API returns 402 when the balance runs out.
+  terms:
+  - Batch registration by automated means, harvesting credits or bypassing billing is prohibited; accounts may be suspended or terminated
+  - Reselling, renting or lending the account to third parties for illegal purposes is prohibited
+  - No availability commitment for the free credit portion
