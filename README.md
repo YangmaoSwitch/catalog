@@ -2,7 +2,7 @@
 
 各平台大模型**免费额度**的结构化目录。[羊毛switch 官网](https://github.com/YangmaoSwitch/website)和[桌面端](https://github.com/YangmaoSwitch/app)都只读这份数据。
 
-我们会尽量让目录保持最新、完整。欢迎用户和平台方提交新的免费额度或更正（提 PR 或 [Issue](https://github.com/YangmaoSwitch/catalog/issues/new/choose)），我们核实后上架，推给大家。
+目前收录 83 家平台（2026-11-25）。条目由人工整理，并接受用户和平台方提交（提 PR 或 [Issue](https://github.com/YangmaoSwitch/catalog/issues/new/choose)），核实后上架；我们用 agent 实时检查国内外最新的免费 Token，辅助发现新活动、复查已上架条目，结论都要有平台官方页面的原文为据。
 
 A structured catalog of free LLM API quotas, kept as current and complete as we can. The YangmaoSwitch website and desktop app are built from this data. Users and providers are welcome to submit new quotas or corrections; we verify them before listing.
 
@@ -22,6 +22,18 @@ A structured catalog of free LLM API quotas, kept as current and complete as we 
 
 - `providers/<id>.yaml`：每个平台一个文件，字段说明见 [schema/provider.md](schema/provider.md)。
 - 每条都要带**官方证据链接**和**最后核实日期**。只见于社区消息的，标 `status: unconfirmed`，不计入总数。
+- 每条额度可带 `quote`：从证据页面逐字复制的一句原文。新上架的条目必须有；之后定期比对，原文不见了就优先复查。
+- 只给新用户的活动标 `new_users: true`，页面显示“新用户活动”。
+- 活动结束时**不删除、不下架**：官方公布了截止日期的写 `ends`，过期后自动显示“已下线”；已确认结束的写 `ended`（整个平台）或 `quotas[].ended`（某一项额度）。已下线的额度在排序中按付费计算。
+
+## 发布
+
+`main` 每次更新和每 6 小时，CI 运行 `scripts/build.py`（校验并生成 `catalog.json`）和 `scripts/build_models.py`（生成 `models.json`：各平台的模型、调用方式和标价，同一模型跨平台合并，并按“模型质量 × 免费可得程度”给模型和平台排序），发布到 `dist` 分支。官网和桌面端都读 `dist`：
+
+- https://raw.githubusercontent.com/YangmaoSwitch/catalog/dist/catalog.json
+- https://raw.githubusercontent.com/YangmaoSwitch/catalog/dist/models.json
+
+调用方式只分两类显示：**免费**（免费模型，或用平台的免费额度调用）和**付费**。
 
 ## 平台入驻
 
@@ -39,6 +51,7 @@ A structured catalog of free LLM API quotas, kept as current and complete as we 
 
 - 用户的 Key 只保存在用户本机（系统钥匙串）。
 - 羊毛switch 的线上服务不接触 Key，也不转发任何模型调用。
+- 桌面端的本机入口只监听 127.0.0.1，用户的请求带着用户自己的 Key 直接发往平台；模型名填 `auto` 时，按本目录的模型排序挑选用户账号能用的免费模型，限流或出错时换下一家。
 
 ## 许可证
 
