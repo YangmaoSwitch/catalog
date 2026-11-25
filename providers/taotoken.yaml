@@ -1,0 +1,64 @@
+id: taotoken
+name: Taotoken
+homepage: https://taotoken.net
+region: cn
+api_usable: true
+status: verified
+last_verified: '2026-11-25'
+summary: CSDN 旗下北京灵明智码运营的模型聚合平台，按量付费；模型列表中每个模型标有一次性赠送 Token，多数为 100,000，新用户横幅称注册赠送百万 Token，无需充值。
+api:
+  protocol:
+  - openai
+  base_url: https://api.taotoken.net/v1
+  models_access: quota
+  models:
+  - deepseek-v4.1-flash-1017
+signup:
+  url: https://taotoken.net/
+  requires:
+  - phone_cn
+  notes: 使用手机验证码登录/注册，也可用 CSDN 账号授权登录；用户协议写明可能需要完成实名核验。
+quotas:
+- unit: tokens
+  amount: 100000
+  period: one-time
+  scope: model
+  models: 模型列表中的多数文本模型（Qwen3.8-27B、Doubao-Seed-Evolving 标为 10,000，Kimi-K3 标为 20,000）
+  new_users: true
+  note: 官网新人横幅写“新人专属福利 百万Token 可直接用于 API 调用，无需充值”，未说明与各模型赠送额度的关系和有效期；赠送用完后按价格从账户余额扣费。
+  evidence: https://taotoken.net/models
+  quote: 赠送：100,000 (Tokens)
+overage: unknown
+expires: null
+onboarding:
+  level: L2
+  key_page: https://taotoken.net/console
+terms:
+- point: 不得出借、转让、出售账户（3.2）
+  url: https://taotoken.net/agreement/user-service
+- point: 禁止绕过计费、配额、速率限制或通过技术手段套取平台资源（第五条）
+  url: https://taotoken.net/agreement/user-service
+- point: 数据处理可能发生在中国境内或境外云服务区域（7.3）
+  url: https://taotoken.net/agreement/user-service
+tags:
+- 聚合
+- 新人赠送
+sources:
+- https://taotoken.net/
+- https://taotoken.net/models
+- https://taotoken.net/models/detail/chat
+- https://taotoken.net/token-plan
+- https://taotoken.net/agreement/user-service
+en:
+  summary: Model aggregation platform run by Beijing Lingming Zhima (a CSDN company), pay-as-you-go; each model on the model list shows a one-time token grant, mostly 100,000, and the new-user banner says sign-up gives a million tokens usable via API without top-up.
+  signup_notes: Sign up / log in with a phone verification code or via CSDN account authorization; the user agreement says real-name verification may be required.
+  tags:
+  - Aggregator
+  - New-user credits
+  quotas:
+  - models: Most text models on the model list (Qwen3.8-27B and Doubao-Seed-Evolving show 10,000, Kimi-K3 shows 20,000)
+    note: The new-user banner says "a million tokens usable for API calls, no top-up needed" but does not explain how it relates to the per-model grants or when it expires; after the grant is used, calls are charged to the account balance.
+  terms:
+  - Accounts may not be lent, transferred or sold (3.2)
+  - Bypassing billing, quotas or rate limits, or extracting platform resources by technical means, is prohibited (Art. 5)
+  - Data may be processed in mainland China or in overseas cloud regions (7.3)
