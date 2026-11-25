@@ -1,0 +1,75 @@
+id: gizmo
+name: Gizmo
+homepage: https://gizmoplatforms.com/developers
+region: global
+api_usable: true
+status: unconfirmed
+last_verified: '2026-11-25'
+summary: 模型聚合 API，免费账号无需信用卡，可调用标为 free 的少数模型，按月有免费模型请求额度，具体次数官方未公布；其余模型按量付费。
+api:
+  protocol:
+  - openai
+  base_url: https://api.gizmoplatforms.com/api/v1
+  models_access: paid
+  free_model_rule: 模型列表中名称带 (free)、价格为 $0 / $0 的模型免费，例如 Nemotron 3.5 Lightning (free)、Nemotron 3 Ultra (free)、Flint (free)、Ling 3.2 Flash (free)、LFM3-1.7B (free)、ERNIE-5.5-Flash-Preview (free)、Particle-1 (free)；准确的模型 ID 需用 Key 调用 /api/v1/models 查看。
+signup:
+  url: https://gizmoplatforms.com/signup
+  requires: []
+  notes: 注册页写明免费开始、无需信用卡；付费模型需要绑卡并充值。
+quotas:
+- unit: requests
+  amount: null
+  period: month
+  scope: account
+  models: 标为 free 的模型合计
+  note: 文档提到每月免费模型额度，但未公布具体次数。服务条款写的是使用服务需要付费月度计划，与价格页和注册页的免费开始说法不一致，按保守处理为未确认。
+  evidence: https://gizmoplatforms.com/developers
+  quote: each admitted free-model backend pass counts against the monthly free-model quota.
+- unit: requests
+  amount: null
+  period: month
+  scope: account
+  models: Recursive Flint (free)
+  note: 模型页标价 $0 / $0，写明在计划限制内免费，限制数值未公布。
+  evidence: https://gizmoplatforms.com/models/recursive
+  quote: 1 Recursive model on Gizmo, all open-weight, 1 free within plan limits, up to 262k tokens of context.
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+terms:
+- point: 服务条款（2026-08-24 更新）写明使用服务需要付费月度计划，与价格页的免费方案说法不一致。
+  url: https://gizmoplatforms.com/terms
+- point: 付费套餐按周提供包含用量，超出部分从预付余额扣除，可开启自动充值。
+  url: https://gizmoplatforms.com/terms
+- point: 账号下所有 Key 共享余额和限制；不要把 Key 放在公开网页或移动应用中。
+  url: https://gizmoplatforms.com/developers
+tags:
+- 聚合
+- 免费模型
+- 每月赠送
+sources:
+- https://gizmoplatforms.com/developers
+- https://gizmoplatforms.com/pricing
+- https://gizmoplatforms.com/models
+- https://gizmoplatforms.com/models/recursive
+- https://gizmoplatforms.com/models/nvidia
+- https://gizmoplatforms.com/signup
+- https://gizmoplatforms.com/terms
+en:
+  summary: Model aggregator API; free accounts need no credit card and can call a few models marked free, with a monthly free-model request quota whose size is not published; other models are pay as you go.
+  signup_notes: The sign-up page says it is free to start with no card needed; paid models require a card and credits.
+  free_model_rule: Models whose names end in (free) and are priced $0 / $0 are free, e.g. Nemotron 3.5 Lightning (free), Nemotron 3 Ultra (free), Flint (free), Ling 3.2 Flash (free), LFM3-1.7B (free), ERNIE-5.5-Flash-Preview (free), Particle-1 (free); exact model IDs are listed by /api/v1/models with a key.
+  tags:
+  - Aggregator
+  - Free model
+  - Monthly credit
+  quotas:
+  - models: All models marked free combined
+    note: The docs mention a monthly free-model quota but do not publish the number. The Terms of Service say access requires a paid monthly plan, which conflicts with the free start on the pricing and sign-up pages, so this is kept as unconfirmed.
+  - models: Recursive Flint (free)
+    note: The model page lists $0 / $0 and says it is free within plan limits; the limit is not published.
+  terms:
+  - The Terms of Service (updated 2026-08-24) say access requires a paid monthly plan, which conflicts with the free plan on the pricing page.
+  - Paid plans include weekly usage; usage beyond it draws from prepaid credits, with optional auto-refill.
+  - All keys on an account share its balance and limits; do not put keys in public websites or mobile apps.
