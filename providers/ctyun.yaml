@@ -1,0 +1,70 @@
+id: ctyun
+name: China Telecom eSurfing Cloud (TokenHub)
+name_zh: 天翼云 星辰TokenHub
+homepage: https://www.ctyun.cn/products/maas
+region: cn
+api_usable: true
+status: verified
+last_verified: '2026-11-25'
+summary: 天翼云星辰TokenHub 部分模型提供免费体验额度，额度数量因模型而异、有效期 2 周；官网另有“50万Tokens免费领取”活动。完成实名认证后可用 OpenAI 兼容接口调用，免费额度用完后默认转按量计费。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://ai.ctaigw.cn/v1
+  models_access: paid
+signup:
+  url: https://www.ctyun.cn
+  requires:
+  - phone
+  - real_name
+  notes: 需完成个人实名认证或企业认证；需由主账号在“在线推理”中开启服务，并在 APP Key 管理中创建服务组以获取 App Key
+quotas:
+- unit: tokens
+  amount: 500000
+  period: one-time
+  scope: account
+  evidence: https://www.ctyun.cn
+  quote: 星辰50万Tokens免费领取
+  note: 首页活动入口写明可免费领取 50 万 Tokens，适用模型、有效期和领取条件页面未写明
+- unit: tokens
+  amount: null
+  period: one-time
+  scope: model
+  expires_days: 14
+  models: 部分模型（以控制台“开启免费体验”弹窗为准）
+  evidence: https://www.ctyun.cn/document/11061839/11062238
+  quote: 有效期触发：主账号任一账号首次使用模型服务即启动2周有效期倒计时。
+  note: 每个模型的免费额度不等，官方文档未公布具体数值；主/子账号共用；不能与已购 Tokens 量包同时使用；用完或到期后若未勾选自动关闭服务，将转按量计费
+overage: auto_paid
+onboarding:
+  level: L3
+  key_page: https://ctxirang.ctyun.cn/maas/service/serviceGroup
+terms:
+- point: 免费体验额度由主账号和子账号共用，不支持主账号向子账号分配额度
+  url: https://www.ctyun.cn/document/11061839/11062238
+- point: 官方提示妥善保管 App Key，避免公开共享
+  url: https://www.ctyun.cn/document/11061839/11062271
+- point: 免费额度用完后自动转按需计费，需在开启免费体验时勾选“免费额度耗尽或到期后，自动关闭服务”以避免扣费
+  url: https://www.ctyun.cn/document/11061839/11062271
+tags:
+- 试用
+sources:
+- https://www.ctyun.cn
+- https://www.ctyun.cn/document/11061839/11062238
+- https://www.ctyun.cn/document/11061839/11062271
+- https://www.ctyun.cn/document/11061839/11062267
+- https://www.ctyun.cn/document/11061839/11062312
+en:
+  summary: China Telecom eSurfing Cloud's TokenHub gives some models a free trial quota that varies by model and lasts 2 weeks; the homepage also advertises 500,000 free tokens. After identity verification it can be called through an OpenAI-compatible API, and usage switches to pay-as-you-go by default once the free quota runs out.
+  signup_notes: Personal or company identity verification is required; the main account must enable the service under Online Inference and create a service group under APP Key management to get an App Key
+  tags:
+  - Trial
+  quotas:
+  - note: The homepage promotion says 500,000 tokens can be claimed for free; applicable models, validity and conditions are not stated
+  - models: Some models (see the "start free trial" dialog in the console)
+    note: The free quota differs per model and the docs do not publish the amounts; shared by main and sub-accounts; cannot be used at the same time as a purchased token pack; after it runs out or expires, usage is billed pay-as-you-go unless auto-stop was ticked
+  terms:
+  - The free trial quota is shared by the main account and sub-accounts and cannot be allocated to sub-accounts
+  - The provider asks you to keep the App Key safe and not share it publicly
+  - When the free quota runs out, billing switches to pay-as-you-go; tick "stop the service automatically when the free quota is used up or expires" to avoid charges
