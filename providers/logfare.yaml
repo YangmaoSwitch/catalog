@@ -1,0 +1,106 @@
+id: logfare
+name: Logfare
+homepage: https://logfare.ai
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-25'
+summary: 免费 LLM 推理网关，注册账号即可用 API Key 调用标准档模型，普通账号每天 2,500 次请求；所有请求都会被记录，用于内部评测数据集。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://logfare.ai/v1
+  anthropic_base_url: https://logfare.ai
+  models_url: https://logfare.ai/v1/models
+  models_access: free
+  free_model_rule: 三档模型均免费：标准档（tier 1）注册即可用；高级档需在 /consent 同意数据用于模型训练；Pro 档还需同意出售数据。可用 logfare/auto 自动路由。仅限网页聊天（chat_only）的模型不能用 API 调用。
+signup:
+  url: https://logfare.ai/register
+  requires: []
+  min_age: 18
+  notes: 用户名加密码注册，不需要邮箱；必须用 Discord 账号验证并保持在 Logfare 的 Discord 服务器内，每个 Discord 账号只能绑定一个 Logfare 账号。
+quotas:
+- unit: requests
+  amount: 2500
+  period: day
+  reset: 00:00 UTC
+  scope: account
+  models: 所有已解锁模型合计
+  condition: 普通账号（注册满 24 小时后）
+  note: 同时限每分钟 20 次、每小时 500 次、并发 3；标为 Request-limit exempt 的模型不计入。同一 IP 另有共享上限（每天 40,000 次）。
+  evidence: https://logfare.ai/docs
+  quote: 2,500 requests per day
+- unit: requests
+  amount: 500
+  period: day
+  reset: 00:00 UTC
+  scope: account
+  models: 所有已解锁模型合计
+  condition: 注册后前 24 小时
+  note: 同时限每分钟 10 次、每小时 200 次、并发 1。
+  new_users: true
+  evidence: https://logfare.ai/docs
+  quote: New accounts use the new-account budget for their first 24 hours.
+- unit: requests
+  amount: 5000
+  period: day
+  reset: 00:00 UTC
+  scope: account
+  models: 所有已解锁模型合计
+  condition: 同意数据用于模型训练的高级账号
+  note: 同时限每分钟 40 次、每小时 1,000 次、并发 6。另同意出售数据的 Pro 账号为每天 10,000 次。
+  evidence: https://logfare.ai/docs
+  quote: 5,000 requests per day
+overage: blocked
+expires: null
+onboarding:
+  level: L2
+terms:
+- point: 所有请求（提示词、回复和元数据）都会被记录，经过自动去除个人信息后可用于内部评测数据集，可在 /consent 退出评测用途
+  url: https://logfare.ai/tos
+- point: 高级档模型需同意数据用于模型训练，Pro 档还需同意将数据出售或授权给第三方
+  url: https://logfare.ai/tos
+- point: 每人只能有一个账号，禁止用多个账号、他人账号或轮换 Key、Discord 账号、IP 绕过限制
+  url: https://logfare.ai/tos
+- point: 不得把 API Key 分享给未授权的第三方
+  url: https://logfare.ai/tos
+- point: 允许在限额内自动化使用；收到 429 或 503 后须按 Retry-After 等待再重试
+  url: https://logfare.ai/tos
+- point: 官方不承诺在线时间，服务和具体模型可随时变更或停止
+  url: https://logfare.ai/tos
+tags:
+- 永久免费
+- 免费模型
+- 每日赠送
+sources:
+- https://logfare.ai
+- https://logfare.ai/docs
+- https://logfare.ai/register
+- https://logfare.ai/tos
+- https://logfare.ai/privacy
+en:
+  summary: Free LLM inference gateway; a registered account gets an API key for the standard-tier models, 2,500 requests per day on a regular account; every request is logged and used for internal evaluation datasets.
+  signup_notes: Sign up with a username and password, no email needed; Discord verification is required and the Discord account must stay in the Logfare server; one Logfare account per Discord account.
+  free_model_rule: All three tiers are free. Standard (tier 1) models work after sign-up; Premium needs opting in to model training at /consent; Pro also needs opting in to data sale. logfare/auto routes automatically. Chat-only models cannot be used through the API.
+  tags:
+  - Free forever
+  - Free model
+  - Daily credits
+  quotas:
+  - models: All unlocked models combined
+    condition: Regular account (after the first 24 hours)
+    note: Also 20 per minute, 500 per hour, 3 concurrent; models marked Request-limit exempt do not count. A shared per-IP limit also applies (40,000 per day).
+  - models: All unlocked models combined
+    condition: First 24 hours after sign-up
+    note: Also 10 per minute, 200 per hour, 1 concurrent.
+  - models: All unlocked models combined
+    condition: Premium account (opted in to model training)
+    note: Also 40 per minute, 1,000 per hour, 6 concurrent. Pro accounts (also opted in to data sale) get 10,000 per day.
+  terms:
+  - All requests (prompts, completions, metadata) are logged and, after automated PII scrubbing, may be used in internal evaluation datasets; you can opt out of evaluation use at /consent
+  - Premium models require opting in to model training; Pro models also require opting in to sale or licensing of your data to third parties
+  - One account per person; extra accounts, other people's accounts, or rotating keys, Discord accounts or IPs to get past limits are prohibited
+  - Do not share your API key with unauthorized third parties
+  - Automation is allowed within limits; after a 429 or 503, wait for Retry-After before retrying
+  - No uptime guarantee; the service and specific models may change or stop at any time
