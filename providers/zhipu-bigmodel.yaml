@@ -5,8 +5,8 @@ homepage: https://bigmodel.cn
 region: cn
 api_usable: true
 status: verified
-last_verified: '2026-11-19'
-summary: GLM Flash 系列模型永久免费。
+last_verified: '2026-11-25'
+summary: GLM Flash 系列模型永久免费；新用户注册另送 2000 万 tokens 体验包。
 api:
   protocol:
   - openai
@@ -21,6 +21,7 @@ api:
   - GLM-Z1-Flash
   - GLM-4.6V-Flash
   - GLM-4V-Flash
+  - GLM-4.1V-Thinking-Flash
   - CogView-3-Flash
   - CogVideoX-Flash
 signup:
@@ -34,8 +35,17 @@ quotas:
   period: day
   scope: account
   evidence: https://docs.bigmodel.cn/cn/guide/start/pricing.md
+  quote: '| GLM-4-Flash-250414 | 128K | 免费 | 免费 | 限时免费 | 不支持 |'
   models: Flash 免费模型
   note: 免费模型不计费，按模型限速
+- unit: tokens
+  amount: 20000000
+  period: one-time
+  scope: account
+  new_users: true
+  evidence: https://www.bigmodel.cn/login
+  quote: 新用户免费赠送专享 2000万 tokens体验包！
+  note: 注册页展示的新用户体验包；适用模型、有效期和实名要求官方页面未说明
 overage: blocked
 onboarding:
   level: L1
@@ -43,15 +53,24 @@ onboarding:
 terms:
 - point: 免费功能仅限非商业的个人研究学习
   url: https://docs.bigmodel.cn/cn/terms/user-agreement.md
+- point: 不当注册或不当使用多个账户可能被冻结或关闭
+  url: https://docs.bigmodel.cn/cn/terms/user-agreement.md
+- point: 未经书面同意不得转售、共享账号或提供 API Key 给第三方
+  url: https://docs.bigmodel.cn/cn/terms/user-agreement.md
 tags:
 - 永久免费
+- 新人赠送
 en:
-  summary: GLM Flash models are free permanently.
+  summary: GLM Flash models are free permanently; new users also get a 20M-token trial pack on sign-up.
   signup_notes: Non-Chinese phone numbers are supported
   tags:
   - Always free
+  - New-user gift
   quotas:
   - models: Free Flash models
     note: Free models are not billed; rate-limited per model
+  - note: New-user trial pack shown on the sign-up page; applicable models, validity period and real-name requirements are not stated
   terms:
   - Free features are for non-commercial personal research and study only
+  - Improper registration or use of multiple accounts may lead to account freeze or closure
+  - Reselling, sharing accounts or giving API keys to third parties is not allowed without written consent
