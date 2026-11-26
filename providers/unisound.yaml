@@ -5,7 +5,7 @@ homepage: https://maas.unisound.com
 region: cn
 api_usable: true
 status: unconfirmed
-last_verified: '2026-11-25'
+last_verified: '2026-11-26'
 summary: 云知声 MaaS 平台的 U Plan 订阅设有可免费领取的 Free 档，额度和周期官方页面未公布；按量计费的模型需付费。
 api:
   protocol:
