@@ -4,7 +4,7 @@ homepage: https://www.electronhub.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-25'
+last_verified: '2026-11-26'
 summary: 聚合网关，免费计划每周补到 0.25 美元额度，另有每天 10 次免费模型（:free 后缀）请求，看广告最多可增至每天 200 次；免费计划每分钟 5 次请求。
 api:
   protocol:
