@@ -4,7 +4,7 @@ homepage: https://www.tokenrouter.com
 region: global
 api_usable: true
 status: unconfirmed
-last_verified: '2026-11-25'
+last_verified: '2026-11-26'
 summary: 多模型聚合网关，模型页把 deepseek/deepseek-v4.1-flash-1017-free 标为免费（输入输出 $0），官方未公布调用次数上限；其余模型按量付费。
 api:
   protocol:
