@@ -35,7 +35,7 @@ quotas:
   models: Spark-X2.6
   new_users: true
   evidence: https://maas.xfyun.cn/overview
-  quote: Spark-X2.6赋能开发者 零门槛领取10亿tokens免费额度
+  quote: Spark-X2.6赋能开发者零门槛领取10亿tokens免费额度
   note: 星辰 MaaS 平台注册礼，需在 MaaS 控制台领取，调用走 MaaS 平台而非 spark-api-open 地址；有效期和截止日期页面未写明，领取资格以控制台为准
 overage: blocked
 onboarding:

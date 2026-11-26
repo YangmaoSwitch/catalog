@@ -47,8 +47,8 @@ quotas:
   scope: account
   models: 以 :free 结尾的免费模型
   condition: 免费计划需每天观看最多 3 个广告（10 → 40 → 100 → 200）
-  evidence: https://tos.electronhub.ai/legal
-  quote: Up to 200 free-model requests a day.
+  evidence: https://docs.electronhub.ai/billing/credits.md
+  quote: You can earn more Neutrinos by watching ads (up to **200 daily**)
 overage: blocked
 expires: null
 onboarding:
