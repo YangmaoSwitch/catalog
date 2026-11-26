@@ -4,7 +4,7 @@ homepage: https://vikasit.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-25'
+last_verified: '2026-11-26'
 summary: 印度公司 Chandorkar Technologies 的 OpenAI 兼容推理 API，用 GitHub 登录后可免费调用 vikasit-nova，每个账号每天 200 万 tokens，不需要信用卡；其他模型按量付费。
 api:
   protocol:
