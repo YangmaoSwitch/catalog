@@ -5,7 +5,7 @@ homepage: https://token8341.com
 region: cn
 api_usable: true
 status: verified
-last_verified: '2026-11-25'
+last_verified: '2026-11-26'
 summary: 按量计费的大模型 API 聚合平台，新用户注册赠送 ¥0.5 体验额度，无需绑定信用卡；没有长期免费模型。
 api:
   protocol:
