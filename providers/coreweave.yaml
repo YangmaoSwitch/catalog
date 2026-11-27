@@ -4,7 +4,7 @@ homepage: https://coreweave.com/forge
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-24'
+last_verified: '2026-11-27'
 summary: CoreWeave Forge 免费档提供 Serverless Inference 的 OpenAI 兼容 API，含每月 Inference 额度（官方未公布具体数值），用尽后需开启按量付费或升级。
 api:
   protocol:
