@@ -4,7 +4,7 @@ homepage: https://inference.dahl.global
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 基于去中心化 GPU 网络的开源模型推理接口，新账号注册送 1 亿 token，连续 7 天没有请求会清零，充值过的账号不受影响。
 api:
   protocol:
@@ -25,6 +25,7 @@ quotas:
   condition: 新注册账号
   note: 赠送额度在账户池里，要手动分配到 Key 才能调用；连续 7 天没有任何请求即清零，充值过的账号不清零
   evidence: https://inference.dahl.global/docs/tokens/
+  quote: 'New account: 100 million tokens as a gift at signup.'
 overage: blocked
 expires: null
 onboarding:
