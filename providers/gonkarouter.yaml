@@ -4,7 +4,7 @@ homepage: https://gonkarouter.io
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 基于去中心化算力网络 Gonka 的模型网关，新账号赠送 100 万 token，无需信用卡。
 api:
   protocol:
@@ -32,6 +32,7 @@ quotas:
   condition: 新账号
   note: 赠送额度先于付费余额扣除；官方未写明有效期
   evidence: https://gonkarouter.io/pricing
+  quote: New accounts automatically receive 1M free tokens.
 overage: unknown
 expires: null
 onboarding:
