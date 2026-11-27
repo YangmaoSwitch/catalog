@@ -4,8 +4,8 @@ homepage: https://clod.io
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-26'
-summary: OpenAI 兼容的模型网关，首次充值任意金额后，每天可免费调用 3 个开源模型 50 次请求、共 20 万 tokens。
+last_verified: '2026-11-27'
+summary: OpenAI 兼容的模型网关，首次充值任意金额后，每天可免费调用 3 个开源模型 50 次请求、共 20 万 tokens；新用户充值另有 50% 赠送，最多 25 美元。
 api:
   protocol:
   - openai
@@ -51,6 +51,16 @@ quotas:
   evidence: https://clod.io/pricing
   quote: 50 requests and 200,000 tokens per day
   note: 与每天 50 次请求的限制同时生效。
+- unit: usd
+  amount: 25
+  period: one-time
+  scope: account
+  models: 全部模型（账户余额通用）
+  condition: 新用户充值后按充值金额 50% 赠送，最多 25 美元
+  evidence: https://clod.io/pricing
+  quote: New users, up to $25 free
+  new_users: true
+  note: 价格页横幅写明“50% Credit Match”，无需兑换码，24 小时内到账。需先自行充值才有赠送，未写明截止日期和赠送额度的有效期。
 overage: blocked
 onboarding:
   level: L2
@@ -65,6 +75,7 @@ terms:
 tags:
 - 免费模型
 - 每日赠送
+- 新人赠送
 sources:
 - https://clod.io/pricing
 - https://clod.io
@@ -74,12 +85,13 @@ sources:
 - https://app.clod.io/llms.txt
 - https://clod.io/privacy
 en:
-  summary: OpenAI-compatible model gateway. After a first top-up of any amount, you get 50 free requests and 200,000 tokens per day on 3 open-source models.
+  summary: OpenAI-compatible model gateway. After a first top-up of any amount, you get 50 free requests and 200,000 tokens per day on 3 open-source models. New users also get a 50% match on top-ups, up to $25.
   signup_notes: Sign up with email, Google or Microsoft. Daily free usage only turns on after your first credit top-up (any amount). The privacy policy says the service is not meant for anyone under 16.
   free_model_rule: 'Free models listed on the pricing page: Trinity Mini, Qwen 3.5 9B and Gemma 4.'
   tags:
   - Free model
   - Daily credits
+  - New-user credits
   quotas:
   - models: Free models
     condition: Turns on after the first top-up of any amount
@@ -90,6 +102,9 @@ en:
   - models: Free models
     condition: Turns on after the first top-up of any amount
     note: Applies together with the 50 requests/day limit.
+  - models: All models (shared account balance)
+    condition: New users get 50% of their top-up added as bonus credit, up to $25
+    note: The pricing page banner says "50% Credit Match". No code is needed and the credit is added within 24 hours. You have to top up first to get it. No end date or credit expiry is stated.
   terms:
   - The privacy policy says inputs and outputs are not used to train or improve AI models
   - The service is not meant for anyone under 16
