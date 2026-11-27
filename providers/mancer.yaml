@@ -4,7 +4,7 @@ homepage: https://mancer.tech
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-24'
+last_verified: '2026-11-27'
 summary: 无内容过滤的推理服务，注册后可免费调用 MythoLite（13B，上下文 2560、单次输出最多 150 token），其他模型按 credits 付费。
 api:
   protocol:
