@@ -4,7 +4,7 @@ homepage: https://moondream.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-25'
+last_verified: '2026-11-27'
 summary: Moondream 视觉语言模型的云 API，每个工作区每月含 5 美元用量额度，超出部分按 token 计费。
 api:
   protocol:
