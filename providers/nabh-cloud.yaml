@@ -4,7 +4,7 @@ homepage: https://nabh.cloud
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-25'
+last_verified: '2026-11-27'
 summary: 印度预付费模型 API 平台，免费计划注册送 50 积分，之后每月 1 日再送 50 积分（1 积分 = 1 卢比），只能调用 GPT OSS 20B，每分钟 5 次、每天 500 次。
 api:
   protocol:
