@@ -4,14 +4,14 @@ homepage: https://www.mixlayer.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 开源模型推理平台，qwen/qwen3.5-4b-free 输入输出均为 0 元，免费模型不需要预付余额，其余模型按量付费。
 api:
   protocol:
   - openai
   base_url: https://mixlayer.ai/v1
   models_access: paid
-  free_pattern: '-free$'
+  free_pattern: -free$
   free_models:
   - qwen/qwen3.5-4b-free
   free_model_rule: 模型 ID 以 -free 结尾，价格页标为 FREE；目前只有 qwen/qwen3.5-4b-free
@@ -29,6 +29,7 @@ quotas:
   models: qwen/qwen3.5-4b-free
   note: 按组织和模型限制每分钟请求数和 token 数，官方不公布固定数值，可从 x-ratelimit-* 响应头查看；超出返回 429
   evidence: https://docs.mixlayer.com/credits-and-limits
+  quote: Mixlayer does not publish fixed limit values because limits can differ by organization and model.
 overage: blocked
 expires: null
 onboarding:
