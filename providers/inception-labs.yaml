@@ -5,7 +5,7 @@ homepage: https://www.inceptionlabs.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: Mercury 扩散语言模型 API，新账号赠送 1 亿 token，无需付款信息；官方已宣布 API 于 2026-12-28 后停止服务。
 api:
   protocol:
@@ -27,12 +27,14 @@ quotas:
   condition: 新用户注册
   note: 赠送额度用完后需在 Billing 页添加付款方式才能继续使用；服务在 2026-12-28 后停止，届时额度一并失效
   evidence: https://docs.inceptionlabs.ai/get-started/get-started
+  quote: Every new account includes 100 million free tokens — no payment details required.
 - unit: requests
   amount: 1000
   period: minute
   scope: account
   condition: 免费档（另限每分钟输入 100 万、输出 10 万 token）
   evidence: https://docs.inceptionlabs.ai/get-started/rate-limits
+  quote: API Requests1,0003,000Custom
 overage: blocked
 expires: null
 ends: '2026-12-28'
