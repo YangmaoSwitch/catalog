@@ -4,7 +4,7 @@ homepage: https://anyapi.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 聚合网关，免费计划每天赠送 10 万 AnyToken，UTC 零点重置，可调用免费模型和基础模型，无需信用卡。
 api:
   protocol:
@@ -14,6 +14,8 @@ api:
   free_pattern: :free$
   free_models:
   - qwen/qwen3.8-27b:free
+  - inclusionai/ling-3.0-flash-fin:free
+  - inclusionai/ling-3.0-flash-sante:free
   free_model_rule: 模型 ID 以 :free 结尾的模型价格为 0；免费模型名单随时调整
 signup:
   url: https://dash.anyapi.ai/
@@ -30,6 +32,7 @@ quotas:
   models: 免费计划可用的免费模型和基础模型
   note: 单位为平台计费单位 AnyToken，不是模型 token；当天未用完不累积
   evidence: https://anyapi.ai/terms-of-service
+  quote: The Free plan provides Customer with up to 100,000 anyTokens per calendar day at no charge.
 overage: blocked
 expires: null
 onboarding:
