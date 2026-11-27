@@ -4,7 +4,7 @@ homepage: https://hanzo.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 美国 Hanzo AI 的模型平台，免费计划每天可通过 API 调用 enso-auto 路由模型 50 次，另有 Kai 决策接口每天 50 次，无需信用卡。
 api:
   protocol:
@@ -31,6 +31,7 @@ quotas:
   condition: 个人账号的免费计划
   note: 用完返回 429（free_plan_cap），响应里的 resets_at 给出重置时间；官方未写明时区
   evidence: https://docs.hanzo.ai/docs/agents.md
+  quote: 'A person on the Free plan: 50 requests a day through `enso-auto`, the default, and 50 Kai decisions a day.'
 - unit: requests
   amount: 50
   period: day
@@ -38,6 +39,7 @@ quotas:
   models: kai（/v1/decisions 决策接口，不是对话接口）
   condition: 个人账号的免费计划
   evidence: https://docs.hanzo.ai/docs/agents.md
+  quote: 'A person on the Free plan: 50 requests a day through `enso-auto`, the default, and 50 Kai decisions a day.'
 overage: blocked
 expires: null
 onboarding:
