@@ -4,7 +4,7 @@ homepage: https://ai21.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-24'
+last_verified: '2026-11-27'
 summary: 新账号注册即送 10 美元试用额度，无需信用卡，可用于 Jamba 系列模型的 API、SDK 与 Playground 调用。
 api:
   protocol:
