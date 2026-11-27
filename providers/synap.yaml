@@ -4,7 +4,7 @@ homepage: https://synap402.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 开源模型 API 平台，用 Google 或邮箱登录后可免费调用 qwen3-coder-30b，前 7 天每天 10 万 token、50 次请求，之后每天 5 万 token、10 次请求，无需信用卡。
 api:
   protocol:
@@ -29,6 +29,7 @@ quotas:
   condition: 账号开通后前 7 天
   note: 输入输出合计；每次最多输出 4096 token
   evidence: https://synap402.com/free.html
+  quote: 100,000 a day for your first 7 days, input and output counted
 - unit: requests
   amount: 50
   period: day
@@ -37,6 +38,7 @@ quotas:
   models: qwen3-coder-30b
   condition: 账号开通后前 7 天
   evidence: https://synap402.com/free.html
+  quote: 50 a day, 10 a minute per key
 - unit: tokens
   amount: 50000
   period: day
@@ -45,6 +47,7 @@ quotas:
   models: qwen3-coder-30b
   condition: 第 8 天起
   evidence: https://synap402.com/free.html
+  quote: 'From day 8: 50,000 tokens a day, 10 requests a day'
 - unit: requests
   amount: 10
   period: day
@@ -53,12 +56,14 @@ quotas:
   models: qwen3-coder-30b
   condition: 第 8 天起
   evidence: https://synap402.com/free.html
+  quote: 'From day 8: 50,000 tokens a day, 10 requests a day'
 - unit: requests
   amount: 10
   period: minute
   scope: key
   models: qwen3-coder-30b
   evidence: https://synap402.com/free.html
+  quote: 50 a day, 10 a minute per key
 - unit: tokens
   amount: 300000
   period: day
@@ -67,6 +72,7 @@ quotas:
   models: qwen3-coder-30b
   note: 同一网络地址另限每天 150 次请求；账号和网络地址哪个先用完以哪个为准；全体免费用户每日总量也有上限
   evidence: https://synap402.com/api/account/free-tier
+  quote: '"perNetworkDailyTokens":300000'
 overage: blocked
 expires: null
 onboarding:
