@@ -2,7 +2,7 @@
 
 各平台大模型**免费额度**的结构化目录。[羊毛switch 官网](https://github.com/YangmaoSwitch/website)和[桌面端](https://github.com/YangmaoSwitch/app)都只读这份数据。
 
-目前收录 83 家平台（2026-11-25）。条目由人工整理，并接受用户和平台方提交（提 PR 或 [Issue](https://github.com/YangmaoSwitch/catalog/issues/new/choose)），核实后上架；我们用 agent 实时检查国内外最新的免费 Token，辅助发现新活动、复查已上架条目，结论都要有平台官方页面的原文为据。
+目前收录 99 家已核实平台，另有 11 家待确认（2026-11-27）。条目由人工整理，并接受用户和平台方提交（提 PR 或 [Issue](https://github.com/YangmaoSwitch/catalog/issues/new/choose)），核实后上架；我们用 agent 实时检查国内外最新的免费 Token，辅助发现新活动；已上架的条目每天逐家复查两次（旧额度还在不在、有没有新活动），结论都要有平台官方页面的原文为据。
 
 A structured catalog of free LLM API quotas, kept as current and complete as we can. The YangmaoSwitch website and desktop app are built from this data. Users and providers are welcome to submit new quotas or corrections; we verify them before listing.
 
