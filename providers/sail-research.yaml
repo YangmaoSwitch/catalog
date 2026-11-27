@@ -4,7 +4,7 @@ homepage: https://www.sailresearch.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 主打低价的开源模型推理服务，免费计划绑定支付方式后每月赠送 5 美元额度。
 api:
   protocol:
@@ -39,6 +39,7 @@ quotas:
   condition: 免费计划，绑定支付方式后
   note: 按量计费的预付额度；可用于推理和 Sailbox
   evidence: https://docs.sailresearch.com/pricing
+  quote: $5/month in free credits when you attach a payment method
 overage: unknown
 expires: null
 onboarding:
