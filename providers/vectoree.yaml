@@ -4,7 +4,7 @@ homepage: https://vectoree.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 面向编程智能体的后端云，模型网关聚合多家模型；用官方 CLI 登录并关联项目后赠送 5 美元，余额用完需充值。
 api:
   protocol:
@@ -24,6 +24,7 @@ quotas:
   condition: 用 CLI 登录并关联项目后
   note: 进入组织钱包，按模型目录价格扣费；官方未写明有效期
   evidence: https://vectoree.ai/pricing
+  quote: $5 welcome credit after CLI login + link
 overage: blocked
 expires: null
 onboarding:
