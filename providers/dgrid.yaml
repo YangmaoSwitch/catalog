@@ -4,7 +4,7 @@ homepage: https://dgrid.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-26'
+last_verified: '2026-11-27'
 summary: 去中心化 AI 网关，免费模型路由 dgridai/free 不收费，未充值账号每天 100 次、每分钟 10 次；累计充值满 5 美元后为每天 1000 次、每分钟 20 次。
 api:
   protocol:
