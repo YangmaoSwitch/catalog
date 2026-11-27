@@ -4,7 +4,7 @@ homepage: https://www.nutrient.io/api/ai-gateway-api/
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-25'
+last_verified: '2026-11-27'
 summary: 文档处理平台 Nutrient 的 AI Gateway 提供 OpenAI 兼容接口，免费计划每月含 5 美元用量，与其他 Nutrient API 共用，无需信用卡；用完后未开通钱包则暂停请求。
 api:
   protocol:
