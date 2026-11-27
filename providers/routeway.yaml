@@ -4,7 +4,7 @@ homepage: https://routeway.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 聚合网关，名称以 :free 结尾的模型免费调用，每天 200 次请求，UTC 零点重置。
 api:
   protocol:
@@ -30,6 +30,7 @@ quotas:
   models: 全部 :free 模型合计
   note: 每分钟上限官方页面不一致（限流页写 5 次，FAQ 与模型页写 20 次）；单并发、低优先级队列；超出返回 429
   evidence: https://docs.routeway.ai/getting-started/rate-limits.md
+  quote: 200 Requests Per Day (RPD)
 overage: blocked
 expires: null
 onboarding:
