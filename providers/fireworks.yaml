@@ -4,7 +4,7 @@ homepage: https://fireworks.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 美国开源模型推理平台，新账号带 1 美元起步额度，用完后未绑定支付方式的账号会被暂停。
 api:
   protocol:
@@ -27,12 +27,14 @@ quotas:
   condition: 新账号起步额度
   evidence: https://docs.fireworks.ai/faq-new/billing-pricing/what-happens-when-i-finish-my-1-dollar-credit
   note: 用完后未绑定支付方式的账号会被暂停，需绑定支付方式并充值才能继续
+  quote: 'When you finish your $1 credit, the following occurs:'
 - unit: requests
   amount: 10
   period: minute
   scope: account
   condition: 未绑定支付方式或无余额
   evidence: https://docs.fireworks.ai/guides/quotas_usage/account-quotas
+  quote: No payment method or no credits10 RPM
 overage: blocked
 expires: null
 onboarding:
