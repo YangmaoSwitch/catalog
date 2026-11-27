@@ -4,7 +4,7 @@ homepage: https://inferbase.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 印度班加罗尔的模型网关，免费计划每月 5000 次请求，托管模型中输出价不超过每百万 token 2 美元的对话、嵌入和重排模型每天免费 100 次、合计 0.5 美元以内，无需信用卡。
 api:
   protocol:
@@ -28,6 +28,7 @@ quotas:
   models: 所有模型和所有 Key 合计（含自带供应商 Key 的请求）
   note: 按自然月（UTC）计算，用完后暂停到下月 1 日
   evidence: https://inferbase.ai/pricing
+  quote: 5,000 requests a month, on any model and any key
 - unit: requests
   amount: 100
   period: day
@@ -35,6 +36,7 @@ quotas:
   models: 符合条件的托管模型
   note: 每次托管请求最多 8192 个输入 token、1024 个输出 token；官方未写明每日重置时区
   evidence: https://inferbase.ai/pricing
+  quote: 100 managed requests and $0.50 of model usage a day, free
 - unit: usd
   amount: 0.5
   period: day
@@ -42,17 +44,20 @@ quotas:
   models: 符合条件的托管模型
   note: 每日免费的模型用量上限，与每天 100 次同时生效
   evidence: https://inferbase.ai/pricing
+  quote: 100 managed requests and $0.50 of model usage a day, free
 - unit: requests
   amount: 60
   period: minute
   scope: key
   evidence: https://inferbase.ai/pricing
+  quote: On Free, a key allows 60 requests per minute, and managed inference allows 10 requests a minute per organization.
 - unit: requests
   amount: 10
   period: minute
   scope: org
   models: 托管模型
   evidence: https://inferbase.ai/pricing
+  quote: On Free, a key allows 60 requests per minute, and managed inference allows 10 requests a minute per organization.
 overage: blocked
 expires: null
 onboarding:
