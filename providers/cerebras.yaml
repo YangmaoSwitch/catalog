@@ -4,7 +4,7 @@ homepage: https://www.cerebras.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 新账号绑定有效支付方式后一次性获得 5 美元试用额度，30 天内有效，无长期免费档。
 api:
   protocol:
@@ -29,6 +29,7 @@ quotas:
   condition: 添加经验证的支付方式
   note: 可用于全部公开模型；用完或到期后需购买额度才能继续调用
   evidence: https://inference-docs.cerebras.ai/support/rate-limits
+  quote: New accounts receive $5 in free credits after adding a verified payment method.
 - unit: tokens
   amount: 1000000
   period: day
@@ -37,6 +38,7 @@ quotas:
   models: gpt-oss-120b
   note: 试用期间另限每分钟 5 次请求、每小时 100 万 token
   evidence: https://inference-docs.cerebras.ai/support/rate-limits
+  quote: gpt-oss-120b530K90K1M1M
 - unit: requests
   amount: 300
   period: minute
@@ -45,6 +47,7 @@ quotas:
   models: qwen-3.8-27b
   note: 无每小时、每天 token 上限，限速与付费档相同
   evidence: https://inference-docs.cerebras.ai/support/rate-limits
+  quote: No hourly or daily token caps apply to Qwen 3.8 27B on either tier.
 overage: blocked
 expires: null
 onboarding:
