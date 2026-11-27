@@ -5,7 +5,7 @@ homepage: https://bazaarlink.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 台湾的模型聚合网关，免费模型每个账户每天 60 个加权单位、每分钟 10 次，充值后翻倍，无需信用卡。
 api:
   protocol:
@@ -20,6 +20,9 @@ api:
   - stealth/glyph-cluster
   - nvidia/nemotron-3.5-lightning-free
   - deepseek/deepseek-v4-flash-0731free
+  - recursive/flint-v1.0
+  - humansand/ampersand-v0.1
+  - reflection/beam-free
   - auto:free
   free_model_rule: 平台按模型授予免费额度，/v1/models 中以 :free 结尾的条目为免费；给付费模型自行加 :free 不会变免费
 signup:
@@ -37,6 +40,7 @@ quotas:
   condition: 未充值账户
   note: 按输入长度加权扣量，4K token 以内扣 1 单位，越长扣得越多（超过 85K 扣 120）；另有按 IP 的限制
   evidence: https://bazaarlink.ai/free
+  quote: 'No credit: 10 RPM and 60 weighted units/day.'
 - unit: requests
   amount: 10
   period: minute
@@ -45,6 +49,7 @@ quotas:
   condition: 未充值账户
   note: 滚动 60 秒窗口；每账户最多 2 个并发免费请求，全站免费请求上限每分钟 20 次
   evidence: https://bazaarlink.ai/free
+  quote: The shared allowance is 10/20 RPM and 60/120 weighted units per day for no-credit/credited accounts.
 - unit: points
   amount: 120
   period: day
@@ -53,6 +58,7 @@ quotas:
   models: 全部免费模型合计
   condition: 已充值账户（另限每分钟 20 次）
   evidence: https://bazaarlink.ai/free
+  quote: 'With credit: 20 RPM and 120 weighted units/day.'
 overage: auto_paid
 expires: null
 onboarding:
