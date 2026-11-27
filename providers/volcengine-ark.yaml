@@ -5,8 +5,8 @@ homepage: https://www.volcengine.com/product/ark
 region: cn
 api_usable: true
 status: verified
-last_verified: '2026-11-25'
-summary: 新用户豆包模型各送 50 万 Token；开启“安心体验模式”可避免产生费用。
+last_verified: '2026-11-27'
+summary: 新用户豆包模型各送 50 万 Token；开启“安心体验模式”可避免产生费用。另有协作奖励计划：授权采集推理数据后，按前一日采集量次日返还等量免费资源包（每模型每日最多 5M tokens，30 天有效）。
 api:
   protocol:
   - openai
@@ -16,6 +16,7 @@ api:
   quota_models:
   - Doubao-Seed-2.1-pro
   - Doubao-Seed-2.1-turbo
+  - doubao-seed-evolving
 signup:
   url: https://console.volcengine.com/ark
   requires:
@@ -28,15 +29,30 @@ quotas:
   evidence: https://docs.volcengine.com/docs/ark/free-inference-quota
   models: Doubao-Seed-2.1-pro、Doubao-Seed-2.1-turbo 等 4 款
   quote: 方舟为新用户提供免费推理试用额度，便于新用户 0 成本学习以及尝试将模型推理能力与业务相结合。
+- unit: tokens
+  amount: 5000000
+  period: day
+  scope: model
+  evidence: https://www.volcengine.com/docs/ark/collaboration-reward-program
+  models: Doubao-Seed-Evolving 等（以活动页公示为准）
+  condition: 需实名认证、开通模型服务并关闭安心体验模式，授权火山引擎采集该接入点的推理数据用于模型优化；按前一日实际采集量次日返还等量资源包，仅抵扣按 token 后付费在线推理；同一用户仅限一个账号参与
+  expires_days: 30
+  note: 每日奖励为返还，需先产生用量；首次授权另送冷启动资源包，数额官方未公布。规则写合作期延长至 2026-09-30，但页面（2026-11-24 更新）仍在运行并列出 2026-10-08 退出的模型（含 Doubao-Seed-2.1-pro/turbo），以页面为准。
+  quote: 调用已获授权的推理接入点，每日将采集每个模型不超过 5M tokens 的推理数据，并于次日发放有效期为30天的等量免费资源包；未获授权的接入点数据将不予采集，该部分使用量次日也不会返还资源包。
 overage: manual
 onboarding:
   level: L1
   key_page: https://console.volcengine.com/ark
 tags:
 - 新人
+- 每日赠送
 en:
-  summary: New users get 500K tokens for each Doubao model; turning on “Worry-free trial mode” avoids charges.
+  summary: New users get 500K tokens for each Doubao model; turning on “Worry-free trial mode” avoids charges. A collaboration reward program also returns, the next day, a free resource pack equal to the inference data you authorize for collection (up to 5M tokens per model per day, valid 30 days).
   tags:
   - New users
+  - Daily credits
   quotas:
   - models: Doubao-Seed-2.1-pro, Doubao-Seed-2.1-turbo and 2 more
+  - models: Doubao-Seed-Evolving and others (per the activity page)
+    condition: Requires real-name verification, an activated model service and Worry-free trial mode turned off; you authorize Volcengine to collect that endpoint's inference data for model improvement. An equal resource pack is returned the next day based on the previous day's collected usage, usable only for pay-per-token online inference; one account per user.
+    note: The daily reward is a rebate, so usage comes first; a cold-start pack on first authorization has no published amount. The rules state the cooperation period was extended to 2026-09-30, yet the page (updated 2026-11-24) is still live and lists models that exited on 2026-10-08 (including Doubao-Seed-2.1-pro/turbo); the page is followed.
