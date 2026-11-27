@@ -4,7 +4,7 @@ homepage: https://zro.moonmath.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 面向编程智能体的开源模型推理接口，免费计划每天可免费使用 DeepSeek V4.1 Flash，额度每日重置，官方未公布具体数量。
 api:
   protocol:
@@ -29,6 +29,7 @@ quotas:
   condition: 免费计划
   note: 定价页写“DeepSeek V4.1 Flash 每日免费用量，每天重置”，未公布数量和重置时区
   evidence: https://zro.moonmath.ai/pricing
+  quote: Free daily usage on DeepSeek V4.1 Flash. Resets every day.
 overage: blocked
 expires: null
 onboarding:
