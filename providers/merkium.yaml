@@ -4,7 +4,7 @@ homepage: https://www.merkium.nl
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 荷兰个人团队的自研模型，当前全部模型通过 API 永久免费，每个 Key 每分钟 30 次请求，无需信用卡。
 api:
   protocol:
@@ -33,6 +33,7 @@ quotas:
   models: 全部当前模型
   note: 超限返回 429 并带 Retry-After；官方称当前模型永久免费，之后发布的新模型可能收费
   evidence: https://www.merkium.nl/docs
+  quote: The free tier allows 30 requests per minute per API key; see Rate limits.
 overage: blocked
 expires: null
 onboarding:
