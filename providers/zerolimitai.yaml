@@ -4,7 +4,7 @@ homepage: https://zerolimitai.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-26'
+last_verified: '2026-11-27'
 summary: OpenAI 兼容的免费模型路由服务，注册后可创建 API Key 免费试用 7 天，每天 25 次调用，无需信用卡；试用期后需购买付费计划。
 api:
   protocol:
