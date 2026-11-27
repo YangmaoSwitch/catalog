@@ -1,0 +1,62 @@
+id: mzsjai-matrix
+name: Matrix (MoziaVerse)
+name_zh: 摩智视界 Matrix
+homepage: https://matrix.mzsjai.com
+region: cn
+api_usable: true
+status: unconfirmed
+last_verified: '2026-11-27'
+summary: 摩智视界的 Matrix 是模型 API 聚合平台，按量付费；完成实名认证后一次性发放奖励额度到钱包，官方未公布具体数额，免费套餐不含每月积分。
+api:
+  protocol:
+  - openai
+  - anthropic
+  base_url: https://mzsjai.com/v1
+  models_access: paid
+  quota_models:
+  - deepseek/deepseek-v4-flash-w8a8
+signup:
+  url: https://matrix.mzsjai.com
+  requires:
+  - phone
+  - real_name
+  notes: 手机号或邮箱注册；领取认证奖励需完成实名认证（个人身份证二要素或企业认证）；自 2026 年 9 月 30 日起充值必须实名
+quotas:
+- unit: credits
+  amount: null
+  period: one-time
+  scope: account
+  new_users: true
+  condition: 完成个人或企业实名认证
+  note: 官方未公布奖励数额；奖励进入钱包余额，1 积分 = ¥0.01；公告称平台赠送积分可用于 deepseek/deepseek-v4-flash-w8a8，其他模型是否可用未写明
+  evidence: https://matrix.mzsjai.com/docs/announcements/identity-verification
+  quote: 完成认证会自动发放奖励额度，进入钱包余额，不需要手动领取
+overage: blocked
+onboarding:
+  level: L2
+terms:
+- point: 账户仅限本人或本企业自用，不得转让、出租、出借，不得多人共用或用账户为第三方提供服务
+  url: https://matrix.mzsjai.com/docs/agreements/user-agreement
+- point: 不得恶意批量调用、滥用算力资源
+  url: https://matrix.mzsjai.com/docs/agreements/user-agreement
+- point: 部分模型按监管要求需实名后才能调用
+  url: https://matrix.mzsjai.com/docs/announcements/identity-verification
+tags:
+- 新人赠送
+sources:
+- https://matrix.mzsjai.com/docs/matrix/platform/plans-and-benefit-packs
+- https://matrix.mzsjai.com/docs/announcements/identity-verification
+- https://matrix.mzsjai.com/docs/announcements/deepseek-v4-flash-w8a8
+- https://matrix.mzsjai.com/docs/matrix/developers/openai-compatible
+en:
+  summary: Matrix by MoziaVision is a pay-as-you-go model API aggregator; completing identity verification grants a one-time reward credited to the wallet (amount not published). The free plan includes no monthly credits.
+  signup_notes: Sign up with phone or email; the verification reward requires real-name verification (personal ID check or company verification); since 2026-09-30 top-ups also require real-name verification
+  tags:
+  - New-user credits
+  quotas:
+  - condition: Complete personal or company identity verification
+    note: Reward amount not published; credited to wallet balance, 1 credit = CNY 0.01; an announcement says gifted credits can be used for deepseek/deepseek-v4-flash-w8a8, other models not stated
+  terms:
+  - The account is for your own or your company's use only; no transfer, renting, lending, sharing among several people, or serving third parties with it
+  - No malicious bulk calls or abuse of compute resources
+  - Some models require identity verification before they can be called, per regulations
