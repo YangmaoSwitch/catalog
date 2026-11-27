@@ -5,8 +5,8 @@ homepage: https://bigmodel.cn
 region: cn
 api_usable: true
 status: verified
-last_verified: '2026-11-25'
-summary: GLM Flash 系列模型永久免费；新用户注册另送 2000 万 tokens 体验包。
+last_verified: '2026-11-27'
+summary: GLM Flash 系列模型永久免费；新用户注册另送 2000 万 tokens 资源包和 120 次图像和视频资源包。
 api:
   protocol:
   - openai
@@ -43,9 +43,18 @@ quotas:
   period: one-time
   scope: account
   new_users: true
-  evidence: https://www.bigmodel.cn/login
-  quote: 新用户免费赠送专享 2000万 tokens体验包！
-  note: 注册页展示的新用户体验包；适用模型、有效期和实名要求官方页面未说明
+  evidence: https://bigmodel.cn
+  quote: 2000万 免费Tokens资源包
+  note: 首页展示的新用户注册专享资源包；适用模型、有效期和实名要求官方页面未说明
+- unit: requests
+  amount: 120
+  period: one-time
+  scope: account
+  new_users: true
+  evidence: https://bigmodel.cn
+  quote: 120次 图像和视频资源包
+  models: 图像和视频生成模型
+  note: 首页展示的新用户注册专享资源包；具体适用模型和有效期官方页面未说明
 overage: blocked
 onboarding:
   level: L1
@@ -61,7 +70,7 @@ tags:
 - 永久免费
 - 新人赠送
 en:
-  summary: GLM Flash models are free permanently; new users also get a 20M-token trial pack on sign-up.
+  summary: GLM Flash models are free permanently; new users also get a 20M-token pack and a 120-use image and video pack on sign-up.
   signup_notes: Non-Chinese phone numbers are supported
   tags:
   - Always free
@@ -69,7 +78,9 @@ en:
   quotas:
   - models: Free Flash models
     note: Free models are not billed; rate-limited per model
-  - note: New-user trial pack shown on the sign-up page; applicable models, validity period and real-name requirements are not stated
+  - note: New-user sign-up pack shown on the homepage; applicable models, validity period and real-name requirements are not stated
+  - models: Image and video generation models
+    note: New-user sign-up pack shown on the homepage; exact applicable models and validity period are not stated
   terms:
   - Free features are for non-commercial personal research and study only
   - Improper registration or use of multiple accounts may lead to account freeze or closure
