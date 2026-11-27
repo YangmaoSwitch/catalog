@@ -4,7 +4,7 @@ homepage: https://aistudio.google.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-24'
+last_verified: '2026-11-27'
 summary: Gemini API 免费档，按项目限速；具体数值在 AI Studio 页面显示。
 api:
   protocol:
