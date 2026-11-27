@@ -4,14 +4,15 @@ homepage: https://aihubmix.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-24'
-summary: 聚合平台的免费模型，每日重置。
+last_verified: '2026-11-27'
+summary: 聚合平台提供 77 个以 -free 结尾的免费模型；新账户有 10 次试用调用，一次性充值 1 美元后每日 100 次请求、100 万 token，每日重置。
 api:
   protocol:
   - openai
   base_url: https://aihubmix.com/v1
   modelsdev: aihubmix
   models_access: paid
+  free_pattern: -free$
 signup:
   url: https://aihubmix.com
   requires:
@@ -23,6 +24,8 @@ quotas:
   scope: account
   evidence: https://aihubmix.com/call/free_quota_config
   models: 免费模型
+  condition: 一次性充值 1 美元及以上后生效
+  note: 部分模型按权重计次（一次调用计为多次请求），如 gpt-4.1-free 每日 20 次、gemini-3-flash-preview-free 每日 33 次。
   quote: '"daily_request_limit":100'
 - unit: tokens
   amount: 1000000
@@ -30,6 +33,8 @@ quotas:
   scope: account
   evidence: https://aihubmix.com/call/free_quota_config
   models: 免费模型
+  condition: 一次性充值 1 美元及以上后生效
+  note: 所有免费模型共享每日 100 万 token。
   quote: '"daily_token_limit":1000000'
 - unit: requests
   amount: 10
@@ -37,7 +42,17 @@ quotas:
   scope: account
   evidence: https://aihubmix.com/call/free_quota_config
   models: 免费模型
+  condition: 一次性充值 1 美元及以上后生效
   quote: '"minute_limit":10'
+- unit: requests
+  amount: 10
+  period: one-time
+  scope: account
+  evidence: https://aihubmix.com/models/free
+  models: 免费模型
+  condition: 未充值账户的试用调用，所有免费模型共用，不过期
+  new_users: true
+  quote: Every account starts with 10 trial calls, no credit card, and a $1 top-up switches you to permanent daily quotas.
 overage: blocked
 onboarding:
   level: L1
@@ -45,12 +60,23 @@ onboarding:
 tags:
 - 聚合
 - 永久免费
+- 免费模型
+- 每日赠送
 en:
-  summary: Free models on an aggregator platform, reset daily.
+  summary: Aggregator with 77 free models (IDs ending in -free); new accounts get 10 trial calls, and a one-time $1 top-up unlocks 100 requests and 1M tokens per day, reset daily.
   tags:
   - Aggregator
   - Always free
+  - Free models
+  - Daily credits
   quotas:
   - models: Free models
+    condition: After a one-time top-up of $1 or more
+    note: Some models carry a request weight (one call counts as several requests), e.g. gpt-4.1-free 20/day, gemini-3-flash-preview-free 33/day.
   - models: Free models
+    condition: After a one-time top-up of $1 or more
+    note: All free models share 1M tokens per day.
   - models: Free models
+    condition: After a one-time top-up of $1 or more
+  - models: Free models
+    condition: Trial calls for accounts that have not topped up, shared across all free models, no expiry
