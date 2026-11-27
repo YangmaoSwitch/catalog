@@ -34,9 +34,9 @@ quotas:
   scope: account
   models: Spark-X2.6
   new_users: true
-  evidence: https://maas.xfyun.cn/overview
-  quote: Spark-X2.6赋能开发者 零门槛领取10亿tokens免费额度
-  note: 星辰 MaaS 平台注册礼，需在 MaaS 控制台领取，调用走 MaaS 平台而非 spark-api-open 地址；有效期和截止日期页面未写明，领取资格以控制台为准
+  evidence: https://www.xfyun.cn/activities/promotion
+  quote: 星火 X2.610亿Tokens
+  note: 讯飞开放平台活动页“注册即享，免费好礼”列出 MaaS 星火 X2.6 10 亿 Tokens，需在星辰 MaaS 控制台领取，调用走 MaaS 平台而非 spark-api-open 地址；有效期和截止日期页面未写明，领取资格以控制台为准
 - unit: tokens
   amount: null
   period: day
@@ -74,6 +74,6 @@ en:
   - Limited-time free
   quotas:
   - note: The docs state Lite can be used for free; concurrency and daily limits are not stated, and requests over the limit return an error code
-  - note: Sign-up gift on the Astron MaaS platform, claimed in the MaaS console and used through the MaaS platform rather than the spark-api-open endpoint; validity and end date not stated, eligibility subject to the console
+  - note: The iFlytek Open Platform promotion page lists a 1B-token Spark X2.6 allowance on MaaS as a sign-up gift; it is claimed in the Astron MaaS console and used through the MaaS platform rather than the spark-api-open endpoint; validity and end date not stated, eligibility subject to the console
   - note: The product page lists Spark-X2.6-4B as free for a limited time, used through the Astron MaaS platform rather than the spark-api-open endpoint; end date and usage limits not stated
   - note: The product page lists Spark-X2.5-1.7B as free, used through the Astron MaaS platform rather than the spark-api-open endpoint; usage limits not stated
