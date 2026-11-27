@@ -4,8 +4,8 @@ homepage: https://www.aionlabs.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
-summary: 注册后默认进入免费档，每天可用 2 万 token，无需信用卡。
+last_verified: '2026-11-27'
+summary: 注册后默认进入免费档，每天可用 2 万 token；API Key 需先验证一张支付卡才能启用（不扣费）。
 api:
   protocol:
   - openai
@@ -16,8 +16,9 @@ signup:
   url: https://www.aionlabs.ai/accounts/signup/
   requires:
   - email
+  - card
   min_age: 18
-  notes: 可用邮箱注册或第三方身份登录；免费档无需信用卡，任意一次充值即升到付费档位。
+  notes: 可用邮箱注册或第三方身份登录；免费档的 API Key 要在控制台账单页通过 Stripe 验证一张支付卡后才能启用，验证不扣费，一张卡只能启用一个免费账号；未验证时 API 返回 403（网页聊天不受影响）。改规则前注册的老账号不受影响。任意一次充值也会启用 Key 并升到付费档位。
 quotas:
 - unit: tokens
   amount: 20000
@@ -25,22 +26,27 @@ quotas:
   scope: account
   note: 免费档每日 token 上限；官方未写明重置时区
   evidence: https://www.aionlabs.ai/docs/rate-limits/
+  quote: Tier Tokens Per Minute Daily Token Limit Free 20,000 20,000
 - unit: tokens
   amount: 20000
   period: minute
   scope: account
   evidence: https://www.aionlabs.ai/docs/rate-limits/
+  quote: Tier Tokens Per Minute Daily Token Limit Free 20,000 20,000
 - unit: requests
   amount: 15
   period: minute
   scope: account
   evidence: https://www.aionlabs.ai/docs/rate-limits/
+  quote: Tier Requests Per Minute Free 15
 overage: blocked
 expires: null
 onboarding:
   level: L2
   key_page: https://www.aionlabs.ai/app/api-keys/
 terms:
+- point: 免费档 API Key 需验证支付卡启用，一张卡只能启用一个免费账号（限流文档）
+  url: https://www.aionlabs.ai/docs/rate-limits/
 - point: 每人只能持有一个账号，组织共享访问需联系官方（第 3 条）
   url: https://www.aionlabs.ai/terms/
 - point: 购买前的免费使用属于优待，官方可随时调整或取消（第 4 条）
@@ -59,8 +65,8 @@ sources:
 - https://www.aionlabs.ai/docs/quickstart/
 - https://www.aionlabs.ai/terms/
 en:
-  summary: New accounts start on the free tier with a small daily allowance of 20K tokens per day; no credit card needed.
-  signup_notes: Sign up with email or a supported identity provider; the free tier needs no card, and any top-up moves you to a paid tier.
+  summary: New accounts start on the free tier with 20K tokens per day; API keys work only after a payment card is verified (never charged).
+  signup_notes: Sign up with email or a supported identity provider. Free-tier API keys are activated by verifying a payment card through Stripe on the Billing page; it is never charged and one card activates one free account. Until then API calls return 403 (browser chat works). Accounts created before the rule keep working without a card. Any top-up also activates the keys and moves you to a paid tier.
   tags:
   - Always free
   - Daily credits
@@ -69,6 +75,7 @@ en:
   - {}
   - {}
   terms:
+  - Free-tier API keys need a verified payment card; one card activates one free account (rate-limits docs)
   - One account per person; contact them for shared organization access (section 3)
   - Free use before any purchase is a courtesy that may be changed or withdrawn at any time (section 4)
   - API keys must not be shared, sold or lent, and nobody else may call the API with your credentials (section 4)

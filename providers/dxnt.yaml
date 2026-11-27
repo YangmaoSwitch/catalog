@@ -5,8 +5,8 @@ homepage: https://www.dxnt.com
 region: cn
 api_usable: true
 status: unconfirmed
-last_verified: '2026-11-22'
-summary: 国内 API 中转平台，免费路由页写明注册送 10 元赠送额度，可按原价调用指定的几个开源模型；关于页另写注册送 100 万 token，两处说法不一致。
+last_verified: '2026-11-27'
+summary: 国内 API 中转平台，注册送 10 元体验金，但 2026-11-27 免费路由页显示“暂未配置可使用体验金的模型”，目前用不上；关于页另写注册送 100 万 token，两处说法不一致。
 api:
   protocol:
   - openai
@@ -14,12 +14,6 @@ api:
   base_url: https://www.dxnt.com/v1
   anthropic_base_url: https://www.dxnt.com
   models_access: paid
-  quota_models:
-  - glm-4.7-flash
-  - Qwen3.8-27B
-  - qwen3-vl-30b-a3b
-  - nemotron-3-nano-omni
-  - gemma4-26b-a4b
 signup:
   url: https://www.dxnt.com/auth/login
   requires:
@@ -30,10 +24,11 @@ quotas:
   amount: 10
   period: one-time
   scope: account
-  models: 免费路由页列出的模型（glm-4.7-flash、Qwen3.8-27B、qwen3-vl-30b-a3b、nemotron-3-nano-omni、gemma4-26b-a4b）
+  models: 免费路由页列出的模型（2026-11-27 列表为空）
   condition: 新注册账号
-  note: 赠送额度按模型原价扣费，用完后扣主余额；其他模型只能用主余额。官方未写明有效期
+  note: 体验金入口随机调用可用模型，列表内模型按原价优先扣体验金，不足部分扣主余额；其他模型只用主余额。2026-11-27 页面显示“暂未配置可使用体验金的模型”。官方未写明有效期
   evidence: https://www.dxnt.com/free
+  quote: 注册即送 10 元体验金，体验金入口随机调用可用模型，按量计费畅用主流大模型 API。
 - unit: tokens
   amount: 1000000
   period: one-time
@@ -41,6 +36,7 @@ quotas:
   condition: 新注册账号
   note: 关于页常见问题写“注册送 100 万 token 免费额度，无需信用卡”，与免费路由页的 10 元说法不一致，以实际到账为准
   evidence: https://www.dxnt.com/about
+  quote: 注册即送 1M Tokens 免费额度，支持 GPT-3.5 和 Claude Haiku 等基础模型。
 overage: manual
 expires: null
 onboarding:
@@ -61,15 +57,15 @@ sources:
 - https://www.dxnt.com/pricing
 - https://www.dxnt.com/auth/login
 en:
-  summary: Chinese API relay platform; its free-route page says new accounts get CNY 10 of bonus credit for a few listed open models at list price, while the about page says 1M free tokens on signup, so the two statements disagree.
+  summary: Chinese API relay platform. Signup gives CNY 10 of trial credit, but on 2026-11-27 the free-route page said no model is set up to use it, so it cannot be spent for now; the about page separately says 1M free tokens on signup, which disagrees.
   signup_notes: The login page only offers WeChat QR login (following the official account registers you) and phone-number login.
   tags:
   - New users
   - Aggregator
   quotas:
-  - models: Models listed on the free-route page (glm-4.7-flash, Qwen3.8-27B, qwen3-vl-30b-a3b, nemotron-3-nano-omni, gemma4-26b-a4b)
+  - models: Models listed on the free-route page (the list was empty on 2026-11-27)
     condition: New accounts
-    note: Bonus credit is charged at the models' list prices and the main balance is used after it runs out; other models only use the main balance. No expiry is stated
+    note: The trial-credit route picks an available model at random; listed models draw on the credit first at list price, then the main balance; other models use only the main balance. On 2026-11-27 the page said no model is set up to use the credit. No expiry is stated
   - condition: New accounts
     note: The about page FAQ says signup gives 1M free tokens with no credit card, which disagrees with the CNY 10 on the free-route page; check what is actually credited
   terms:

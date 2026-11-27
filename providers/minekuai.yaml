@@ -5,14 +5,15 @@ homepage: https://minekuai.cn
 region: cn
 api_usable: true
 status: unconfirmed
-last_verified: '2026-11-20'
-summary: 自部署的 DeepSeek V4.1 Flash 免费调用，不限量但高峰期排队；签到鱼币可兑换当日优先额度（目前暂停兑换）。
+last_verified: '2026-11-27'
+ended: '2026-11-27'
+summary: 自部署的 DeepSeek V4.1 Flash 曾免费不限量调用。2026-11-27 起官方显示 API 大模型暂未开放注册，公开免费模型列表为空，鱼币兑换也因算力不足暂停；接口地址已改为 ai-api.minekuai.cn。
 api:
   protocol:
   - openai
   - anthropic
-  base_url: https://minekuai.cn/v1
-  anthropic_base_url: https://minekuai.cn
+  base_url: https://ai-api.minekuai.cn/v1
+  anthropic_base_url: https://ai-api.minekuai.cn
   free_models:
   - deepseek-v4.1-flash-1017
   free_model_rule: 官方标注“临时部署测试，后续可能调整”
@@ -28,7 +29,7 @@ quotas:
   scope: account
   models: DeepSeek V4.1 Flash 1017（不限量通道）
   evidence: https://minekuai.cn/app/llm/models/public
-  note: 不消耗额度，高峰期排队
+  note: 不消耗额度，高峰期排队；2026-11-27 公开免费模型列表为空
 - unit: tokens
   amount: null
   period: day
@@ -37,6 +38,7 @@ quotas:
   condition: 每日签到所得鱼币兑换
   evidence: https://minekuai.cn/app/site/sales
   note: 请求优先处理、不排队，当天有效，用完自动回到不限量通道；2026-11-20 因算力不足暂停兑换
+  quote: 算力不足，按量额度兑换暂停。
 overage: blocked
 onboarding:
   level: L1
@@ -45,7 +47,7 @@ tags:
 - 免费模型
 - 每日赠送
 en:
-  summary: Self-hosted DeepSeek V4.1 Flash, free and unlimited but queued at peak times; daily check-in coins buy a priority allowance for the day (exchange currently paused).
+  summary: Self-hosted DeepSeek V4.1 Flash used to be free and unlimited. Since 2026-11-27 the site says LLM API registration is not open, the public free-model list is empty and coin exchange is paused for lack of capacity; the API moved to ai-api.minekuai.cn.
   signup_notes: Creating an API key requires joining the official QQ group with a QQ number; one QQ number per account
   free_model_rule: Marked by the platform as a temporary test deployment that may change
   tags:
@@ -53,6 +55,6 @@ en:
   - Daily credits
   quotas:
   - models: DeepSeek V4.1 Flash 1017 (unlimited lane)
-    note: Uses no allowance; requests queue at peak times
+    note: Uses no allowance; requests queue at peak times. On 2026-11-27 the public free-model list was empty
   - condition: Bought with coins from the daily check-in
     note: Priority lane without queueing, valid for the day; falls back to the unlimited lane when used up. Exchange paused on 2026-11-20 for lack of capacity
