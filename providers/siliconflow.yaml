@@ -6,7 +6,7 @@ region: cn
 api_usable: true
 status: verified
 last_verified: '2026-11-27'
-summary: 部分模型长期免费（按模型限速）；实名送代金券。
+summary: 部分模型长期免费（按模型限速）；实名认证送 16 元代金券，邀请好友实名双方各得 16 元（活动至 2026-12-31）。
 api:
   protocol:
   - openai
@@ -19,6 +19,8 @@ api:
   - GLM-Z1-9B
   - Hunyuan-MT-7B
   - Xing4.0-29B
+  - XingChenAGI/Xing4.1-Preview
+  - PaddlePaddle/PaddleOCR-VL-1.5
   - BAAI/bge-m3
   - Kolors
 signup:
@@ -40,8 +42,18 @@ quotas:
   scope: account
   evidence: https://www.siliconflow.cn/news/od7wj9rr23p95uhihmhrombp
   condition: 实名认证
-  note: 活动截至 2026-12-31
+  expires_days: 180
+  note: 活动截至 2026-12-31；代金券自获得起 180 天有效，全平台通用（含 Pro 模型）
   quote: 认证立得 16 元代金券：用户（含机构用户）完成实名认证后，进入活动中心，并在认证专享礼页面领取 1 张 16 元通用代金券。
+- unit: cny
+  amount: 16
+  period: one-time
+  scope: account
+  evidence: https://www.siliconflow.cn/news/od7wj9rr23p95uhihmhrombp
+  condition: 邀请好友注册并完成实名认证（每邀请 1 人）
+  expires_days: 180
+  note: 邀请人与被邀请人各得 16 元代金券，活动期内邀请人数不设上限；活动截至 2026-12-31
+  quote: 邀请好友再获代金券 16 元/人：手动点击获得“推荐官”身份，分享你的专属邀请链接或邀请码给好友，好友完成注册且实名认证后，你和 TA 各得 16 元通用代金券。
 overage: auto_paid
 onboarding:
   level: L1
@@ -53,7 +65,7 @@ tags:
 - 永久免费
 - 新人
 en:
-  summary: Some models are free long-term (rate-limited per model); real-name verification earns a voucher.
+  summary: Some models are free long-term (rate-limited per model); real-name verification earns a 16 CNY voucher, and inviting a friend who verifies gives both sides 16 CNY (campaign until 2026-12-31).
   tags:
   - Always free
   - New users
@@ -61,6 +73,8 @@ en:
   - models: Models marked “free” on the pricing page
     note: Rate-limited per model
   - condition: Real-name verification
-    note: Offer ends 2026-12-31
+    note: Offer ends 2026-12-31; voucher valid 180 days from receipt, usable platform-wide (including Pro models)
+  - condition: Invite a friend who signs up and completes real-name verification (per invitee)
+    note: Inviter and invitee each get a 16 CNY voucher, no cap on invites during the campaign; ends 2026-12-31
   terms:
   - Users may authorize third parties to store access tokens and credentials (1.1.3)
