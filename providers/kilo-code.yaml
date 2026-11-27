@@ -5,7 +5,7 @@ homepage: https://kilo.ai/gateway
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 编程智能体 Kilo Code 的模型网关，名称以 :free 结尾的模型和 kilo-auto/free 免费调用，不登录也能用，按 IP 每小时限 200 次。
 api:
   protocol:
@@ -32,6 +32,7 @@ quotas:
   models: :free 模型和 kilo-auto/free
   evidence: https://kilo.ai/docs/gateway/usage-and-billing
   note: 登录与匿名请求都按 IP 计算，超出返回 429；部分免费模型另受上游限速
+  quote: 'All free model requests (both anonymous and authenticated) are rate-limited by IP address:'
 overage: blocked
 onboarding:
   level: L2
