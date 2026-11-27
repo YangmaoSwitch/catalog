@@ -4,7 +4,7 @@ homepage: https://blockrun.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-26'
+last_verified: '2026-11-27'
 summary: 按次付费的模型网关，官方标为免费的 8 个聊天模型无需钱包、无需注册即可调用，按 IP 限速每分钟 30 次、每小时 300 次；其余模型需用 USDC 或账户余额付费。
 api:
   protocol:
