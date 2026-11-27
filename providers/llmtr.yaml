@@ -4,7 +4,7 @@ homepage: https://llmtr.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 土耳其的模型聚合网关，目录中标为免费的模型（如 Nemotron 3 Ultra、Qwen3.8 27B Free）调用不扣余额，按每日配额限量，邮箱验证码注册即可使用。
 api:
   protocol:
@@ -33,6 +33,7 @@ quotas:
   models: 免费模型
   note: 模型说明写有“每日配额”，但官方未公布具体次数和重置时区
   evidence: https://llmtr.com/pricing
+  quote: Katalogda ücretsiz olarak işaretlenen modeller için kullanım sırasında bakiyenizden ek ücret düşülmez.
 overage: blocked
 expires: null
 onboarding:
