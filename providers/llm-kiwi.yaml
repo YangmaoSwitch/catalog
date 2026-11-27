@@ -4,7 +4,7 @@ homepage: https://llm.kiwi
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 免费的 OpenAI 兼容接口，提供自动路由模型 auto 和克罗地亚语模型 hrllm，无需信用卡，受限速和合理使用限制。
 api:
   protocol:
@@ -25,6 +25,7 @@ quotas:
   scope: account
   note: 官方只说明有按分钟的速率限制，未公布具体数值；超出返回 429
   evidence: https://docs.llm.kiwi/limits.md
+  quote: 'LLM.kiwi pricing and usage limits: free-tier access, per-minute rate limits, token quotas, request size caps, and fair-use throttling behavior explained.'
 overage: blocked
 expires: null
 onboarding:
