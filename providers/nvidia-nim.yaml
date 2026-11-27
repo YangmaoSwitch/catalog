@@ -4,7 +4,7 @@ homepage: https://build.nvidia.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-25'
+last_verified: '2026-11-27'
 summary: build.nvidia.com 上的模型可免费用于原型开发，按速率限制计算，大多数模型每分钟最多 40 次请求，不按 token 计费。
 api:
   protocol:
