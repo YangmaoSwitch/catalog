@@ -4,8 +4,8 @@ homepage: https://vercel.com/ai-gateway
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-25'
-summary: 聚合网关，每个 Vercel 团队免费档每月含 5 美元额度，只能调用标为 Free Tier 的模型；另有部分模型标价为 0（如 reflection/beam-free、stealth/glyph-cluster）。
+last_verified: '2026-11-27'
+summary: 聚合网关，每个 Vercel 团队免费档每月含 5 美元额度，只能调用标为 Free Tier 的模型；另有部分模型标价为 0（如 reflection/beam-free、stealth/glyph-cluster、recursive/flint-v1.0、humansand/ampersand-v0.1、nvidia/nemotron-3.5-lightning-free）。
 api:
   protocol:
   - openai
@@ -15,8 +15,11 @@ api:
   free_models:
   - reflection/beam-free
   - stealth/glyph-cluster
+  - recursive/flint-v1.0
+  - humansand/ampersand-v0.1
+  - nvidia/nemotron-3.5-lightning-free
   free_pattern: -free$
-  free_model_rule: 月度免费额度只能用于官网模型列表中标为 Free Tier 的模型子集；另有部分模型标价为 0（目前官网模型页显示 reflection/beam-free 与 stealth/glyph-cluster 为 Free），未公布截止日期
+  free_model_rule: 月度免费额度只能用于官网模型列表中标为 Free Tier 的模型子集；另有部分模型标价为 0（目前官网模型页显示 reflection/beam-free、stealth/glyph-cluster、recursive/flint-v1.0、humansand/ampersand-v0.1、nvidia/nemotron-3.5-lightning-free 为 Free；其中 nvidia/nemotron-3.5-lightning-free 的提示词和输出会被 NVIDIA 记录，仅供试用），未公布截止日期
 signup:
   url: https://vercel.com/signup
   requires:
@@ -66,9 +69,9 @@ sources:
 - https://vercel.com/ai-gateway/models/beam-free
 - https://vercel.com/ai-gateway/models/glyph-cluster
 en:
-  summary: Aggregator gateway; every Vercel team's free tier includes $5 of credit per month, usable only on models marked Free Tier; some models are also priced at $0 (e.g. reflection/beam-free, stealth/glyph-cluster).
+  summary: Aggregator gateway; every Vercel team's free tier includes $5 of credit per month, usable only on models marked Free Tier; some models are also priced at $0 (e.g. reflection/beam-free, stealth/glyph-cluster, recursive/flint-v1.0, humansand/ampersand-v0.1, nvidia/nemotron-3.5-lightning-free).
   signup_notes: The team must add a valid payment method before free credits can be used; BYOK is not available on the free tier; buying AI Gateway credits moves the team to the paid tier and the monthly free credit no longer applies.
-  free_model_rule: The monthly free credit only covers the subset marked Free Tier in the model list; some models are also priced at $0 (currently reflection/beam-free and stealth/glyph-cluster are shown as Free on the official model pages), with no end date announced
+  free_model_rule: The monthly free credit only covers the subset marked Free Tier in the model list; some models are also priced at $0 (currently reflection/beam-free, stealth/glyph-cluster, recursive/flint-v1.0, humansand/ampersand-v0.1 and nvidia/nemotron-3.5-lightning-free are shown as Free on the official model pages; prompts and outputs of nvidia/nemotron-3.5-lightning-free are logged by NVIDIA and it is for trial use only), with no end date announced
   tags:
   - Aggregator
   - Monthly credits
