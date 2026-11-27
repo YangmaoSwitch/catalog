@@ -4,7 +4,7 @@ homepage: https://www.tokenrouter.com
 region: global
 api_usable: true
 status: unconfirmed
-last_verified: '2026-11-26'
+last_verified: '2026-11-27'
 summary: 多模型聚合网关，模型页把 deepseek/deepseek-v4.1-flash-1017-free 标为免费（输入输出 $0），官方未公布调用次数上限；其余模型按量付费。
 api:
   protocol:
@@ -26,7 +26,7 @@ quotas:
   models: deepseek/deepseek-v4.1-flash-1017-free
   note: 模型页标价输入、输出均为 $0.0000，标注 Free Self-hosted Inference；官方未公布次数或 token 上限。并发上限按账户实时余额分档，表中最低档为余额大于 $0，余额为 0 的账号能否调用官方未说明。
   evidence: https://www.tokenrouter.com/models/deepseek/deepseek-v4.1-flash-1017-free
-  quote: Input Price:$0.0000 Output Price:$0.0000
+  quote: Free Self-hosted Inference
 - unit: requests
   amount: null
   period: one-time
