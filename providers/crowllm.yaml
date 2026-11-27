@@ -1,0 +1,65 @@
+id: crowllm
+name: CrowLLM
+homepage: https://crowllm.com
+region: global
+api_usable: true
+status: verified
+last_verified: '2026-11-27'
+summary: 聚合网关，价格为 0 的“免费货架”模型不收费，无需绑卡；免费模型有每分钟次数上限（官方未公布具体数值），余额为 0 时能否继续调用官方只写明订阅套餐可以。
+api:
+  protocol:
+  - openai
+  - anthropic
+  - gemini
+  base_url: https://crowllm.com/v1
+  anthropic_base_url: https://crowllm.com
+  models_url: https://crowllm.com/v1/models
+  models_access: paid
+  free_pattern: '^(caw/glm\-5\.3\-flash\-thinking:free|crow\-roleplay:free|dots\-3\-note\-preview:free|flint\-v1\.0:free|gemma\-4\-31b\-it:free|glm\-4\.6v\-flash:free|hy4\-flash:free|jais\-3\-mova\-36b\-a4b:free|k2\-horizon\-375b\-a23b\-uncensored:free|k2\-horizon\-375b\-a23b:free|laguna\-xs\-2\.1\-uncensored:free|laguna\-xs\-2\.1:free|longcat\-2\.5:free|minimax\-m3\.1\-flash:free|nemotron\-3\-ultra\-550b\-a55b\-uncensored:free|nemotron\-3\-ultra\-550b\-a55b:free|nemotron\-3\.5\-super\-vl:free|nvidia/mistral\-large\-4\-1t\-a52b:free|nvidia/nemotron\-3\.5\-bolt\-e4b:free|nvidia/nemotron\-3\.5\-super\-vl\-120b\-a12b:free|particle\-1\-uncensored:free|particle\-1:free|solar\-mini4:free|step\-5\-preview:free|typhoon\-v2\.5\-30b\-a3b\-instruct)$'
+  free_model_rule: 官方价格表（/api/pricing）中输入、输出价格均为 0 且对免费分组开放的模型；名字带 :free 的不一定免费，以价格为准
+signup:
+  url: https://crowllm.com/sign-up
+  requires:
+  - github
+  notes: 无需信用卡；用 GitHub、Google 或 Discord 账号登录注册，不开放邮箱密码注册
+quotas:
+- unit: requests
+  amount: null
+  period: minute
+  scope: account
+  models: 免费货架模型（价格为 0）
+  condition: 未订阅套餐的账号；订阅后取消每分钟上限，余额为 0 时也能继续用免费模型
+  evidence: https://crowllm.com/llms.txt
+  quote: A plan lifts the per-minute request ceiling on model calls when one is in force, and it keeps the zero-cost shelf open even when the wallet reads zero.
+overage: blocked
+expires: null
+onboarding:
+  level: L1
+  key_page: https://crowllm.com/console/token
+terms:
+- point: 免费货架模型价格为 0 且长期保持，不需要绑卡、没有试用期
+  url: https://crowllm.com/llms.txt
+- point: 没有返回结果的请求退款、不计费
+  url: https://crowllm.com/llms.txt
+tags:
+- 聚合
+- 免费模型
+sources:
+- https://mp.weixin.qq.com/s/xOJe6GNCjiX6o_H4abyi0Q
+- https://crowllm.com/llms.txt
+- https://crowllm.com/api/pricing
+- https://crowllm.com/v1/models
+- https://crowllm.com/api/status
+en:
+  summary: Aggregator gateway; models on its zero-price "free shelf" cost nothing and need no card. Free calls have a per-minute ceiling (number not published); the site only states that plans keep the free shelf open at a zero balance.
+  free_model_rule: Models priced at zero for both input and output and open to the free group in the official price list (/api/pricing); a ":free" suffix alone does not mean free
+  signup_notes: No credit card; sign in with GitHub, Google or Discord, no email/password registration
+  tags:
+  - Aggregator
+  - Free model
+  quotas:
+  - models: Free-shelf models (zero price)
+    condition: Accounts without a plan; a plan lifts the per-minute ceiling and keeps the free shelf open at a zero balance
+  terms:
+  - Free-shelf models stay at zero price, with no card and no trial timer
+  - Calls that return no answer are refunded, not billed
