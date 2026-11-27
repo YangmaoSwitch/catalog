@@ -4,7 +4,7 @@ homepage: https://aiapi-pro.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 香港运营的国产模型聚合网关，智谱 GLM Flash 系列等 5 个模型免费调用，每天 10 次，另送 2 美元新人额度，无需信用卡和手机号。
 api:
   protocol:
@@ -32,6 +32,7 @@ quotas:
   models: 全部免费模型合计
   note: 另限每分钟 5 次；cogvideox-flash 视频每天最多 5 次；任意一次充值即取消每日上限和限速
   evidence: https://aiapi-pro.com/free/index.html
+  quote: 10 free-model calls per day and 5 requests per minute on the free tier, resetting at 00:00 UTC+8.
 - unit: usd
   amount: 2
   period: one-time
@@ -39,6 +40,7 @@ quotas:
   condition: 新注册账号
   note: 官网首页标注，官方未写明有效期和适用模型
   evidence: https://aiapi-pro.com/
+  quote: Sign up to get $2.00 free credit and run any model
 overage: blocked
 expires: null
 onboarding:
