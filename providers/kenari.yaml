@@ -4,7 +4,7 @@ homepage: https://kenari.id
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-25'
+last_verified: '2026-11-27'
 summary: 印尼的模型聚合网关，ID 以 :free 结尾的模型不收费，未充值账号每天 50 次、每分钟 5 次，余额为零也能调用。
 api:
   protocol:
