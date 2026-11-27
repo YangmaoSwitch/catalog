@@ -3,6 +3,7 @@
 import datetime as dt
 import json
 import pathlib
+import re
 import sys
 
 import jsonschema
@@ -16,6 +17,7 @@ validator = jsonschema.Draft202012Validator(SCHEMA, format_checker=jsonschema.Fo
 def main() -> int:
     errors = 0
     providers = []
+    missing_quotes: list[str] = []
     for path in sorted((ROOT / "providers").glob("*.yaml")):
         data = yaml.safe_load(path.read_text(encoding="utf-8"))
         # YAML may parse dates; normalise to strings before validation.
@@ -26,6 +28,15 @@ def main() -> int:
             problems.append(jsonschema.ValidationError(f"id '{data.get('id')}' must match file name '{path.stem}'"))
         if data.get("api_usable") and not data.get("api"):
             problems.append(jsonschema.ValidationError("api_usable entries need an 'api' block"))
+        pattern = (data.get("api") or {}).get("free_pattern")
+        if pattern:
+            try:
+                re.compile(pattern)
+            except re.error as ex:  # an invalid pattern would empty the platform's model list in build_models.py
+                problems.append(jsonschema.ValidationError(f"api.free_pattern is not a valid regular expression: {ex}"))
+        for i, q in enumerate(data.get("quotas") or []):
+            if not q.get("quote") and not q.get("ended"):
+                missing_quotes.append(f"{path.stem}#{i}")
         for p in problems:
             loc = "/".join(str(x) for x in p.path) or "<root>"
             print(f"{path.name}: {loc}: {p.message}", file=sys.stderr)
@@ -35,6 +46,9 @@ def main() -> int:
     if errors:
         print(f"{errors} error(s)", file=sys.stderr)
         return 1
+    # Older entries were listed before `quote` was required; the checker adds quotes when it re-checks them.
+    if missing_quotes:
+        print(f"note: {len(missing_quotes)} quota(s) still without `quote`: {' '.join(missing_quotes)}", file=sys.stderr)
 
     # Only platforms usable through the app are listed; others only as a paid promotion (`promoted: true`).
     listed = [p for p in providers if p["status"] != "delisted" and (p.get("api_usable") or p.get("promoted"))]

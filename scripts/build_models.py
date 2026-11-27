@@ -36,7 +36,10 @@ RANKINGS = "https://openrouter.ai/rankings"
 PUBLISHED = "https://raw.githubusercontent.com/YangmaoSwitch/catalog/dist/models.json"
 RANK = {"free": 0, "quota": 1, "paid": 2}
 # Public lists also contain embedding, safety, speech and image models; only chat models are kept.
-NON_CHAT = re.compile(r"embed|rerank|clip|retriever|detector|guard|safety|riva-|image|bge-|starcoder|tts|lyria|live|ocr|translate|whisper|asr", re.I)
+# Long stems match anywhere. Short ones must end the word (ChatTTS, Qwen3Guard, nvclip, TeleASR are dropped);
+# "live" must also start one, so "deliver" or "liverpool" stay.
+NON_CHAT = re.compile(r"embed|rerank|retriever|detector|safety|riva-|image|bge-|starcoder|lyria|translate|whisper"
+                      r"|(?:ocr|clip|guard|tts|asr)(?![a-z])|(?<![a-z0-9])live(?![a-z])", re.I)
 
 
 def model_key(model_id: str) -> str:
@@ -144,7 +147,11 @@ def provider_models(p: dict, md: dict | None) -> list[dict]:
     raw += [{"model": n} for n in api.get("models", [])] + [{"model": n} for n in api.get("free_models", [])]
 
     free = {model_key(n) for n in api.get("free_models", [])}
-    free_re = re.compile(api["free_pattern"]) if api.get("free_pattern") else None
+    try:
+        free_re = re.compile(api["free_pattern"]) if api.get("free_pattern") else None
+    except re.error as e:  # build.py rejects this; never empty the platform's list over it
+        print(f"warning: {p['id']}: invalid free_pattern ignored: {e}", file=sys.stderr)
+        free_re = None
     quota = {model_key(n) for n in api.get("quota_models", [])}
     default = api.get("models_access", "paid" if p["id"] == "openrouter" else "quota")
     # one entry per exact model id; variants such as "x" and "x:free" / "x-free" stay separate here
@@ -177,18 +184,22 @@ def openrouter_usage() -> dict[str, int]:
         if slug and tok:
             k = model_key(re.sub(r"-\d{8}$", "", slug.group(1)))
             out[k] = out.get(k, 0) + sum(tok)
+    if not out:  # the page layout changed: the term drops out of the ranking until the parser is fixed
+        print("warning: OpenRouter rankings page parsed to nothing; its usage term is left out", file=sys.stderr)
     return out
 
 
-def previous() -> dict:
-    """The last published models.json, to keep the date each free offer first appeared."""
+def previous() -> dict | None:
+    """The last published models.json, to keep the date each free offer first appeared and each model's id.
+    None when it cannot be read: building without it would date every offer today (the home page's "new"
+    section would fill with old models) and could change model ids, so main() stops instead."""
     try:
         if os.environ.get("PREVIOUS_FILE"):
             return json.loads(pathlib.Path(os.environ["PREVIOUS_FILE"]).read_text(encoding="utf-8"))
         return fetch_json(PUBLISHED)
     except Exception as e:
-        print(f"warning: previous models.json unavailable: {e}", file=sys.stderr)
-        return {}
+        print(f"error: previous models.json unavailable: {e}", file=sys.stderr)
+        return None
 
 
 MODELSCOPE_API = "https://modelscope.cn/api/v1/models/"
@@ -304,6 +315,12 @@ def ended_on(p: dict) -> str | None:
 
 
 def main() -> int:
+    prev = previous()
+    if prev is None:
+        if os.environ.get("ALLOW_NO_PREVIOUS") != "1":  # set only for the very first build
+            print("error: not publishing without the previous models.json; the last published file stays", file=sys.stderr)
+            return 2
+        prev = {}
     try:  # MODELSDEV_FILE: a local copy of models.dev/api.json, for offline builds
         md = json.loads(pathlib.Path(os.environ["MODELSDEV_FILE"]).read_text(encoding="utf-8")) if os.environ.get("MODELSDEV_FILE") else fetch_json(MODELSDEV)
     except Exception as e:
@@ -351,13 +368,30 @@ def main() -> int:
                 e["offers"].append(offer)
             elif RANK[offer["access"]] < RANK[same["access"]]:  # one offer per platform: its cheapest variant
                 same.update(offer)
+    # A model keeps the id it was first published with (the id is its page URL on the website and app links),
+    # even when a different source now supplies its description; new models take the id chosen above.
+    known_ids = {m["key"]: m["id"] for m in prev.get("models", []) if m.get("key")}
+    # files published before `key` existed: match by the id first, then by offer ids (weaker, only if still free)
+    old = [m for m in prev.get("models", []) if not m.get("key")]
+    for m in old:
+        known_ids.setdefault(model_key(m["id"]), m["id"])
+    for m in old:
+        for o in m.get("offers", []):
+            known_ids.setdefault(model_key(o["model"]), m["id"])
+    live = [(k, e) for k, e in merged.items() if sorted(e["offers"], key=lambda o: RANK[o["access"]])[0]["access"] != "paid"]
+    claimed = {known_ids[k] for k, _ in live if k in known_ids}
+    used: set[str] = set()
     models = []
     for k, e in merged.items():
         mt = e["meta"] or meta()
         e["offers"].sort(key=lambda o: (RANK[o["access"]], o["provider"]))
         if e["offers"][0]["access"] == "paid":  # the square lists models usable for free somewhere
             continue
-        models.append({"id": e["id"], **mt, "name": mt["name"] or e["id"].split("/")[-1], "offers": e["offers"], "_key": k})
+        mid = known_ids.get(k)
+        if mid is None or mid in used:  # never give two models the same id
+            mid = e["id"] if e["id"] not in used and e["id"] not in claimed else f"{e['id']}#{k}"
+        used.add(mid)
+        models.append({"id": mid, "key": k, **mt, "name": mt["name"] or mid.split("/")[-1], "offers": e["offers"], "_key": k})
 
     # popularity
     try:
@@ -366,7 +400,6 @@ def main() -> int:
         print(f"warning: OpenRouter rankings unavailable: {ex}", file=sys.stderr)
         usage = {}
     # first-seen dates of free / free-quota offers, carried over from the last published file
-    prev = previous()
     today = dt.date.today().isoformat()
     baseline = prev.get("baseline") or today
     seen = {f"{o['provider']}|{o['model']}": o.get("since") for pm in prev.get("models", []) for o in pm.get("offers", []) if o.get("since")}
@@ -384,10 +417,10 @@ def main() -> int:
         if ended_on(y):
             ended[y["id"]] = ended_on(y)
         # a quota renews if some allowance comes back hourly or longer; per-second/minute rate limits alone don't
-        # make a one-time gift recurring
+        # make a one-time gift recurring. No live quota at all is unknown, and unknown is not counted as renewing.
         qs = [q for q in y.get("quotas", []) if not q.get("ended")]
-        recurring[y["id"]] = (any(q.get("period") in ("hour", "day", "week", "month") for q in qs)
-                              or not any(q.get("period") == "one-time" for q in qs))
+        recurring[y["id"]] = bool(qs) and (any(q.get("period") in ("hour", "day", "week", "month") for q in qs)
+                                           or not any(q.get("period") == "one-time" for q in qs))
     for m in models:
         m["quality"] = round(quality(m, usage, dls), 2)
         m["heat"] = heat(m, m["quality"], recurring)

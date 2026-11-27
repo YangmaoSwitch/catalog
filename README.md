@@ -22,7 +22,7 @@ A structured catalog of free LLM API quotas, kept as current and complete as we 
 
 - `providers/<id>.yaml`：每个平台一个文件，字段说明见 [schema/provider.md](schema/provider.md)。
 - 每条都要带**官方证据链接**和**最后核实日期**。只见于社区消息的，标 `status: unconfirmed`，不计入总数。
-- 每条额度可带 `quote`：从证据页面逐字复制的一句原文。新上架的条目必须有；之后定期比对，原文不见了就优先复查。
+- 每条额度带 `quote`：从证据页面逐字复制的一句原文。新上架的条目必须有；早期条目缺的，agent 复查时补上（复查结论为“未变”时必须给出每项额度的原文，给不出就转人工），`scripts/build.py` 每次列出还缺原文的额度。之后定期比对，原文不见了就优先复查。
 - 只给新用户的活动标 `new_users: true`，页面显示“新用户活动”。
 - 活动结束时**不删除、不下架**：官方公布了截止日期的写 `ends`，过期后自动显示“已下线”；已确认结束的写 `ended`（整个平台）或 `quotas[].ended`（某一项额度）。已下线的额度在排序中按付费计算。
 
@@ -34,6 +34,10 @@ A structured catalog of free LLM API quotas, kept as current and complete as we 
 - https://raw.githubusercontent.com/YangmaoSwitch/catalog/dist/models.json
 
 调用方式只分两类显示：**免费**（免费模型，或用平台的免费额度调用）和**付费**。
+
+`models.json` 的每个模型带 `key`（跨平台合并用的规范名，规则见 `build_models.py` 的 `model_key`，桌面端用同一规则）。模型的 `id` 决定官网模型页的地址，一经发布就沿用上一版的 `id`，不随描述来源变化。`build_models.py` 需要读取上一版 `models.json` 来沿用 `id` 和各免费额度的首次出现日期；读不到时构建失败、不发布，线上保留上一版（只有第一次构建用 `ALLOW_NO_PREVIOUS=1`）。
+
+官网每小时检查一次 `dist` 是否有新提交，有就重建，所以目录更新后一小时左右上线（GitHub 定时任务有时会延后）。
 
 ## 平台入驻
 
