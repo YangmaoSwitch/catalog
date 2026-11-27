@@ -4,7 +4,7 @@ homepage: https://novita.ai
 region: global
 api_usable: true
 status: unconfirmed
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 开源模型推理与 GPU 云平台，注册账号发放代金券额度，官方文档未写明金额。
 api:
   protocol:
@@ -28,6 +28,7 @@ quotas:
   condition: 新注册账号的代金券
   evidence: https://docs.novita.ai/guides/faq
   note: 官方文档只提到注册代金券，未写明金额和有效期
+  quote: Our system automatically revokes vouchers when suspicious registration activity is detected (e.g., malicious sign-ups or multiple accounts from the same device).
 overage: blocked
 expires: null
 onboarding:
