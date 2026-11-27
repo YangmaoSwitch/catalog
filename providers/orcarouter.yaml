@@ -4,7 +4,7 @@ homepage: https://www.orcarouter.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 聚合网关，名称以 -free 结尾的模型和 orcarouter/free 免费调用，未充值账号每分钟 10 次、每天 50 次，需绑定注册较久的 GitHub 账号。
 api:
   protocol:
@@ -33,14 +33,16 @@ quotas:
   models: -free 模型和 orcarouter/free
   condition: 从未充值的工作区
   note: tencent/hy4-preview-free 单独为每天 250 次、每分钟 50 次；单次请求另有未公布的提示词长度上限
-  evidence: https://docs.orcarouter.ai/routing/free-models.md
+  evidence: https://www.orcarouter.ai/offers
+  quote: Paid $20+ means paid purchases totalling $20 or more over the workspace's lifetime — top-ups and subscription credit both count — which lifts its cap from 50 to 800 requests a day.
 - unit: requests
   amount: 10
   period: minute
   scope: org
   models: -free 模型和 orcarouter/free
   condition: 从未充值的工作区
-  evidence: https://docs.orcarouter.ai/routing/free-models.md
+  evidence: https://api.orcarouter.ai/api/free-package/public
+  quote: '"free_tier":{"tiers":[{"min_paid_usd":0,"rpm":10,"rpd":50}'
 - unit: requests
   amount: 800
   period: day
@@ -48,8 +50,9 @@ quotas:
   scope: org
   models: -free 模型和 orcarouter/free
   condition: 累计充值满 20 美元的工作区（另限每分钟 20 次）
-  note: 具体数值以官方公开接口 /api/free-package/public 为准，官方会实时调整
-  evidence: https://docs.orcarouter.ai/routing/free-models.md
+  note: 具体数值以官方公开接口 /api/free-package/public 为准，官方会实时调整；tencent/hy4-preview-free 在此档为每天 4000 次、每分钟 100 次
+  evidence: https://www.orcarouter.ai/offers
+  quote: Paid $20+ means paid purchases totalling $20 or more over the workspace's lifetime — top-ups and subscription credit both count — which lifts its cap from 50 to 800 requests a day.
 overage: blocked
 expires: null
 onboarding:
@@ -89,7 +92,7 @@ en:
     condition: Workspaces that have never topped up
   - models: -free models and orcarouter/free
     condition: Workspaces with $20 or more in lifetime top-ups (also 20 per minute)
-    note: Current numbers are published at the public /api/free-package/public endpoint and tuned live
+    note: Current numbers are published at the public /api/free-package/public endpoint and tuned live; tencent/hy4-preview-free gets 4000 per day and 100 per minute at this tier
   terms:
   - Free models never fall back to paid models when exhausted or congested
   - The free tier is best effort with limits tuned live and is not meant for production traffic
