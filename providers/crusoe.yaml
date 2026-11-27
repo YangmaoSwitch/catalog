@@ -4,7 +4,7 @@ homepage: https://crusoe.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-24'
+last_verified: '2026-11-27'
 summary: Crusoe 的托管推理平台，文档写明可用 5 美元免费额度试用 Serverless Inference 和 Serverless Fine-Tuning，之后按 token 计费。
 api:
   protocol:
