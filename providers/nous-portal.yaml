@@ -4,7 +4,7 @@ homepage: https://portal.nousresearch.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: Nous Research 的模型聚合门户，免费计划可调用名称以 :free 结尾的免费模型，按标准限速。
 api:
   protocol:
@@ -14,8 +14,6 @@ api:
   models_access: paid
   free_pattern: :free$
   free_models:
-  - meituan/longcat-2.5:free
-  - qwen/qwen4-max:free
   - stepfun/step-3.7-flash:free
   - tencent/hy4-flash:free
   - upstage/solar-mini4:free
@@ -33,8 +31,9 @@ quotas:
   scope: account
   models: :free 模型
   condition: 免费计划
-  note: 官方只写明"标准限速"，未公布具体数值
-  evidence: https://portal.nousresearch.com/
+  note: 官方只写明"标准限速"，未公布具体数值；官方对比页称 API Key 需在充值或开通计划后创建
+  evidence: https://portal.nousresearch.com/compare
+  quote: The Free filter on the models page shows the current list, and the Free plan covers free models with standard rate limits.
 overage: blocked
 expires: null
 onboarding:
@@ -65,7 +64,7 @@ en:
   quotas:
   - models: :free models
     condition: Free plan
-    note: Only "standard rate limits" are stated; no figures are published
+    note: Only "standard rate limits" are stated; no figures are published. The official compare page says API keys are created after adding credits or starting a plan
   terms:
   - Each client may hold only one account (5.1)
   - Automated sign-ups and multiple accounts to get extra trials, credits or capacity or to get around rate limits are prohibited (10.1)
