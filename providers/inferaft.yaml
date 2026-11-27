@@ -4,7 +4,7 @@ homepage: https://inferaft.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 韩国公司运营的编程智能体开源模型推理服务，前 300 个新账号注册送 300 万 GLM 5.3 Flash token，邀请好友双方再各得 300 万。
 api:
   protocol:
@@ -37,6 +37,7 @@ quotas:
   condition: 邀请好友注册，双方各得
   evidence: https://inferaft.com/llms.txt
 overage: blocked
+ended: '2026-11-27'
 expires: null
 onboarding:
   level: L2
