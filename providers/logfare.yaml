@@ -4,7 +4,7 @@ homepage: https://logfare.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-25'
+last_verified: '2026-11-27'
 summary: 免费 LLM 推理网关，注册账号即可用 API Key 调用标准档模型，普通账号每天 2,500 次请求；所有请求都会被记录，用于内部评测数据集。
 api:
   protocol:
