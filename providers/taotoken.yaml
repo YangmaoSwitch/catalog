@@ -4,7 +4,7 @@ homepage: https://taotoken.net
 region: cn
 api_usable: true
 status: verified
-last_verified: '2026-11-26'
+last_verified: '2026-11-27'
 summary: CSDN 旗下北京灵明智码运营的模型聚合平台，按量付费；模型列表中每个模型标有一次性赠送 Token，多数为 100,000，新用户横幅称注册赠送百万 Token，无需充值。
 api:
   protocol:
