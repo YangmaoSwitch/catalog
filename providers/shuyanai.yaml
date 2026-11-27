@@ -5,7 +5,7 @@ homepage: https://www.shuyanai.com
 region: cn
 api_usable: true
 status: verified
-last_verified: '2026-11-25'
+last_verified: '2026-11-27'
 summary: 国内大模型 API 聚合平台，注册并绑定手机号可领取 50 万 Tokens 一次性免费额度，用完后需充值按量付费。
 api:
   protocol:
