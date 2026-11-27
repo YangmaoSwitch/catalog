@@ -4,7 +4,7 @@ homepage: https://telnyx.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-26'
+last_verified: '2026-11-27'
 summary: 通信云平台，提供 OpenAI 兼容的推理 API（GLM、Kimi、DeepSeek、Qwen 等开源模型）；试用账号赠送 5 美元测试额度，可用于推理，用完需付费充值。
 api:
   protocol:
