@@ -4,7 +4,7 @@ homepage: https://composite.lucidity.sh
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-25'
+last_verified: '2026-11-27'
 summary: 面向角色扮演的 OpenAI 兼容 API。自家模型 Synth 免费不限量，限每账号每分钟 5 次；另有部分免费模型，每天合计 80 次请求，部分模型每次调用按多次计。
 api:
   protocol:
@@ -17,7 +17,7 @@ api:
   models_access: paid
   free_models:
   - lucidityai/synth-2.5-flash
-  free_pattern: ':free$'
+  free_pattern: :free$
   free_model_rule: 模型 ID 以 :free 结尾的为免费模型，共用每日 80 次额度；Synth（lucidityai/synth-2.5-flash）免费且不计入每日额度。
 signup:
   url: https://composite.lucidity.sh
