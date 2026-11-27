@@ -4,7 +4,7 @@ homepage: https://www.requesty.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 聚合网关，免费计划可调用官方列出的免费模型，每个组织每天 200 次请求，无需信用卡。
 api:
   protocol:
@@ -42,6 +42,7 @@ quotas:
   models: 全部免费模型合计
   condition: 新组织（未付费）
   evidence: https://docs.requesty.ai/features/free-models
+  quote: New organizations20020
 - unit: requests
   amount: 20
   period: minute
@@ -49,6 +50,7 @@ quotas:
   models: 全部免费模型合计
   condition: 新组织（未付费）
   evidence: https://docs.requesty.ai/features/free-models
+  quote: New organizations20020
 - unit: requests
   amount: 1000
   period: day
@@ -56,6 +58,7 @@ quotas:
   models: 全部免费模型合计
   condition: 付费组织（另限每分钟 60 次）
   evidence: https://docs.requesty.ai/features/free-models
+  quote: Paying organizations1,00060
 overage: blocked
 expires: null
 onboarding:
