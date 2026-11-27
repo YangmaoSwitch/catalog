@@ -5,7 +5,8 @@ region: global
 api_usable: true
 status: verified
 last_verified: '2026-11-27'
-summary: 德国的欧盟境内推理平台，模型 ID 以 free- 开头的免费模型不需要余额即可调用，每个账号同一时间只能运行 1 个免费请求。
+ends: '2026-12-01'
+summary: 德国的欧盟境内推理平台，模型 ID 以 free- 开头的免费模型不需要余额即可调用，每个账号同一时间只能运行 1 个免费请求；官方公告免费模型自 2026 年 12 月 1 日起停止提供。
 api:
   protocol:
   - openai
@@ -15,7 +16,7 @@ api:
   free_models:
   - free-gemma-4-E4B
   - free-Llama-3.1-8B-Instruct
-  free_model_rule: 模型 ID 以 free- 开头（价格为 0）；免费模型名单可能调整
+  free_model_rule: 模型 ID 以 free- 开头（价格为 0）；官方公告自 2026-12-01 起不再提供免费模型
 signup:
   url: https://app.simplellm.eu/signup
   requires:
@@ -27,7 +28,7 @@ quotas:
   period: day
   scope: account
   models: 全部免费模型合计
-  note: 免费模型另有每小时、每天的请求数和 token 上限，官方未公布具体数值，可调用 /v1/rate-limit 查看当前计数；同一账号所有 Key 合计只能同时运行 1 个免费请求，并发超出返回 429
+  note: 免费模型另有每小时、每天的请求数和 token 上限，官方未公布具体数值，可调用 /v1/rate-limit 查看当前计数；同一账号所有 Key 合计只能同时运行 1 个免费请求，并发超出返回 429。官网首页公告：自 2026 年 12 月 1 日起不再提供免费模型
   evidence: https://simplellm.eu/docs/limits.html
   quote: Only one free-model request may run at a time per account.
 overage: blocked
@@ -50,7 +51,7 @@ terms:
 - point: 余额不足时付费模型返回 402，免费模型不受影响
   url: https://simplellm.eu/agb
 tags:
-- 永久免费
+- 限时免费
 - 免费模型
 sources:
 - https://simplellm.eu/docs/
@@ -61,15 +62,15 @@ sources:
 - https://simplellm.eu/models
 - https://simplellm.eu/agb
 en:
-  summary: German EU-hosted inference platform; free models whose IDs start with free- can be called without credit, with one running free request per account at a time.
+  summary: German EU-hosted inference platform; free models whose IDs start with free- can be called without credit, with one running free request per account at a time. The provider has announced that free models will no longer be available from 1 December 2026.
   signup_notes: Sign up with email and create a key on the API Keys page of the dashboard; free models need no top-up. Paid models use prepaid SimpleCredits (1 EUR = 100 SC).
-  free_model_rule: Model ID starts with free- (zero price); the list of free models may change
+  free_model_rule: Model ID starts with free- (zero price); the provider announced free models end on 2026-12-01
   tags:
-  - Always free
+  - Limited-time free
   - Free model
   quotas:
   - models: All free models combined
-    note: Free models also have hourly and daily request and token caps whose values are not published; call /v1/rate-limit to see current counters. Only one free request can run at a time across all keys of an account; extra concurrent requests get 429
+    note: Free models also have hourly and daily request and token caps whose values are not published; call /v1/rate-limit to see current counters. Only one free request can run at a time across all keys of an account; extra concurrent requests get 429. Homepage notice says free models will no longer be available from 1 December 2026
   terms:
   - Creating or using multiple accounts to get around usage limits, in particular free allowances, is prohibited (§3(5))
   - Free models can be used without credit; the provider may restrict their availability (§4(7))
