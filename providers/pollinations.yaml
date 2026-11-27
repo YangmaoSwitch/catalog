@@ -5,7 +5,7 @@ region: global
 api_usable: true
 status: verified
 last_verified: '2026-11-27'
-summary: 开源社区运营的多模态生成平台，完成官方任务可获得 Quest 余额，用于调用文本、图像等常规模型。
+summary: 开源社区运营的多模态生成平台，完成官方任务可获得 Quest 余额，用于调用文本、图像等常规模型；另有少数模型（如 Glyph Cluster 隐身测试模型）标为免费。
 api:
   protocol:
   - openai
@@ -14,6 +14,9 @@ api:
   anthropic_base_url: https://gen.pollinations.ai
   models_url: https://gen.pollinations.ai/v1/models
   models_access: quota
+  free_models:
+  - stealth/glyph-cluster
+  - qwen/qwen3guard-gen-8b
 signup:
   url: https://enter.pollinations.ai
   requires:
@@ -36,6 +39,14 @@ quotas:
   condition: 完成"首次成功调用文本模型"任务
   evidence: https://enter.pollinations.ai/quests
   quote: Use a text model
+- unit: requests
+  amount: 8
+  period: minute
+  scope: account
+  models: stealth/glyph-cluster
+  note: 模型目录标为 Free，不扣余额，限速 8 RPM；Alpha 隐身测试模型，不提供零数据保留，提示词和回复可能被保留并用于训练；未公布截止日期
+  evidence: https://enter.pollinations.ai/models
+  quote: 8 RPM
 overage: blocked
 expires: null
 onboarding:
@@ -56,6 +67,7 @@ terms:
   url: https://gen.pollinations.ai/docs/llm.txt
 tags:
 - 新人赠送
+- 免费模型
 - 聚合
 sources:
 - https://pollinations.ai
@@ -64,15 +76,18 @@ sources:
 - https://github.com/pollinations/pollinations/blob/main/APIDOCS.md
 - https://github.com/pollinations/pollinations/blob/main/BRING_YOUR_OWN_POLLEN.md
 en:
-  summary: Community-run open-source generation platform. Completing official quests earns Quest balance that pays for regular text, image and other models.
+  summary: Community-run open-source generation platform. Completing official quests earns Quest balance that pays for regular text, image and other models; a few models (such as the Glyph Cluster stealth model) are marked free.
   signup_notes: Signing in with GitHub or Google creates the account. Quest balance only pays for regular models; models marked paid_only (such as all video and 3D models) need a paid balance.
   tags:
   - New user credits
+  - Free models
   - Aggregator
   quotas:
   - condition: Complete the "Create your first API key" quest
     note: 28 quests worth $202.5 of Quest balance in total; quests are in alpha and availability and amounts may change
   - condition: Complete the "Use a text model" quest (first successful request)
+  - models: stealth/glyph-cluster
+    note: Marked Free in the model catalog (no balance charged), limited to 8 RPM; alpha stealth model without zero data retention, prompts and replies may be retained and used for training; no end date announced
   terms:
   - Quest balance cannot pay for paid_only models; an exhausted balance or key budget returns 402
   - Identical requests may be answered from a shared cache; change the prompt or seed for a new result
