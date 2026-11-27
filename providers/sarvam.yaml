@@ -4,7 +4,7 @@ homepage: https://www.sarvam.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 印度 Sarvam AI 的模型 API，每个通过验证的新用户注册送 100 卢比额度，永不过期，可用于大模型对话及语音、翻译等全部接口。
 api:
   protocol:
@@ -26,6 +26,7 @@ quotas:
   condition: 新注册且通过验证的用户
   note: 1 credit = ₹1（印度卢比），即赠送 ₹100，全部 API 通用，永不过期；用完后返回 402，需自行充值
   evidence: https://docs.sarvam.ai/api-reference-docs/getting-started/pricing
+  quote: Sarvam offers ₹100 worth of free credits for every verified user on signup.
 - unit: requests
   amount: 60
   period: minute
@@ -33,6 +34,7 @@ quotas:
   models: sarvam-105b、sarvam-105b-conversations
   condition: 按量付费档（另 gemma4、glm5.3、deepseekv4.1-flash-1017 为每分钟 50 次）
   evidence: https://docs.sarvam.ai/api-reference-docs/getting-started/pricing
+  quote: Rate Limit60 req/min200 req/min300 req/min
 overage: blocked
 expires: null
 onboarding:
