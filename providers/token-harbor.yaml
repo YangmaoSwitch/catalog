@@ -4,7 +4,7 @@ homepage: https://tokenharbor.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 新加坡公司运营的聚合网关，名称以 :free 结尾的模型免费调用，按滚动 7 天发放免费额度，无需信用卡；不对中国大陆和香港开放。
 api:
   protocol:
@@ -42,6 +42,7 @@ quotas:
   models: 全部 :free 模型合计
   note: 第一次免费请求起算个人滚动 7×24 小时周期；额度按标价折算的用量计，控制台只显示 0–100% 进度，官方未公布具体数额
   evidence: https://tokenharbor.ai/docs/billing/cashback
+  quote: The dashboard shows a 0–100% progress bar.
 - unit: requests
   amount: 60
   period: minute
@@ -49,6 +50,7 @@ quotas:
   condition: 免费账户（未充值、无 Pass）
   note: 另限每小时 1800 次；按 IP 每分钟 100 次、每小时 3000 次；单次请求最大 4 MB
   evidence: https://tokenharbor.ai/docs/api/rate-limits
+  quote: 60 requests/minute and 1,800 requests/hour per account
 overage: blocked
 expires: null
 onboarding:
