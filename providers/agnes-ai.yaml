@@ -4,7 +4,7 @@ homepage: https://agnes-ai.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: Agnes 自研的 Flash 系列文本、图像和视频模型目前按 0 元计费，免费用户按每分钟请求数限速。
 api:
   protocol:
@@ -36,6 +36,7 @@ quotas:
   evidence: https://wiki.agnes-ai.com/en/docs/faqs.md
   models: agnes-3.0-flash 等 Flash 系列模型
   note: 免费用户受每分钟请求数限制，具体数值未公布；同类型 Key 多建不叠加。各模型 0 元价格见价格页
+  quote: Free users are subject to RPM limits, which means the number of requests per minute may be limited.
 overage: blocked
 onboarding:
   level: L1
