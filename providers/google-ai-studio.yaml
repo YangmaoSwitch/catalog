@@ -5,7 +5,7 @@ region: global
 api_usable: true
 status: verified
 last_verified: '2026-11-27'
-summary: Gemini API 免费档，按项目限速；具体数值在 AI Studio 页面显示。
+summary: Gemini API 免费档，按项目限速，免费档可用 Gemini 4 Hydrogen、Gemini 3.8 Flash、Gemini 3.5 Flash-Lite 等模型；Gemini 4 Carbon/Argon/Neon 仅付费档可用；具体限额在 AI Studio 页面显示。
 api:
   protocol:
   - openai
@@ -13,6 +13,8 @@ api:
   base_url: https://generativelanguage.googleapis.com/v1beta/openai/
   modelsdev: google
   models_access: quota
+  models:
+  - gemini-4-hydrogen
 signup:
   url: https://aistudio.google.com/app/apikey
   requires:
@@ -43,11 +45,13 @@ terms:
   url: https://developers.google.com/terms
 tags:
 - 永久免费
+- 免费模型
 en:
-  summary: Free tier of the Gemini API, rate-limited per project; the limits are shown in AI Studio.
+  summary: Free tier of the Gemini API, rate-limited per project; the free tier includes models such as Gemini 4 Hydrogen, Gemini 3.8 Flash and Gemini 3.5 Flash-Lite, while Gemini 4 Carbon/Argon/Neon are paid only; the limits are shown in AI Studio.
   signup_notes: Users in the EEA, the UK and Switzerland can only use the paid service
   tags:
   - Always free
+  - Free models
   quotas:
   - note: Requests per minute and tokens per minute are also limited; AI Studio shows the values per model
   terms:
