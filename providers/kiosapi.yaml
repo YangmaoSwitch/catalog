@@ -4,8 +4,8 @@ homepage: https://kiosapi.id
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
-summary: 印度尼西亚的模型网关，免费模型每个账号每天可调用 50 次，不扣余额，UTC 零点重置，需验证邮箱。
+last_verified: '2026-11-27'
+summary: 印度尼西亚的模型网关，3 个免费模型每个账号每天合计可调用 50 次，不扣余额，UTC 零点重置，需验证邮箱。
 api:
   protocol:
   - openai
@@ -15,8 +15,6 @@ api:
   models_url: https://api.kiosapi.id/v1/models
   models_access: paid
   free_models:
-  - meta/llama-3.1-8b
-  - qwen/qwen3-30b
   - zai/glm-4.7-flash
   - google/gemma-4-26b
   - aisingapore/sea-lion-27b
@@ -33,13 +31,15 @@ quotas:
   scope: account
   models: 全部免费模型合计
   note: 官方写明每天 07:00 WIB 重置；单次输出约 2048 token、输入约 2.4 万字符以内
-  evidence: https://kiosapi.id/docs
+  evidence: https://kiosapi.id/docs/python
+  quote: 50 request/hari (reset 07:00 WIB), email terverifikasi
 - unit: requests
   amount: 5
   period: minute
   scope: account
   models: 免费档
-  evidence: https://kiosapi.id/docs
+  evidence: https://kiosapi.id/docs/python
+  quote: Rate limit5 req/menit
 overage: blocked
 expires: null
 onboarding:
@@ -63,7 +63,7 @@ sources:
 - https://kiosapi.id/docs
 - https://kiosapi.id/terms
 en:
-  summary: Indonesian model gateway; free models can be called 50 times per account per day without using the balance, reset at 00:00 UTC, with a verified email.
+  summary: Indonesian model gateway; its 3 free models can be called 50 times per account per day in total without using the balance, reset at 00:00 UTC, with a verified email.
   signup_notes: The free allowance requires a verified email; paid models use a prepaid rupiah balance via QRIS, e-wallets, virtual accounts or cards
   tags:
   - Free model
