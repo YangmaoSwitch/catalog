@@ -5,7 +5,7 @@ homepage: https://ppio.com
 region: cn
 api_usable: true
 status: unconfirmed
-last_verified: '2026-11-24'
+last_verified: '2026-11-27'
 summary: 按量付费的模型 API 平台，注册页写明新用户受邀注册可得 ¥5 免费额度，没有长期免费模型；未实名账号限速每分钟 1 次。
 api:
   protocol:
