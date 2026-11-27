@@ -4,7 +4,7 @@ homepage: https://sea-lion.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 新加坡 AI Singapore 的东南亚语言模型 API，用 Google 账号登录后可免费申请一把试用 Key，每人每分钟 10 次请求，面向概念验证。
 api:
   protocol:
@@ -27,6 +27,7 @@ quotas:
   models: 全部模型
   note: 官方称免费 API 仅用于概念验证，不适合生产，也不提供提额；可用模型以 /v1/models 返回为准
   evidence: https://docs.sea-lion.ai/guides/inferencing/api
+  quote: As of 04 Jun 2026, our rate limits is set to 10 requests per minute per user.
 overage: blocked
 expires: null
 onboarding:
