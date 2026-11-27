@@ -4,7 +4,7 @@ homepage: https://simplellm.eu
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 德国的欧盟境内推理平台，模型 ID 以 free- 开头的免费模型不需要余额即可调用，每个账号同一时间只能运行 1 个免费请求。
 api:
   protocol:
@@ -29,6 +29,7 @@ quotas:
   models: 全部免费模型合计
   note: 免费模型另有每小时、每天的请求数和 token 上限，官方未公布具体数值，可调用 /v1/rate-limit 查看当前计数；同一账号所有 Key 合计只能同时运行 1 个免费请求，并发超出返回 429
   evidence: https://simplellm.eu/docs/limits.html
+  quote: Only one free-model request may run at a time per account.
 overage: blocked
 expires: null
 onboarding:
