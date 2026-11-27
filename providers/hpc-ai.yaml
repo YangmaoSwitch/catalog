@@ -4,7 +4,7 @@ homepage: https://www.hpc-ai.com/model-apis
 region: global
 api_usable: true
 status: unconfirmed
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 新加坡 GPU 云厂商的模型 API 服务，页面有“免费试用”入口，文档称注册和充值可获代金券，但未写明金额。
 api:
   protocol:
@@ -24,6 +24,7 @@ quotas:
   condition: 新注册账号
   note: 快速入门文档称“注册、充值即可获得代金券”，具体金额以官网首页为准，但首页未写明；模型 API 页的“免费试用”说明为折叠内容，未能读到
   evidence: https://www.hpc-ai.com/doc/docs/quickstart
+  quote: Sign up, top up, and receive vouchers to boost your projects and workflows.
 overage: manual
 expires: null
 onboarding:
