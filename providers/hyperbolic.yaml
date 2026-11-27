@@ -4,7 +4,7 @@ homepage: https://hyperbolic.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 美国 GPU 云平台的模型推理服务，免费档个人账号验证手机号后可调用接口并获赠 1 美元额度。
 api:
   protocol:
@@ -44,6 +44,7 @@ quotas:
   condition: 免费档
   evidence: https://hyperbolic.ai/docs/general/account-management
 overage: blocked
+ended: '2026-11-27'
 expires: null
 onboarding:
   level: L2
