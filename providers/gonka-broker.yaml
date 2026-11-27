@@ -4,7 +4,7 @@ homepage: https://gonkabroker.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 去中心化算力网络 Gonka 的美元计费网关，验证手机号后每月赠送至少 100 万 token 免费额度，可用于全部模型，无需信用卡。
 api:
   protocol:
@@ -30,6 +30,7 @@ quotas:
   condition: 已验证手机号
   note: 按最贵模型计算至少 100 万 token，便宜模型折算更多；每个自然月初重新发放，未用完的不累积，官方未写明重置时区；只用免费额度时另有较低的每分钟请求上限，可用 /test-auth 查看 maxRpm
   evidence: https://docs.gonkabroker.com/guides/billing-and-deposits/
+  quote: The grant is issued right after your phone is verified and renewed at the start of each calendar month.
 overage: blocked
 expires: null
 onboarding:
