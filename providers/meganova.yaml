@@ -4,8 +4,8 @@ homepage: https://www.meganova.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
-summary: 以角色扮演模型见长的推理平台，免费注册的 Tier 1 账号每天可免费调用 Manta Mini、Manta Flash、Mistral Small 等 8 个文本模型各 50 次，UTC 零点重置，无需信用卡。
+last_verified: '2026-11-27'
+summary: 以角色扮演模型见长的推理平台，免费注册的 Tier 1 账号每天可免费调用 Manta Mini、Manta Flash、Mistral Small 等 8 个文本模型各 50 次，UTC 零点重置，无需信用卡；另有 Artemis 和 Skyfall 两个新模型限时免费预览至 2026-12-02，需 Tier 2 及以上。
 api:
   protocol:
   - openai
@@ -21,7 +21,10 @@ api:
   - Sao10K/L3-8B-Stheno-v3.2
   - BruhzWater/Sapphira-L3.3-70b-0.1
   - FallenMerick/MN-Violet-Lotus-12B
-  free_model_rule: Tier 1 可用的免费模型；充值 1 美元升到 Tier 2 后额度提高，并加入 Manta Pro 和 GLM-4.7-Flash
+  quota_models:
+  - TheDrummer/Artemis-31B-v1.2
+  - TheDrummer/Skyfall-31B-v4.2
+  free_model_rule: Tier 1 可用的免费模型；充值 1 美元升到 Tier 2 后额度提高，并加入 Manta Pro 和 GLM-4.7-Flash；Artemis 和 Skyfall 限时免费预览（至 2026-12-02，Tier 2 起）
 signup:
   url: https://www.meganova.ai/register
   requires:
@@ -37,6 +40,7 @@ quotas:
   condition: Tier 1（免费注册）
   note: 按账号、按模型计；用完后默认停止，只有在账号里打开“免费额度用完后允许付费”才会转为扣余额
   evidence: https://docs.meganova.ai/free-model-quota.md
+  quote: Quota is reset on a fixed cycle (daily reset at 00:00 UTC)
 - unit: requests
   amount: 500
   period: day
@@ -45,12 +49,23 @@ quotas:
   models: Manta Mini、Manta Flash、Stheno、Violet-Lotus 各 500 次；Mistral Small、Nevoria、Euryale、Sapphira 各 300 次；Manta Pro 和 GLM-4.7-Flash 各 50 次
   condition: Tier 2（充值 1 美元解锁）
   evidence: https://docs.meganova.ai/free-model-quota.md
+  quote: Free quota is granted per account, not per request
 - unit: requests
   amount: 60
   period: minute
   scope: account
   condition: Tier 1，另限每分钟 20 万 token
   evidence: https://docs.meganova.ai/tiers/tier-1.md
+  quote: 60 requests per minute
+- unit: requests
+  amount: 50
+  period: day
+  scope: model
+  models: Artemis-31B-v1.2、Skyfall-31B-v4.2 各 50 次（Tier 3 及以上各 100 次）
+  condition: Tier 2 及以上（充值 1 美元解锁），限时免费预览
+  note: 预览期至 2026-12-02（UTC），之后恢复按量付费；两个模型均为 64K 上下文
+  evidence: https://blog.meganova.ai/a-thanksgiving-writing-prompt-for-free-artemis-and-skyfall-models/
+  quote: Tier 2 accounts get 50 free requests a day during the preview.
 overage: blocked
 expires: null
 onboarding:
@@ -70,6 +85,7 @@ tags:
 - 永久免费
 - 免费模型
 - 每日赠送
+- 限时免费
 sources:
 - https://docs.meganova.ai/tiers
 - https://docs.meganova.ai/tiers/tier-1.md
@@ -79,13 +95,14 @@ sources:
 - https://docs.meganova.ai/legal-docs/terms-of-service.md
 - https://docs.meganova.ai/faq/supported-countries.md
 en:
-  summary: Inference platform known for role-play models. Free Tier 1 accounts can call 8 text models, including Manta Mini, Manta Flash and Mistral Small, 50 times each per day for free, reset at 00:00 UTC, no credit card needed.
+  summary: Inference platform known for role-play models. Free Tier 1 accounts can call 8 text models, including Manta Mini, Manta Flash and Mistral Small, 50 times each per day for free, reset at 00:00 UTC, no credit card needed. Two new models, Artemis and Skyfall, are in a limited-time free preview until 2026-12-02 for Tier 2 and above.
   signup_notes: Tier 1 sign-up is free and needs no credit card; service is limited to the officially supported countries and regions, and using a VPN or proxy from an unsupported region breaks the terms.
-  free_model_rule: Free models available on Tier 1; a $1 deposit moves you to Tier 2 with higher quotas plus Manta Pro and GLM-4.7-Flash
+  free_model_rule: Free models available on Tier 1; a $1 deposit moves you to Tier 2 with higher quotas plus Manta Pro and GLM-4.7-Flash; Artemis and Skyfall are free in a limited preview (until 2026-12-02, Tier 2 and up)
   tags:
   - Always free
   - Free model
   - Daily credits
+  - Limited-time free
   quotas:
   - models: 50 for each free text model
     condition: Tier 1 (free sign-up)
@@ -93,6 +110,9 @@ en:
   - models: 500 each for Manta Mini, Manta Flash, Stheno and Violet-Lotus; 300 each for Mistral Small, Nevoria, Euryale and Sapphira; 50 each for Manta Pro and GLM-4.7-Flash
     condition: Tier 2 (unlocked by a $1 deposit)
   - condition: Tier 1, also 200K tokens per minute
+  - models: 50 each for Artemis-31B-v1.2 and Skyfall-31B-v4.2 (100 each on Tier 3 and above)
+    condition: Tier 2 and above (unlocked by a $1 deposit), limited-time free preview
+    note: Preview runs until 2026-12-02 (UTC), after which normal paid pricing applies; both models have a 64K context window
   terms:
   - Free modules are for evaluation and interactive use only, not production or unattended batch work; high-throughput use leads to suspension
   - Submitted content is licensed broadly to the platform, and characters and generated chats may be used, sold and licensed by it
