@@ -4,7 +4,7 @@ homepage: https://gizmoplatforms.com/developers
 region: global
 api_usable: true
 status: unconfirmed
-last_verified: '2026-11-25'
+last_verified: '2026-11-27'
 summary: 模型聚合 API，免费账号无需信用卡，可调用标为 free 的少数模型，按月有免费模型请求额度，具体次数官方未公布；其余模型按量付费。
 api:
   protocol:
