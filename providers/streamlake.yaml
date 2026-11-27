@@ -5,7 +5,7 @@ homepage: https://www.streamlake.com
 region: cn
 api_usable: true
 status: verified
-last_verified: '2026-11-24'
+last_verified: '2026-11-27'
 ends: '2026-12-31'
 summary: 活动期间（2026-09-07 至 2026-12-31）首次开通万擎并完成实名认证的用户获赠 ¥20 代金券，可用于在线推理和 API 调用，30 天内有效；平台本身按量付费，没有长期免费额度。
 api:
