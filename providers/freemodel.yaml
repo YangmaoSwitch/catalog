@@ -4,7 +4,7 @@ homepage: https://freemodel.online
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
+last_verified: '2026-11-27'
 summary: 聚合网关，优先把请求路由到有免费额度的模型；免费档 fm-v1-lite 无需订阅，每月 800 轮、每天 30 轮，不会转为付费。
 api:
   protocol:
@@ -30,6 +30,7 @@ quotas:
   models: fm-v1-lite 免费档
   note: 官方按“轮”计；当前额度和重置窗口以控制台显示为准
   evidence: https://freemodel.online/pricing/
+  quote: 'Free: 800 rounds per month, 30 per day.'
 - unit: requests
   amount: 30
   period: day
@@ -37,6 +38,7 @@ quotas:
   models: fm-v1-lite 免费档
   note: 官方未写明重置时区
   evidence: https://freemodel.online/pricing/
+  quote: 'Free: 800 rounds per month, 30 per day.'
 overage: auto_paid
 expires: null
 onboarding:
