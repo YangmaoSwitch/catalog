@@ -6,7 +6,7 @@ region: cn
 api_usable: true
 status: verified
 last_verified: '2026-11-27'
-summary: 每天登录送魔粒，调用按模型档位扣减。
+summary: 每天登录送魔粒，调用按模型档位扣减；首次完善资料另送长期魔粒。
 api:
   protocol:
   - openai
@@ -29,16 +29,30 @@ quotas:
   evidence: https://www.modelscope.cn/docs/model-service/API-Inference/limits.md
   quote: 魔搭通过API-Inference，将开源模型服务化并通过API接口进行标准化，**免费**提供给广大开发者体验。
   note: 绑定阿里云每天再送 50；当天有效不累积；每次调用扣 0.5/1/2
+- unit: points
+  amount: 150
+  period: one-time
+  scope: account
+  new_users: true
+  expires_days: 90
+  condition: 首次验证邮箱、编辑个人介绍、配置个人主页（各 50 魔粒）
+  evidence: https://www.modelscope.cn/docs/magicube/intro.md
+  quote: 魔粒体系支持 **短期魔粒** 和 **长期魔粒** ，短期魔粒生效时长 24 小时，长期魔粒生效时长 90 天。
+  note: 长期魔粒 90 天有效；通过邀请码注册另得 50 魔粒；使用魔粒前需完善个人信息并验证邮箱
 overage: blocked
 onboarding:
   level: L1
   key_page: https://modelscope.cn/my/myaccesstoken
 tags:
 - 每日赠送
+- 新人赠送
 en:
-  summary: Daily credits (Mo-Li) for signing in; each call deducts credits by model tier.
+  summary: Daily credits (Mo-Li) for signing in, deducted per call by model tier; extra one-time long-term credits for completing your profile.
   signup_notes: Requires linking an Alibaba Cloud account with real-name verification
   tags:
   - Daily credits
+  - New-user gift
   quotas:
   - note: 50 more a day after linking Alibaba Cloud; valid on the day only, no rollover; each call costs 0.5/1/2
+  - note: Long-term credits valid 90 days; 50 more when signing up with an invite code; a verified email is required before credits can be used
+    condition: First-time email verification, profile intro edit and profile homepage setup (50 credits each)
