@@ -5,7 +5,7 @@ homepage: https://www.qiniu.com
 region: cn
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 七牛云限时免费模型 qiniu/conatus-free，完成实名认证后每日免费 1 亿 Token，充值满 100 元后提升至每日 10 亿 Token，额度用尽即停不扣费；平台另有免费模型 Nemotron 3 Ultra Free，推理服务新用户可获 300 万 Token 资源包。
 api:
   protocol:
