@@ -4,7 +4,7 @@ homepage: https://portal.nousresearch.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: Nous Research 的模型聚合门户，免费计划可调用名称以 :free 结尾的免费模型，按标准限速。
 api:
   protocol:
