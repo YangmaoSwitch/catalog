@@ -4,7 +4,7 @@ homepage: https://pollinations.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 开源社区运营的多模态生成平台，完成官方任务可获得 Quest 余额，用于调用文本、图像等常规模型；另有少数模型（如 Glyph Cluster 隐身测试模型）标为免费。
 api:
   protocol:
