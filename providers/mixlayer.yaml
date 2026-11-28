@@ -4,7 +4,7 @@ homepage: https://www.mixlayer.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 开源模型推理平台，qwen/qwen3.5-4b-free 输入输出均为 0 元，免费模型不需要预付余额，其余模型按量付费。
 api:
   protocol:
