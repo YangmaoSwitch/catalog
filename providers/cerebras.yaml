@@ -4,7 +4,7 @@ homepage: https://www.cerebras.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 新账号绑定有效支付方式后一次性获得 5 美元试用额度，30 天内有效，无长期免费档。
 api:
   protocol:
