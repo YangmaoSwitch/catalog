@@ -4,7 +4,7 @@ homepage: https://kenari.id
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 印尼的模型聚合网关，ID 以 :free 结尾的模型不收费，未充值账号每天 50 次、每分钟 5 次，余额为零也能调用。
 api:
   protocol:
@@ -14,7 +14,7 @@ api:
   anthropic_base_url: https://kenari.id
   models_url: https://kenari.id/v1/models
   models_access: paid
-  free_pattern: ':free$'
+  free_pattern: :free$
   free_model_rule: 模型 ID 以 :free 结尾的免费；也可用内置路由 kenari-free 随机选一个免费模型。免费模型会随时间变化，以 /v1/models 中 pricing.free 为准。
 signup:
   url: https://kenari.id/login
