@@ -5,7 +5,7 @@ homepage: https://www.deepseek.com
 region: cn
 api_usable: true
 status: unconfirmed
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 官方价格页提到"赠送余额"可用于抵扣模型费用，但未公布具体金额；平台页需登录，无法核实注册赠送额度。
 api:
   protocol:
