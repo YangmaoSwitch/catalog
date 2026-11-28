@@ -4,7 +4,7 @@ homepage: https://agnes-ai.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: Agnes 自研的 Flash 系列文本、图像和视频模型目前按 0 元计费，免费用户按每分钟请求数限速。
 api:
   protocol:
