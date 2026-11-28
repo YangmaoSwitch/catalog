@@ -4,7 +4,7 @@ homepage: https://www.meganova.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 以角色扮演模型见长的推理平台，免费注册的 Tier 1 账号每天可免费调用 Manta Mini、Manta Flash、Mistral Small 等 8 个文本模型各 50 次，UTC 零点重置，无需信用卡；另有 Artemis 和 Skyfall 两个新模型限时免费预览至 2026-12-02，需 Tier 2 及以上。
 api:
   protocol:
