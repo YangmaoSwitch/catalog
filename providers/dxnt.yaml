@@ -5,7 +5,7 @@ homepage: https://www.dxnt.com
 region: cn
 api_usable: true
 status: unconfirmed
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 国内 API 中转平台，注册送 10 元体验金，但 2026-11-27 免费路由页显示“暂未配置可使用体验金的模型”，目前用不上；关于页另写注册送 100 万 token，两处说法不一致。
 api:
   protocol:
