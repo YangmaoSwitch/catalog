@@ -5,7 +5,7 @@ homepage: https://xinghuo.xfyun.cn/sparkapi
 region: cn
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 星火 Lite 轻量模型支持免费使用，可通过兼容 OpenAI 的 HTTP 接口调用；星辰 MaaS 平台上 Spark-X2.5-1.7B 免费、Spark-X2.6-4B 限时免费，并向注册用户发放 10 亿 Spark-X2.6 tokens 免费额度。
 api:
   protocol:
