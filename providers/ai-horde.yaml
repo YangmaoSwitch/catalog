@@ -4,7 +4,7 @@ homepage: https://aihorde.net
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 志愿者贡献显卡的开源社区服务，OpenAI 兼容接口免费调用在线 worker 提供的文本模型，不注册可用匿名 Key 0000000000，但排队优先级最低。
 api:
   protocol:
