@@ -16,13 +16,17 @@ api:
   models_access: quota
   anthropic_base_url: https://api.siliconflow.cn
   free_models:
-  - GLM-Z1-9B
-  - Hunyuan-MT-7B
-  - Xing4.0-29B
+  - THUDM/GLM-Z1-9B-0414
+  - tencent/Hunyuan-MT-7B
+  - XingChenAGI/Xing4.0-29B
   - XingChenAGI/Xing4.1-Preview
   - PaddlePaddle/PaddleOCR-VL-1.5
   - BAAI/bge-m3
-  - Kolors
+  - BAAI/bge-reranker-v2-m3
+  - BAAI/bge-large-zh-v1.5
+  - BAAI/bge-large-en-v1.5
+  - Kwai-Kolors/Kolors
+  - FunAudioLLM/SenseVoiceSmall
 signup:
   url: https://cloud.siliconflow.cn
   requires:
@@ -34,7 +38,7 @@ quotas:
   scope: model
   evidence: https://www.siliconflow.cn/pricing
   models: 定价页标“免费”的模型
-  note: 按模型限速
+  note: 按模型限速，部分模型已改为随负载自动调整的动态限流（2026-11-16 起）；XingChenAGI/Xing4.0-29B 将于 2026-12-04 下线
   quote: 生成图片每图片免费
 - unit: cny
   amount: 16
@@ -71,7 +75,7 @@ en:
   - New users
   quotas:
   - models: Models marked “free” on the pricing page
-    note: Rate-limited per model
+    note: Rate-limited per model; some models use dynamic rate limits that follow load (since 2026-11-16); XingChenAGI/Xing4.0-29B goes offline on 2026-12-04
   - condition: Real-name verification
     note: Offer ends 2026-12-31; voucher valid 180 days from receipt, usable platform-wide (including Pro models)
   - condition: Invite a friend who signs up and completes real-name verification (per invitee)
