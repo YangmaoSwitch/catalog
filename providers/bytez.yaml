@@ -4,7 +4,7 @@ homepage: https://bytez.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 模型 API 平台，免费计划每 4 周赠送 1 美元额度，可调用 7B 以内的开源模型和各家闭源模型。
 api:
   protocol:
