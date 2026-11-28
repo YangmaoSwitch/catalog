@@ -4,7 +4,7 @@ homepage: https://zenmux.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 模型聚合网关，模型列表中标为 Free 的几个模型输入输出单价为 0 美元，可用按量付费 API Key 调用；官方未公布这些模型的用量上限，账户余额不能为负。
 api:
   protocol:
