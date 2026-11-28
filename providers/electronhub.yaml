@@ -4,7 +4,7 @@ homepage: https://www.electronhub.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 聚合网关，免费计划每周补到 0.25 美元额度，另有每天 10 次免费模型（:free 后缀）请求，看广告最多可增至每天 200 次；免费计划每分钟 5 次请求。
 api:
   protocol:
@@ -13,7 +13,7 @@ api:
   base_url: https://api.electronhub.ai/v1
   models_url: https://api.electronhub.ai/v1/models
   models_access: paid
-  free_pattern: ':free$'
+  free_pattern: :free$
   free_model_rule: 以 :free 结尾的模型消耗 Neutrinos，不扣额度；每周 0.25 美元额度可用于不需订阅的 freemium 模型，Pro 模型需付费计划或按量充值。
 signup:
   url: https://app.electronhub.ai
