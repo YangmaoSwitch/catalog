@@ -4,7 +4,7 @@ homepage: https://clod.io
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: OpenAI 兼容的模型网关，首次充值任意金额后，每天可免费调用 3 个开源模型 50 次请求、共 20 万 tokens；新用户充值另有 50% 赠送，最多 25 美元。
 api:
   protocol:
