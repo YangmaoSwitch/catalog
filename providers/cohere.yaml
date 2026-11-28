@@ -4,7 +4,7 @@ homepage: https://cohere.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 试用 Key 免费，用于测试和概念验证。
 api:
   protocol:
