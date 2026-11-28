@@ -4,7 +4,7 @@ homepage: https://gonkabroker.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 去中心化算力网络 Gonka 的美元计费网关，验证手机号后每月赠送至少 100 万 token 免费额度，可用于全部模型，无需信用卡。
 api:
   protocol:
