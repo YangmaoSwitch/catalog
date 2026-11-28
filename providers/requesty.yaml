@@ -4,7 +4,7 @@ homepage: https://www.requesty.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 聚合网关，免费计划可调用官方列出的免费模型，每个组织每天 200 次请求，无需信用卡。
 api:
   protocol:
