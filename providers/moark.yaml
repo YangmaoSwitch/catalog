@@ -5,7 +5,7 @@ homepage: https://moark.com
 region: cn
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 每个账号每天可免费调用模型共 100 次，使用系统默认的免费体验访问令牌，不产生扣费。
 api:
   protocol:
