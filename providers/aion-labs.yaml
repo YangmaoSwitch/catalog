@@ -4,7 +4,7 @@ homepage: https://www.aionlabs.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 注册后默认进入免费档，每天可用 2 万 token；API Key 需先验证一张支付卡才能启用（不扣费）。
 api:
   protocol:
