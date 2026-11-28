@@ -4,7 +4,7 @@ homepage: https://vercel.com/ai-gateway
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 聚合网关，每个 Vercel 团队免费档每月含 5 美元额度，只能调用标为 Free Tier 的模型；另有部分模型标价为 0（如 reflection/beam-free、stealth/glyph-cluster、recursive/flint-v1.0、humansand/ampersand-v0.1、nvidia/nemotron-3.5-lightning-free）。
 api:
   protocol:
