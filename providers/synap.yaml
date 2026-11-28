@@ -4,7 +4,7 @@ homepage: https://synap402.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 开源模型 API 平台，用 Google 或邮箱登录后可免费调用 qwen3-coder-30b，前 7 天每天 10 万 token、50 次请求，之后每天 5 万 token、10 次请求，无需信用卡。
 api:
   protocol:
