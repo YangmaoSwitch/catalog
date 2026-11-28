@@ -5,7 +5,7 @@ homepage: https://www.volcengine.com/product/ark
 region: cn
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 新用户豆包模型各送 50 万 Token；开启“安心体验模式”可避免产生费用。另有协作奖励计划：授权采集推理数据后，按前一日采集量次日返还等量免费资源包（每模型每日最多 5M tokens，30 天有效）。
 api:
   protocol:
