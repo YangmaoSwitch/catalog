@@ -4,7 +4,7 @@ homepage: https://fireworks.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 美国开源模型推理平台，新账号带 1 美元起步额度，用完后未绑定支付方式的账号会被暂停。
 api:
   protocol:
