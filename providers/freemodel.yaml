@@ -4,7 +4,7 @@ homepage: https://freemodel.online
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 聚合网关，优先把请求路由到有免费额度的模型；免费档 fm-v1-lite 无需订阅，每月 800 轮、每天 30 轮，不会转为付费。
 api:
   protocol:
