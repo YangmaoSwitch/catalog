@@ -11,12 +11,19 @@ on:
 permissions:
   contents: write
 
+# Every recheck commit triggers a run, often a minute apart. Two runs force-pushing dist at once can fail
+# ("cannot lock ref"), and an older run finishing last would publish older data. One run at a time; a newer
+# push replaces the waiting run, so the last one built is always the latest commit. Pull requests do not publish.
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.ref) || 'dist' }}
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - run: pip install pyyaml jsonschema
