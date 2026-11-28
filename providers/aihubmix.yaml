@@ -4,7 +4,7 @@ homepage: https://aihubmix.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 聚合平台提供 77 个以 -free 结尾的免费模型；新账户有 10 次试用调用，一次性充值 1 美元后每日 100 次请求、100 万 token，每日重置。
 api:
   protocol:
