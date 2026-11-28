@@ -4,7 +4,7 @@ homepage: https://kiosapi.id
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 印度尼西亚的模型网关，3 个免费模型每个账号每天合计可调用 50 次，不扣余额，UTC 零点重置，需验证邮箱。
 api:
   protocol:
