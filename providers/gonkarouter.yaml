@@ -4,8 +4,8 @@ homepage: https://gonkarouter.io
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
-summary: 基于去中心化算力网络 Gonka 的模型网关，新账号赠送 100 万 token，无需信用卡。
+last_verified: '2026-11-28'
+summary: 基于去中心化算力网络 Gonka 的模型网关，新账号赠送 100 万 token，无需信用卡；充值另赠 20% 额度。
 api:
   protocol:
   - openai
@@ -30,9 +30,19 @@ quotas:
   scope: account
   models: 全部模型
   condition: 新账号
+  new_users: true
   note: 赠送额度先于付费余额扣除；官方未写明有效期
   evidence: https://gonkarouter.io/pricing
   quote: New accounts automatically receive 1M free tokens.
+- unit: credits
+  amount: null
+  period: one-time
+  scope: account
+  models: 全部模型
+  condition: 充值（银行卡或 USDT）
+  note: 充值时额外赠送充值金额的 20%，并提高账户并发上限；官方未写明是否仅限首次充值及截止日期
+  evidence: https://gonkarouter.io
+  quote: Top up, get +20% credit
 overage: unknown
 expires: null
 onboarding:
@@ -51,7 +61,7 @@ sources:
 - https://gonkarouter.io/docs
 - https://gonkarouter.io/terms-of-service
 en:
-  summary: Model gateway on the decentralized Gonka GPU network. New accounts get 1M free tokens, no credit card needed.
+  summary: Model gateway on the decentralized Gonka GPU network. New accounts get 1M free tokens, no credit card needed; top-ups get an extra 20% credit.
   signup_notes: Sign in with email or Google; new accounts receive the free tokens automatically, no credit card needed.
   tags:
   - New users
@@ -59,6 +69,9 @@ en:
   - models: All models
     condition: New accounts
     note: Free tokens are spent before any paid balance; no expiry is stated
+  - models: All models
+    condition: Top-up (card or USDT)
+    note: An extra 20% of the top-up amount is added to the balance, plus a higher concurrency limit; not stated whether only the first top-up qualifies or when the offer ends
   terms:
   - Bypassing rate limits or security mechanisms is prohibited; abusive accounts may be throttled, suspended or terminated (sections 4, 5)
   - If the requested model cannot serve, the request falls back to another model by default, named in the X-Gonka-Fallback header; send X-Gonka-No-Fallback to turn this off
