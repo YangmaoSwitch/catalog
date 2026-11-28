@@ -4,7 +4,7 @@ homepage: https://axforge.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 欧盟自建 GPU 的模型推理服务，新账号每 30 天赠送 300 万 token，需先验卡解锁（不扣费）。
 api:
   protocol:
