@@ -4,7 +4,7 @@ homepage: https://www.jamaibase.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: EmbeddedLLM 的 AI 后端平台，免费计划每月含 300 万 Token 可用于 ELLM 托管模型（输入加输出合计），无需信用卡；其他厂商模型按价格表付费。
 api:
   protocol:
