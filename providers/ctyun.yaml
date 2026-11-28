@@ -5,7 +5,7 @@ homepage: https://www.ctyun.cn/products/maas
 region: cn
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 天翼云星辰TokenHub 部分模型提供免费体验额度，额度数量因模型而异、有效期 2 周；官网另有“50万Tokens免费领取”活动。完成实名认证后可用 OpenAI 兼容接口调用，免费额度用完后默认转按量计费。
 api:
   protocol:
