@@ -4,7 +4,7 @@ homepage: https://www.orcarouter.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 聚合网关，名称以 -free 结尾的模型和 orcarouter/free 免费调用，未充值账号每分钟 10 次、每天 50 次，需绑定注册较久的 GitHub 账号。
 api:
   protocol:
