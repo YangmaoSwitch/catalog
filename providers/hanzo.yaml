@@ -4,7 +4,7 @@ homepage: https://hanzo.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 美国 Hanzo AI 的模型平台，免费计划每天可通过 API 调用 enso-auto 路由模型 50 次，另有 Kai 决策接口每天 50 次，无需信用卡。
 api:
   protocol:
