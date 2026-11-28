@@ -4,14 +4,14 @@ homepage: https://gizmoplatforms.com/developers
 region: global
 api_usable: true
 status: unconfirmed
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 模型聚合 API，免费账号无需信用卡，可调用标为 free 的少数模型，按月有免费模型请求额度，具体次数官方未公布；其余模型按量付费。
 api:
   protocol:
   - openai
   base_url: https://api.gizmoplatforms.com/api/v1
   models_access: paid
-  free_model_rule: 模型列表中名称带 (free)、价格为 $0 / $0 的模型免费，例如 Nemotron 3.5 Lightning (free)、Nemotron 3 Ultra (free)、Flint (free)、Ling 3.2 Flash (free)、LFM3-1.7B (free)、ERNIE-5.5-Flash-Preview (free)、Particle-1 (free)；准确的模型 ID 需用 Key 调用 /api/v1/models 查看。
+  free_model_rule: 模型列表中名称带 (free)、价格为 $0 / $0 的模型免费，例如 Nemotron 3.5 Lightning (free)、Nemotron 3 Ultra (free)、Flint (free)、LFM3-1.7B (free)、ERNIE-5.5-Flash-Preview (free)、Particle-1 (free)；准确的模型 ID 需用 Key 调用 /api/v1/models 查看。
 signup:
   url: https://gizmoplatforms.com/signup
   requires: []
@@ -59,7 +59,7 @@ sources:
 en:
   summary: Model aggregator API; free accounts need no credit card and can call a few models marked free, with a monthly free-model request quota whose size is not published; other models are pay as you go.
   signup_notes: The sign-up page says it is free to start with no card needed; paid models require a card and credits.
-  free_model_rule: Models whose names end in (free) and are priced $0 / $0 are free, e.g. Nemotron 3.5 Lightning (free), Nemotron 3 Ultra (free), Flint (free), Ling 3.2 Flash (free), LFM3-1.7B (free), ERNIE-5.5-Flash-Preview (free), Particle-1 (free); exact model IDs are listed by /api/v1/models with a key.
+  free_model_rule: Models whose names end in (free) and are priced $0 / $0 are free, e.g. Nemotron 3.5 Lightning (free), Nemotron 3 Ultra (free), Flint (free), LFM3-1.7B (free), ERNIE-5.5-Flash-Preview (free), Particle-1 (free); exact model IDs are listed by /api/v1/models with a key.
   tags:
   - Aggregator
   - Free model

@@ -35,7 +35,7 @@ def main() -> int:
             except re.error as ex:  # an invalid pattern would empty the platform's model list in build_models.py
                 problems.append(jsonschema.ValidationError(f"api.free_pattern is not a valid regular expression: {ex}"))
         for i, q in enumerate(data.get("quotas") or []):
-            if not q.get("quote") and not q.get("ended") and not data.get("ended"):  # nothing left to compare once the offer is over
+            if not q.get("quote") and not q.get("ended") and not data.get("ended") and data.get("status") != "delisted":  # nothing left to compare once the offer is over
                 missing_quotes.append(f"{path.stem}#{i}")
         for p in problems:
             loc = "/".join(str(x) for x in p.path) or "<root>"

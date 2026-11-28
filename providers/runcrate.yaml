@@ -4,8 +4,8 @@ homepage: https://www.runcrate.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-22'
-summary: GPU 云和推理平台，用 GitHub 登录即可每周免费调用 5 个开源模型，额度每周一重置；绑卡账号超出部分会自动扣费。
+last_verified: '2026-11-28'
+summary: GPU 云和推理平台，用 GitHub 登录即可每周免费调用 5 个开源模型，额度每周一重置；用完即停，在控制台开启 Extra usage 后才从余额扣费。
 api:
   protocol:
   - openai
@@ -35,14 +35,17 @@ quotas:
   models: 5 个免费模型合计
   note: 官方未公布具体数值，用量与重置时间在 API Key 页面显示；提示词、缓存 token 和回复都计入，工作区内所有 Key 和成员共用
   evidence: https://www.runcrate.ai/inference/free
-overage: auto_paid
+  quote: Free usage is counted by the week, which resets every Monday.
+overage: blocked
 expires: null
 onboarding:
   level: L2
   key_page: https://www.runcrate.ai/dashboard/api-keys
   key_pattern: ^rc_live_
 terms:
-- point: 用 Google 注册并绑卡的账号，免费额度用完后会自动充值扣卡继续使用；无余额的账号则停用到重置（错误码 free_allowance_used）
+- point: 免费额度用完后请求停止到重置（错误码 free_allowance_used）；在控制台开启 Extra usage 后改从余额扣费，共享算力按标价一半，繁忙时按标价
+  url: https://www.runcrate.ai/inference/free
+- point: 免费算力繁忙时返回过载错误（overloaded）并带较短的 Retry-After
   url: https://www.runcrate.ai/inference/free
 - point: 免费请求由第三方模型提供方处理，提示词和输出受其条款约束
   url: https://www.runcrate.ai/inference/free
@@ -56,7 +59,7 @@ sources:
 - https://runcrate.ai/agents.md?model=deepseek-ai%2FDeepSeek-V4.1-Flash&intent=agent
 - https://www.runcrate.ai/terms
 en:
-  summary: GPU cloud and inference platform; signing in with GitHub gives a weekly free allowance on 5 open models, reset every Monday; accounts with a card are charged automatically beyond it.
+  summary: GPU cloud and inference platform; signing in with GitHub gives a weekly free allowance on 5 open models, reset every Monday; requests stop when it is used up, and only switch to your balance if you turn on Extra usage.
   signup_notes: Signing in with a GitHub account at least 30 days old needs no credit card, one allowance per GitHub account; Google sign-ups need a credit or debit card on file (no prepaid cards), one allowance per card
   tags:
   - Free model
@@ -64,6 +67,7 @@ en:
   - models: The 5 free models combined
     note: The amount is not published; usage and reset time are shown on the API keys page. Prompt, cached tokens and reply all count, shared by every key and member of the workspace
   terms:
-  - For Google sign-ups with a card, usage beyond the free allowance is charged to the card by automatic top-up; accounts without credit stop until reset (error free_allowance_used)
+  - Past the free allowance, requests stop until it resets (free_allowance_used); turning on Extra usage in the dashboard bills your balance instead, at half the list price on shared capacity and the list price when it is busy
+  - When free capacity is busy, the answer is an overload error (overloaded) with a short Retry-After
   - Free requests are served by third-party model providers whose terms apply to prompts and outputs
   - Use from countries and regions under comprehensive US sanctions (Cuba, Iran, North Korea, Syria, Russia, Belarus and parts of Ukraine) is prohibited (section 9)
