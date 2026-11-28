@@ -4,7 +4,7 @@ homepage: https://anyapi.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 聚合网关，免费计划每天赠送 10 万 AnyToken，UTC 零点重置，可调用免费模型和基础模型，无需信用卡。
 api:
   protocol:
