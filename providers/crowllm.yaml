@@ -4,8 +4,8 @@ homepage: https://crowllm.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
-summary: 聚合网关，价格为 0 的“免费货架”模型不收费，无需绑卡；免费模型有每分钟次数上限（官方未公布具体数值），余额为 0 时能否继续调用官方只写明订阅套餐可以。
+last_verified: '2026-11-28'
+summary: 聚合网关，价格为 0 的“免费货架”模型不收费，无需绑卡；免费模型有每分钟次数上限（官方未公布具体数值），余额为 0 时能否继续调用官方只写明订阅套餐可以。另有付费充值翻倍活动（至 2026-12-31），需付款，不属于免费额度。
 api:
   protocol:
   - openai
@@ -15,7 +15,7 @@ api:
   anthropic_base_url: https://crowllm.com
   models_url: https://crowllm.com/v1/models
   models_access: paid
-  free_pattern: ^(caw/glm\-5\.3\-flash\-thinking:free|crow\-roleplay:free|dots\-3\-note\-preview:free|flint\-v1\.0:free|gemma\-4\-31b\-it:free|glm\-4\.6v\-flash:free|hy4\-flash:free|jais\-3\-mova\-36b\-a4b:free|k2\-horizon\-375b\-a23b\-uncensored:free|k2\-horizon\-375b\-a23b:free|laguna\-xs\-2\.1\-uncensored:free|laguna\-xs\-2\.1:free|longcat\-2\.5:free|minimax\-m3\.1\-flash:free|nemotron\-3\-ultra\-550b\-a55b\-uncensored:free|nemotron\-3\-ultra\-550b\-a55b:free|nemotron\-3\.5\-super\-vl:free|nvidia/mistral\-large\-4\-1t\-a52b:free|nvidia/nemotron\-3\.5\-bolt\-e4b:free|nvidia/nemotron\-3\.5\-super\-vl\-120b\-a12b:free|particle\-1\-uncensored:free|particle\-1:free|solar\-mini4:free|step\-5\-preview:free|typhoon\-v2\.5\-30b\-a3b\-instruct)$
+  free_pattern: ^(caw/glm\-5\.3\-flash\-thinking:free|crow\-roleplay:free|dots\-3\-note\-preview:free|flint\-v1\.0:free|gemma\-4\-31b\-it:free|glm\-4\.6v\-flash:free|hy4\-flash:free|jais\-3\-mova\-36b\-a4b:free|k2\-horizon\-375b\-a23b\-uncensored:free|k2\-horizon\-375b\-a23b:free|laguna\-xs\-2\.1\-uncensored:free|laguna\-xs\-2\.1:free|longcat\-2\.5:free|minimax\-m3\.1\-flash:free|nemotron\-3\-ultra\-550b\-a55b\-uncensored:free|nemotron\-3\-ultra\-550b\-a55b:free|nemotron\-3\.5\-super\-vl:free|nemotron\-3\.5\-bolt\-e4b:free|nemotron\-3\.5\-super\-vl\-120b\-a12b:free|nemotron\-3\.5\-lightning\-30b\-a3b:free|nemotron\-3\.5\-lightning\-30b\-a3b\-uncensored:free|particle\-1\-uncensored:free|particle\-1:free|solar\-mini4:free|step\-5\-preview:free|typhoon\-v2\.5\-30b\-a3b\-instruct)$
   free_model_rule: 官方价格表（/api/pricing）中输入、输出价格均为 0 且对免费分组开放的模型；名字带 :free 的不一定免费，以价格为准
 signup:
   url: https://crowllm.com/sign-up
@@ -51,7 +51,7 @@ sources:
 - https://crowllm.com/v1/models
 - https://crowllm.com/api/status
 en:
-  summary: Aggregator gateway; models on its zero-price "free shelf" cost nothing and need no card. Free calls have a per-minute ceiling (number not published); the site only states that plans keep the free shelf open at a zero balance.
+  summary: Aggregator gateway; models on its zero-price "free shelf" cost nothing and need no card. Free calls have a per-minute ceiling (number not published); the site only states that plans keep the free shelf open at a zero balance. A paid top-up bonus (2x credit, until 2026-12-31) also runs; it requires payment and is not a free quota.
   free_model_rule: Models priced at zero for both input and output and open to the free group in the official price list (/api/pricing); a ":free" suffix alone does not mean free
   signup_notes: No credit card; sign in with GitHub, Google or Discord, no email/password registration
   tags:
