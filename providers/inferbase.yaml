@@ -4,7 +4,7 @@ homepage: https://inferbase.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 印度班加罗尔的模型网关，免费计划每月 5000 次请求，托管模型中输出价不超过每百万 token 2 美元的对话、嵌入和重排模型每天免费 100 次、合计 0.5 美元以内，无需信用卡。
 api:
   protocol:
