@@ -5,9 +5,8 @@ homepage: https://minekuai.cn
 region: cn
 api_usable: true
 status: unconfirmed
-last_verified: '2026-11-27'
-ended: '2026-11-27'
-summary: 自部署的 DeepSeek V4.1 Flash 曾免费不限量调用。2026-11-27 起官方显示 API 大模型暂未开放注册，公开免费模型列表为空，鱼币兑换也因算力不足暂停；接口地址已改为 ai-api.minekuai.cn。
+last_verified: '2026-11-28'
+summary: 麦块云本地部署的 DeepSeek V4.1 Flash 1017 在公开模型列表中标价为 0；注册即为 Lite 免费档，调用消耗免费额度，额度来自每日签到鱼币兑换及邀请、新手任务，用尽后调用被拒绝。原不限量通道已取消，具体额度官方未公布。
 api:
   protocol:
   - openai
@@ -16,7 +15,7 @@ api:
   anthropic_base_url: https://ai-api.minekuai.cn
   free_models:
   - deepseek-v4.1-flash-1017
-  free_model_rule: 官方标注“临时部署测试，后续可能调整”
+  free_model_rule: 官方标注“临时部署测试，后续可能调整”；模型广场单价为 0 的显示「免费」
 signup:
   url: https://minekuai.cn
   requires:
@@ -28,17 +27,29 @@ quotas:
   period: day
   scope: account
   models: DeepSeek V4.1 Flash 1017（不限量通道）
-  evidence: https://minekuai.cn/app/llm/models/public
-  note: 不消耗额度，高峰期排队；2026-11-27 公开免费模型列表为空
+  evidence: https://minekuai.cn/llm
+  quote: 注册即是 Lite（免费），可调用标注「免费」的模型：调用消耗免费额度，每日签到所得鱼币可兑换当日额度，邀请好友、新手任务另得永久额度，额度用尽后调用将被拒绝。
+  note: 原不消耗额度的不限量通道已取消，现免费模型调用消耗免费额度，用尽后被拒绝
+  ended: '2026-11-27'
 - unit: tokens
   amount: null
   period: day
   reset: 00:00 Asia/Shanghai
   scope: account
+  models: DeepSeek V4.1 Flash 1017
   condition: 每日签到所得鱼币兑换
-  evidence: https://minekuai.cn/app/site/sales
-  note: 请求优先处理、不排队，当天有效，用完自动回到不限量通道；2026-11-20 因算力不足暂停兑换
-  quote: 算力不足，按量额度兑换暂停。
+  evidence: https://minekuai.cn/llm
+  quote: 注册即是 Lite（免费），签到兑换免费额度即可调用标注「免费」的模型
+  note: 当日有效，额度数值官方未公布；站点状态接口仍保留“算力不足，按量额度兑换暂停。”文案，但标记为 open
+- unit: tokens
+  amount: null
+  period: one-time
+  scope: account
+  models: DeepSeek V4.1 Flash 1017
+  condition: 邀请好友、完成新手任务
+  evidence: https://minekuai.cn/llm
+  quote: 注册即是 Lite（免费），可调用标注「免费」的模型：调用消耗免费额度，每日签到所得鱼币可兑换当日额度，邀请好友、新手任务另得永久额度，额度用尽后调用将被拒绝。
+  note: 永久额度，数值官方未公布
 overage: blocked
 onboarding:
   level: L1
@@ -47,14 +58,18 @@ tags:
 - 免费模型
 - 每日赠送
 en:
-  summary: Self-hosted DeepSeek V4.1 Flash used to be free and unlimited. Since 2026-11-27 the site says LLM API registration is not open, the public free-model list is empty and coin exchange is paused for lack of capacity; the API moved to ai-api.minekuai.cn.
+  summary: Minekuai's self-hosted DeepSeek V4.1 Flash 1017 is listed at zero price in the public model list. Registering gives the free Lite tier, where calls spend a free allowance from daily check-in coins, invites and newbie tasks, and are refused once it runs out. The former unlimited lane is gone; allowance amounts are not published.
   signup_notes: Creating an API key requires joining the official QQ group with a QQ number; one QQ number per account
-  free_model_rule: Marked by the platform as a temporary test deployment that may change
+  free_model_rule: Marked by the platform as a temporary test deployment that may change; zero-priced models are shown as free in the model list
   tags:
   - Free model
   - Daily credits
   quotas:
   - models: DeepSeek V4.1 Flash 1017 (unlimited lane)
-    note: Uses no allowance; requests queue at peak times. On 2026-11-27 the public free-model list was empty
-  - condition: Bought with coins from the daily check-in
-    note: Priority lane without queueing, valid for the day; falls back to the unlimited lane when used up. Exchange paused on 2026-11-20 for lack of capacity
+    note: The unlimited lane that used no allowance was removed; free model calls now spend the free allowance and are refused when it runs out
+  - models: DeepSeek V4.1 Flash 1017
+    condition: Bought with coins from the daily check-in
+    note: Valid for the day; amount not published. The site status endpoint still carries a "exchange paused for lack of capacity" message but flags it as open
+  - models: DeepSeek V4.1 Flash 1017
+    condition: Inviting friends and completing newbie tasks
+    note: Permanent allowance; amount not published
