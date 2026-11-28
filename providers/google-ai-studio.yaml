@@ -4,7 +4,7 @@ homepage: https://aistudio.google.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: Gemini API 免费档，按项目限速，免费档可用 Gemini 4 Hydrogen、Gemini 3.8 Flash、Gemini 3.5 Flash-Lite 等模型；Gemini 4 Carbon/Argon/Neon 仅付费档可用；具体限额在 AI Studio 页面显示。
 api:
   protocol:
