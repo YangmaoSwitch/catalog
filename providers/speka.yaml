@@ -4,7 +4,7 @@ homepage: https://speka.me
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: OpenAI 兼容的模型网关，注册即送一次性 1 美元额度，无需信用卡；免费档每分钟 2 次请求、1 个 Key，只能调用单价不超过每百万 token 1 美元的模型。
 api:
   protocol:
