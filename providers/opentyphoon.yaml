@@ -5,7 +5,7 @@ homepage: https://opentyphoon.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 泰国 SCB 10X 的泰语大模型 API，作为研究展示免费使用，每个模型限每秒 5 次、每分钟 200 次请求。
 api:
   protocol:
