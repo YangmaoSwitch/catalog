@@ -4,7 +4,7 @@ homepage: https://composite.lucidity.sh
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 面向角色扮演的 OpenAI 兼容 API。自家模型 Synth 免费不限量，限每账号每分钟 5 次；另有部分免费模型，每天合计 80 次请求，部分模型每次调用按多次计。
 api:
   protocol:
@@ -29,7 +29,7 @@ quotas:
   period: day
   scope: account
   models: 全部 :free 免费模型合计
-  note: 模型列表页注明部分免费模型每次调用按多次计（如 DeepSeek V4 Flash 0731 每次计 11 次，DeepSeek V4.1 Flash 每次计 25 次），实际可用调用次数会更少。重置时间官方未公布。
+  note: 模型列表页注明部分免费模型每次调用按多次计（如 DeepSeek V4 Flash 0731 每次计 10 次，DeepSeek V4.1 Flash 每次计 13 次，Amazon Nova Micro 每次计 9 次），倍数会调整，实际可用调用次数会更少。重置时间官方未公布。
   evidence: https://composite.lucidity.sh/
   quote: Free models such as GLM 5.3 Flash and DeepSeek V4 Flash share 80 requests a day
 - unit: requests
@@ -72,11 +72,11 @@ en:
   - Daily allowance
   quotas:
   - models: All :free models combined
-    note: The model list says some free models count each call as several requests (e.g. DeepSeek V4 Flash 0731 counts as 11, DeepSeek V4.1 Flash as 25), so fewer actual calls are possible. Reset time not published.
+    note: The model list says some free models count each call as several requests (e.g. DeepSeek V4 Flash 0731 counts as 10, DeepSeek V4.1 Flash as 13, Amazon Nova Micro as 9); the multipliers get adjusted, so fewer actual calls are possible. Reset time not published.
   - models: Synth (lucidityai/synth-2.5-flash)
     note: Synth has no daily cap; free and BYOK requests share the 5-per-minute limit.
   terms:
   - Using Composite with code editors, IDEs or coding agents is prohibited; requests that define tools are rejected and repeated attempts can lead to suspension
   - Circumventing rate limits or other technical protections is prohibited
-  - Content in the categories listed in banned.txt is prohibited, including in fiction or roleplay
   - Training data collection is on by default, with an opt-out in account settings
+  - Content in the categories listed in banned.txt is prohibited, including in fiction or roleplay
