@@ -5,7 +5,7 @@ region: global
 api_usable: true
 status: verified
 last_verified: '2026-11-28'
-summary: 土耳其的模型聚合网关，目录中标为免费的模型（如 Nemotron 3 Ultra、Qwen3.8 27B Free）调用不扣余额，按每日配额限量，邮箱验证码注册即可使用。
+summary: 土耳其的模型聚合网关，目录中标为免费的模型（如 Nemotron 3 Ultra、Qwen3.8 27B Free，以及限时免费到 2026-12-31 的 Sage-S2.1-Flash）调用不扣余额，按每日配额限量，邮箱验证码注册即可使用。
 api:
   protocol:
   - openai
@@ -19,7 +19,8 @@ api:
   - openai/gpt-oss-safeguard-20b
   - liquid/lfm3-1.7b-free
   - parallel/parallel-free
-  free_model_rule: 目录中标为免费、价格为 0 的模型；EVREN 系列价格为 0 是因为要自带 EVREN Key，不算免费；部分免费模型有截止日期（如 liquid/lfm3-1.7b-free 到 2026-12-30、parallel/parallel-free 到 2027-01-04，土耳其时间），名单随时调整
+  - internlm/sage-s2.1-flash-free
+  free_model_rule: 目录中标为免费、价格为 0 的模型；EVREN 系列价格为 0 是因为要自带 EVREN Key，不算免费；部分免费模型有截止日期（如 liquid/lfm3-1.7b-free 到 2026-12-30、internlm/sage-s2.1-flash-free 到 2026-12-31 24:00、parallel/parallel-free 到 2027-01-04，土耳其时间），名单随时调整
 signup:
   url: https://llmtr.com
   requires:
@@ -34,6 +35,14 @@ quotas:
   note: 模型说明写有“每日配额”，但官方未公布具体次数和重置时区
   evidence: https://llmtr.com/pricing
   quote: Katalogda ücretsiz olarak işaretlenen modeller için kullanım sırasında bakiyenizden ek ücret düşülmez.
+- unit: tokens
+  amount: null
+  period: day
+  scope: account
+  models: internlm/sage-s2.1-flash-free（Sage-S2.1-Flash）
+  note: 限时免费到 2026-12-31 24:00（土耳其时间），2027-01-01 起请求返回 410 model_retired；官方未公布具体限额，可能返回 429/503
+  evidence: https://llmtr.com/models/internlm/sage-s2.1-flash-free
+  quote: 31 Aralık 2026 24:00'e (TSİ) kadar ücretsizdir.
 overage: blocked
 expires: null
 onboarding:
@@ -50,6 +59,7 @@ terms:
   url: https://llmtr.com/docs/billing/
 tags:
 - 免费模型
+- 限时免费
 - 聚合
 sources:
 - https://llmtr.com/
@@ -59,15 +69,18 @@ sources:
 - https://llmtr.com/docs/faq/
 - https://llmtr.com/terms
 en:
-  summary: Turkish model aggregator gateway. Models marked free in the catalog, such as Nemotron 3 Ultra and Qwen3.8 27B Free, cost nothing within a daily quota; sign up with an email one-time code.
+  summary: Turkish model aggregator gateway. Models marked free in the catalog, such as Nemotron 3 Ultra, Qwen3.8 27B Free and Sage-S2.1-Flash (free until 2026-12-31), cost nothing within a daily quota; sign up with an email one-time code.
   signup_notes: Sign up with email and a one-time code; free models need no top-up. Paid models need a top-up from $5 or $10, with an 8% platform fee added at top-up.
-  free_model_rule: Models marked free with a price of 0 in the catalog. EVREN models show 0 because they need your own EVREN key and are not free. Some free models have end dates (liquid/lfm3-1.7b-free until 2026-12-30, parallel/parallel-free until 2027-01-04, Turkey time), and the list changes over time
+  free_model_rule: Models marked free with a price of 0 in the catalog. EVREN models show 0 because they need your own EVREN key and are not free. Some free models have end dates (liquid/lfm3-1.7b-free until 2026-12-30, internlm/sage-s2.1-flash-free until 2026-12-31 24:00, parallel/parallel-free until 2027-01-04, Turkey time), and the list changes over time
   tags:
   - Free model
+  - Limited-time free
   - Aggregator
   quotas:
   - models: Free models
     note: Model descriptions mention a daily quota, but the exact count and reset time zone are not published
+  - models: internlm/sage-s2.1-flash-free (Sage-S2.1-Flash)
+    note: Free for a limited time until 2026-12-31 24:00 Turkey time; from 2027-01-01 requests return 410 model_retired. Exact limits are not published, and requests may get 429/503
   terms:
   - Using fake identities, automation or deceptive techniques to exceed service limits is prohibited (section 6)
   - Reselling the platform or using it to build a competing service is prohibited (section 6)
