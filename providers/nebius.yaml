@@ -4,7 +4,7 @@ homepage: https://nebius.com/token-factory
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: Nebius 的开源模型推理平台，提供 OpenAI 兼容接口；免费加入 AI Builder Program 可领取一次性 25 美元 Token Factory 额度，主要用于学习和测试。
 api:
   protocol:
