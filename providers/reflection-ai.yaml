@@ -4,7 +4,7 @@ homepage: https://reflection.ai
 region: global
 api_usable: true
 status: unconfirmed
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: Reflection 自家 API 提供 Beam-1.0-501B-A23B 模型，官方博客称公开测试期可免费开始使用，具体免费额度未公开，部分组织需先验证信用卡。
 api:
   protocol:
