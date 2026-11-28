@@ -5,7 +5,7 @@ homepage: https://siliconflow.cn
 region: cn
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 部分模型长期免费（按模型限速）；实名认证送 16 元代金券，邀请好友实名双方各得 16 元（活动至 2026-12-31）。
 api:
   protocol:
