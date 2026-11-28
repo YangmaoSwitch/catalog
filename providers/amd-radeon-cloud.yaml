@@ -4,7 +4,7 @@ homepage: https://developer.amd.com.cn/radeon/tokenfactory
 region: cn
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 每天赠送积分，所有模型共用；新用户注册后 14 天内每天 5 积分。
 api:
   protocol:
