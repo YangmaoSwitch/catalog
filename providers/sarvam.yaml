@@ -4,7 +4,7 @@ homepage: https://www.sarvam.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 印度 Sarvam AI 的模型 API，每个通过验证的新用户注册送 100 卢比额度，永不过期，可用于大模型对话及语音、翻译等全部接口。
 api:
   protocol:
