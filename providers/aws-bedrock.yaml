@@ -5,7 +5,7 @@ homepage: https://aws.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: AWS 新客户注册即得 100 美元额度，完成指定活动最多再得 100 美元，可用于 Amazon Bedrock 的模型调用；Free plan 最长 6 个月，额度用完或到期后账号关闭，期间不产生费用。
 api:
   protocol:
