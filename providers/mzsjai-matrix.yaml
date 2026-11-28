@@ -5,8 +5,8 @@ homepage: https://matrix.mzsjai.com
 region: cn
 api_usable: true
 status: unconfirmed
-last_verified: '2026-11-27'
-summary: 摩智视界的 Matrix 是模型 API 聚合平台，按量付费；完成实名认证后一次性发放奖励额度到钱包，官方未公布具体数额，免费套餐不含每月积分。
+last_verified: '2026-11-28'
+summary: 摩智视界的 Matrix 是模型 API 聚合平台，按量付费；完成实名认证后一次性发放奖励额度到钱包，通过邀请链接注册时邀请双方也有注册奖励，官方均未公布具体数额，免费套餐不含每月积分。
 api:
   protocol:
   - openai
@@ -31,6 +31,15 @@ quotas:
   note: 官方未公布奖励数额；奖励进入钱包余额，1 积分 = ¥0.01；公告称平台赠送积分可用于 deepseek/deepseek-v4-flash-w8a8，其他模型是否可用未写明
   evidence: https://matrix.mzsjai.com/docs/announcements/identity-verification
   quote: 完成认证会自动发放奖励额度，进入钱包余额，不需要手动领取
+- unit: credits
+  amount: null
+  period: one-time
+  scope: account
+  new_users: true
+  condition: 通过已有用户的邀请链接注册
+  note: 官方公告未公布注册奖励数额（第三方列表称 600 积分，官方页面未见）；奖励自动进入钱包余额，邀请人和被邀请人双方都有
+  evidence: https://matrix.mzsjai.com/docs/announcements/subscription-cashback
+  quote: 注册奖励：好友通过你的邀请链接完成注册即发放，双方都有
 overage: blocked
 onboarding:
   level: L2
@@ -49,13 +58,15 @@ sources:
 - https://matrix.mzsjai.com/docs/announcements/deepseek-v4-flash-w8a8
 - https://matrix.mzsjai.com/docs/matrix/developers/openai-compatible
 en:
-  summary: Matrix by MoziaVision is a pay-as-you-go model API aggregator; completing identity verification grants a one-time reward credited to the wallet (amount not published). The free plan includes no monthly credits.
+  summary: Matrix by MoziaVision is a pay-as-you-go model API aggregator. Completing identity verification grants a one-time reward credited to the wallet, and signing up through an invite link gives both the inviter and the new user a registration reward. Neither amount is published. The free plan includes no monthly credits.
   signup_notes: Sign up with phone or email; the verification reward requires real-name verification (personal ID check or company verification); since 2026-09-30 top-ups also require real-name verification
   tags:
   - New-user credits
   quotas:
   - condition: Complete personal or company identity verification
     note: Reward amount not published; credited to wallet balance, 1 credit = CNY 0.01; an announcement says gifted credits can be used for deepseek/deepseek-v4-flash-w8a8, other models not stated
+  - condition: Sign up through an existing user's invite link
+    note: Registration reward amount not published officially (third-party lists claim 600 credits, not seen on official pages); credited automatically to the wallet, both inviter and invitee receive it
   terms:
   - The account is for your own or your company's use only; no transfer, renting, lending, sharing among several people, or serving third parties with it
   - No malicious bulk calls or abuse of compute resources
