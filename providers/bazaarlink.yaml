@@ -5,7 +5,7 @@ homepage: https://bazaarlink.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 台湾的模型聚合网关，免费模型每个账户每天 60 个加权单位、每分钟 10 次，充值后翻倍，无需信用卡。
 api:
   protocol:
