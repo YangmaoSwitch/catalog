@@ -4,7 +4,7 @@ homepage: https://tokenharbor.ai
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 新加坡公司运营的聚合网关，名称以 :free 结尾的模型免费调用，按滚动 7 天发放免费额度，无需信用卡；不对中国大陆和香港开放。
 api:
   protocol:
