@@ -32,7 +32,7 @@ quotas:
   condition: 2026 年 11 月 2 日及之后注册的账号
   note: 实际按滚动 5 小时窗口计量，每个窗口约 21 次请求，100 次/天为参考值；另限 1 个并发、每分钟 30 次，单次输入 32K、输出 2K。服务条款写的是新账号仅前 24 小时为 100 次/天、之后为 500 次/天，与价格页不一致，这里按价格页较低的数字填写。
   evidence: https://plugsky.com/pricing
-  quote: Accounts created from 2 November 2026 receive about 21 requests and 10,400 tokens per rolling 5-hour window (100 / 50,000 per day reference), one concurrent request and 30 RPM.
+  quote: Accounts created from 2 November 2026 receive about 21 requests and 10,400 tokens per rolling 5-hour window (100 / 50,000 per day reference), one concurrent request, and 30 RPM.
 - unit: tokens
   amount: 50000
   period: day
@@ -42,7 +42,7 @@ quotas:
   condition: 2026 年 11 月 2 日及之后注册的账号
   note: 按滚动 5 小时窗口计量，每个窗口约 10,400 tokens，50,000/天为参考值。
   evidence: https://plugsky.com/pricing
-  quote: Accounts created from 2 November 2026 receive about 21 requests and 10,400 tokens per rolling 5-hour window (100 / 50,000 per day reference), one concurrent request and 30 RPM.
+  quote: Accounts created from 2 November 2026 receive about 21 requests and 10,400 tokens per rolling 5-hour window (100 / 50,000 per day reference), one concurrent request, and 30 RPM.
 - unit: requests
   amount: 30
   period: minute
