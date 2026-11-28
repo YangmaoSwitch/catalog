@@ -5,7 +5,7 @@ homepage: https://www.siliconflow.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: 硅基流动国际站，按量付费的模型 API 平台；官方定价页写明新账号可用 1 美元免费额度起步，不面向中国大陆用户。
 api:
   protocol:
