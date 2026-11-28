@@ -4,7 +4,7 @@ homepage: https://plugsky.com
 region: global
 api_usable: true
 status: verified
-last_verified: '2026-11-27'
+last_verified: '2026-11-28'
 summary: OpenAI 兼容 API 平台，免费计划无需信用卡，可调用 plugsky-micro 和 plugsky-lite，新账号每天约 100 次请求、5 万 tokens，按滚动 5 小时窗口计量。
 api:
   protocol:
